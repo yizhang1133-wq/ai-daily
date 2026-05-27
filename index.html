@@ -176,12 +176,65 @@
     .pro-tip .text { font: 500 13px/1.5 var(--serif-body); color: var(--ink); text-transform: none; letter-spacing: 0; }
     .pro-tip .text b { color: var(--accent); font-style: normal; font-weight: 600; }
 
+    .archive-row {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+    .archive-row h4 {
+      font: 11px/1.4 var(--mono);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+    .archive-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 40px;
+    }
+    .archive-list .item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .archive-list .item .date {
+      font: 11px/1 var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    .archive-list .item a {
+      font: 600 15px/1.4 var(--serif-display);
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .archive-list .item a:hover { color: var(--accent); }
+    .archive-list .item .angle {
+      font: 13px/1.4 var(--serif-body);
+      color: var(--muted);
+    }
+
+    .site-info {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rule);
+      font: 11px/1.6 var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+    .site-info a { color: var(--accent); text-decoration: none; }
+    .site-info a:hover { text-decoration: underline; }
+
     @media (max-width: 900px) {
       .grid { grid-template-columns: 1fr; }
       .cell { border-bottom: 1px solid var(--rule); }
       .cell:last-child { border-bottom: none; }
       .page { padding: 24px 24px 32px; }
       .flash-list { grid-template-columns: 1fr; }
+      .archive-list { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -274,6 +327,42 @@
       </div>
     </div>
 
+    <div class="archive-row">
+      <h4>— 往期回顾</h4>
+      <div class="archive-list">
+        <div class="item">
+          <span class="date">2026-05-26</span>
+          <a href="https://aihot.virxact.com/daily/2026-05-26" target="_blank" rel="noopener">巨头们同时出牌</a>
+          <span class="angle">AI 商业化与资本重组的里程碑日</span>
+        </div>
+        <div class="item">
+          <span class="date">2026-05-25</span>
+          <a href="https://aihot.virxact.com/daily/2026-05-25" target="_blank" rel="noopener">Luma Agents 实现规模化真实 UGC 广告</a>
+          <span class="angle">AI 广告工业化的临界点</span>
+        </div>
+        <div class="item">
+          <span class="date">2026-05-24</span>
+          <a href="https://aihot.virxact.com/daily/2026-05-24" target="_blank" rel="noopener">StepAudio 2.5 实时语音发布</a>
+          <span class="angle">语音交互从"听懂"进入"人格化"</span>
+        </div>
+        <div class="item">
+          <span class="date">2026-05-23</span>
+          <a href="https://aihot.virxact.com/daily/2026-05-23" target="_blank" rel="noopener">首个昇腾全栈训练 1.58bit 模型发布</a>
+          <span class="angle">端侧大模型国产化的关键突破</span>
+        </div>
+        <div class="item">
+          <span class="date">2026-05-22</span>
+          <a href="https://aihot.virxact.com/daily/2026-05-22" target="_blank" rel="noopener">Aleph 2.0 与 Edit Studio</a>
+          <span class="angle">多模态创作进入一站式整合时代</span>
+        </div>
+        <div class="item">
+          <span class="date">2026-05-21</span>
+          <a href="https://aihot.virxact.com/daily/2026-05-21" target="_blank" rel="noopener">Qwen3.7 智能体前沿</a>
+          <span class="angle">智能体生态从单点工具走向平台化</span>
+        </div>
+      </div>
+    </div>
+
     <div class="footer">
       <div class="pro-tip">
         <span class="badge">TODAY'S TAKE</span>
@@ -281,6 +370,10 @@
       </div>
       <div></div>
       <div>截图分享 · 保存收藏 · 明日见</div>
+    </div>
+
+    <div class="site-info">
+      内容来源：<a href="https://aihot.virxact.com/daily" target="_blank" rel="noopener">aihot.virxact.com/daily</a> · 页面作者：猫仔 · 生成时间：2026-05-27
     </div>
   </div>
 </body>
