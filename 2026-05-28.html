@@ -1,510 +1,363 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI HOT 日报解读 · 2026-05-28</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap');
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026年5月28日</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Noto+Serif+SC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #f3eee2;
+      --ink: #1f1c17;
+      --muted: #6e6a5d;
+      --rule: #d3cdbe;
+      --accent: #b85a3a;
+      --tint: #ece5d3;
+      --serif-display: 'Playfair Display', 'Noto Serif SC', Georgia, serif;
+      --serif-body: 'Noto Serif SC', 'Charter', Georgia, serif;
+      --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; color: var(--ink);
+      background:
+        radial-gradient(circle, rgba(31,28,23,0.05) 1px, transparent 1.4px) 0 0 / 16px 16px,
+        var(--paper);
+      font: 15px/1.65 var(--serif-body);
+    }
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 36px 56px 48px;
+    }
 
-  :root {
-    --cream: #FAF7F2;
-    --paper: #F5F0E8;
-    --ink: #2C2C2C;
-    --ink-light: #5A5A5A;
-    --accent-red: #C0392B;
-    --accent-gold: #B8860B;
-    --accent-teal: #1F6F6F;
-    --border: #D4CFC7;
-    --shadow: rgba(0,0,0,0.06);
-  }
+    .top-rule {
+      display: flex; justify-content: space-between; align-items: center;
+      font: 11px/1.4 var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .eyebrow-row {
+      padding: 14px 0 28px;
+      font: 11px/1.4 var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+    h1.headline {
+      font-family: var(--serif-display);
+      font-weight: 800;
+      font-size: clamp(48px, 6vw, 84px);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      margin: 0 0 16px;
+      max-width: 14ch;
+    }
+    h1.headline .strike { text-decoration: line-through; text-decoration-thickness: 3px; text-decoration-color: var(--ink); color: var(--ink); }
+    h1.headline .accent { font-style: italic; color: var(--accent); font-weight: 700; }
 
-  body {
-    background: var(--cream);
-    color: var(--ink);
-    font-family: 'Noto Serif SC', Georgia, serif;
-    line-height: 1.7;
-    min-height: 100vh;
-  }
+    .deck {
+      max-width: 60ch;
+      font: 500 17px/1.6 var(--serif-body);
+      color: var(--ink);
+      margin: 0 0 22px;
+    }
+    .deck b { font-style: normal; color: var(--accent); font-weight: 600; padding: 0 4px; background: var(--tint); border-radius: 2px; }
 
-  .newspaper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 30px;
-    background: var(--paper);
-    box-shadow: 0 0 60px var(--shadow);
-    min-height: 100vh;
-  }
+    .accent-rule { width: 80px; height: 3px; background: var(--accent); margin: 6px 0 32px; }
 
-  a { color: var(--accent-red); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 48px;
+      padding-top: 4px;
+      border-top: 1px solid var(--rule);
+    }
+    .cell { padding: 28px 0 4px; border-bottom: 1px solid var(--rule); }
+    .cell:nth-last-child(-n+2) { border-bottom: none; }
+    .cell .num {
+      font: 11px/1.4 var(--mono);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .cell .num span.bar { display: inline-block; width: 20px; height: 1px; background: var(--accent); opacity: 0.6; }
+    .cell h3 {
+      font: 700 20px/1.3 var(--serif-display);
+      letter-spacing: 0.01em;
+      margin: 0 0 10px;
+    }
+    .cell p { margin: 0 0 14px; font-size: 14.5px; line-height: 1.6; max-width: 46ch; color: var(--ink); }
+    .cell .quote {
+      background: var(--tint);
+      border-left: 2px solid var(--accent);
+      padding: 10px 12px;
+      font: 12px/1.55 var(--mono);
+      color: var(--ink);
+      max-width: 50ch;
+    }
+    .cell .source-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font: 11px/1.4 var(--mono);
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+    .cell .source-link:hover { text-decoration: underline; }
+    .cell .source-link::before { content: "→"; }
+    .cell .source-links { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 10px; }
 
-  /* Masthead */
-  .masthead {
-    text-align: center;
-    padding-bottom: 24px;
-    border-bottom: 3px double var(--ink);
-    margin-bottom: 24px;
-    position: relative;
-  }
-  .masthead::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: var(--ink);
-    position: absolute;
-    bottom: 6px;
-    left: 0;
-  }
-  .masthead h1 {
-    font-family: 'Playfair Display', 'Noto Serif SC', serif;
-    font-size: 2.8rem;
-    letter-spacing: 6px;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-  .masthead .tagline {
-    font-size: 0.85rem;
-    color: var(--ink-light);
-    letter-spacing: 2px;
-    margin-top: 6px;
-    text-transform: uppercase;
-  }
-  .masthead .date-line {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 14px;
-    font-size: 0.8rem;
-    color: var(--ink-light);
-    letter-spacing: 1px;
-    font-family: 'Playfair Display', serif;
-  }
+    .flash-row {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+    .flash-row h4 {
+      font: 11px/1.4 var(--mono);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+    .flash-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 40px;
+      font: 14px/1.5 var(--serif-body);
+    }
+    .flash-list .item {
+      display: flex; gap: 10px; align-items: baseline;
+    }
+    .flash-list .dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent); opacity: 0.5;
+      flex-shrink: 0; margin-top: 8px;
+    }
+    .flash-list .item a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color 0.15s;
+    }
+    .flash-list .item a:hover {
+      border-bottom-color: var(--accent);
+    }
 
-  /* Lead */
-  .lead {
-    text-align: center;
-    padding: 28px 60px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 28px;
-  }
-  .lead .kicker {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--accent-gold);
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-  .lead h2 {
-    font-family: 'Playfair Display', 'Noto Serif SC', serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 1.4;
-    margin-bottom: 10px;
-  }
-  .lead .sub {
-    font-size: 0.9rem;
-    color: var(--ink-light);
-    font-style: italic;
-  }
+    .footer {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid var(--ink);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 24px;
+      align-items: center;
+      font: 11px/1.4 var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .pro-tip {
+      display: flex; gap: 12px; align-items: center;
+      padding: 10px 14px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      max-width: 78%;
+    }
+    .pro-tip .badge { font: 9.5px/1 var(--mono); letter-spacing: 0.2em; padding: 6px 8px; border: 1px solid var(--ink); color: var(--ink); }
+    .pro-tip .text { font: 500 13px/1.5 var(--serif-body); color: var(--ink); text-transform: none; letter-spacing: 0; }
+    .pro-tip .text b { color: var(--accent); font-style: normal; font-weight: 600; }
 
-  /* Today's Take */
-  .todays-take {
-    background: linear-gradient(to right, var(--paper), #EDE8DE);
-    border-left: 4px solid var(--accent-red);
-    padding: 22px 28px;
-    margin-bottom: 32px;
-    position: relative;
-  }
-  .todays-take::before {
-    content: "TODAY'S TAKE";
-    position: absolute;
-    top: -10px;
-    left: 18px;
-    background: var(--accent-red);
-    color: #fff;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    padding: 3px 10px;
-    font-family: 'Playfair Display', serif;
-  }
-  .todays-take p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: var(--ink);
-  }
+    .archive-row {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+    .archive-row h4 {
+      font: 11px/1.4 var(--mono);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+    .archive-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .archive-list .item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .archive-list .item .date {
+      font: 11px/1 var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    .archive-list .item a {
+      font: 600 15px/1.4 var(--serif-display);
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .archive-list .item a:hover { color: var(--accent); }
+    .archive-list .item .angle {
+      font: 13px/1.4 var(--serif-body);
+      color: var(--muted);
+    }
 
-  /* Layout */
-  .main-layout {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 32px;
-  }
+    .site-info {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rule);
+      font: 11px/1.6 var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+    .site-info a { color: var(--accent); text-decoration: none; }
+    .site-info a:hover { text-decoration: underline; }
 
-  /* Section headers */
-  .section-title {
-    font-family: 'Playfair Display', 'Noto Serif SC', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    border-bottom: 2px solid var(--ink);
-    padding-bottom: 6px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .section-title .dot {
-    width: 10px;
-    height: 10px;
-    background: var(--accent-red);
-    display: inline-block;
-  }
-
-  /* Dishes grid - 2 columns */
-  .dishes-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 36px;
-  }
-  @media (max-width: 900px) {
-    .dishes-grid { grid-template-columns: 1fr; }
-    .main-layout { grid-template-columns: 1fr; }
-  }
-
-  .dish-card {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    padding: 20px;
-    position: relative;
-    transition: box-shadow 0.2s;
-  }
-  .dish-card:hover {
-    box-shadow: 0 4px 20px var(--shadow);
-  }
-  .dish-card .num {
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    background: var(--ink);
-    color: #fff;
-    font-family: 'Playfair Display', serif;
-    font-size: 0.75rem;
-    padding: 3px 10px;
-    letter-spacing: 1px;
-  }
-  .dish-card .num.red { background: var(--accent-red); }
-  .dish-card .num.gold { background: var(--accent-gold); }
-  .dish-card h3 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin: 16px 0 10px;
-    line-height: 1.4;
-    color: var(--ink);
-  }
-  .dish-card h3 a { color: var(--ink); }
-  .dish-card h3 a:hover { color: var(--accent-red); }
-  .dish-card .core {
-    font-size: 0.88rem;
-    color: var(--ink-light);
-    margin-bottom: 12px;
-    line-height: 1.6;
-    border-left: 2px solid var(--border);
-    padding-left: 10px;
-  }
-  .dish-card .insight-label {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--accent-teal);
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .dish-card .insight {
-    font-size: 0.88rem;
-    line-height: 1.65;
-    color: var(--ink);
-  }
-  .dish-card .source {
-    margin-top: 12px;
-    font-size: 0.78rem;
-    color: var(--ink-light);
-    font-family: 'Playfair Display', serif;
-    letter-spacing: 0.5px;
-  }
-  .dish-card .source a {
-    color: var(--accent-red);
-    border-bottom: 1px dotted var(--accent-red);
-  }
-  .dish-card .source a:hover {
-    border-bottom: 1px solid var(--accent-red);
-    text-decoration: none;
-  }
-
-  /* Flash news */
-  .flash-news {
-    margin-bottom: 36px;
-  }
-  .flash-item {
-    display: grid;
-    grid-template-columns: 32px 1fr;
-    gap: 14px;
-    padding: 14px 0;
-    border-bottom: 1px dashed var(--border);
-    align-items: start;
-  }
-  .flash-item:last-child { border-bottom: none; }
-  .flash-item .fnum {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.85rem;
-    color: var(--accent-gold);
-    font-weight: 700;
-    text-align: right;
-    padding-top: 2px;
-  }
-  .flash-item .ftitle {
-    font-weight: 600;
-    font-size: 0.92rem;
-    margin-bottom: 4px;
-  }
-  .flash-item .ftitle a { color: var(--ink); }
-  .flash-item .ftitle a:hover { color: var(--accent-red); }
-  .flash-item .fbody {
-    font-size: 0.85rem;
-    color: var(--ink-light);
-    line-height: 1.55;
-  }
-  .flash-item .fsource {
-    font-size: 0.75rem;
-    color: var(--ink-light);
-    font-family: 'Playfair Display', serif;
-    margin-top: 4px;
-  }
-  .flash-item .fsource a {
-    color: var(--accent-red);
-    border-bottom: 1px dotted var(--accent-red);
-  }
-
-  /* Sidebar */
-  .sidebar {
-    border-left: 1px solid var(--border);
-    padding-left: 24px;
-  }
-  .sidebar-title {
-    font-family: 'Playfair Display', 'Noto Serif SC', serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 6px;
-    margin-bottom: 16px;
-    letter-spacing: 1px;
-  }
-  .archive-item {
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border);
-  }
-  .archive-item:last-child { border-bottom: none; }
-  .archive-item .adate {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.8rem;
-    color: var(--accent-gold);
-    letter-spacing: 1px;
-    margin-bottom: 4px;
-  }
-  .archive-item .atitle {
-    font-size: 0.92rem;
-    font-weight: 600;
-    line-height: 1.4;
-    margin-bottom: 6px;
-  }
-  .archive-item .atitle a { color: var(--ink); }
-  .archive-item .atitle a:hover { color: var(--accent-red); }
-  .archive-item .aangle {
-    font-size: 0.8rem;
-    color: var(--ink-light);
-    line-height: 1.5;
-    font-style: italic;
-  }
-
-  /* Footer */
-  .footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 2px solid var(--ink);
-    text-align: center;
-    font-size: 0.78rem;
-    color: var(--ink-light);
-    letter-spacing: 1px;
-    font-family: 'Playfair Display', serif;
-  }
-</style>
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .cell { border-bottom: 1px solid var(--rule); }
+      .cell:last-child { border-bottom: none; }
+      .page { padding: 24px 24px 32px; }
+      .flash-list { grid-template-columns: 1fr; }
+      .archive-list { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-
-<div class="newspaper">
-
-  <header class="masthead">
-    <h1>AI HOT 日报</h1>
-    <div class="tagline">AI Product Manager & Builder Perspective</div>
-    <div class="date-line">
-      <span>No. 2026-05-28</span>
-      <span>Thursday</span>
-      <span>24 Events Covered</span>
+  <div class="page">
+    <div class="top-rule">
+      <span>AI HOT 日报解读 · 第 050 期</span>
+      <span>28 · MAY · 2026</span>
     </div>
-  </header>
+    <div class="eyebrow-row">— 每日人工智能热点速递与趋势解读 · 数据来自 aihot.virxact.com</div>
 
-  <section class="lead">
-    <div class="kicker">Daily Briefing</div>
-    <h2>MCP 统一连接标准与编程 Agent 商业化爆发</h2>
-    <p class="sub">MCP 协议成为 AI 工具互操作事实标准，编程 Agent 从概念验证迈入规模化商业交付阶段</p>
-  </section>
+    <h1 class="headline">
+      <span class="strike">孤立应用</span>的边界<br />
+      Agent <span class="accent">互连</span>时代
+    </h1>
 
-  <section class="todays-take">
-    <p>今日核心信号：MCP 协议在 Runway 和 OpenAI 的同一天动作中完成从"早期采用"到"主流落地"的跨越；Cognition 以 260 亿美元估值和 4.92 亿美元 ARR 证明编程 Agent 的商业化已非概念；Claude Code 技能系统与 Grok IDE 集成则标志着编程 Agent 从"工具竞争"升级为"生态平台战争"。同时，Anthropic 零信任框架与教皇通谕的同频共振，说明 AI 治理正从边缘合规议题走向产品设计的前置约束。</p>
-  </section>
+    <p class="deck">
+      MCP 协议正从开源项目升格为 AI 基础设施的<b>核心协议层</b>。Runway 和 OpenAI 同一天的动作形成强烈共振：前者打通创意生成场景，后者解决企业数据不出内网的顾虑。与此同时，Cognition 以 260 亿美元估值和 4.92 亿美元 ARR 证明编程 Agent 的商业模式已经跑通——AI 不再只是辅助，而是开始<b>独立交付</b>完整工作产物。
+    </p>
 
-  <div class="main-layout">
-    <div class="main-content">
-
-      <div class="section-title"><span class="dot"></span> 主菜 · Main Dishes</div>
-      <div class="dishes-grid">
-
-        <article class="dish-card">
-          <span class="num red">01</span>
-          <h3><a href="https://github.com/runwayml/runway-api-mcp-server" target="_blank" rel="noopener">MCP 协议成为 AI 工具互操作的事实标准</a></h3>
-          <p class="core">Runway 推出 MCP 服务器，允许 Claude、ChatGPT、Cursor 等智能体直接生成图像与视频；OpenAI 同日宣布支持私有 MCP 服务器的安全连接，解决企业数据不出内网顾虑。</p>
-          <div class="insight-label">AI PM 洞察</div>
-          <p class="insight">MCP 正在从开源项目变成 AI 基础设施的核心协议层。未来 AI 产品不再是独立应用，而是 MCP 生态中的一个节点——你的价值取决于能被多少 Agent 调用。</p>
-          <div class="source">
-            <a href="https://github.com/runwayml/runway-api-mcp-server" target="_blank" rel="noopener">Runway MCP Server →</a> &nbsp;
-            <a href="https://developers.openai.com/api/docs/mcp" target="_blank" rel="noopener">OpenAI MCP Docs →</a>
-          </div>
-        </article>
-
-        <article class="dish-card">
-          <span class="num red">02</span>
-          <h3><a href="https://techcrunch.com/2026/05/27/ai-coding-startup-cognition-raises-1b-at-25b-pre-money-valuation/" target="_blank" rel="noopener">Cognition 成为全球最大独立智能体实验室</a></h3>
-          <p class="core">完成超 10 亿美元融资，估值达 260 亿美元，年化收入增至 4.92 亿美元，企业使用量自年初增长超 10 倍。</p>
-          <div class="insight-label">AI PM 洞察</div>
-          <p class="insight">编程 Agent 是企业愿意为"自主交付"付费的第一个场景——ROI 可量化、交付标准明确、迭代周期短。资本市场正将 Agent 原生公司按平台型公司估值。</p>
-          <div class="source">
-            <a href="https://techcrunch.com/2026/05/27/ai-coding-startup-cognition-raises-1b-at-25b-pre-money-valuation/" target="_blank" rel="noopener">TechCrunch →</a> &nbsp;
-            <a href="https://the-decoder.com/ai-coding-agent-devin-maker-cognition-more-than-doubles-its-valuation-to-26-billion-in-under-nine-months/" target="_blank" rel="noopener">The Decoder →</a>
-          </div>
-        </article>
-
-        <article class="dish-card">
-          <span class="num red">03</span>
-          <h3><a href="https://dev.classmethod.jp/en/articles/20260524-claude-code-updates-v2-1-152/" target="_blank" rel="noopener">编程 Agent 生态全面战争</a></h3>
-          <p class="core">Claude Code v2.1.152 增强技能系统（frontmatter 控制、/reload-skills、SessionStart 钩子）；Grok 编程智能体登陆 Kilo IDE 平台。</p>
-          <div class="insight-label">AI PM 洞察</div>
-          <p class="insight">Claude Code 追求"终端内的生态扩展"，Grok 追求"IDE 内的模型原生"。选择工具链时，不仅要看模型能力，更要看生态扩展性和工作流集成深度。</p>
-          <div class="source">
-            <a href="https://dev.classmethod.jp/en/articles/20260524-claude-code-updates-v2-1-152/" target="_blank" rel="noopener">Claude Code v2.1.152 →</a> &nbsp;
-            <a href="https://x.ai/news/grok-kilocode" target="_blank" rel="noopener">Grok × Kilo IDE →</a>
-          </div>
-        </article>
-
-        <article class="dish-card">
-          <span class="num red">04</span>
-          <h3><a href="https://pytorch.org/blog/up-to-580tps-new-speed-record-of-qwen3-5-397b-a17b-on-gpu-for-agentic-workloads-with-tokenspeed/" target="_blank" rel="noopener">Qwen3.5 推理速度达 580 tps</a></h3>
-          <p class="core">在 TokenSpeed 推理引擎上针对智能体工作负载达到创纪录 580 tokens/second，采用 FlashAttention-4 优化。</p>
-          <div class="insight-label">AI PM 洞察</div>
-          <p class="insight">Agent 不是单次推理，而是多轮、多工具调用的连续推理。推理性能的竞争正从模型层扩展到系统工程层，开源推理栈已形成完整性能优化生态。</p>
-          <div class="source">
-            <a href="https://pytorch.org/blog/up-to-580tps-new-speed-record-of-qwen3-5-397b-a17b-on-gpu-for-agentic-workloads-with-tokenspeed/" target="_blank" rel="noopener">PyTorch Blog →</a>
-          </div>
-        </article>
-
-        <article class="dish-card">
-          <span class="num red">05</span>
-          <h3><a href="https://www.anthropic.com/news/our-framework-for-developing-safe-and-trustworthy-agents" target="_blank" rel="noopener">教皇 AGI 通谕 + Anthropic 零信任安全框架</a></h3>
-          <p class="core">教皇 Leo XIV 发布《Magnifica Humanitas》通谕警告 AI 伦理风险；Anthropic 同日发布企业自主 AI 智能体安全框架，提出三层零信任架构。</p>
-          <div class="insight-label">AI PM 洞察</div>
-          <p class="insight">安全不再是合规团队的"事后检查"，而是产品设计的"前置约束"。可解释性不仅是技术能力，更是合规能力和品牌信任资产。</p>
-          <div class="source">
-            <a href="https://www.vatican.va/content/leo-xiv/en/events/event.dir.html/content/vaticanevents/en/2026/5/25/enciclica-magnifica-humanitas.html" target="_blank" rel="noopener">Vatican Encyclical →</a> &nbsp;
-            <a href="https://www.anthropic.com/news/our-framework-for-developing-safe-and-trustworthy-agents" target="_blank" rel="noopener">Anthropic Framework →</a>
-          </div>
-        </article>
-
-        <article class="dish-card">
-          <span class="num gold">06</span>
-          <h3><a href="https://github.com/Lightricks/ltx-video" target="_blank" rel="noopener">FastVideo Dreamverse：7 秒生成 30 秒 1080p 视频</a></h3>
-          <p class="core">基于单张 NVIDIA B200 GPU 和 LTX-2 模型，实现实时视频生成的氛围引导工具，现已开源。</p>
-          <div class="insight-label">AI PM 洞察</div>
-          <p class="insight">实时视频生成正从"实验室 demo"走向"可部署的工具"。实时性改变的不是"能不能做"，而是"怎么做"——从"计划-执行-修改"变成"探索-发现-迭代"。</p>
-          <div class="source">
-            <a href="https://github.com/Lightricks/ltx-video" target="_blank" rel="noopener">LTX-Video GitHub →</a>
-          </div>
-        </article>
-
-      </div>
-
-      <div class="section-title"><span class="dot" style="background:var(--accent-gold)"></span> 快讯 · Flash News</div>
-      <div class="flash-news">
-        <div class="flash-item"><span class="fnum">07</span><div><div class="ftitle"><a href="https://x.com/perplexity_ai/status/2059664793234231555" target="_blank" rel="noopener">Perplexity 开源 Unigram 分词器</a></div><div class="fbody">CPU 占用降低 5-6 倍，解决分词成为总延迟瓶颈的问题。不要只关注模型层优化，预处理和后处理环节的工程优化往往有更高 ROI。</div><div class="fsource"><a href="https://x.com/perplexity_ai/status/2059664793234231555" target="_blank" rel="noopener">Perplexity on X →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">08</span><div><div class="ftitle"><a href="https://www.alibabacloud.com/blog/alibaba-cloud-named-a-leader-in-omdia%E2%80%99s-latest-agentic-ai-report_602917" target="_blank" rel="noopener">阿里云入选 Omdia 智能体 AI 市场雷达领导者</a></div><div class="fbody">加入 PyTorch 基金会白金会员，"Agent-Native Cloud"战略全面落地。未来云选型标准将从性价比扩展到 Agent 原生支持度。</div><div class="fsource"><a href="https://www.alibabacloud.com/blog/alibaba-cloud-named-a-leader-in-omdia%E2%80%99s-latest-agentic-ai-report_602917" target="_blank" rel="noopener">Alibaba Cloud Blog →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">09</span><div><div class="ftitle"><a href="https://qz.com/qualcomm-bytedance-ai-chip-deal-data-centers-052626" target="_blank" rel="noopener">高通与字节跳动达成 AI ASIC 芯片合作</a></div><div class="fbody">采购量达数百万颗级别，标志着 AI 芯片市场从 GPU 垄断进入异构计算时代。</div><div class="fsource"><a href="https://qz.com/qualcomm-bytedance-ai-chip-deal-data-centers-052626" target="_blank" rel="noopener">Quartz →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">10</span><div><div class="ftitle"><a href="https://huggingface.co/blog/ibm-research/itbench-aa" target="_blank" rel="noopener">ITBench-AA：前沿大模型企业 IT 任务得分均低于 50%</a></div><div class="fbody">Claude Opus 4.7 以 47% 领先。关键发现：更长推理轨迹并不转化为更高准确率，过度调查反而因误报受罚。</div><div class="fsource"><a href="https://huggingface.co/blog/ibm-research/itbench-aa" target="_blank" rel="noopener">Hugging Face Blog →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">11</span><div><div class="ftitle"><a href="https://research.google/blog/private-analytics-via-zero-trust-aggregation/" target="_blank" rel="noopener">Google Research 推出零信任聚合隐私分析方案</a></div><div class="fbody">结合密码学安全聚合协议与 TEE 透明性，为"数据可用不可见"提供工程可行方案，跨组织数据协作或成可能。</div><div class="fsource"><a href="https://research.google/blog/private-analytics-via-zero-trust-aggregation/" target="_blank" rel="noopener">Google Research Blog →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">12</span><div><div class="ftitle"><a href="https://www.anthropic.com/research/coding-agents-social-sciences" target="_blank" rel="noopener">编码智能体在社会科学中的采用率调查</a></div><div class="fbody">1260 名定量社会科学家中，81% 用过 AI 聊天机器人，但仅 20% 将编码智能体常规应用于工作。高认知度不等于高采用率。</div><div class="fsource"><a href="https://www.anthropic.com/research/coding-agents-social-sciences" target="_blank" rel="noopener">Anthropic Research →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">13</span><div><div class="ftitle"><a href="https://www.pravinkumar.co/blog/simon-willison-anthropic-openai-product-market-fit-may-27-2026" target="_blank" rel="noopener">Simon Willison：Anthropic 和 OpenAI 找到了 PMF</a></div><div class="fbody">编程智能体导致企业客户成本显著上升，两家公司已从高额折扣改为与 API 用量挂钩。价值捕获从"席位订阅"转向"使用量计费"。</div><div class="fsource"><a href="https://www.pravinkumar.co/blog/simon-willison-anthropic-openai-product-market-fit-may-27-2026" target="_blank" rel="noopener">Simon Willison Analysis →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">14</span><div><div class="ftitle"><a href="https://www.reuters.com/world/asia-pacific/nvidia-ceo-says-taiwan-is-epicentre-ai-revolution-2026-05-27/" target="_blank" rel="noopener">黄仁勋展示英伟达台湾新园区</a></div><div class="fbody">年投资 1500 亿美元，对"AI 制造在地化"长期押注。算力供应地理分布正在多元化。</div><div class="fsource"><a href="https://www.reuters.com/world/asia-pacific/nvidia-ceo-says-taiwan-is-epicentre-ai-revolution-2026-05-27/" target="_blank" rel="noopener">Reuters →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">15</span><div><div class="ftitle"><a href="https://www.globaltimes.cn/page/202605/1362103.shtml" target="_blank" rel="noopener">我国将加快研究推进人工智能健康发展综合性立法</a></div><div class="fbody">AI 立法从部门规章走向综合性立法，更系统性的监管框架即将落地。</div><div class="fsource"><a href="https://www.globaltimes.cn/page/202605/1362103.shtml" target="_blank" rel="noopener">Global Times →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">16</span><div><div class="ftitle"><a href="https://x.com/op7418/status/2059176154125480426" target="_blank" rel="noopener">藏师傅发布小红书图文排版 AI Skill</a></div><div class="fbody">旅行博主专用、集成地图组件、自动配图。垂直场景的深度场景化 Skill 比通用工具更有用户粘性。</div><div class="fsource"><a href="https://x.com/op7418/status/2059176154125480426" target="_blank" rel="noopener">藏师傅 on X →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">17</span><div><div class="ftitle"><a href="https://red.anthropic.com/2026/mythos-preview/" target="_blank" rel="noopener">使用大语言模型保障源代码安全</a></div><div class="fbody">Claude 团队分享六步循环：威胁建模、沙箱隔离、漏洞发现、验证、分类、修复。LLM 在安全领域的瓶颈已从"发现"转移到"验证与处理"。</div><div class="fsource"><a href="https://red.anthropic.com/2026/mythos-preview/" target="_blank" rel="noopener">Anthropic Red Team →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">18</span><div><div class="ftitle"><a href="https://medium.com/@addyosmani/my-llm-coding-workflow-going-into-2026-52fe1681325e" target="_blank" rel="noopener">用好 Coding Agent 的方法论</a></div><div class="fbody">"开头定生死"——先用最强模型多平台生成 Plan，选优后分 Phase 执行，最后做 Code Review。目前最系统的 Coding Agent 落地方法论。</div><div class="fsource"><a href="https://medium.com/@addyosmani/my-llm-coding-workflow-going-into-2026-52fe1681325e" target="_blank" rel="noopener">Addy Osmani Workflow →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">19</span><div><div class="ftitle"><a href="https://huggingface.co/blog/local-reachy-mini-conversation" target="_blank" rel="noopener">Reachy Mini 实现完全本地化语音交互</a></div><div class="fbody">端侧语音交互栈全部本地化，无需云端。隐私敏感和弱网场景可借鉴"全本地"架构。</div><div class="fsource"><a href="https://huggingface.co/blog/local-reachy-mini-conversation" target="_blank" rel="noopener">Hugging Face Blog →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">20</span><div><div class="ftitle"><a href="https://time.com/article/2026/05/26/sam-altman-ai-job-losses-openai-/" target="_blank" rel="noopener">奥尔特曼称 AI 对白领冲击不如预期般严重</a></div><div class="fbody">可能反映 OpenAI 对"AI 替代论"舆论的主动纠偏，"AI 替代"的节奏比媒体渲染的更温和。</div><div class="fsource"><a href="https://time.com/article/2026/05/26/sam-altman-ai-job-losses-openai-/" target="_blank" rel="noopener">TIME →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">21</span><div><div class="ftitle"><a href="https://blog.google/products-and-platforms/products/search/search-io-2026/" target="_blank" rel="noopener">Google 搜索产品副总裁访谈：AI 原生搜索时代</a></div><div class="fbody">核心矛盾是"直接给出答案"与"开放网络流量"之间的张力。内容创作者和依赖搜索流量的产品需重新思考价值获取模式。</div><div class="fsource"><a href="https://blog.google/products-and-platforms/products/search/search-io-2026/" target="_blank" rel="noopener">Google Blog →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">22</span><div><div class="ftitle"><a href="https://chyshkala.com/blog/openai-s-election-strategy-reveals-the-50b-trust-problem" target="_blank" rel="noopener">2026 年选举信息与保障</a></div><div class="fbody">OpenAI 三管齐下策略（信息获取、网络防御、透明度）将"选举安全"作为公共责任来承担。</div><div class="fsource"><a href="https://chyshkala.com/blog/openai-s-election-strategy-reveals-the-50b-trust-problem" target="_blank" rel="noopener">OpenAI Election Strategy →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">23</span><div><div class="ftitle"><a href="https://mimo.xiaomi.com/mimo-v2-5-pro/" target="_blank" rel="noopener">OpenCode x MiMo V2.5 限时免费开放 1M 上下文</a></div><div class="fbody">1M 上下文 + 推理 + 文本 + 图像限时免费，低成本测试长上下文场景的窗口。</div><div class="fsource"><a href="https://mimo.xiaomi.com/mimo-v2-5-pro/" target="_blank" rel="noopener">MiMo V2.5 Pro →</a></div></div></div>
-
-        <div class="flash-item"><span class="fnum">24</span><div><div class="ftitle"><a href="https://github.com/huggingface/trl" target="_blank" rel="noopener">TRL 中的增量权重同步技术</a></div><div class="fbody">Hugging Face 在万亿参数模型上实现增量权重同步，降低大模型训练的工程门槛。</div><div class="fsource"><a href="https://github.com/huggingface/trl" target="_blank" rel="noopener">Hugging Face TRL →</a></div></div></div>
-      </div>
-
+    <div class="pro-tip" style="max-width: 78%; margin-bottom: 28px;">
+      <span class="badge">TODAY'S TAKE</span>
+      <span class="text">今天最值得关注的是<b>"连接"</b>与<b>"交付"</b>两个关键词：MCP 协议正在成为 AI 工具互操作的事实标准，编程 Agent 则从概念验证迈入规模化商业交付阶段。当 Agent 能无缝调用任意工具并独立完成端到端任务，AI 产品的价值评估逻辑将被彻底重写。</span>
     </div>
 
-    <aside class="sidebar">
-      <div class="sidebar-title">往期回顾</div>
+    <div class="accent-rule"></div>
 
-      <div class="archive-item">
-        <div class="adate">2026-05-27</div>
-        <div class="atitle"><a href="./2026-05-27.html">AI 攻克56年数学难题与推理成本重构</a></div>
-        <div class="aangle">AI 发现范式转移：从辅助计算到独立数学发现，同时推理成本进入新一轮重构周期</div>
+    <div class="grid">
+      <section class="cell">
+        <div class="num"><span class="bar"></span>01 · 标准</div>
+        <h3>MCP 成为 AI 工具互操作的事实标准</h3>
+        <p>Runway 正式推出 MCP 服务器，允许 Claude、ChatGPT、Cursor 等兼容 Agent 直接在对话中生成图像与视频；OpenAI 同日宣布支持私有 MCP 安全连接，允许企业通过仅出站 HTTPS 连接 ChatGPT、Codex 与 Responses API。</p>
+        <div class="quote">未来的 AI 产品不再是独立应用，而是 MCP 生态中的一个"节点"</div>
+        <div class="source-links">
+          <a class="source-link" href="https://runwayml.com/news/mcp" target="_blank" rel="noopener">Runway MCP 服务器</a>
+          <a class="source-link" href="https://x.com/OpenAIDevs/status/2059703536825565499" target="_blank" rel="noopener">OpenAI 私有 MCP</a>
+        </div>
+      </section>
+
+      <section class="cell">
+        <div class="num"><span class="bar"></span>02 · 商业</div>
+        <h3>Cognition 估值 260 亿美元，ARR 达 4.92 亿美元</h3>
+        <p>Cognition 宣布完成超 10 亿美元融资，由 Lux Capital、General Catalyst 等领投。企业使用量自年初增长超 10 倍，年化收入增至 4.92 亿美元。Devin 不再是 demo，而是已经产生近 5 亿美元年收入的商业产品。</p>
+        <div class="quote">编程 Agent 是企业愿意为"自主交付"付费的第一个场景</div>
+        <a class="source-link" href="https://x.com/swyx/status/2059717021944926238" target="_blank" rel="noopener">Cognition 成为全球最大独立智能体实验室</a>
+      </section>
+
+      <section class="cell">
+        <div class="num"><span class="bar"></span>03 · 平台</div>
+        <h3>Claude Code v2.1.152 强化技能系统，向平台化演进</h3>
+        <p>核心改进包括 /code-review --fix 直接应用审查建议、frontmatter 控制工具权限、/reload-skills、SessionStart 与 MessageDisplay 钩子等。Anthropic 正将 Claude Code 从"通用编程助手"变成"可扩展的编程平台"。</p>
+        <div class="quote">技能系统的 ROI 会随着团队规模线性增长</div>
+        <a class="source-link" href="https://github.com/anthropics/claude-code/releases/tag/v2.1.152" target="_blank" rel="noopener">Claude Code v2.1.152 Release</a>
+      </section>
+
+      <section class="cell">
+        <div class="num"><span class="bar"></span>04 · 生态</div>
+        <h3>Grok 编程智能体登陆 Kilo IDE</h3>
+        <p>xAI 宣布 grok-build-0.1 可在 Kilo IDE 扩展或 CLI 中使用，走"模型 + IDE"深度集成路线。与 Claude Code 的"终端生态扩展"不同，Grok 追求 IDE 内的模型原生体验。两条路径代表了编程 Agent 的两种生态逻辑。</p>
+        <div class="quote">选择编程 Agent 时，不仅要看模型能力，更要看生态扩展性</div>
+        <a class="source-link" href="https://x.com/xai/status/2059666227115819149" target="_blank" rel="noopener">Grok 编程智能体登陆 Kilo IDE</a>
+      </section>
+
+      <section class="cell">
+        <div class="num"><span class="bar"></span>05 · 性能</div>
+        <h3>Qwen3.5 在 TokenSpeed 上达到 580 tps 新标杆</h3>
+        <p>针对智能体工作负载，Qwen3.5 采用 FlashAttention-4 优化达到 580 tokens per second。Agent 场景下的 token 生成速度直接决定"体感响应时间"。开源推理栈（通义千问 + TokenSpeed + NVIDIA + Mooncake）正在形成完整的性能优化生态。</p>
+        <div class="quote">开源模型的"可用性"正在快速逼近闭源模型</div>
+        <a class="source-link" href="https://x.com/Alibaba_Qwen/status/2059674574397313277" target="_blank" rel="noopener">Qwen3.5 在 TokenSpeed 上达到 580 tps</a>
+      </section>
+
+      <section class="cell">
+        <div class="num"><span class="bar"></span>06 · 治理</div>
+        <h3>教皇 AGI 通谕 + Anthropic 零信任安全框架</h3>
+        <p>教皇 Leo XIV 发布《Magnifica Humanitas》通谕，将 AI 伦理提升至天主教社会教义高度，Anthropic 联合创始人 Christopher Olah 出席；Anthropic 同日发布企业 Agent 安全框架，提出三层零信任架构及八阶段实施流程。</p>
+        <div class="quote">安全不再是合规团队的"事后检查"，而是产品设计的"前置约束"</div>
+        <div class="source-links">
+          <a class="source-link" href="https://www.theverge.com/ai-artificial-intelligence/937933/pope-ai-encyclical-tech-industry-reactions" target="_blank" rel="noopener">教皇通谕科技界反应</a>
+          <a class="source-link" href="https://claude.com/blog/zero-trust-for-ai-agents" target="_blank" rel="noopener">Anthropic 零信任安全框架</a>
+        </div>
+      </section>
+    </div>
+
+    <div class="flash-row">
+      <h4>— 快讯</h4>
+      <div class="flash-list">
+        <div class="item"><span class="dot"></span><a href="https://x.com/haoailab/status/2059695648103112946" target="_blank" rel="noopener">FastVideo Dreamverse：7 秒生成 30 秒 1080p 实时视频，现已开源</a></div>
+        <div class="item"><span class="dot"></span><a href="https://x.com/perplexity_ai/status/2059664738087469511" target="_blank" rel="noopener">Perplexity 开源 Unigram 分词器，CPU 占用降低 5-6 倍</a></div>
+        <div class="item"><span class="dot"></span><a href="https://x.com/alibaba_cloud/status/2059509714854007181" target="_blank" rel="noopener">阿里云入选 Omdia 智能体 AI 市场雷达领导者，加入 PyTorch 基金会白金会员</a></div>
+        <div class="item"><span class="dot"></span><a href="https://www.ithome.com/0/955/674.htm" target="_blank" rel="noopener">高通与字节跳动达成数百万颗 AI ASIC 芯片合作</a></div>
+        <div class="item"><span class="dot"></span><a href="https://huggingface.co/blog/ibm-research/itbench-aa" target="_blank" rel="noopener">ITBench-AA：所有前沿大模型企业 IT 任务得分均低于 50%</a></div>
+        <div class="item"><span class="dot"></span><a href="https://research.google/blog/private-analytics-via-zero-trust-aggregation" target="_blank" rel="noopener">Google Research 推出零信任聚合隐私分析方案</a></div>
+        <div class="item"><span class="dot"></span><a href="https://www.anthropic.com/research/coding-agents-social-sciences" target="_blank" rel="noopener">编码智能体社会科学调查：81% 用过 AI，仅 20% 常规采用</a></div>
+        <div class="item"><span class="dot"></span><a href="https://simonwillison.net/2026/May/27/product-market-fit" target="_blank" rel="noopener">Simon Willison：Anthropic 与 OpenAI 通过编程智能体找到 PMF</a></div>
+        <div class="item"><span class="dot"></span><a href="https://www.anthropic.com/engineering/how-we-contain-claude" target="_blank" rel="noopener">使用大语言模型保障源代码安全：Claude 团队分享六步循环</a></div>
+        <div class="item"><span class="dot"></span><a href="https://x.com/alibaba_cloud/status/2059174528786268669" target="_blank" rel="noopener">阿里云 CTO 阐述从云原生到智能体原生的转型</a></div>
+        <div class="item"><span class="dot"></span><span>我国将加快研究推进人工智能健康发展综合性立法</span></div>
+        <div class="item"><span class="dot"></span><span>黄仁勋展示英伟达台湾新园区，年投资 1500 亿美元</span></div>
+        <div class="item"><span class="dot"></span><span>奥尔特曼称 AI 对白领冲击不如预期般严重</span></div>
+        <div class="item"><span class="dot"></span><span>OpenCode x MiMo V2.5 限时免费开放 1M 上下文</span></div>
+        <div class="item"><span class="dot"></span><span>藏师傅发布小红书图文排版 AI Skill，集成地图组件与自动配图</span></div>
       </div>
+    </div>
 
-    </aside>
+    <div class="archive-row">
+      <h4>— 往期回顾</h4>
+      <div class="archive-list">
+        <div class="item">
+          <span class="date">2026-05-27</span>
+          <a href="./2026-05-27.html">AI 攻克56年数学难题与推理成本重构</a>
+          <span class="angle">AI 发现范式转移：从辅助计算到独立数学发现，同时推理成本进入新一轮重构周期</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div></div>
+      <div>截图分享 · 保存收藏 · 明日见</div>
+    </div>
+
+    <div class="site-info">
+      页面作者：猫仔 · 生成时间：2026-05-28
+    </div>
   </div>
-
-  <footer class="footer">
-    <p>AI HOT 日报解读 · Generated on 2026-05-28 · Source: <a href="https://aihot.virxact.com" target="_blank" rel="noopener">AI HOT API</a></p>
-    <p style="margin-top:4px;">AI 产品经理 & AI Builder 视角</p>
-  </footer>
-
-</div>
-
 </body>
 </html>
