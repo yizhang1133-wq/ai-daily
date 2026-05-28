@@ -38,6 +38,9 @@
     min-height: 100vh;
   }
 
+  a { color: var(--accent-red); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
   /* Masthead */
   .masthead {
     text-align: center;
@@ -203,6 +206,8 @@
     line-height: 1.4;
     color: var(--ink);
   }
+  .dish-card h3 a { color: var(--ink); }
+  .dish-card h3 a:hover { color: var(--accent-red); }
   .dish-card .core {
     font-size: 0.88rem;
     color: var(--ink-light);
@@ -223,6 +228,21 @@
     font-size: 0.88rem;
     line-height: 1.65;
     color: var(--ink);
+  }
+  .dish-card .source {
+    margin-top: 12px;
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.5px;
+  }
+  .dish-card .source a {
+    color: var(--accent-red);
+    border-bottom: 1px dotted var(--accent-red);
+  }
+  .dish-card .source a:hover {
+    border-bottom: 1px solid var(--accent-red);
+    text-decoration: none;
   }
 
   /* Flash news */
@@ -251,10 +271,22 @@
     font-size: 0.92rem;
     margin-bottom: 4px;
   }
+  .flash-item .ftitle a { color: var(--ink); }
+  .flash-item .ftitle a:hover { color: var(--accent-red); }
   .flash-item .fbody {
     font-size: 0.85rem;
     color: var(--ink-light);
     line-height: 1.55;
+  }
+  .flash-item .fsource {
+    font-size: 0.75rem;
+    color: var(--ink-light);
+    font-family: 'Playfair Display', serif;
+    margin-top: 4px;
+  }
+  .flash-item .fsource a {
+    color: var(--accent-red);
+    border-bottom: 1px dotted var(--accent-red);
   }
 
   /* Sidebar */
@@ -290,6 +322,8 @@
     line-height: 1.4;
     margin-bottom: 6px;
   }
+  .archive-item .atitle a { color: var(--ink); }
+  .archive-item .atitle a:hover { color: var(--accent-red); }
   .archive-item .aangle {
     font-size: 0.8rem;
     color: var(--ink-light);
@@ -342,74 +376,113 @@
 
         <article class="dish-card">
           <span class="num red">01</span>
-          <h3>MCP 协议成为 AI 工具互操作的事实标准</h3>
+          <h3><a href="https://github.com/runwayml/runway-api-mcp-server" target="_blank" rel="noopener">MCP 协议成为 AI 工具互操作的事实标准</a></h3>
           <p class="core">Runway 推出 MCP 服务器，允许 Claude、ChatGPT、Cursor 等智能体直接生成图像与视频；OpenAI 同日宣布支持私有 MCP 服务器的安全连接，解决企业数据不出内网顾虑。</p>
           <div class="insight-label">AI PM 洞察</div>
           <p class="insight">MCP 正在从开源项目变成 AI 基础设施的核心协议层。未来 AI 产品不再是独立应用，而是 MCP 生态中的一个节点——你的价值取决于能被多少 Agent 调用。</p>
+          <div class="source">
+            <a href="https://github.com/runwayml/runway-api-mcp-server" target="_blank" rel="noopener">Runway MCP Server →</a> &nbsp;
+            <a href="https://developers.openai.com/api/docs/mcp" target="_blank" rel="noopener">OpenAI MCP Docs →</a>
+          </div>
         </article>
 
         <article class="dish-card">
           <span class="num red">02</span>
-          <h3>Cognition 成为全球最大独立智能体实验室</h3>
+          <h3><a href="https://techcrunch.com/2026/05/27/ai-coding-startup-cognition-raises-1b-at-25b-pre-money-valuation/" target="_blank" rel="noopener">Cognition 成为全球最大独立智能体实验室</a></h3>
           <p class="core">完成超 10 亿美元融资，估值达 260 亿美元，年化收入增至 4.92 亿美元，企业使用量自年初增长超 10 倍。</p>
           <div class="insight-label">AI PM 洞察</div>
           <p class="insight">编程 Agent 是企业愿意为"自主交付"付费的第一个场景——ROI 可量化、交付标准明确、迭代周期短。资本市场正将 Agent 原生公司按平台型公司估值。</p>
+          <div class="source">
+            <a href="https://techcrunch.com/2026/05/27/ai-coding-startup-cognition-raises-1b-at-25b-pre-money-valuation/" target="_blank" rel="noopener">TechCrunch →</a> &nbsp;
+            <a href="https://the-decoder.com/ai-coding-agent-devin-maker-cognition-more-than-doubles-its-valuation-to-26-billion-in-under-nine-months/" target="_blank" rel="noopener">The Decoder →</a>
+          </div>
         </article>
 
         <article class="dish-card">
           <span class="num red">03</span>
-          <h3>编程 Agent 生态全面战争</h3>
+          <h3><a href="https://dev.classmethod.jp/en/articles/20260524-claude-code-updates-v2-1-152/" target="_blank" rel="noopener">编程 Agent 生态全面战争</a></h3>
           <p class="core">Claude Code v2.1.152 增强技能系统（frontmatter 控制、/reload-skills、SessionStart 钩子）；Grok 编程智能体登陆 Kilo IDE 平台。</p>
           <div class="insight-label">AI PM 洞察</div>
           <p class="insight">Claude Code 追求"终端内的生态扩展"，Grok 追求"IDE 内的模型原生"。选择工具链时，不仅要看模型能力，更要看生态扩展性和工作流集成深度。</p>
+          <div class="source">
+            <a href="https://dev.classmethod.jp/en/articles/20260524-claude-code-updates-v2-1-152/" target="_blank" rel="noopener">Claude Code v2.1.152 →</a> &nbsp;
+            <a href="https://x.ai/news/grok-kilocode" target="_blank" rel="noopener">Grok × Kilo IDE →</a>
+          </div>
         </article>
 
         <article class="dish-card">
           <span class="num red">04</span>
-          <h3>Qwen3.5 推理速度达 580 tps</h3>
+          <h3><a href="https://pytorch.org/blog/up-to-580tps-new-speed-record-of-qwen3-5-397b-a17b-on-gpu-for-agentic-workloads-with-tokenspeed/" target="_blank" rel="noopener">Qwen3.5 推理速度达 580 tps</a></h3>
           <p class="core">在 TokenSpeed 推理引擎上针对智能体工作负载达到创纪录 580 tokens/second，采用 FlashAttention-4 优化。</p>
           <div class="insight-label">AI PM 洞察</div>
           <p class="insight">Agent 不是单次推理，而是多轮、多工具调用的连续推理。推理性能的竞争正从模型层扩展到系统工程层，开源推理栈已形成完整性能优化生态。</p>
+          <div class="source">
+            <a href="https://pytorch.org/blog/up-to-580tps-new-speed-record-of-qwen3-5-397b-a17b-on-gpu-for-agentic-workloads-with-tokenspeed/" target="_blank" rel="noopener">PyTorch Blog →</a>
+          </div>
         </article>
 
         <article class="dish-card">
           <span class="num red">05</span>
-          <h3>教皇 AGI 通谕 + Anthropic 零信任安全框架</h3>
+          <h3><a href="https://www.anthropic.com/news/our-framework-for-developing-safe-and-trustworthy-agents" target="_blank" rel="noopener">教皇 AGI 通谕 + Anthropic 零信任安全框架</a></h3>
           <p class="core">教皇 Leo XIV 发布《Magnifica Humanitas》通谕警告 AI 伦理风险；Anthropic 同日发布企业自主 AI 智能体安全框架，提出三层零信任架构。</p>
           <div class="insight-label">AI PM 洞察</div>
           <p class="insight">安全不再是合规团队的"事后检查"，而是产品设计的"前置约束"。可解释性不仅是技术能力，更是合规能力和品牌信任资产。</p>
+          <div class="source">
+            <a href="https://www.vatican.va/content/leo-xiv/en/events/event.dir.html/content/vaticanevents/en/2026/5/25/enciclica-magnifica-humanitas.html" target="_blank" rel="noopener">Vatican Encyclical →</a> &nbsp;
+            <a href="https://www.anthropic.com/news/our-framework-for-developing-safe-and-trustworthy-agents" target="_blank" rel="noopener">Anthropic Framework →</a>
+          </div>
         </article>
 
         <article class="dish-card">
           <span class="num gold">06</span>
-          <h3>FastVideo Dreamverse：7 秒生成 30 秒 1080p 视频</h3>
+          <h3><a href="https://github.com/Lightricks/ltx-video" target="_blank" rel="noopener">FastVideo Dreamverse：7 秒生成 30 秒 1080p 视频</a></h3>
           <p class="core">基于单张 NVIDIA B200 GPU 和 LTX-2 模型，实现实时视频生成的氛围引导工具，现已开源。</p>
           <div class="insight-label">AI PM 洞察</div>
           <p class="insight">实时视频生成正从"实验室 demo"走向"可部署的工具"。实时性改变的不是"能不能做"，而是"怎么做"——从"计划-执行-修改"变成"探索-发现-迭代"。</p>
+          <div class="source">
+            <a href="https://github.com/Lightricks/ltx-video" target="_blank" rel="noopener">LTX-Video GitHub →</a>
+          </div>
         </article>
 
       </div>
 
       <div class="section-title"><span class="dot" style="background:var(--accent-gold)"></span> 快讯 · Flash News</div>
       <div class="flash-news">
-        <div class="flash-item"><span class="fnum">07</span><div><div class="ftitle">Perplexity 开源 Unigram 分词器</div><div class="fbody">CPU 占用降低 5-6 倍，解决分词成为总延迟瓶颈的问题。不要只关注模型层优化，预处理和后处理环节的工程优化往往有更高 ROI。</div></div></div>
-        <div class="flash-item"><span class="fnum">08</span><div><div class="ftitle">阿里云入选 Omdia 智能体 AI 市场雷达领导者</div><div class="fbody">加入 PyTorch 基金会白金会员，"Agent-Native Cloud"战略全面落地。未来云选型标准将从性价比扩展到 Agent 原生支持度。</div></div></div>
-        <div class="flash-item"><span class="fnum">09</span><div><div class="ftitle">高通与字节跳动达成 AI ASIC 芯片合作</div><div class="fbody">采购量达数百万颗级别，标志着 AI 芯片市场从 GPU 垄断进入异构计算时代。</div></div></div>
-        <div class="flash-item"><span class="fnum">10</span><div><div class="ftitle">ITBench-AA：前沿大模型企业 IT 任务得分均低于 50%</div><div class="fbody">Claude Opus 4.7 以 47% 领先。关键发现：更长推理轨迹并不转化为更高准确率，过度调查反而因误报受罚。</div></div></div>
-        <div class="flash-item"><span class="fnum">11</span><div><div class="ftitle">Google Research 推出零信任聚合隐私分析方案</div><div class="fbody">结合密码学安全聚合协议与 TEE 透明性，为"数据可用不可见"提供工程可行方案，跨组织数据协作或成可能。</div></div></div>
-        <div class="flash-item"><span class="fnum">12</span><div><div class="ftitle">编码智能体在社会科学中的采用率调查</div><div class="fbody">1260 名定量社会科学家中，81% 用过 AI 聊天机器人，但仅 20% 将编码智能体常规应用于工作。高认知度不等于高采用率。</div></div></div>
-        <div class="flash-item"><span class="fnum">13</span><div><div class="ftitle">Simon Willison：Anthropic 和 OpenAI 找到了 PMF</div><div class="fbody">编程智能体导致企业客户成本显著上升，两家公司已从高额折扣改为与 API 用量挂钩。价值捕获从"席位订阅"转向"使用量计费"。</div></div></div>
-        <div class="flash-item"><span class="fnum">14</span><div><div class="ftitle">黄仁勋展示英伟达台湾新园区</div><div class="fbody">年投资 1500 亿美元，对"AI 制造在地化"长期押注。算力供应地理分布正在多元化。</div></div></div>
-        <div class="flash-item"><span class="fnum">15</span><div><div class="ftitle">我国将加快研究推进人工智能健康发展综合性立法</div><div class="fbody">AI 立法从部门规章走向综合性立法，更系统性的监管框架即将落地。</div></div></div>
-        <div class="flash-item"><span class="fnum">16</span><div><div class="ftitle">藏师傅发布小红书图文排版 AI Skill</div><div class="fbody">旅行博主专用、集成地图组件、自动配图。垂直场景的深度场景化 Skill 比通用工具更有用户粘性。</div></div></div>
-        <div class="flash-item"><span class="fnum">17</span><div><div class="ftitle">使用大语言模型保障源代码安全</div><div class="fbody">Claude 团队分享六步循环：威胁建模、沙箱隔离、漏洞发现、验证、分类、修复。LLM 在安全领域的瓶颈已从"发现"转移到"验证与处理"。</div></div></div>
-        <div class="flash-item"><span class="fnum">18</span><div><div class="ftitle">用好 Coding Agent 的方法论</div><div class="fbody">"开头定生死"——先用最强模型多平台生成 Plan，选优后分 Phase 执行，最后做 Code Review。目前最系统的 Coding Agent 落地方法论。</div></div></div>
-        <div class="flash-item"><span class="fnum">19</span><div><div class="ftitle">Reachy Mini 实现完全本地化语音交互</div><div class="fbody">端侧语音交互栈全部本地化，无需云端。隐私敏感和弱网场景可借鉴"全本地"架构。</div></div></div>
-        <div class="flash-item"><span class="fnum">20</span><div><div class="ftitle">奥尔特曼称 AI 对白领冲击不如预期般严重</div><div class="fbody">可能反映 OpenAI 对"AI 替代论"舆论的主动纠偏，"AI 替代"的节奏比媒体渲染的更温和。</div></div></div>
-        <div class="flash-item"><span class="fnum">21</span><div><div class="ftitle">Google 搜索产品副总裁访谈：AI 原生搜索时代</div><div class="fbody">核心矛盾是"直接给出答案"与"开放网络流量"之间的张力。内容创作者和依赖搜索流量的产品需重新思考价值获取模式。</div></div></div>
-        <div class="flash-item"><span class="fnum">22</span><div><div class="ftitle">2026 年选举信息与保障</div><div class="fbody">OpenAI 三管齐下策略（信息获取、网络防御、透明度）将"选举安全"作为公共责任来承担。</div></div></div>
-        <div class="flash-item"><span class="fnum">23</span><div><div class="ftitle">OpenCode x MiMo V2.5 限时免费开放 1M 上下文</div><div class="fbody">1M 上下文 + 推理 + 文本 + 图像限时免费，低成本测试长上下文场景的窗口。</div></div></div>
-        <div class="flash-item"><span class="fnum">24</span><div><div class="ftitle">TRL 中的增量权重同步技术</div><div class="fbody">Hugging Face 在万亿参数模型上实现增量权重同步，降低大模型训练的工程门槛。</div></div></div>
+        <div class="flash-item"><span class="fnum">07</span><div><div class="ftitle"><a href="https://x.com/perplexity_ai/status/2059664793234231555" target="_blank" rel="noopener">Perplexity 开源 Unigram 分词器</a></div><div class="fbody">CPU 占用降低 5-6 倍，解决分词成为总延迟瓶颈的问题。不要只关注模型层优化，预处理和后处理环节的工程优化往往有更高 ROI。</div><div class="fsource"><a href="https://x.com/perplexity_ai/status/2059664793234231555" target="_blank" rel="noopener">Perplexity on X →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">08</span><div><div class="ftitle"><a href="https://www.alibabacloud.com/blog/alibaba-cloud-named-a-leader-in-omdia%E2%80%99s-latest-agentic-ai-report_602917" target="_blank" rel="noopener">阿里云入选 Omdia 智能体 AI 市场雷达领导者</a></div><div class="fbody">加入 PyTorch 基金会白金会员，"Agent-Native Cloud"战略全面落地。未来云选型标准将从性价比扩展到 Agent 原生支持度。</div><div class="fsource"><a href="https://www.alibabacloud.com/blog/alibaba-cloud-named-a-leader-in-omdia%E2%80%99s-latest-agentic-ai-report_602917" target="_blank" rel="noopener">Alibaba Cloud Blog →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">09</span><div><div class="ftitle"><a href="https://qz.com/qualcomm-bytedance-ai-chip-deal-data-centers-052626" target="_blank" rel="noopener">高通与字节跳动达成 AI ASIC 芯片合作</a></div><div class="fbody">采购量达数百万颗级别，标志着 AI 芯片市场从 GPU 垄断进入异构计算时代。</div><div class="fsource"><a href="https://qz.com/qualcomm-bytedance-ai-chip-deal-data-centers-052626" target="_blank" rel="noopener">Quartz →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">10</span><div><div class="ftitle"><a href="https://huggingface.co/blog/ibm-research/itbench-aa" target="_blank" rel="noopener">ITBench-AA：前沿大模型企业 IT 任务得分均低于 50%</a></div><div class="fbody">Claude Opus 4.7 以 47% 领先。关键发现：更长推理轨迹并不转化为更高准确率，过度调查反而因误报受罚。</div><div class="fsource"><a href="https://huggingface.co/blog/ibm-research/itbench-aa" target="_blank" rel="noopener">Hugging Face Blog →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">11</span><div><div class="ftitle"><a href="https://research.google/blog/private-analytics-via-zero-trust-aggregation/" target="_blank" rel="noopener">Google Research 推出零信任聚合隐私分析方案</a></div><div class="fbody">结合密码学安全聚合协议与 TEE 透明性，为"数据可用不可见"提供工程可行方案，跨组织数据协作或成可能。</div><div class="fsource"><a href="https://research.google/blog/private-analytics-via-zero-trust-aggregation/" target="_blank" rel="noopener">Google Research Blog →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">12</span><div><div class="ftitle"><a href="https://www.anthropic.com/research/coding-agents-social-sciences" target="_blank" rel="noopener">编码智能体在社会科学中的采用率调查</a></div><div class="fbody">1260 名定量社会科学家中，81% 用过 AI 聊天机器人，但仅 20% 将编码智能体常规应用于工作。高认知度不等于高采用率。</div><div class="fsource"><a href="https://www.anthropic.com/research/coding-agents-social-sciences" target="_blank" rel="noopener">Anthropic Research →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">13</span><div><div class="ftitle"><a href="https://www.pravinkumar.co/blog/simon-willison-anthropic-openai-product-market-fit-may-27-2026" target="_blank" rel="noopener">Simon Willison：Anthropic 和 OpenAI 找到了 PMF</a></div><div class="fbody">编程智能体导致企业客户成本显著上升，两家公司已从高额折扣改为与 API 用量挂钩。价值捕获从"席位订阅"转向"使用量计费"。</div><div class="fsource"><a href="https://www.pravinkumar.co/blog/simon-willison-anthropic-openai-product-market-fit-may-27-2026" target="_blank" rel="noopener">Simon Willison Analysis →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">14</span><div><div class="ftitle"><a href="https://www.reuters.com/world/asia-pacific/nvidia-ceo-says-taiwan-is-epicentre-ai-revolution-2026-05-27/" target="_blank" rel="noopener">黄仁勋展示英伟达台湾新园区</a></div><div class="fbody">年投资 1500 亿美元，对"AI 制造在地化"长期押注。算力供应地理分布正在多元化。</div><div class="fsource"><a href="https://www.reuters.com/world/asia-pacific/nvidia-ceo-says-taiwan-is-epicentre-ai-revolution-2026-05-27/" target="_blank" rel="noopener">Reuters →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">15</span><div><div class="ftitle"><a href="https://www.globaltimes.cn/page/202605/1362103.shtml" target="_blank" rel="noopener">我国将加快研究推进人工智能健康发展综合性立法</a></div><div class="fbody">AI 立法从部门规章走向综合性立法，更系统性的监管框架即将落地。</div><div class="fsource"><a href="https://www.globaltimes.cn/page/202605/1362103.shtml" target="_blank" rel="noopener">Global Times →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">16</span><div><div class="ftitle"><a href="https://x.com/op7418/status/2059176154125480426" target="_blank" rel="noopener">藏师傅发布小红书图文排版 AI Skill</a></div><div class="fbody">旅行博主专用、集成地图组件、自动配图。垂直场景的深度场景化 Skill 比通用工具更有用户粘性。</div><div class="fsource"><a href="https://x.com/op7418/status/2059176154125480426" target="_blank" rel="noopener">藏师傅 on X →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">17</span><div><div class="ftitle"><a href="https://red.anthropic.com/2026/mythos-preview/" target="_blank" rel="noopener">使用大语言模型保障源代码安全</a></div><div class="fbody">Claude 团队分享六步循环：威胁建模、沙箱隔离、漏洞发现、验证、分类、修复。LLM 在安全领域的瓶颈已从"发现"转移到"验证与处理"。</div><div class="fsource"><a href="https://red.anthropic.com/2026/mythos-preview/" target="_blank" rel="noopener">Anthropic Red Team →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">18</span><div><div class="ftitle"><a href="https://medium.com/@addyosmani/my-llm-coding-workflow-going-into-2026-52fe1681325e" target="_blank" rel="noopener">用好 Coding Agent 的方法论</a></div><div class="fbody">"开头定生死"——先用最强模型多平台生成 Plan，选优后分 Phase 执行，最后做 Code Review。目前最系统的 Coding Agent 落地方法论。</div><div class="fsource"><a href="https://medium.com/@addyosmani/my-llm-coding-workflow-going-into-2026-52fe1681325e" target="_blank" rel="noopener">Addy Osmani Workflow →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">19</span><div><div class="ftitle"><a href="https://huggingface.co/blog/local-reachy-mini-conversation" target="_blank" rel="noopener">Reachy Mini 实现完全本地化语音交互</a></div><div class="fbody">端侧语音交互栈全部本地化，无需云端。隐私敏感和弱网场景可借鉴"全本地"架构。</div><div class="fsource"><a href="https://huggingface.co/blog/local-reachy-mini-conversation" target="_blank" rel="noopener">Hugging Face Blog →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">20</span><div><div class="ftitle"><a href="https://time.com/article/2026/05/26/sam-altman-ai-job-losses-openai-/" target="_blank" rel="noopener">奥尔特曼称 AI 对白领冲击不如预期般严重</a></div><div class="fbody">可能反映 OpenAI 对"AI 替代论"舆论的主动纠偏，"AI 替代"的节奏比媒体渲染的更温和。</div><div class="fsource"><a href="https://time.com/article/2026/05/26/sam-altman-ai-job-losses-openai-/" target="_blank" rel="noopener">TIME →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">21</span><div><div class="ftitle"><a href="https://blog.google/products-and-platforms/products/search/search-io-2026/" target="_blank" rel="noopener">Google 搜索产品副总裁访谈：AI 原生搜索时代</a></div><div class="fbody">核心矛盾是"直接给出答案"与"开放网络流量"之间的张力。内容创作者和依赖搜索流量的产品需重新思考价值获取模式。</div><div class="fsource"><a href="https://blog.google/products-and-platforms/products/search/search-io-2026/" target="_blank" rel="noopener">Google Blog →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">22</span><div><div class="ftitle"><a href="https://chyshkala.com/blog/openai-s-election-strategy-reveals-the-50b-trust-problem" target="_blank" rel="noopener">2026 年选举信息与保障</a></div><div class="fbody">OpenAI 三管齐下策略（信息获取、网络防御、透明度）将"选举安全"作为公共责任来承担。</div><div class="fsource"><a href="https://chyshkala.com/blog/openai-s-election-strategy-reveals-the-50b-trust-problem" target="_blank" rel="noopener">OpenAI Election Strategy →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">23</span><div><div class="ftitle"><a href="https://mimo.xiaomi.com/mimo-v2-5-pro/" target="_blank" rel="noopener">OpenCode x MiMo V2.5 限时免费开放 1M 上下文</a></div><div class="fbody">1M 上下文 + 推理 + 文本 + 图像限时免费，低成本测试长上下文场景的窗口。</div><div class="fsource"><a href="https://mimo.xiaomi.com/mimo-v2-5-pro/" target="_blank" rel="noopener">MiMo V2.5 Pro →</a></div></div></div>
+
+        <div class="flash-item"><span class="fnum">24</span><div><div class="ftitle"><a href="https://github.com/huggingface/trl" target="_blank" rel="noopener">TRL 中的增量权重同步技术</a></div><div class="fbody">Hugging Face 在万亿参数模型上实现增量权重同步，降低大模型训练的工程门槛。</div><div class="fsource"><a href="https://github.com/huggingface/trl" target="_blank" rel="noopener">Hugging Face TRL →</a></div></div></div>
       </div>
 
     </div>
@@ -419,7 +492,7 @@
 
       <div class="archive-item">
         <div class="adate">2026-05-27</div>
-        <div class="atitle">AI 攻克56年数学难题与推理成本重构</div>
+        <div class="atitle"><a href="./2026-05-27.html">AI 攻克56年数学难题与推理成本重构</a></div>
         <div class="aangle">AI 发现范式转移：从辅助计算到独立数学发现，同时推理成本进入新一轮重构周期</div>
       </div>
 
@@ -427,7 +500,7 @@
   </div>
 
   <footer class="footer">
-    <p>AI HOT 日报解读 · Generated on 2026-05-28 · Source: AI HOT API</p>
+    <p>AI HOT 日报解读 · Generated on 2026-05-28 · Source: <a href="https://aihot.virxact.com" target="_blank" rel="noopener">AI HOT API</a></p>
     <p style="margin-top:4px;">AI 产品经理 & AI Builder 视角</p>
   </footer>
 
