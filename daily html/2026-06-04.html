@@ -1,0 +1,942 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-06-04</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 12px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>155</span></div>
+    <div><b>ISS.</b><span>2026-06-04</span></div>
+    <div><b>EVT.</b><span>30 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 155</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">4</div>
+    <div class="meta-col">
+      <h2>微软OpenAI决裂与AI产业大分裂时代</h2>
+      <p>AI行业正在经历一场"大分裂"——微软与OpenAI的决裂标志着AI产业从"合作共生"进入"阵营对抗"时代。与此同时，ChatGPT月活破10亿、DeepSeek融资500亿、Suno完成4亿美元D轮，资本和用户两端同时达到历史新高。黄仁勋与纳德拉在Build大会上共同定义"智能体AI时代"，意味着Agent已从概念验证全面进入平台化部署阶段。</p>
+      <div class="meta-row"><b>日期</b> 2026-06-04</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 155 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">AI行业</span>正在经历一场"大分裂"——微软与OpenAI的决裂标志着AI产业从"合作共生"进入"阵营对抗"时代。与此同时，ChatGPT月活破10亿、DeepSeek融资500亿、Suno完成4亿美元D轮，资本和用户两端同时达到历史新高。黄仁勋与纳德拉在Build大会上共同定义"智能体AI时代"，意味着Agent已从概念验证全面进入平台化部署阶段。
+    </div>
+    <div class="credits">
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 4<br>
+      IMPORTANT 6<br>
+      REFERENCE 20<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架1：AI产业的"大分裂"与"新联盟"<br>
+      框架2：Agent商业化的"三要素模型"<br>
+      框架3：开源AI的"第二曲线"
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>4 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>微软与OpenAI分道扬镳——如今双方准备正面交锋</h3>
+          <p>微软与OpenAI的合作关系已彻底破裂，双方进入正面竞争态势。前DeepMind高管、现任微软AI主管Mustafa Suleyman明确表示，微软现在必须从头证明自己能独立完成所有必需的任务。这标志着两家科技巨头从紧密合作伙伴转变为直接竞争对手。</p>
+          <span class="source">SOURCE /// <a href="https://www.theverge.com/ai-artificial-intelligence/942242/microsoft-build-ai-agents-openai-competition">The Verge：订阅版科技（RSS）</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>ChatGPT月活破10亿，史上最快</h3>
+          <p>据Sensor Tower估计，OpenAI旗下ChatGPT全球月活跃用户在2025年5月突破10亿，成为达成此里程碑最快的应用，增速超过Google Maps、TikTok等。同期Anthropic的Claude月活达5600万，同比增幅约640%。Anthropic已秘密递交IPO申请，OpenAI也计划筹备上市。</p>
+          <span class="source">SOURCE /// <a href="https://www.ithome.com/0/959/083.htm">IT之家（RSS）</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>消息称DeepSeek首轮融资拟筹集500亿元，腾讯、宁德时代等参投</h3>
+          <p>DeepSeek计划在首轮融资中从腾讯、宁德时代等投资方处筹集约500亿元人民币，融资落地后投后估值预计在3500亿至4000亿元。创始人梁文峰将出资200亿元，腾讯和宁德时代分别拟投资100亿元和50亿元。此次融资凸显了中国正打造从大模型到算力能源基建的全链条AI产业。</p>
+          <span class="source">SOURCE /// <a href="https://www.ithome.com/0/959/249.htm">IT之家（RSS）</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">04<small>TH</small></div>
+        <div>
+          <h3>黄仁勋与纳德拉共议智能体AI时代</h3>
+          <p>黄仁勋与纳德拉在台北Microsoft Build大会上共同出席，展示NVIDIA与Microsoft如何携手构建从Windows设备到规模化AI工厂的完整智能体生态。</p>
+          <span class="source">SOURCE /// <a href="https://x.com/nvidia/status/2062228974273716457">X：NVIDIA (@nvidia)</a></span>
+        </div>
+        <div class="tag">PLATFORM</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">6 IMPORTANT + 20 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://techcrunch.com/2026/06/03/metas-ai-agent-for-whatsapp-business-is-now-available-globally">Meta面向WhatsApp Business的AI智能体已全球上线</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://x.com/kimmonismus/status/2062210845308780639">Miso One开源语音模型：8B参数、110ms延迟、一次语音克隆</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://x.com/MiniMax_AI/status/2062316914618388758">MiniMax M3 1M token解码加速15.6倍</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div><a class="event-link" href="https://www.anthropic.com/news/AI-enabled-cyber-threats-mitre-attack">Anthropic分析832个AI恶意账户：中高风险攻击者半年从33%跃至56%</a></div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
+      <div>05</div><div><a class="event-link" href="https://www.bloomberg.com/news/articles/2026-06-03/europe-unveils-sweeping-tech-sovereignty-plan-to-boost-chips-ai">欧盟公布全面技术主权计划，推动芯片与AI自主发展</a></div><div class="red">POLICY</div><div>主权</div><div class="right red">BLOOM</div>
+      <div>06</div><div><a class="event-link" href="https://x.com/suno/status/2062183524887675243">Suno完成4亿美元D轮融资</a></div><div class="red">CREATIVE</div><div>音乐</div><div class="right red">X</div>
+      <div>07</div><div>Grok Imagine 1.5 预览版发布</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>08</div><div>Ideogram v4.0 发布：2K分辨率和JSON提示支持</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>09</div><div>NousResearch发布Hermes Agent桌面应用公测版</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>10</div><div>xAI Grok语音模型上线Vapi平台</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>11</div><div>Grok模型登陆Cloudflare AI Gateway</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>12</div><div>OpenShell v0.0.55新增Vertex AI推理支持</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>13</div><div>Replit上线SEO Agent</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>14</div><div>OpenClaw 2026.6.1新增Windows节点与技能工坊</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>15</div><div>Satya Nadella谈微软Build大会主旨演讲</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>16</div><div>斯坦福法学院研究：AI表现优于法学教授</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>17</div><div>NVIDIA Research在CVPR 2026发表三篇论文</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>18</div><div>微软研究：装瓶厂AI从聊天到决策</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>19</div><div>世界模型的功能分类（李飞飞/World Labs）</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>20</div><div>智能体工程实战窍门全录</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">20 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>Grok Imagine 1.5 预览版发布</div><div>xAI图像生成能力持续迭代，但与Midjourney/DALL-E的差距仍是核心关注点</div>
+      <div>02</div><div>Ideogram v4.0 发布：2K分辨率和JSON提示支持</div><div>原生2K+JSON提示词支持使Ideogram在"可编程图像生成"方向上建立了差异化</div>
+      <div>03</div><div>NousResearch发布Hermes Agent桌面应用公测版</div><div>开源Agent桌面应用进入可用阶段，对Copilot类产品形成开源替代</div>
+      <div>04</div><div>xAI Grok语音模型上线Vapi平台</div><div>xAI通过Vapi平台快速铺开语音AI能力，语音Agent生态加速</div>
+      <div>05</div><div>Grok模型登陆Cloudflare AI Gateway</div><div>模型分发渠道进一步碎片化，Cloudflare成为AI模型路由的新节点</div>
+      <div>06</div><div>OpenShell v0.0.55新增Vertex AI推理支持</div><div>NVIDIA开源Agent框架持续扩展多云支持，降低单一云锁定风险</div>
+      <div>07</div><div>Replit上线SEO Agent</div><div>Agent开始渗透到"应用发现"环节，SEO从人工优化走向AI自动化</div>
+      <div>08</div><div>OpenClaw 2026.6.1新增Windows节点与技能工坊</div><div>Agent平台的跨平台能力和自主学习功能持续完善</div>
+      <div>09</div><div>Satya Nadella谈微软Build大会主旨演讲</div><div>"前沿智能生态系统"的叙事确认了微软从模型竞争转向平台竞争的战略</div>
+      <div>10</div><div>斯坦福法学院研究：AI表现优于法学教授</div><div>AI在专业领域的能力边界持续扩展，法律行业需重新定义"专家价值"</div>
+      <div>11</div><div>NVIDIA Research在CVPR 2026发表三篇论文</div><div>零样本抓取、潜在表示自动驾驶、具身智能体训练——物理AI研究全面加速</div>
+      <div>12</div><div>微软研究：装瓶厂AI从聊天到决策</div><div>AI在制造业的落地正从"问答助手"进入"决策支持"，可靠性成为核心门槛</div>
+      <div>13</div><div>世界模型的功能分类（李飞飞/World Labs）</div><div>对"世界模型"这一热门术语的概念澄清，为具身智能研究提供了分类框架</div>
+      <div>14</div><div>智能体工程实战窍门全录</div><div>22条Agent工程实战技巧，核心方法论"Research→Plan→Work"值得所有Builder参考</div>
+      <div>15</div><div>优步每月1,500美元AI使用上限</div><div>为AI工具企业采购定价提供了行业参考锚点，暗示AI成本管控将成为企业IT新常态</div>
+      <div>16</div><div>Anthropic用Claude赋能自助数据分析</div><div>95%自动化率+95%准确率，展示了Agent在数据分析场景的成熟度已达生产级</div>
+      <div>17</div><div>Google开源水文建模框架</div><div>开源AI框架进入公共服务领域，为气象/灾害预测AI提供了可复现的基础设施</div>
+      <div>18</div><div>Karpathy的llm-wiki项目获超五千星</div><div>"让LLM构建和维护知识库"的理念引发社区共鸣，知识管理Agent化趋势明显</div>
+      <div>19</div><div>Reachy Mini添加MCP工具</div><div>MCP协议从软件Agent扩展到机器人领域，具身智能的工具互操作标准正在形成</div>
+      <div>20</div><div>超越聊天机器人的直接偏好优化</div><div>DPO的应用场景从对话扩展到更广泛的AI行为优化，研究边界持续拓宽</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      AI行业正在经历一场"大分裂"——微软与OpenAI的决裂标志着AI产业从"合作共生"进入"阵营对抗"时代。与此同时，ChatGPT月活破10亿、DeepSeek融资500亿、Suno完成4亿美元D轮，资本和用户两端同时达到历史新高。黄仁勋与纳德拉在Build大会上共同定义"智能体AI时代"，意味着Agent已从概念验证全面进入平台化部署阶段。
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 4 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>微软与OpenAI分道扬镳——如今双方准备正面交锋</h4>
+        <p>这是AI产业史上最重要的结构性断裂之一。微软与OpenAI的联盟曾是过去三年AI商业化叙事的基石——微软提供Azure算力和分发渠道（Office、GitHub、Windows），OpenAI提供模型能力（GPT系列）。这一联盟的破裂意味着整个AI产业的权力地图需要重新绘制。</p>
+<p>从PM视角看，这一决裂的影响是全方位的。第一，微软将加速自研模型（MAI系列）的投入，Azure上可能出现"MAI优先、OpenAI靠边"的模型路由策略，这对所有依赖Azure+OpenAI组合的开发者而言是一个架构风险信号。第二，OpenAI被迫寻找替代的云基础设施和分发渠道，这可能加速其与AWS、GCP的合作，或者推动其自建基础设施——无论哪种路径，都将推高其运营成本，最终反映在API定价上。第三，Suleyman的表态暗示微软内部正在构建完整的"模型+应用+平台"全栈能力，这意味着Copilot生态将从"OpenAI驱动"转向"微软自研驱动"，对ISV（独立软件供应商）而言，微软生态的API接口和技术路线可能发生重大变化。</p>
+<p>更深层的战略含义是：AI产业的"标准答案"正在消失。此前行业默认"OpenAI模型+微软云+企业应用"是最优组合，现在这个假设不再成立。PM需要重新评估技术栈的锁定风险，建立多供应商策略。</p>
+        <p>微软与OpenAI的决裂对技术研究方向有深远影响。此前OpenAI的研究论文和模型发布在一定程度上受益于微软研究院（MSR）的学术传统和人才储备。决裂后，两个研究实体将独立运作，可能导致研究方向的显著分化：微软可能更侧重应用导向的研究（Agent、企业AI、代码生成），而OpenAI可能更侧重通用智能（AGI路线、世界模型、安全对齐）。研究型Builder需要关注的关键信号是：未来6-12个月内，双方是否会发布技术路线截然不同的旗舰论文或开源项目。如果微软在CVPR/NeurIPS等顶会上开始系统性地与OpenAI的研究方向"对着干"，这将确认研究分裂的实质性。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周行动：如果你在Azure上运行OpenAI模型，立即评估替代方案（直接调用OpenAI API、迁移至AWS Bedrock或GCP Vertex AI），建立至少一个备选部署路径</li>
+<li>本季度行动：重新审视你的AI产品技术栈中的"微软-OpenAI依赖度"，识别单点故障，设计多模型路由架构以降低供应商锁定风险</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>ChatGPT月活破10亿，史上最快</h4>
+        <p>10亿月活不仅是一个数字里程碑，它标志着AI对话产品正式进入"基础设施级应用"行列——与Google Maps、TikTok、WhatsApp同处一个量级。但更值得PM关注的是这背后的结构性信号。</p>
+<p>第一，"最快"的增速说明AI对话已成为一种全新的用户行为范式，而非对既有行为的替代。用户不是在"用ChatGPT代替搜索引擎"，而是在创造一种全新的"与AI协作"的日常习惯。这意味着AI产品的TAM（总可及市场）不是搜索市场或办公市场，而是"所有需要认知劳动的场景"——一个远大于任何既有市场的增量空间。</p>
+<p>第二，Claude的5600万月活和640%同比增幅是今日数据中最被低估的信号。它证明了两件事：a）AI对话市场远未饱和，用户愿意在多个AI产品之间切换；b）"差异化定位"（Claude的长文本、代码、安全对齐）可以在OpenAI的绝对优势下撕出有意义的市场份额。这对所有AI创业者的启示是：不要试图做"更好的ChatGPT"，而是找到ChatGPT覆盖不好的垂直场景，建立差异化认知。</p>
+<p>第三，两家公司同时筹备IPO，意味着AI行业即将进入"上市公司竞争"阶段。上市公司的信息披露要求、季度业绩压力和投资者预期，将深刻影响产品策略——这可能是一个"AI产品创新放缓"的信号，也可能是一个"AI产品加速商业化"的信号。</p>
+        <p>10亿月活意味着海量的用户交互数据，这些数据对模型迭代的价值是巨大的。研究型Builder应关注的问题是：OpenAI如何利用如此大规模的用户反馈来优化模型？其RLHF（人类反馈强化学习）和在线学习pipeline的架构是什么样的？同时，Claude 640%的增速暗示其在特定任务（长文本、代码、分析）上可能有显著优于ChatGPT的用户体验——这是否可以通过对比两个平台的用户行为数据来验证？如果Anthropic在IPO过程中公开了部分用户行为分析数据，这将是极有价值的研究素材。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周行动：如果你的AI产品还在追求"通用对话"定位，立即重新评估。分析ChatGPT和Claude的用户重叠度（Sensor Tower报告提到部分用户在两者间切换），找到你的产品可以切入的差异化场景</li>
+<li>本季度行动：建立"AI产品增长基准"数据库，将ChatGPT的10亿月活/时间曲线作为benchmark，评估你的产品增速是否跑赢行业平均</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>消息称DeepSeek首轮融资拟筹集500亿元，腾讯、宁德时代等参投</h4>
+        <p>500亿元（约70亿美元）的首轮融资，如果落地，将创下中国AI行业单轮融资纪录。这个数字本身就是一个强烈的产业信号：中国资本市场对"通用大模型"赛道的信心不仅没有消退，反而在加速集中。</p>
+<p>从PM视角看，这一融资有三层含义。第一，投资者结构极具战略意味——腾讯（社交/游戏分发）+宁德时代（能源/算力基建）的组合，暗示DeepSeek的未来不仅是模型公司，而是要构建"模型+算力+能源"的垂直整合体。宁德时代参投尤其值得关注：大模型训练和推理的能耗正在成为核心成本项，拥有能源基础设施的投资者意味着DeepSeek可能在算力成本上获得结构性优势。</p>
+<p>第二，"首轮融资"这个措辞本身就值得玩味。DeepSeek此前以量化私募（幻方量化）的内部项目形式运作，现在选择独立融资，说明其正在从"研究项目"转型为"商业化实体"。这意味着DeepSeek的模型发布节奏可能从"不定期开源"转向"定期产品化发布"，对依赖DeepSeek开源模型的开发者生态而言，需要关注其开源策略是否会发生变化。</p>
+<p>第三，3500-4000亿估值意味着DeepSeek已经进入全球AI公司估值第一梯队（仅次于OpenAI、Anthropic等少数几家）。这将加剧中美AI竞争，也可能引发更多的政策审查和技术出口管制。</p>
+        <p>DeepSeek的V3和R1模型在开源社区获得了巨大成功，其技术路线（MoE架构、混合推理、高效训练）已成为学术界和工业界广泛研究的对象。500亿融资到位后，关键问题是：DeepSeek是否会从"高效训练"路线转向"暴力堆算力"路线？此前的V3/R1以"用更少的算力达到SOTA"著称，如果融资后策略转向，其技术论文的方法论可能发生根本性变化。研究型Builder应密切关注DeepSeek后续模型的技术报告，对比其训练FLOPs与V3/R1的变化趋势。此外，宁德时代参投带来的"能源+算力"协同效应，可能催生新的研究方向——如何在能源受限条件下优化大规模训练（energy-aware training）。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周行动：如果你正在使用DeepSeek的开源模型，评估其开源许可证是否会在融资后收紧。建立模型替代清单，确保在许可证变化时有迁移方案</li>
+<li>本季度行动：关注DeepSeek商业化产品的定价策略。如果其API定价显著低于竞品（得益于宁德时代的能源成本优势），考虑将其纳入你的多模型路由架构中的"低成本后端"</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>黄仁勋与纳德拉共议智能体AI时代</h4>
+        <p>这场联合亮相的战略含义远超一场普通的合作伙伴秀。在微软与OpenAI关系破裂的同一时间点上，黄仁勋与纳德拉的"同台"传递了一个清晰信号：微软的AI战略重心正在从"模型层"（OpenAI）转向"平台层"（NVIDIA+Microsoft的全栈基础设施）。</p>
+<p>对PM而言，"智能体AI时代"这个定义值得深入拆解。纳德拉在Build大会上的核心叙事是"前沿智能生态系统"（frontier intelligence ecosystem），这意味着微软正在将自己定位为Agent时代的"操作系统提供商"——不是做Agent本身，而是做Agent运行的基础设施（Azure AI、Windows Copilot Runtime、Copilot Studio）。这与PC时代的Windows、移动时代的Android/iOS、云时代的AWS是同一个定位逻辑。</p>
+<p>对AI产品PM的直接影响是：微软生态中的Agent开发工具和分发渠道将在未来6-12个月内大幅扩展。如果你的产品策略中包含"在微软生态中构建Agent"，现在就应该开始关注Copilot Studio、Azure AI Agent Service等工具的演进路线。</p>
+        <p>NVIDIA与微软的联合叙事中，最值得研究型Builder关注的是"从设备到AI工厂"的全栈覆盖。这暗示了两条技术路线的融合：边缘推理（Windows设备上的本地Agent）和云端训练/推理（AI工厂）。研究型Builder应关注的关键技术问题是：Agent在不同算力环境（边缘vs云端）下的架构差异如何设计？是否存在一种"自适应Agent架构"，可以根据可用算力动态调整推理策略？NVIDIA的CUDA生态和微软的ONNX Runtime在这一融合中各自扮演什么角色？</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周行动：注册并试用Microsoft Build大会上发布的Agent开发工具（Copilot Studio、Azure AI Agent Service），评估其与你当前Agent框架的能力差距</li>
+<li>本季度行动：如果你的Agent产品目前仅支持云端推理，开始规划边缘推理能力的集成。关注NVIDIA的Jetson/RTX系列和Windows Copilot Runtime的API更新</li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 6 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Meta面向WhatsApp Business的AI智能体已全球上线</h4>
+        <p><b>核心描述：</b>Meta为WhatsApp Business打造的AI智能体面向全球商家开放，将按照模型token使用量向企业收费。</p>
+        <p>这是Agent商业化落地最重要的事件之一。WhatsApp拥有20亿+月活用户和全球最大的商业消息网络之一，Meta选择在此场景上推出付费AI Agent，等于直接定义了"Agent即服务"（AaaS）的商业模式——按token使用量向企业收费。对PM的启示是：Agent的分发渠道比Agent本身更重要。Meta不需要做"最好的Agent"，它只需要把Agent嵌入20亿用户已经在用的消息界面中。这种"平台+Agent"的分发模式，将对独立Agent创业公司形成降维打击。</p>
+        <p>按token收费的商业模式暗示Meta在Agent推理效率上有充分的信心，其背后的模型压缩和推理优化技术值得关注——在WhatsApp这种高并发、低延迟场景下，Agent的推理架构必然与云端大模型有本质差异。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你正在构建面向消费者的Agent产品，评估是否可以通过WhatsApp Business API或Meta的Agent平台来分发，而非独立开发App。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>Miso One开源语音模型：8B参数、110ms延迟、一次语音克隆</h4>
+        <p><b>核心描述：</b>Miso One正式发布，一个8B参数的开源TTS模型，支持一次语音克隆（只需短样本），推理延迟仅110ms，模型权重已开源至GitHub，可自托管。</p>
+        <p>110ms延迟+一次克隆+完全开源，这三个指标的组合使其成为当前开源TTS领域的标杆。对PM而言，这意味着语音交互产品的"自建vs外购"天平正在向"自建"倾斜——你不再需要依赖ElevenLabs等商业API，可以在本地部署一个质量接近的替代方案。这对隐私敏感场景（医疗、法律、金融）尤其重要，因为音频数据可以不离开本地。</p>
+        <p>8B参数的TTS模型在"一次克隆"任务上达到110ms延迟，其背后的架构创新值得关注——很可能采用了非自回归（non-autoregressive）解码或流式推理优化。研究型Builder应关注其技术报告中关于声码器（vocoder）选择和推理加速策略的细节。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你正在开发语音交互产品，本周部署Miso One进行本地测试，对比其与当前使用的商业TTS API在延迟、自然度和克隆质量上的差异。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>MiniMax M3 1M token解码加速15.6倍</h4>
+        <p><b>核心描述：</b>MiniMax M3在FireworksAI的推理支持下，实现了1M token上下文下15.6倍的解码加速。</p>
+        <p>1M token上下文是长文本应用（法律文档分析、科研论文综述、代码库理解）的核心需求，但此前1M token的推理延迟一直是产品化的瓶颈。15.6倍加速意味着原本需要数分钟的长文档处理可以缩短到秒级，这直接改变了长文本AI应用的用户体验预期。对PM而言，如果你的产品涉及长文档处理，现在可以重新设计交互流程——从"提交后等待"变为"实时交互"。</p>
+        <p>15.6倍加速大概率来自推理引擎层面的优化（如FireworksAI的投机解码、KV-cache优化或稀疏注意力机制），而非模型架构本身的改变。研究型Builder应关注FireworksAI的技术博客，了解其推理优化pipeline的具体方法，这些方法可能可以迁移到其他长上下文模型上。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你的AI应用涉及长文档处理（>100K token），立即测试MiniMax M3在FireworksAI上的推理性能，评估是否可以将你的产品从"异步处理"升级为"实时交互"。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>Anthropic分析832个AI恶意账户：中高风险攻击者半年从33%跃至56%</h4>
+        <p><b>核心描述：</b>Anthropic分析2025年3月至2026年3月间832个被封禁的恶意账户，映射至MITRE ATT&amp;CK框架。67.3%使用AI编写恶意软件，六个月间中高风险攻击者占比从33%升至56%。传统威胁评估框架失效。</p>
+        <p>这份报告是AI安全领域最重要的实证研究之一。核心数据——中高风险AI攻击者半年内从33%跃升至56%——说明AI正在快速降低网络攻击的技术门槛。对PM而言，这意味着所有AI产品都需要将"AI辅助攻击防御"作为一等公民安全需求纳入产品设计。如果你的产品涉及代码生成、数据分析或自动化工作流，你需要假设攻击者也在使用类似的AI工具来寻找漏洞。</p>
+        <p>MITRE ATT&CK框架"尚未收录此类智能体编排行为"是一个重要的研究空白。这意味着现有的安全评估方法论无法覆盖AI Agent的威胁向量。研究型Builder应关注如何扩展MITRE框架以涵盖Agent编排行为，这可能催生一个新的研究方向——"AI Agent安全分类学"。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>在你的AI产品的安全审计中，增加"AI辅助攻击"场景的测试用例，特别是AI生成的恶意代码和Agent编排的横向移动攻击。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>欧盟公布全面技术主权计划，推动芯片与AI自主发展</h4>
+        <p><b>核心描述：</b>欧盟公布一项全面技术主权计划，旨在扩大本土半导体、AI和云计算供应链，以减少对美国和亚洲的依赖。该计划覆盖芯片制造、AI基础设施及云计算服务等多个关键领域。</p>
+        <p>欧盟技术主权计划的全面出台，意味着全球AI产业正在加速"区域化"——从"全球化分工"转向"区域自给自足"。对PM而言，如果你的产品面向欧洲市场，需要开始关注数据本地化、模型本地部署和合规认证的要求。这可能催生一个"欧洲AI栈"的需求——从芯片到模型到应用的全欧洲本土供应链。</p>
+        <p>欧盟的技术主权计划将带来大量研究资金，特别是在芯片设计、AI基础设施和可信AI方向。研究型Builder应关注欧盟Horizon Europe和Digital Europe计划中与AI相关的资助机会。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你的AI产品有欧洲客户，本周梳理一份"欧盟AI合规检查清单"，涵盖AI Act、GDPR和数据本地化要求。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">06</div>
+      <div class="body">
+        <h4>Suno完成4亿美元D轮融资</h4>
+        <p><b>核心描述：</b>AI音乐生成公司Suno宣布完成4亿美元D轮融资，估值54亿美元。</p>
+        <p>54亿美元估值对于一家AI音乐公司而言是一个里程碑式的定价。它说明资本市场对"AI+创意工具"赛道的信心不仅没有消退，反而在加速。Suno的商业模式——让普通人也能制作音乐——验证了"AI民主化创意"的产品逻辑。对PM的启示是：AI创意工具的TAM不是专业创作者市场，而是"所有想创作但缺乏技能的人"——一个比专业市场大100倍的增量市场。</p>
+        <p>AI音乐生成的核心技术挑战在于长序列一致性和情感表达。Suno能否在54亿美元估值下持续保持技术领先，取决于其在音频基础模型上的研究投入。研究型Builder应关注Suno是否会在未来发表技术论文或开源部分模型。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你在构建AI创意工具，研究Suno的产品设计和定价策略，特别是其"免费试用+付费订阅"的转化漏斗。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架1：AI产业的"大分裂"与"新联盟"</h4>
+        <p>今日事件中最突出的结构性信号是"分裂"：微软与OpenAI的决裂不是孤立事件，它与欧盟技术主权计划、DeepSeek独立融资、xAI的Grok全生态布局（Imagine+语音+Cloudflare）共同构成了一个模式——AI产业正在从"少数巨头联盟"走向"多极阵营对抗"。</p>
+<ul>
+<li>每个阵营都在构建自己的"模型+基础设施+分发"全栈能力：微软阵营（NVIDIA+Azure+Copilot）、OpenAI阵营（独立运营，可能联合AWS/GCP）、中国阵营（DeepSeek+腾讯+宁德时代）、xAI阵营（Grok+Vapi+Cloudflare）</li>
+<li>对PM而言，这意味着"选择一个阵营all-in"的策略风险急剧上升</li>
+</ul>
+<p><strong>产品启示</strong>：立即启动"AI技术栈多极化评估"。不要把所有鸡蛋放在一个阵营里。具体来说，你的模型层、基础设施层和分发层应该分别来自不同的阵营，以降低系统性风险。例如：模型层用OpenAI+Claude+DeepSeek的多模型路由，基础设施层用Azure+AWS的混合部署，分发层同时覆盖Web/App/WhatsApp/Slack等多个渠道。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架2：Agent商业化的"三要素模型"</h4>
+        <p>今日多个事件共同揭示了Agent商业化的三个核心要素：分发渠道、定价模型和可靠性验证。</p>
+<ul>
+<li><strong>分发渠道</strong>：Meta在WhatsApp上推出Agent（20亿用户基础）、Replit推出SEO Agent（开发者自然流量）、xAI通过Vapi和Cloudflare分发Grok语音——所有成功案例都表明，Agent的价值不在于"有多智能"，而在于"出现在用户已经在的地方"</li>
+<li><strong>定价模型</strong>：Meta按token向企业收费、优步设定每月1500美元上限——Agent的定价正在从"按功能收费"转向"按使用量收费"，这与云计算的定价逻辑一致</li>
+<li><strong>可靠性验证</strong>：Anthropic的自助数据分析达到95%准确率、微软装瓶厂试点揭示"从聊天到决策"的可靠性鸿沟——Agent的商业化瓶颈不是能力，而是信任</li>
+</ul>
+<p><strong>产品启示</strong>：在设计Agent产品时，按"分发→定价→可靠性"的优先级排序。先找到分发渠道（嵌入已有平台），再设计定价模型（按使用量而非功能），最后攻克可靠性（从低风险场景开始，逐步扩展到高价值决策场景）。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架3：开源AI的"第二曲线"</h4>
+        <p>Miso One（开源TTS）、NousResearch Hermes Agent（开源桌面Agent）、Google开源水文框架、Karpathy的llm-wiki——今日多个事件表明，开源AI正在从"模型权重开源"进入"完整产品开源"的第二曲线。</p>
+<ul>
+<li>第一曲线（2022-2025）：开源模型权重（Llama、Mistral、DeepSeek），但产品化仍由商业公司主导</li>
+<li>第二曲线（2026-）：开源完整产品（Miso One包含模型+推理代码+自托管方案，Hermes Agent包含模型+桌面应用+工具链）</li>
+<li>这意味着商业AI公司需要在"产品体验"而非"模型能力"上建立护城河</li>
+</ul>
+<p><strong>产品启示</strong>：如果你是开源AI项目的贡献者，考虑从"开源模型"升级到"开源产品"——包含部署脚本、监控面板、用户界面的一站式方案。如果你是商业AI公司的PM，评估你的产品有多少价值来自"模型能力"vs"产品体验"，前者正在被开源快速追赶。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>The Verge关于微软-OpenAI决裂的深度报道</strong>：理解AI产业权力重组的全貌，特别关注Suleyman的具体表态和时间线，这将影响你未来6个月的技术栈选择</p>
+<p><b>2.</b> <strong>Anthropic的AI恶意账户分析报告</strong>：832个账户的实证数据+MITRE ATT&CK映射，这是目前最系统的AI安全威胁分析，对所有AI产品的安全设计都有参考价值</p>
+<p><b>3.</b> <strong>Anthropic的Claude自助数据分析博客</strong>：95%自动化率+95%准确率的实现路径，特别是"智能体分析栈"的架构设计和三大错误来源的解决方案，可直接迁移到你的数据分析Agent产品中</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>评估你的AI技术栈的"阵营集中度"</strong>：列出你当前使用的所有AI服务（模型API、云平台、分发渠道），标注每个服务所属的阵营（微软系/OpenAI系/Google系/中国系/独立系），识别单一阵营依赖风险</p>
+<p><b>2.</b> <strong>测试Miso One开源TTS</strong>：克隆仓库并在本地部署，用你的产品场景中的音频样本测试克隆质量和推理延迟，与当前使用的商业TTS API做A/B对比</p>
+<p><b>3.</b> <strong>设计你的Agent产品的"分发策略矩阵"</strong>：参考Meta在WhatsApp上推出Agent的思路，列出你的目标用户已经在使用的所有平台（消息、办公、社交、开发者工具），评估在每个平台上嵌入Agent的可行性和优先级</p>
+<p><b>4.</b> <strong>建立"AI安全红队"测试用例库</strong>：参考Anthropic报告中的MITRE ATT&CK映射，为你的AI产品设计至少10个"AI辅助攻击"场景的测试用例</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>AI产业将在12个月内形成3-4个明确的"阵营"</strong>（6个月内）：微软-NVIDIA阵营、OpenAI独立阵营、中国AI阵营（DeepSeek+腾讯+宁德时代）、Google-独立开源阵营。每个阵营内部将形成模型-基础设施-分发的闭环，跨阵营的互操作性将成为新的挑战</p>
+<p><b>2.</b> <strong>"Agent即服务"（AaaS）将成为AI商业化的主导模式</strong>（12个月内）：Meta按token收费的WhatsApp Agent模式将被广泛复制。到2027年中，主要SaaS平台（Salesforce、Slack、Notion）都将提供内置Agent，独立Agent创业公司的生存空间将被压缩</p>
+<p><b>3.</b> <strong>开源AI将从"模型开源"全面转向"产品开源"</strong>（18个月内）：Miso One和Hermes Agent的模式将成为标准——不仅开源模型权重，还开源完整的推理、部署和用户界面。商业AI公司需要在数据飞轮和行业know-how上建立护城河</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题1：微软-OpenAI决裂后，AI产业的"中间地带"还存在吗？</h4>
+        <p>微软与OpenAI的决裂意味着AI产业不再有"安全的中间选择"——每个参与者都将被迫选边站。但问题是：是否存在一种"不选边"的策略，能够在多个阵营之间保持灵活性？</p>
+<ul>
+<li><strong>产品策略</strong>：如何在多个AI阵营之间保持"战略模糊"，既不彻底倒向任何一方，又能从每个阵营中获取最大价值？</li>
+<li><strong>执行路径</strong>：你的技术团队是否具备在多个云平台+多个模型API之间快速切换的能力？如果不能，需要投入多少工程资源来建立这种灵活性？</li>
+<li><strong>风险权衡</strong>：如果"不选边"策略导致你在每个阵营中都不是优先合作伙伴，这种"中立税"是否比"选边税"更昂贵？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题2：ChatGPT的10亿月活是"真正的用户价值"还是"AI好奇心的泡沫"？</h4>
+        <p>10亿月活是一个惊人的数字，但需要追问：这些用户中有多少是"日常依赖型"用户（每周至少使用3次），有多少是"偶尔尝鲜型"用户（每月使用1-2次）？</p>
+<ul>
+<li><strong>产品策略</strong>：如果你的AI产品的DAU/MAU比率低于ChatGPT的估计值（约20-25%），这是否说明你的产品还没有找到"日常使用场景"？</li>
+<li><strong>执行路径</strong>：如何设计"从尝鲜到依赖"的用户旅程？ChatGPT的哪些产品决策（如记忆功能、个性化、多模态）有效推动了这一转化？</li>
+<li><strong>风险权衡</strong>：如果AI好奇心的泡沫消退，ChatGPT的月活是否会出现"社交媒体式的衰退"？你的产品是否过度依赖了"AI热潮"的红利？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题3：Agent的"可靠性阈值"在哪里？</h4>
+        <p>Anthropic的数据分析Agent达到95%准确率，微软装瓶厂试点揭示了"从聊天到决策"的可靠性鸿沟。问题是：对于不同类型的Agent任务，"足够好"的准确率是多少？</p>
+<ul>
+<li><strong>产品策略</strong>：如何设计Agent产品的"人机协作"界面，使得Agent在低于可靠性阈值的场景中优雅地降级为"辅助角色"？</li>
+<li><strong>执行路径</strong>：你的Agent产品是否有"信心分数"机制——在输出结果时同时展示Agent对自身判断的信心水平，让用户据此决定是否采纳？</li>
+<li><strong>风险权衡</strong>：如果Agent在一个高价值决策场景中犯了错（如财务建议、医疗诊断），即使整体准确率达到99%，一次错误是否足以摧毁用户信任？如何设计"错误恢复"机制？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题4：DeepSeek的500亿融资会改变全球AI研究的"开源文化"吗？</h4>
+        <p>DeepSeek此前以开源V3/R1赢得了全球研究社区的广泛赞誉。但500亿融资后，它将面临投资者的商业化压力。开源vs闭源的天平可能倾斜。</p>
+<ul>
+<li><strong>产品策略</strong>：如果DeepSeek从"全面开源"转向"核心模型闭源+轻量模型开源"的双轨策略，你的产品架构是否能适应这种变化？</li>
+<li><strong>执行路径</strong>：你的团队是否已经深度依赖了DeepSeek的开源模型？如果是，是否已经开始评估替代方案（Llama、Qwen、Mistral）？</li>
+<li><strong>风险权衡</strong>：DeepSeek的开源策略变化是否会引发中国AI开源生态的连锁反应——其他中国AI公司是否也会收紧开源？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题5：AI安全威胁的"军备竞赛"是否已经失衡？</h4>
+        <p>Anthropic报告显示中高风险AI攻击者半年内从33%跃升至56%，且MITRE ATT&CK框架尚未收录Agent编排行为。防御方是否已经在这场军备竞赛中处于结构性劣势？</p>
+<ul>
+<li><strong>产品策略</strong>：如果你的AI产品被用于高风险场景（金融、医疗、政府），你是否需要建立独立的"AI安全红队"？成本是多少？</li>
+<li><strong>执行路径</strong>：如何将AI安全测试嵌入你的CI/CD流程？是否可以自动化大部分安全测试用例？</li>
+<li><strong>风险权衡</strong>：如果你的产品被攻击者利用（如通过Agent编排进行横向移动），你的法律责任和声誉风险是什么？你是否需要AI责任保险？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A: AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 研究Meta WhatsApp Business Agent的产品设计和商业模式 — expected outcome：能够绘制一份"平台+Agent"的产品架构地图，理解分发渠道如何决定Agent的商业价值</p>
+<p><b>2.</b> 分析ChatGPT和Claude的用户增长曲线，理解AI产品的"增长飞轮" — expected outcome：能够设计一个AI产品的用户获取-留存-变现模型</p>
+<p><b>3.</b> 学习AI安全的基础概念（MITRE ATT&CK、RLHF、红队测试），理解AI产品的安全设计原则 — expected outcome：能够为你的AI产品编写一份安全需求文档</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 设计一个"多模型路由"的AI产品架构，在多个模型和平台之间动态分配请求 — expected outcome：产出一份包含成本、延迟和质量trade-off的技术产品文档</p>
+<p><b>2.</b> 主导一个Agent产品的"可靠性验证"项目，建立从测试到上线的全流程 — expected outcome：设计并执行一个Agent可靠性benchmark，覆盖至少50个测试场景</p>
+<p><b>3.</b> 研究AI产业的"阵营化"趋势，为你的公司制定"技术栈多极化"策略 — expected outcome：产出一份AI供应商风险评估报告和应对策略</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 规划一个跨阵营的AI产品战略，在微软、OpenAI、Google和中国AI生态之间建立平衡 — expected outcome：产出一份3年期的AI产品战略文档，覆盖地缘政治风险</p>
+<p><b>2.</b> 推动建立行业级的AI Agent安全标准，参与标准组织或联盟 — expected outcome：在至少一个行业标准组织中发挥领导作用</p>
+<p><b>3.</b> 设计"Agent即服务"（AaaS）的定价和商业模式，为公司的Agent产品线制定商业化路径 — expected outcome：产出一份包含定价模型、收入预测和竞争分析的AaaS商业计划</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B: AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 部署Miso One开源TTS模型，在本地环境测试语音克隆和推理延迟 — expected outcome：能够在消费级GPU上运行Miso One并完成一次语音克隆任务</p>
+<p><b>2.</b> 学习Agent工程的核心方法论（Research→Plan→Work循环），实践plan.md约束Agent行为 — expected outcome：能够使用Agent框架完成一个中等复杂度的开发任务</p>
+<p><b>3.</b> 测试MiniMax M3在FireworksAI上的长文本推理性能，理解1M token上下文的优化策略 — expected outcome：能够对比不同长上下文模型的推理延迟和成本</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 构建一个多模型路由系统，支持在OpenAI、Claude、DeepSeek之间动态切换 — expected outcome：部署一个支持至少3个模型的路由服务，实现成本优化30%以上</p>
+<p><b>2.</b> 实现一个Agent安全测试框架，覆盖Anthropic报告中识别的AI辅助攻击场景 — expected outcome：产出一个可复用的Agent安全测试工具库</p>
+<p><b>3.</b> 在Microsoft Copilot Studio或Azure AI Agent Service上构建一个生产级Agent — expected outcome：完成一个可通过WhatsApp或Teams访问的Agent产品原型</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 设计并实现一个"自适应Agent架构"，能够根据任务复杂度和可用性自动调整推理策略（边缘vs云端） — expected outcome：在至少两个不同算力环境下验证架构的有效性</p>
+<p><b>2.</b> 构建一个Agent编排系统，支持多Agent协作、工具调用和错误恢复 — expected outcome：产出一个开源的Agent编排框架，支持至少10种工具集成</p>
+<p><b>3.</b> 主导一个AI安全红队项目，为你的组织建立AI威胁检测和响应能力 — expected outcome：完成一次完整的AI安全红队演练，产出改进建议报告</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C: 研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 阅读并复现NVIDIA CVPR 2026三篇论文中的至少一篇（GraspGen-X/LCDrive/NitroGen），记录复现过程中的技术难点 — expected outcome：完成代码复现并撰写一份技术笔记，标注论文中未详细说明的实现细节</p>
+<p><b>2.</b> 阅读Anthropic的AI恶意账户分析报告，尝试将832个账户的攻击行为映射到MITRE ATT&CK框架 — expected outcome：产出一份扩展版的AI攻击分类学文档，标注MITRE框架的覆盖空白</p>
+<p><b>3.</b> 阅读李飞飞/World Labs的"世界模型功能分类"文章，梳理当前被称为"世界模型"的不同系统的共性和差异 — expected outcome：绘制一张"世界模型"概念地图，区分渲染器、模拟器、预测器等不同类型</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 对Miso One的TTS架构进行ablation study，分析8B参数模型实现110ms延迟的关键技术因素 — expected outcome：产出一份技术报告，对比非自回归解码、流式推理等优化策略的贡献度</p>
+<p><b>2.</b> 设计一个"Agent可靠性benchmark"，参考特斯拉6000公里测试的方法论，为Agent系统建立长周期鲁棒性评估标准 — expected outcome：发布一个开源的Agent可靠性评估工具，覆盖至少100个测试场景</p>
+<p><b>3.</b> 研究MiniMax M3的15.6倍解码加速背后的推理优化技术，尝试在另一个长上下文模型上复现 — expected outcome：产出一份推理优化技术综述，包含可复现的benchmark数据</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 提出一个novel的"Agent安全分类学"框架，扩展MITRE ATT&CK以覆盖Agent编排行为 — expected outcome：完成一篇可发表的技术论文或技术规范</p>
+<p><b>2.</b> 设计一个"自适应Agent架构"的研究原型，能够根据任务复杂度和可用算力动态调整推理策略 — expected outcome：在至少两个不同场景下验证架构的有效性，产出对比实验数据</p>
+<p><b>3.</b> 主导一个关于"AI产业阵营化"的技术影响分析研究，评估不同阵营的技术路线分化对互操作性的影响 — expected outcome：产出一份被行业引用的技术趋势报告</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D: 快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>AI安全与威胁分析</td><td>Anthropic AI恶意账户分析报告 + MITRE ATT&amp;CK框架文档</td><td>4-6小时</td></tr><tr><td>Agent工程方法论</td><td>智能体工程实战窍门全录（22条技巧）+ plan.md方法论</td><td>3-4小时</td></tr><tr><td>开源TTS技术</td><td>Miso One GitHub仓库 + 技术文档</td><td>4-6小时</td></tr><tr><td>长上下文推理优化</td><td>MiniMax M3 + FireworksAI推理优化博客</td><td>3-4小时</td></tr><tr><td>世界模型理论</td><td>李飞飞/World Labs世界模型分类文章 + POMDP基础</td><td>6-8小时</td></tr><tr><td>Agent商业化</td><td>Meta WhatsApp Business Agent文档 + Anthropic自助数据分析博客</td><td>4-6小时</td></tr><tr><td>物理AI研究</td><td>NVIDIA CVPR 2026三篇论文 + GraspGen-X代码库</td><td>8-10小时</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="daily html/2026-06-01.html">
+      <span class="date">2026-06-01</span>
+      <span class="title">OpenAI进军物理世界与FSD零干预里程碑</span>
+      <span class="angle">AI竞争从数字界面全面升级为物理世界交互，端侧部署与长周期可靠性验证成为新战场</span>
+    </a>
+    <a class="archive-row" href="daily html/2026-05-29.html">
+      <span class="date">2026-05-29</span>
+      <span class="title">Anthropic融资650亿与AI产品大爆发</span>
+      <span class="angle">资本、产品与技术三重共振：AI行业进入规模化落地与自我改进的新阶段</span>
+    </a>
+    <a class="archive-row" href="daily html/2026-05-28.html">
+      <span class="date">2026-05-28</span>
+      <span class="title">MCP统一连接标准与编程Agent商业化爆发</span>
+      <span class="angle">MCP协议成为AI工具互操作事实标准，编程Agent从概念验证迈入规模化商业交付阶段</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>155 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+    </div>
+  </footer>
+</body>
+</html>
