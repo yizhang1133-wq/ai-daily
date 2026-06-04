@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-06-01</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>152</span></div>
+    <div><b>ISS.</b><span>2026-06-01</span></div>
+    <div><b>EVT.</b><span>8 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 152</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">1</div>
+    <div class="meta-col">
+      <h2>OpenAI进军物理世界与FSD零干预里程碑</h2>
+      <p>OpenAI同时在生物防御和实体机器人两个高风险高壁垒领域落子，标志着AI竞争从"聊天工具"全面升级为"社会基础设施"。与此同时，特斯拉FSD的6000公里零干预实测和苹果设备端Gemini蒸馏方案，分别从"可靠性验证"和"端侧部署"两个方向给出了AI落地的互补路径。</p>
+      <div class="meta-row"><b>日期</b> 2026-06-01</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 152 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">Open</span>AI同时在生物防御和实体机器人两个高风险高壁垒领域落子，标志着AI竞争从"聊天工具"全面升级为"社会基础设施"。与此同时，特斯拉FSD的6000公里零干预实测和苹果设备端Gemini蒸馏方案，分别从"可靠性验证"和"端侧部署"两个方向给出了AI落地的互补路径。
+    </div>
+    <div class="credits">
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 3<br>
+      IMPORTANT 2<br>
+      REFERENCE 3<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架1：从数字世界到物理世界的AI三波迁移<br>
+      框架2：端侧-云端的"隐私-能力"张力模型<br>
+      框架3：实证验证作为AI产品化的信任加速器
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>3 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>OpenAI正式进军机器人领域并启动招聘</h3>
+          <p>OpenAI宣布成立OpenAI Robotics团队，由Aditya Ramesh领导，开始招聘全栈硬件、系统及ML工程师，以编程和制造能服务社会的机器人。短期目标是支持技术工人构建未来基础设施，长期愿景是为每个人提供个人机器人。Ramesh的世界模拟研究计划已演变为机器人研究，强调硬件与ML研究的协同设计。</p>
+          <span class="source">SOURCE /// <a href="https://x.com/sama/status/2061117302528188712">X：Sam Altman (@sama)</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>OpenAI发布生物防御AI工具Rosalind</h3>
+          <p>OpenAI发布了一款名为Rosalind的生物防御AI工具，旨在帮助世界在生物防御领域抢占先机。</p>
+          <span class="source">SOURCE /// <a href="https://x.com/sama/status/2061101875303530871">X：Sam Altman (@sama)</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>6000多公里全程零干预：特斯拉FSD完成全球首次横穿加拿大自动驾驶</h3>
+          <p>一辆特斯拉汽车搭载FSD V14.3.3版本软件，完成了全球首次全程零人工干预、横穿加拿大的自动驾驶行程。车辆从温哥华出发，历时4天21小时，行驶3760英里（6051公里）抵达哈利法克斯，全程所有驾驶操作（包括高速并线、应对复杂路况与自动泊车）均由系统自主完成，无任何系统退出或人工修正。</p>
+          <span class="source">SOURCE /// <a href="https://www.ithome.com/0/957/718.htm">IT之家（RSS）</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">2 IMPORTANT + 3 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://x.com/kimmonismus/status/2061058117304262999">苹果WWDC将推AI升级：Gemini蒸馏模型本地运行，但技术栈外部依赖显著</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://x.com/opencode/status/2061153857321775209">DeepSeek V4 Flash 已上线 OpenCode Zen</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div>Claude Code v2.1.159 发布</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>04</div><div>花200英镑把数据中心级GPU装进游戏电脑</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>05</div><div>教皇似乎比Geoffrey Hinton更懂人工智能</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">3 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>Claude Code v2.1.159 发布</div><div>纯基础设施更新，无功能变更，说明Anthropic当前重心在底层稳定性优化而非功能迭代</div>
+      <div>02</div><div>花200英镑把数据中心级GPU装进游戏电脑</div><div>低成本本地LLM运行的DIY实践，代表"消费级硬件跑大模型"的 democratization 趋势，对边缘AI产品有参考意义</div>
+      <div>03</div><div>教皇似乎比Geoffrey Hinton更懂人工智能</div><div>关于AI可解释性的哲学讨论，核心论点是"分析输出无法还原生成过程"，这正是当前AI安全与对齐研究的理论盲区</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      OpenAI同时在生物防御和实体机器人两个高风险高壁垒领域落子，标志着AI竞争从"聊天工具"全面升级为"社会基础设施"。与此同时，特斯拉FSD的6000公里零干预实测和苹果设备端Gemini蒸馏方案，分别从"可靠性验证"和"端侧部署"两个方向给出了AI落地的互补路径。
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 3 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>OpenAI正式进军机器人领域并启动招聘</h4>
+        <p>这是OpenAI自2015年成立以来最具战略纵深的业务拓展。此前OpenAI的所有产品线（GPT、DALL-E、Sora、Operator）均停留在数字界面层，而机器人是AI首次直接作用于物理世界。从PM视角看，这一决策包含三层信号：第一，"个人机器人"的愿景直接对标Figure AI、Tesla Optimus、波士顿动力等已有玩家，OpenAI选择自研而非投资，说明其认为通用机器人大脑（world model + reasoning）是核心差异化壁垒，硬件可以协同设计；第二，Aditya Ramesh的任命极具象征意义——他从图像生成（DALL-E）到视频生成（Sora）再到世界模拟，始终走在"从像素到物理"的延长线上，这暗示OpenAI的机器人策略不是传统意义上的运动控制，而是"世界模型驱动"的具身智能；第三，招聘要求中的"全栈硬件、系统及ML工程师"表明OpenAI不会走纯软件授权路线，而是要做软硬一体化的端到端系统，这与苹果模式类似。</p>
+<p>对竞争格局的影响深远。OpenAI的加入将加速具身智能赛道从"实验室demo"进入"产品化竞赛"阶段。对PM而言，这意味着机器人产品的定义权争夺已经开始：谁定义了"个人机器人"的核心场景（家务、陪伴、护理、施工），谁就可能复制智能手机时代的生态位。</p>
+        <p>Ramesh领导世界模拟研究转向机器人，这一人事安排本身就是一个强烈的科研信号。OpenAI的机器人路线很可能建立在Sora所展示的"物理世界模拟器"能力之上——不是传统的SLAM+控制理论，而是端到端的world model驱动。这代表了从"感知-规划-执行"经典机器人架构向"统一世界模型"范式的迁移。研究型Builder需要关注的关键问题是：Sora的物理模拟精度是否足以支撑闭环控制？仿真到现实的鸿沟（sim-to-real gap）如何通过协同设计的硬件来缩小？如果OpenAI选择发表技术细节，这将可能是继Transformer之后机器人领域最重要的架构创新。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周行动：如果你是机器人或具身智能方向的PM/Builder，立即梳理OpenAI Robotics的招聘JD中的技术栈关键词（world model、co-design、full-stack hardware），判断你的团队是否已有相关储备或差距</li>
+<li>本季度行动：如果你是硬件厂商或供应链企业，评估成为OpenAI Robotics生态合作方的可能性。OpenAI自研硬件的概率很高，但传感器、执行器、材料等底层组件仍有外包空间</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>OpenAI发布生物防御AI工具Rosalind</h4>
+        <p>Rosalind的发布与OpenAI Robotics的宣布发生在同一天，这绝非巧合——两者共同构成了OpenAI"AI for physical world"战略的双支柱。生物防御是一个高度敏感且强监管的领域，传统上由政府和专门机构主导。OpenAI以工具提供方的身份进入这一领域，展现了其对B2G（企业对政府）市场的野心。从PM视角看，Rosalind的产品定位需要回答三个问题：第一，目标用户是谁？是政府公共卫生部门、边境检疫机构、还是学术研究实验室？不同的用户群体决定了产品形态（SaaS平台、API、还是专用硬件终端）。第二，核心功能边界在哪里？是病原体检测、基因序列分析、疫情传播预测，还是生物威胁的早期预警？第三，最关键的信任机制如何建立？生物防御涉及国家安全级别的数据，OpenAI作为私营公司如何获得政府信任，是其商业化路径上的最大卡点。</p>
+<p>从竞争格局看，Google DeepMind的AlphaFold已经在蛋白质结构预测领域建立了科研声誉，Rosalind如果聚焦在防御/检测方向，可以与AlphaFold形成互补而非直接竞争。对AI PM的启示是：在强监管领域，"技术领先"不如"信任领先"重要——谁先通过安全审计、获得政府合规认证、建立数据隔离机制，谁就占据了市场准入的先机。</p>
+        <p>生物防御AI工具的技术核心大概率涉及多模态生物数据（基因序列、蛋白质结构、流行病学网络）的联合推理。研究型Builder应关注Rosalind是否采用了新颖的架构来整合这些异构数据，以及其训练数据的可追溯性和脱敏机制。另一个关键维度是"防御性"vs"攻击性"的双刃剑问题：任何能够检测生物威胁的AI，理论上也能被逆向用于设计威胁。OpenAI如何在这两者之间建立技术护栏（technical guardrails），是值得深入研究的课题。如果Rosalind的技术报告公开，重点应关注其安全评估框架和对抗性测试（red-teaming）的设计。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周行动：如果你是生物信息学、医疗AI或安全领域的Builder，研究Rosalind的产品形态假设，思考你的技术栈中是否有可被整合进生物防御工作流的能力</li>
+<li>本季度行动：如果你是合规或安全产品经理，梳理AI生物工具的国内外监管框架（如美国的AI EO、欧盟AI Act中的生物识别条款），评估合规咨询服务的商业机会</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>6000多公里全程零干预：特斯拉FSD完成全球首次横穿加拿大自动驾驶</h4>
+        <p>这是自动驾驶领域最重要的实证里程碑之一。此前行业对FSD的争论长期停留在"演示视频是否可信"、"特定路段是否经过预训练"的层面，而6000公里、跨气候带（温哥华温带海洋性气候到哈利法克斯温带大陆性气候）、跨路况类型（山区、平原、城市、乡村）的连续零干预行驶，提供了一个近乎完美的真实世界鲁棒性测试。从PM视角看，这次事件的价值不在于技术本身（V14.3.3的细节并未完全公开），而在于它重新定义了自动驾驶产品化的"信任阈值"：当普通消费者看到一辆车可以在4天多时间里完全自主地完成洲际穿越，"自动驾驶"从科幻概念转化为可感知的产品能力的认知拐点已经到来。</p>
+<p>对竞争格局的影响在于：特斯拉再次证明了"纯视觉+端到端神经网络"路线的可行性，这与Waymo等依赖高精地图和激光雷达的多传感器融合路线形成了鲜明对比。如果FSD V14.3.3能在更多用户手中复现类似表现，特斯拉将率先跨过"产品化"门槛——不是L3/L4的法规认证，而是消费者愿意为之付费的"感知到的自主性"。对PM的启示是：在AI产品中，"可验证的公开实证"比"技术指标"更能驱动用户采纳。</p>
+        <p>这次横穿加拿大本质上是一次大规模、长周期的端到端自动驾驶系统的现场实验（field experiment）。研究型Builder应关注的核心科学问题是：V14.3.3相比此前版本，在架构或训练数据上做出了什么关键改进，使得系统能够在如此长的时间窗口内保持零干预？可能的突破点包括：第一，世界模型（world model）的时序一致性改进，使得系统在长时间运行中不会出现累积误差；第二，长尾场景（edge cases）的覆盖度提升，特别是加拿大冬季遗留的湿滑路面、野生动物穿越、无标线乡村道路等场景；第三，人类驾驶行为的模仿学习（behavioral cloning）与强化学习的结合方式优化。如果特斯拉后续释放V14.3.3的技术细节或论文，这将是端到端自动驾驶领域最值得复现和分析的工作之一。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周行动：如果你是自动驾驶或机器人领域的Builder，将这次横穿加拿大的路线、气候条件和路况类型作为你的系统测试基准（benchmark），评估你的方案在这些条件下的表现差距</li>
+<li>本季度行动：如果你是自动驾驶PM，研究FSD的订阅/买断定价策略与用户采纳曲线，思考如何设计"渐进式信任建立"的产品机制（如先提供高速公路自主驾驶，再逐步扩展到城市道路）</li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 2 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>苹果WWDC将推AI升级：Gemini蒸馏模型本地运行，但技术栈外部依赖显著</h4>
+        <p><b>核心描述：</b>苹果下月WWDC将重点展示延迟已久的Siri及设备端AI升级，核心是在iPhone芯片本地运行从Google Gemini蒸馏而来的更小模型，以强调隐私与降低token成本。但该技术栈大部分源自外部：本地模型由Gemini蒸馏，设备无法处理的复杂查询将路由至Google Cloud处理，并采用了Nvidia的机密计算技术。苹果据称正在寻觅小型设备端AI初创公司以加速模型缩减工作。</p>
+        <p>苹果这一方案揭示了一个关键产品悖论：即便是拥有最强芯片设计能力的公司，在端侧大模型部署上仍严重依赖外部技术栈。Private Cloud Compute从"纯苹果芯片"转向部分使用谷歌云，说明端侧AI的算力需求和模型压缩技术之间存在难以调和的张力。对PM的启示是：端侧AI产品的竞争核心不是"是否本地运行"，而是"本地运行的质量边界在哪里"——即哪些任务必须在本地完成、哪些可以优雅地回退到云端，以及这种回退对用户感知的延迟和隐私承诺的影响。</p>
+        <p>Gemini蒸馏到iPhone芯片的具体技术路径（知识蒸馏方法、量化策略、注意力机制裁剪）是端侧模型压缩的前沿案例。研究型Builder应关注蒸馏后的模型在Apple Neural Engine上的推理效率与精度损失的trade-off曲线。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你是端侧AI产品PM，立即建立"本地-云端任务分级矩阵"，将用户场景按隐私敏感度、延迟要求和复杂度三个维度分类，为每类场景设计最优的部署策略。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>DeepSeek V4 Flash 已上线 OpenCode Zen</h4>
+        <p><b>核心描述：</b>DeepSeek V4 Flash现已在OpenCode Zen平台上线。</p>
+        <p>DeepSeek V4 Flash在OpenCode Zen的上线，标志着开源模型生态与开发者工具平台的深度整合正在加速。OpenCode Zen作为一个开发者工具平台，选择集成DeepSeek而非仅提供OpenAI/Claude选项，反映了开发者社区对"高性价比开源模型"的真实需求。对PM而言，这意味着AI产品的基础设施层正在从"单一模型垄断"向"多模型路由"演进——未来的AI应用可能需要同时对接多个模型，根据任务类型、成本预算和延迟要求动态选择最佳后端。</p>
+        <p>V4 Flash的定位暗示了DeepSeek在模型系列化上的策略——通过"Flash"版本覆盖对延迟敏感、对成本敏感的场景。研究型Builder应对比V4 Flash与V4标准版在架构上的差异（如层数、注意力头数、上下文窗口），理解"模型系列化"背后的效率优化方法论。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你正在构建AI应用，评估引入多模型路由架构的可行性：为简单查询配置轻量级模型（如DeepSeek Flash）、为复杂推理配置大模型，通过动态路由降低平均推理成本30%以上。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架1：从数字世界到物理世界的AI三波迁移</h4>
+        <p>今日事件清晰展示了AI正在经历的第三次迁移：</p>
+<ul>
+<li><strong>第一波</strong>（2018-2022）：数字内容生成（文本、图像、代码）——GPT-3、DALL-E</li>
+<li><strong>第二波</strong>（2023-2025）：数字任务执行（搜索、购物、办公自动化）——Operator、Agent</li>
+<li><strong>第三波</strong>（2026-）：物理世界交互（驾驶、机器人、生物防御）——FSD、OpenAI Robotics、Rosalind</li>
+</ul>
+<p>每一波迁移的壁垒指数级上升：数字内容的错误成本极低，物理世界的错误成本涉及生命安全。这意味着第三波AI产品的核心竞争维度将从"能力"转向"可靠性"和"信任"。</p>
+<p><strong>产品启示</strong>：如果你正在规划AI产品路线图，思考你的产品处于哪一波迁移中。如果你还在第一波，你需要加速向第二波演进；如果你已经在第二波，评估是否有机会卡位第三波的早期场景。第三波产品的PM需要掌握的核心新技能是"安全系统工程"——不是传统软件安全的逻辑漏洞，而是物理世界交互中的风险评估、冗余设计和失效保护（fail-safe）。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架2：端侧-云端的"隐私-能力"张力模型</h4>
+        <p>苹果的Gemini蒸馏方案揭示了端侧AI的永恒张力：用户想要隐私（本地处理）和强大能力（大模型）兼得，但两者在技术上是互斥的。当前行业的三种应对策略在今日事件中均有体现：</p>
+<ul>
+<li><strong>纯端侧</strong>：苹果的目标愿景，但受限于芯片算力和模型压缩技术</li>
+<li><strong>端云协同</strong>：苹果的实际方案（简单任务本地、复杂任务上云），但破坏了隐私承诺的一致性</li>
+<li><strong>纯云端</strong>：OpenAI的默认模式，能力最强但隐私和延迟最差</li>
+</ul>
+<p><strong>产品启示</strong>：设计端侧AI产品时，不要追求"全本地"或"全云端"的极端方案，而是建立透明的"能力-隐私"权衡界面，让用户清楚地知道什么在本地处理、什么在云端处理，并赋予用户选择权。这种透明性本身就是产品差异化。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架3：实证验证作为AI产品化的信任加速器</h4>
+        <p>特斯拉FSD横穿加拿大与OpenAI Robotics的宣布形成了有趣的对比：前者用6000公里的零干预实证回答了"你的AI能行吗"的问题，后者用愿景和招聘回答了"你的AI要做什么"的问题。在AI产品化早期，"可验证的实证"比"宏大的愿景"更能加速用户信任的建立。</p>
+<p><strong>产品启示</strong>：如果你正在推出一个AI产品，规划一个"公开验证里程碑"——一个可以被独立观察、测量和验证的成就。这可以是准确率测试、用户满意度调研、第三方审计，或者像特斯拉这样的长周期压力测试。把这个里程碑作为产品发布策略的核心，而非事后的PR素材。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>OpenAI Robotics招聘页面</strong>：如果你是硬件或机器人方向的Builder，仔细阅读JD中的技术栈要求，这相当于OpenAI发布的"具身智能能力模型"标准文档</p>
+<p><b>2.</b> <strong>特斯拉FSD V14.3.3的更新日志和用户实测视频</strong>：关注IT之家原文及社区讨论，寻找除横穿加拿大之外的更多实测数据点，建立对FSD当前能力的真实认知</p>
+<p><b>3.</b> <strong>苹果Private Cloud Compute的官方文档</strong>：理解苹果如何在"端侧隐私承诺"和"云端大模型能力"之间做技术妥协，这将成为端侧AI产品的架构参考模板</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>评估你的AI产品在"物理世界交互"维度的机会</strong>：如果你的产品与实体世界有关（IoT、硬件、机器人、自动驾驶、医疗），梳理一个"AI赋能物理世界"的功能清单，按可行性排序</p>
+<p><b>2.</b> <strong>建立多模型路由的技术原型</strong>：如果你正在开发AI应用，用一周时间搭建一个简单原型，接入至少两个模型（如OpenAI + DeepSeek），测试按任务类型动态路由的效果</p>
+<p><b>3.</b> <strong>研究生物防御/生物信息学AI的监管框架</strong>：如果你在强监管领域工作，本周花2小时梳理你所在行业（医疗、金融、自动驾驶等）的AI合规要求，绘制一张"合规检查清单"</p>
+<p><b>4.</b> <strong>设计一个"公开验证里程碑"</strong>：为你的AI产品或团队定义一个可以在3个月内完成的、可被外部验证的成就，并规划验证方法（第三方测试、公开benchmark、用户实测等）</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>具身智能将在18个月内成为AI投资的首要赛道</strong>：OpenAI入局后，机器人领域的资金、人才和注意力将快速聚集，预计2027年底前会出现至少3家估值超过100亿美元的具身智能初创公司</p>
+<p><b>2.</b> <strong>端侧模型蒸馏将成为芯片厂商的核心战场</strong>：苹果Gemini蒸馏方案只是开始，高通、联发科、苹果将在端侧模型压缩和推理优化上展开激烈竞争，"每token能耗"将成为新的芯片性能指标</p>
+<p><b>3.</b> <strong>AI安全将从"内容审核"升级为"物理安全"</strong>：随着AI进入机器人和生物防御领域，现有的AI安全框架（如RLHF、内容过滤器）将显得不足，需要全新的"物理世界安全评估"方法论，这将成为一个新的专业领域</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题1：OpenAI同时进军机器人和生物防御，其资源分配优先级应该如何理解？</h4>
+        <p>OpenAI在同一天宣布了两个高投入、长周期、强监管的物理世界项目。这引发了一个战略问题：OpenAI是在进行"广度摊薄"还是"深度协同"？机器人需要world model，生物防御需要分子世界的world model——两者是否可以共享底层的物理推理能力？</p>
+<ul>
+<li><strong>产品策略</strong>：如果你是OpenAI的产品负责人，你会如何设计这两个项目的协同机制，避免资源竞争和组织内耗？</li>
+<li><strong>执行路径</strong>：机器人需要硬件供应链，生物防御需要政府合规通道——两者的商业化路径完全不同，如何建立统一的PMF验证框架？</li>
+<li><strong>风险权衡</strong>：如果两者中必须优先放弃一个，基于什么指标做出决策？技术成熟度、市场规模，还是监管友好度？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题2：特斯拉FSD的6000公里零干预，是否真正证明了端到端自动驾驶的安全性？</h4>
+        <p>从科学方法论角度，一次成功的长途行驶是一个 impressive 的 anecdote，但不是严谨的 safety proof。样本量为1的实验无法统计罕见失效模式的概率。</p>
+<ul>
+<li><strong>产品策略</strong>：如果你是自动驾驶PM，你会如何设计一个既能让消费者建立信任、又符合科学严谨性的验证方案？</li>
+<li><strong>执行路径</strong>：如何在不暴露技术机密的前提下，向监管机构和公众提供可审计的安全数据？</li>
+<li><strong>风险权衡</strong>：如果下一次长途行驶出现事故，对品牌和产品采纳的毁灭性影响如何量化？你应该提前准备什么样的危机应对机制？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题3：苹果依赖Google Gemini和Nvidia技术来实现端侧AI，其"自研"叙事还能维持多久？</h4>
+        <p>苹果的Private Cloud Compute原本承诺使用苹果自研芯片，现在因无法承载完整Gemini模型而部分转向谷歌云和Nvidia。这暴露了一个深层矛盾：苹果的自研能力边界在哪里？</p>
+<ul>
+<li><strong>产品策略</strong>：如果你是苹果的AI产品负责人，你会选择继续依赖外部技术栈，还是加大对自研模型压缩技术的投入？各自的timeline和资源需求是什么？</li>
+<li><strong>执行路径</strong>：如何在产品营销中平衡"隐私优先"的品牌承诺和"部分依赖外部云"的技术现实？</li>
+<li><strong>风险权衡</strong>：如果Google未来限制Gemini的授权或提高价格，苹果的端侧AI产品路线图将面临什么风险？应该准备什么样的Plan B？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题4：端侧AI的"模型民主化"是否会催生新的商业模式？</h4>
+        <p>数据中心GPU改装到游戏电脑、DeepSeek V4 Flash在开发者平台的普及，都指向一个方向：运行大模型的硬件门槛正在快速降低。</p>
+<ul>
+<li><strong>产品策略</strong>：当普通用户可以在本地运行接近云端质量的模型时，现有的SaaS AI产品（如ChatGPT Plus、Claude Pro）的价值主张如何调整？</li>
+<li><strong>执行路径</strong>：如果你是AI基础设施厂商，你的商业模式应该从"按token收费"转向什么？模型托管、微调服务、还是企业级安全支持？</li>
+<li><strong>风险权衡</strong>：本地模型能力的提升，是否意味着AI应用的"去平台化"趋势？这对当前集中式的AI生态格局意味着什么？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题5：AI可解释性的"教皇悖论"对AI产品信任机制有何启示？</h4>
+        <p>"教皇似乎比Geoffrey Hinton更懂人工智能"的核心论点是：分析AI输出无法还原其生成过程。这与AI产品的用户体验直接相关——用户只能看到结果，无法理解为什么AI给出了这个答案。</p>
+<ul>
+<li><strong>产品策略</strong>：如果你正在设计一个面向非技术用户的AI产品，你会如何在界面中嵌入"可解释性"元素，帮助用户建立合理的信任预期？</li>
+<li><strong>执行路径</strong>：当AI出错时，如何向用户解释错误原因，而不是简单地展示"AI幻觉"这样的技术术语？</li>
+<li><strong>风险权衡</strong>：过度追求可解释性是否会牺牲AI的能力边界？在哪些场景下"黑盒但准确"比"白盒但平庸"更可接受？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A: AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 研究特斯拉FSD的产品发布和迭代历史，理解"渐进式信任建立"的产品策略—— expected outcome：能够设计一个从L2到L4的用户教育路径</p>
+<p><b>2.</b> 分析OpenAI Robotics的招聘JD，梳理具身智能产品所需的跨职能团队构成—— expected outcome：能够编写一份机器人产品团队的招聘需求文档</p>
+<p><b>3.</b> 学习端侧AI的基础概念（模型蒸馏、量化、剪枝），理解端侧与云端的trade-off—— expected outcome：能够与工程团队讨论端侧部署的技术可行性</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 主导一个AI产品的"公开验证里程碑"设计和执行—— expected outcome：完成一次可被第三方验证的产品能力展示</p>
+<p><b>2.</b> 研究强监管领域（医疗、自动驾驶、生物安全）的AI合规框架，建立合规检查清单—— expected outcome：能够识别产品中的合规风险点并制定应对策略</p>
+<p><b>3.</b> 设计一个多模型路由的AI产品架构，平衡成本、延迟和质量—— expected outcome：产出一份包含模型选择策略的技术产品文档</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 规划一个从数字AI到物理AI的产品路线图，评估技术成熟度和市场时机—— expected outcome：产出一份3年期的具身智能产品战略文档</p>
+<p><b>2.</b> 建立AI产品的安全评估框架，覆盖从内容安全到物理安全的全谱系—— expected outcome：设计一套可复用的AI安全review流程</p>
+<p><b>3.</b> 推动AI产品的行业标准或联盟建设，影响监管政策走向—— expected outcome：参与至少一个行业标准组织的白皮书撰写</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B: AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 在本地环境部署一个DeepSeek V4 Flash或类似轻量级模型，体验端侧推理—— expected outcome：能够在消费级GPU上运行模型并完成基本推理任务</p>
+<p><b>2.</b> 学习模型蒸馏的基础方法（知识蒸馏、量化感知训练），尝试对一个开源模型进行压缩—— expected outcome：产出一份模型压缩前后的精度与效率对比报告</p>
+<p><b>3.</b> 研究特斯拉FSD的端到端架构（HydraNet、Occupancy Networks等公开技术），理解纯视觉自动驾驶的技术栈—— expected outcome：能够绘制FSD的技术架构图并解释关键模块</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 实现一个多模型路由系统，根据任务类型动态选择最优模型后端—— expected outcome：部署一个支持至少3个模型的路由服务，延迟降低20%以上</p>
+<p><b>2.</b> 参与一个机器人或具身智能开源项目（如ROS2、Isaac Sim），理解仿真到现实的pipeline—— expected outcome：能够在仿真环境中训练一个简单控制策略并迁移到真实硬件</p>
+<p><b>3.</b> 学习生物信息学AI的基础工具（AlphaFold API、蛋白质语言模型），探索AI在生物领域的应用—— expected outcome：能够使用公开API完成一次蛋白质结构预测任务</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 设计并实现一个端侧大模型的优化方案，在特定硬件（如手机NPU、边缘设备）上达到生产级性能—— expected outcome：发布一个开源的端侧模型推理优化工具或库</p>
+<p><b>2.</b> 构建一个具身智能的world model原型，支持从仿真到真实的迁移—— expected outcome：在至少一个真实机器人平台上验证world model的预测能力</p>
+<p><b>3.</b> 主导一个AI安全系统的技术架构，覆盖对抗性攻击检测、输出过滤和物理安全监控—— expected outcome：产出一份企业级AI安全系统的技术设计文档</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C: 研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 复现一篇端到端自动驾驶或机器人控制的关键论文（如Tesla FSD相关技术报告、Diffusion Policy等），记录复现过程中的技术难点—— expected outcome：完成代码复现并撰写一份复现报告，标注不可复现的部分</p>
+<p><b>2.</b> 学习模型蒸馏的理论基础（Hinton 2015知识蒸馏论文及后续进展），尝试用公开数据集复现一个蒸馏实验—— expected outcome：理解温度参数、软标签与硬标签的trade-off，产出实验对比数据</p>
+<p><b>3.</b> 阅读并总结OpenAI Robotics团队核心成员（Aditya Ramesh等）的近期论文，梳理其研究脉络—— expected outcome：绘制一张从DALL-E到Sora到Robotics的研究演进图谱</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 对一个开源的端侧模型（如DeepSeek Flash、Phi系列、Llama 3.2）进行系统的ablation study，分析哪些架构决策对端侧效率影响最大—— expected outcome：产出一份技术报告，包含至少5个维度的ablation结果</p>
+<p><b>2.</b> 设计并实现一个用于评估AI系统长周期鲁棒性的benchmark（灵感来自特斯拉6000公里测试），覆盖连续运行下的性能衰减和失效模式—— expected outcome：发布一个开源的long-haul robustness evaluation工具</p>
+<p><b>3.</b> 研究AI生物工具的双刃剑问题（防御vs攻击），分析现有技术护栏的局限性并提出改进方案—— expected outcome：撰写一篇关于AI生物安全technical guardrails的技术分析文章</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 提出一个novel的模型架构或训练方法，针对端侧部署的特定约束（内存、功耗、延迟）进行优化，并在公开benchmark上验证—— expected outcome：完成可公开发表的技术工作，达到SOTA或显著效率提升</p>
+<p><b>2.</b> 建立一个从研究原型到产品原型的完整pipeline，将一个实验室级别的AI能力转化为可演示的产品功能—— expected outcome：在3个月内完成从论文idea到产品demo的转化</p>
+<p><b>3.</b> 主导一个AI安全或对齐领域的开源研究项目，组织社区贡献并推动技术共识的形成—— expected outcome：建立一个活跃的开源研究社区，产出至少一篇被引用或实际采用的技术规范</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D: 快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>端到端自动驾驶</td><td>Tesla AI Day技术报告、HydraNet论文</td><td>4-6小时</td></tr><tr><td>模型蒸馏与压缩</td><td>Hinton 2015蒸馏论文、GPTQ/AWQ量化方法</td><td>6-8小时</td></tr><tr><td>具身智能入门</td><td>Sergey Levine的CS 285课程（Deep Reinforcement Learning）</td><td>20-30小时</td></tr><tr><td>生物信息学AI</td><td>AlphaFold2 Nature论文、ESM蛋白质语言模型</td><td>8-10小时</td></tr><tr><td>AI可解释性</td><td>"Explainable AI"综述论文、LIME/SHAP工具文档</td><td>4-6小时</td></tr><tr><td>端侧AI部署</td><td>ONNX Runtime、TensorRT Lite、Apple Core ML文档</td><td>6-8小时</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-04.html">
+      <span class="date">2026-06-04</span>
+      <span class="title">微软OpenAI决裂与AI产业大分裂时代</span>
+      <span class="angle">AI产业从合作共生进入阵营对抗，资本用户规模双创历史新高，Agent商业化全面进入平台化部署阶段</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-05-29.html">
+      <span class="date">2026-05-29</span>
+      <span class="title">Anthropic融资650亿与AI产品大爆发</span>
+      <span class="angle">资本、产品与技术三重共振：AI行业进入规模化落地与自我改进的新阶段</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-05-28.html">
+      <span class="date">2026-05-28</span>
+      <span class="title">MCP统一连接标准与编程Agent商业化爆发</span>
+      <span class="angle">MCP协议成为AI工具互操作事实标准，编程Agent从概念验证迈入规模化商业交付阶段</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>152 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+    </div>
+  </footer>
+</body>
+</html>
