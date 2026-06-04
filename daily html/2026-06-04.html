@@ -367,7 +367,9 @@
       .alert { grid-template-columns: 1fr; }
       .colophon { grid-template-columns: 1fr; }
       .action-grid { grid-template-columns: 1fr; }
-      .archive-row { grid-template-columns: auto 1fr; gap: 12px; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
       .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
     }
   </style>
