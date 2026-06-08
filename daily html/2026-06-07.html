@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-06-07</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>158</span></div>
+    <div><b>ISS.</b><span>2026-06-07</span></div>
+    <div><b>EVT.</b><span>30 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 158</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">7</div>
+    <div class="meta-col">
+      <h2>Spec Kit规范编码与联邦AI监管集权</h2>
+      <p></p>
+      <div class="meta-row"><b>日期</b> 2026-06-07</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 158 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop"></span>
+    </div>
+    <div class="credits">
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 0<br>
+      IMPORTANT 0<br>
+      REFERENCE 0<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架 1：AI 产品合规的"三法域基线设计法"<br>
+      框架 2：AI 编码的"Spec-Code-Review"三环验证法<br>
+      框架 3：算力成本的"三层投资组合"管理法
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>3 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>必看大事件 1：GitHub 开源 Spec Kit 工具包——用产品规范引导 AI 编码，109K+ 星标</h3>
+          <p>GitHub 开源了 Spec Kit 工具包，通过结构化的产品规范（Product Specification）来引导 AI Agent 进行代码生成，支持 30+ 主流 Agent 框架集成。该项目在短时间内获得超过 109K 星标，成为近期开源社区最受关注的 AI 编码基础设施项目之一。</p>
+          <span class="source">SOURCE /// </span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>必看大事件 2：美国众议院议员发布法案草案，旨在禁止各州制定人工智能相关法规</h3>
+          <p>美国众议院议员发布了一项联邦法案草案，核心内容是禁止美国各州自行制定人工智能相关法规，试图将 AI 监管权力集中到联邦层面。这一法案若通过，将从根本上改变美国 AI 监管的版图。</p>
+          <span class="source">SOURCE /// </span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>必看大事件 3：谷歌将每月向 SpaceX 支付 9.2 亿美元，以获取 xAI 数据中心的计算能力</h3>
+          <p>Google 同意每月向 SpaceX 支付 9.2 亿美元，以获得 xAI 数据中心的计算能力。这是一笔超大规模的算力交易，将 Google 的云计算需求与 SpaceX/xAI 的基础设施深度绑定，年度交易规模超过 110 亿美元。</p>
+          <span class="source">SOURCE /// </span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">3 IMPORTANT + 6 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div>重要事件 1：OpenCV 5 发布——升级全新 DNN 引擎、原生支持大模型，ONNX 算子覆盖率从 23% 提升至超 80%</div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div>重要事件 2：阶跃首席科学家张祥雨合著论文 ResNet 获 CVPR 2026「时间检验奖」</div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div>重要事件 3：M3 与 Opus 代码审计 13 个 bug：$0.07 vs $1.30</div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div>Persona Atlas：Hugging Face 上的开源人物思维映射工具</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>05</div><div>海螺 AI x 上影节活动日历</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>06</div><div>AI 的黑色星期五（Gary Marcus）</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>07</div><div>五个实验室五个心智：用小模型构建多模型金融剧情游戏</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>08</div><div>Job Searcher：基于 AI 的求职搜索工具</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>09</div><div>No, Anthropic did not call for a pause on AI development（Gary Marcus 回应）</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">6 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>Persona Atlas：Hugging Face 上的开源人物思维映射工具</div><div>https://huggingface.co/blog/build-small-hackathon/persona-atlas | 做角色扮演、虚拟陪伴、叙事类 AI 产品的 PM</div>
+      <div>02</div><div>海螺 AI x 上影节活动日历</div><div>https://mp.weixin.qq.com/s?__biz=MzkzNDUzMzEzNw%3D%3D&amp;mid=2247487793&amp;idx=1&amp;sn=b5649b5c9c4204135b4914d89f71cb41 | 关注 AI+影视/文娱跨界营销的从业者</div>
+      <div>03</div><div>AI 的黑色星期五（Gary Marcus）</div><div>https://garymarcus.substack.com/p/ais-black-friday | 关注 AI 发展节奏与监管风险的决策者</div>
+      <div>04</div><div>五个实验室五个心智：用小模型构建多模型金融剧情游戏</div><div>https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim-v2 | AI 游戏、多智能体系统研究者</div>
+      <div>05</div><div>Job Searcher：基于 AI 的求职搜索工具</div><div>https://huggingface.co/blog/build-small-hackathon/job-searcher-blog | HR Tech、招聘类产品 PM</div>
+      <div>06</div><div>No, Anthropic did not call for a pause on AI development（Gary Marcus 回应）</div><div>https://garymarcus.substack.com/p/no-anthropic-did-not-call-for-a-pause | 关注 AI 安全与行业话语权的读者</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 3 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>必看大事件 1：GitHub 开源 Spec Kit 工具包——用产品规范引导 AI 编码，109K+ 星标</h4>
+        <p>Spec Kit 的爆发式关注揭示了一个被长期忽视的核心矛盾——当前 AI 编码工具（如 Cursor、Windsurf、各类 Agent）的瓶颈不在"模型能力"，而在"需求传递质量"。开发者用自然语言描述需求时，信息损耗率极高，导致 AI 生成的代码需要反复迭代修正。Spec Kit 将"产品规范"作为人机协作的中间层，本质上是在 AI 编码流程中引入了 PM 的核心工作方法：将模糊需求转化为结构化、可验证、可追踪的规范文档。这对 AI PM 是一个强烈信号——未来 AI 编码流程中，"写 Prompt"正在进化为"写 Spec"，而 Spec 的能力恰恰是产品经理的专业壁垒。</p>
+<p>从生态位来看，Spec Kit 的 30+ Agent 集成策略非常聪明。它不绑定任何单一 Agent 框架，而是成为跨平台的"规范层"，这让它有可能成为 AI 编码领域的"OpenAPI Specification"级别的标准。如果这一趋势持续，掌握 Spec 编写能力的产品经理将在 AI 原生开发团队中占据更核心的位置——我们不再只是需求的提出者，而是 AI 编码流程中"需求-代码"转换的关键枢纽。</p>
+<p>对于正在构建 AI 编码产品的团队，Spec Kit 提供了一个重要的产品设计参照：与其在模型层卷能力，不如在"需求理解层"做深。用户真正愿意付费的，是"说人话就能出可用代码"的体验，而不是背后用的是什么模型。</p>
+        <p>Spec Kit 的架构设计暗示了 AI 编码的下一个范式转移——从"Prompt Engineering"到"Specification Engineering"。研究型 Builder 应关注其规范语法的设计哲学，以及如何将其与形式化验证（Formal Verification）结合，进一步提升 AI 生成代码的可靠性。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>Spec-Driven Development（规范驱动开发）</strong>：在团队中建立"需求 → 产品规范 → AI 生成代码 → 人工 Review"的四步流程，将 Spec 作为 AI 编码的强制性输入。产品经理负责定义 Spec 模板和验收标准，开发人员负责用 Spec 驱动 AI 工具输出代码。</li>
+<li><strong>Agent 兼容性设计</strong>：如果正在构建 AI 编码工具或平台，参考 Spec Kit 的"规范层抽象"策略，设计不绑定单一模型/Agent 的中间层接口，让用户可以灵活切换底层 Agent 而无需重写规范。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>必看大事件 2：美国众议院议员发布法案草案，旨在禁止各州制定人工智能相关法规</h4>
+        <p>这项法案草案是 2026 年 AI 监管博弈的关键转折点。此前，美国采取的是"联邦底线 + 州级补充"的监管模式，加州、纽约等州的 AI 法案（如 SB 1047 的后续影响）对 AI 公司形成了实质性合规约束。如果联邦法案成功禁止州级立法，意味着 AI 公司将面对单一、统一的联邦监管框架，合规成本将大幅下降，但同时也会失去州级监管中更灵活、更创新的治理实验。</p>
+<p>对于 AI PM 和 Builder 来说，这一信号有双重含义。积极面是：如果你正在做面向美国市场的 AI 产品，未来可能只需要满足一套联邦标准，而不是 50 个州的差异化合规要求，这对产品迭代速度和出海成本是重大利好。消极面是：联邦层面的监管可能趋向保守或政治化，且一旦定型，调整周期远长于州级立法。Gary Marcus 在同日发表的"AI 的黑色星期五"一文中也警示了监管滞后于技术发展的风险，这一联邦集中化趋势可能加剧这种"监管-技术"脱节。</p>
+<p>从产品战略角度，建议将"监管适应性"纳入产品架构设计。无论联邦还是州级监管最终如何博弈，能够灵活切换合规策略的产品架构（如模块化数据处理、可配置的内容审核策略）都将成为竞争优势。</p>
+        <p>联邦 vs 州权的监管博弈实际上是一场关于"AI 治理实验空间"的争夺。研究型 Builder 应关注这一法案对开源 AI、模型权重发布、算法透明度要求等具体条款的影响，这些将直接决定技术创新的法律边界。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>监管弹性架构（Regulatory Elastic Architecture）</strong>：在产品设计阶段预埋合规配置层，将数据存储位置、用户年龄验证、内容过滤策略、算法可解释性输出等合规敏感模块抽象为可配置组件，确保无论联邦还是州级法规如何变化，都能通过配置调整快速适配。</li>
+<li><strong>多法域合规基线设计</strong>：即使美国走向联邦统一监管，AI 产品的全球化属性要求同时满足欧盟 AI Act、中国算法推荐管理规定等多法域要求。建议以"最严标准"作为产品默认基线，而非以"最低标准"适配后再叠加。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>必看大事件 3：谷歌将每月向 SpaceX 支付 9.2 亿美元，以获取 xAI 数据中心的计算能力</h4>
+        <p>这笔交易的规模令人震撼——9.2 亿美元/月，相当于每天约 3000 万美元的算力采购成本。但比数字更值得分析的是交易结构背后揭示的产业逻辑。Google 作为全球三大云厂商之一，自身拥有庞大的数据中心和 TPU 集群，为什么还要以如此高价外购 xAI 的算力？最可能的解释是：高端 AI 训练算力（尤其是大规模集群的连续可用性）已经成为比资金更稀缺的资源。Google 愿意溢价购买，说明其内部算力规划已无法满足某些关键 AI 项目的训练需求。</p>
+<p>从竞争格局看，这笔交易实际上是 Google、SpaceX、xAI 三方利益的复杂交织。SpaceX 获得稳定巨额现金流支持星舰等太空项目；xAI 获得世界最强互联网公司的算力背书；Google 则确保了自己在 AGI 竞赛中不会因算力瓶颈掉队。对于 AI PM 而言，这一事件的核心启示是：算力正在从"成本项"转变为"战略资源"，其获取能力将直接决定 AI 产品的迭代速度和市场窗口期。</p>
+<p>如果你正在规划一个需要大规模模型训练或推理的 AI 产品，现在就需要将"算力获取策略"提升到产品战略层面——不是简单地选择哪家云厂商，而是要考虑算力锁定风险、价格谈判空间、以及自建/租赁/合作的混合模式设计。</p>
+        <p>这笔交易可能标志着 AI 算力市场从"商品化竞争"向"寡头战略联盟"的转型。研究型 Builder 应关注这种垂直整合对中小型 AI 团队的挤出效应，以及边缘计算、模型压缩、推理优化等技术方向在算力不平等格局下的战略价值提升。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>算力投资组合管理</strong>：将算力资源视为产品投资组合的一部分，按照"核心训练（长期锁定）+ 实验迭代（弹性购买）+ 推理服务（按量付费）"三层架构分配算力预算，避免将所有算力需求绑定在单一供应商或定价模式上。</li>
+<li><strong>算力成本敏感性设计</strong>：在产品架构中内置模型压缩、量化、蒸馏等降本能力，确保当算力价格上涨或供应受限时，产品仍能在性能和成本之间快速切换最优平衡点。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 3 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>重要事件 1：OpenCV 5 发布——升级全新 DNN 引擎、原生支持大模型，ONNX 算子覆盖率从 23% 提升至超 80%</h4>
+        <p><b>核心描述：</b>OpenCV 5 正式发布，带来了全新的 DNN（深度神经网络）推理引擎，原生支持大模型部署，ONNX 算子覆盖率从上一版本的约 23% 大幅提升至超过 80%。这意味着绝大多数基于 PyTorch、TensorFlow 等框架训练的模型可以直接转换为 ONNX 并在 OpenCV 5 中高效运行。</p>
+        <p>OpenCV 5 的 DNN 引擎升级对边缘 AI 和嵌入式视觉产品是重大利好。ONNX 算子覆盖率从 23% 到 80%+ 的跃升，意味着 AI PM 在设计端侧视觉产品时，模型转换的兼容性问题将大幅减少，产品开发周期可以显著缩短。对于需要离线运行、低延迟响应的场景（如工业质检、车载视觉、安防监控），OpenCV 5 提供了一个更接近"生产就绪"的推理框架选择。</p>
+        <p>这是计算机视觉基础软件栈的重要升级，边缘部署的模型生态壁垒进一步降低，端侧大模型的工程化路径更加清晰。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>边缘-云端协同架构优化</strong>：将 OpenCV 5 的新 DNN 引擎纳入技术选型评估，对于延迟敏感型视觉产品，优先考虑基于 OpenCV 5 的端侧推理方案，减少对云端 API 的依赖。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>重要事件 2：阶跃首席科学家张祥雨合著论文 ResNet 获 CVPR 2026「时间检验奖」</h4>
+        <p><b>核心描述：</b>阶跃星辰（StepFun）首席科学家张祥雨博士作为第一作者参与的 ResNet（Deep Residual Learning for Image Recognition）论文，荣获 CVPR 2026"时间检验奖"（Test of Time Award）。ResNet 自 2016 年发表以来，已成为深度学习领域引用量最高的论文之一，其残差连接设计深刻影响了后续几乎所有深层网络架构。</p>
+        <p>ResNet 获奖是"实至名归"，但更值得 AI PM 关注的是张祥雨博士从 ResNet 到阶跃星辰的职业路径——这代表了中国 AI 研究机构在吸引全球顶级研究人才方面的能力跃升。对于产品经理而言，这意味着中国大模型公司在底层研究实力上正在快速缩小与 OpenAI、DeepMind 的差距，选择国产大模型作为产品基座的风险正在降低，而本土技术支持响应速度的优势日益明显。</p>
+        <p>残差学习这一设计哲学已超越计算机视觉，成为深度学习的基础范式之一，值得新一代 Builder 深入理解其"梯度流优化"的核心思想。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>国产模型基座评估更新</strong>：将阶跃星辰等具备顶尖研究背景的中国大模型公司纳入产品基座选型的核心评估清单，重新评估其在特定垂直场景下的性能/成本/合规综合优势。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>重要事件 3：M3 与 Opus 代码审计 13 个 bug：$0.07 vs $1.30</h4>
+        <p><b>核心描述：</b>MiniMax 官方发布对比测试，使用其 M3 模型与 Claude Opus 对同一段代码进行审计，双方均发现 13 个 bug，但 M3 的审计成本仅为 $0.07，而 Claude Opus 的成本为 $1.30，成本差距接近 18 倍。</p>
+        <p>这一对比虽然带有厂商宣传性质，但揭示的趋势是真实的——中国大模型在特定任务上的成本效率优势正在形成。对于需要大规模代码审计、文档审查、内容审核等"高吞吐量、中等复杂度"任务的 AI 产品，将推理负载从顶级闭源模型迁移至性价比更优的模型，是直接的降本路径。AI PM 应该建立持续的"模型性价比监控"机制，而不是绑定在单一模型供应商上。</p>
+        <p>18 倍成本差距表明模型能力-成本曲线正在分化，研究型 Builder 应探索混合路由架构（Router），让简单任务走低成本模型、复杂任务走高性能模型。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>动态模型路由机制</strong>：在 AI 产品架构中部署智能路由层，根据任务复杂度、准确性要求、成本预算自动选择最优模型，实现"该省省、该花花"的精细化推理成本管理。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架 1：AI 产品合规的"三法域基线设计法"</h4>
+        <p>在联邦/州权博弈（美国）、AI Act（欧盟）、算法推荐管理规定（中国）等多重监管并存的背景下，AI 产品合规不应以"最低标准"为起点，而应以"最严交集"为默认基线。</p>
+<p><strong>操作步骤</strong>：</p>
+<p><b>1.</b> <strong>法域映射</strong>：列出产品目标市场涉及的所有法域及其核心合规要求（数据隐私、算法透明度、内容安全、用户权利等）。</p>
+<p><b>2.</b> <strong>交集提取</strong>：找出各法域要求中的"最大公约数"——即所有法域都要求的合规项，作为产品默认配置。</p>
+<p><b>3.</b> <strong>差异模块</strong>：将各法域特有的要求（如欧盟的 GDPR 数据可携权、中国的算法备案）封装为可插拔模块。</p>
+<p><b>4.</b> <strong>持续追踪</strong>：建立法规变更的自动化监控机制（如订阅 Reuters、TechCrunch 监管板块 RSS），每季度评估基线是否需要调整。</p>
+<p><strong>适用场景</strong>：面向多国家/地区市场的 AI SaaS 产品、出海 AI 应用、平台型 AI 产品。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架 2：AI 编码的"Spec-Code-Review"三环验证法</h4>
+        <p>受 Spec Kit 启发，将 AI 编码流程从"Prompt → Code"升级为"Spec → Code → Review"的闭环，确保 AI 生成代码不仅"能跑"，而且"符合产品意图"。</p>
+<p><strong>操作步骤</strong>：</p>
+<p><b>1.</b> <strong>Spec 编写</strong>：产品经理用结构化模板（用户故事 + 验收标准 + 边界条件 + 错误处理要求）编写产品规范，替代模糊的自然语言 Prompt。</p>
+<p><b>2.</b> <strong>AI 生成</strong>：开发人员将 Spec 输入 AI 编码工具，获取初版代码。</p>
+<p><b>3.</b> <strong>双向 Review</strong>：开发人员 Review 代码是否符合 Spec；产品经理 Review 实现是否满足原始需求意图。</p>
+<p><b>4.</b> <strong>Spec 迭代</strong>：将 Review 中发现的需求偏差反馈到 Spec 模板中，持续优化规范质量。</p>
+<p><strong>适用场景</strong>：AI 辅助编码团队、AI 原生应用开发、需要高代码质量的企业级产品。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架 3：算力成本的"三层投资组合"管理法</h4>
+        <p>借鉴 Google-SpaceX 算力交易的启示，将算力资源按用途分层管理，平衡成本、弹性和供应安全。</p>
+<p><strong>操作步骤</strong>：</p>
+<p><b>1.</b> <strong>核心训练层（长期锁定）</strong>：用于基础模型训练或核心业务模型的重大迭代，通过长期合同（1-3 年）锁定算力，获取价格优惠和供应保障。占比建议：50-60%。</p>
+<p><b>2.</b> <strong>实验迭代层（弹性购买）</strong>：用于 A/B 测试、新功能原型、模型微调实验，使用按需计费或短期预留实例。占比建议：20-30%。</p>
+<p><b>3.</b> <strong>推理服务层（按量付费）</strong>：用于生产环境的用户请求推理，使用 Serverless 或自动扩缩容方案，按实际调用量付费。占比建议：20-30%。</p>
+<p><strong>关键原则</strong>：单一供应商依赖度不超过 60%；每层至少保留一个备选供应商；每季度复盘各层成本效率并调整配比。</p>
+<p><strong>适用场景</strong>：拥有自建模型或大规模 AI 推理服务的团队、AI 基础设施产品、算力密集型创业公司。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考 1：Spec 会成为 AI 编码时代的"新需求文档"吗？</h4>
+        <p>Spec Kit 的 109K 星标是一个强烈的社区信号。在 AI 编码普及的未来，产品经理的核心交付物是否应该从 PRD（产品需求文档）演变为 Spec（产品规范文档）？PRD 面向人类开发团队，强调背景、场景、同理心；Spec 面向 AI Agent，强调结构化、无歧义、可验证。两者的受众和能力要求截然不同。AI PM 需要思考：如何在团队中建立"双轨制"——面向人类的 PRD 不变，但增加面向 AI 的 Spec 输出？还是说，最终会出现一种融合格式，同时满足人类和 AI 的阅读需求？</p>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考 2：18 倍成本差距（M3 vs Opus）会如何重塑 AI 产品经济模型？</h4>
+        <p>MiniMax 的对比展示了中国模型在成本效率上的激进优势。如果这一差距在更多任务上被验证，AI 产品的经济模型将发生根本性变化——推理成本从"需要谨慎控制的主要成本项"变为"几乎可以忽略不计的基础成本"。这将解锁哪些之前因成本不成立的产品形态？实时多模态交互、无限上下文记忆、个性化模型微调——当推理成本趋近于零时，这些"奢侈功能"可能变成"基础配置"。AI PM 需要重新评估产品路线图中被"成本太高"搁置的功能。</p>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考 3：联邦 AI 监管统一化对创新的净影响是正是负？</h4>
+        <p>众议院法案若通过，美国将从"多州实验"走向"联邦统一"。从效率角度看，统一监管降低了合规成本；从创新角度看，失去了州级监管的"政策实验"空间。加州等州的激进 AI 安全立法虽然给企业带来负担，但也推动了 watermarking、模型审计、透明度报告等最佳实践的成熟。联邦统一监管是否会趋向"最低公分母"，反而削弱美国在 AI 治理上的全球领导力？对于全球化 AI 产品团队，这一问题的答案将直接影响长期合规投资策略。</p>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考 4：Google 为什么要溢价购买算力？自建数据中心不够吗？</h4>
+        <p>Google 每月支付 9.2 亿美元外购算力，这一决策的背后可能隐藏着比"缺算力"更深层的信息。也许 Google 的 TPU 集群在特定 workload（如大规模语言模型训练）上的效率不如英伟达 GPU 集群；也许 Google 需要确保在关键项目上的算力冗余，避免内部资源争用；也许这笔交易同时带有战略合作意图（对抗 Microsoft-OpenAI 联盟）。无论真实原因是什么，它都传递了一个信号：即便是拥有最强基础设施的公司，也在为 AGI 竞赛中的算力安全支付巨额溢价。对于资源更有限的团队，这意味着什么？</p>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考 5：小模型多智能体（如"五个实验室五个心智"）是否代表了 AI 应用的新范式？</h4>
+        <p>Hugging Face 上的"五个实验室五个心智"项目用小模型构建了一个多智能体金融剧情游戏。这与当前主流的"一个大模型做所有事"的架构形成鲜明对比。小模型多智能体架构的优势在于：角色分离清晰、推理成本可控、可解释性更强、故障隔离更好。对于叙事类、模拟类、游戏类 AI 产品，这是否是比单一大模型更优的架构选择？AI PM 应该如何在"模型能力最大化"和"系统架构可控性"之间做出权衡？</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A：AI 产品经理——从需求到 AI 产品落地</h4>
+        <p>#### 快速上手（1-2 周）</p>
+<p><b>1.</b> 了解 Spec Kit 的基本概念和使用方式，尝试用一个简单功能需求编写 AI 可理解的 Spec。</p>
+<p><b>2.</b> 阅读 OpenCV 5 的 Release Note，理解其在端侧 AI 推理方面的能力提升。</p>
+<p><b>3.</b> 关注美国众议院 AI 联邦法案的后续进展，阅读 1-2 篇专业法律分析。</p>
+<p>#### 深入实践（1-2 个月）</p>
+<p><b>1.</b> 在团队内试点"Spec-Driven Development"流程，建立 Spec 模板库，收集 10+ 个实际项目的 Spec-Code 匹配度数据。</p>
+<p><b>2.</b> 建立团队级模型性价比监控机制，完成至少一次模型路由策略的实验性部署。</p>
+<p><b>3.</b> 完成 AI 产品合规架构的"多法域基线"评估报告，识别当前产品的合规 gaps。</p>
+<p>#### 持续精进（长期）</p>
+<p><b>1.</b> 系统学习形式化方法（Formal Methods）和程序验证基础，理解如何进一步提升 AI 生成代码的可靠性。</p>
+<p><b>2.</b> 深入研究边缘 AI 和模型压缩技术，掌握端-云协同架构的系统设计方法。</p>
+<p><b>3.</b> 跟踪全球 AI 监管政策演变，建立个人的"AI 治理"知识体系和分析框架。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B：AI Builder——模型与系统架构</h4>
+        <p>#### 快速上手（1-2 周）</p>
+<p><b>1.</b> 安装 OpenCV 5，将一个现有 ONNX 模型迁移至新 DNN 引擎，对比推理速度和内存占用。</p>
+<p><b>2.</b> 阅读 ResNet 原始论文，理解残差连接的设计动机和数学原理。</p>
+<p><b>3.</b> 体验 M3 或其他高性价比模型在代码审计任务上的表现，建立个人基准测试数据集。</p>
+<p>#### 深入实践（1-2 个月）</p>
+<p><b>1.</b> 设计并实现一个"模型路由器"原型，能够根据任务特征自动选择最优模型（成本 vs 性能权衡）。</p>
+<p><b>2.</b> 参与或复现 Hugging Face 上的"五个实验室五个心智"项目，深入理解多智能体架构。</p>
+<p><b>3.</b> 评估 Spec Kit 的规范语法，思考如何扩展以支持更复杂的软件架构描述。</p>
+<p>#### 持续精进（长期）</p>
+<p><b>1.</b> 深入学习分布式训练和大规模推理系统的工程实践。</p>
+<p><b>2.</b> 研究模型压缩、量化、蒸馏等技术的最新进展，掌握在生产环境中部署高效模型的系统方法。</p>
+<p><b>3.</b> 探索形式化验证与 AI 代码生成的结合点，参与相关开源项目。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C：研究型 Builder——前沿技术与创新</h4>
+        <p>#### 快速上手（1-2 周）</p>
+<p><b>1.</b> 深入分析 Spec Kit 的规范语法设计，思考其与现有软件工程规范（如 OpenAPI、Protocol Buffers）的关系。</p>
+<p><b>2.</b> 阅读 Gary Marcus 的两篇评论文章，梳理其对 AI 发展节奏的论证逻辑和证据链。</p>
+<p><b>3.</b> 调研多智能体系统的最新研究进展，对比集中式大模型与分布式小模型的能力边界。</p>
+<p>#### 深入实践（1-2 个月）</p>
+<p><b>1.</b> 设计一个小规模实验，验证"小模型多智能体"在特定任务上相对于"单一大模型"的性能-成本权衡曲线。</p>
+<p><b>2.</b> 研究 Google-SpaceX-xAI 算力交易的合同结构，分析其对 AI 算力市场定价机制的影响。</p>
+<p><b>3.</b> 探索如何将产品 Spec 与形式化规范（如 TLA+、Coq）结合，提升 AI 生成系统的可验证性。</p>
+<p>#### 持续精进（长期）</p>
+<p><b>1.</b> 跟踪 AI 安全和对齐研究的最新进展，参与学术社区讨论。</p>
+<p><b>2.</b> 研究 AI 监管政策的跨学科影响（法律、经济、社会学），建立多维分析框架。</p>
+<p><b>3.</b> 探索 AI 编码工具对软件工程学科的长期影响，思考"AI 原生软件工程"的新范式。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D：AI 创业者与决策者——战略与市场</h4>
+        <p>#### 快速上手（1-2 周）</p>
+<p><b>1.</b> 评估 Spec Kit 对现有产品开发流程的潜在影响，判断是否需要调整团队结构和技能要求。</p>
+<p><b>2.</b> 分析 M3 等中国模型的成本优势对竞争格局的影响，重新评估产品定价策略。</p>
+<p><b>3.</b> 阅读众议院 AI 法案草案的关键条款，评估对业务模式的潜在风险。</p>
+<p>#### 深入实践（1-2 个月）</p>
+<p><b>1.</b> 完成"算力投资组合"的战略评估，确定自建、租赁、合作的最优组合。</p>
+<p><b>2.</b> 建立竞品监控机制，跟踪 Spec Kit、OpenCV 5 等相关技术的采用率和社区反馈。</p>
+<p><b>3.</b> 评估在多法域合规框架下的产品扩张路径，制定优先级排序的出海策略。</p>
+<p>#### 持续精进（长期）</p>
+<p><b>1.</b> 建立 AI 产业链的系统性认知，跟踪上游（芯片/算力）、中游（模型/平台）、下游（应用/服务）的关键信号。</p>
+<p><b>2.</b> 培养对 AI 监管政策的预判能力，建立与法律顾问、政策研究者的持续沟通机制。</p>
+<p><b>3.</b> 思考 AI 技术变革对行业结构（护城河、价值链、竞争边界）的长期影响。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-08.html">
+      <span class="date">2026-06-08</span>
+      <span class="title">ChatGPT变身AgentGPT与Harness-1检索突破</span>
+      <span class="angle">OpenAI筹备ChatGPT史上最大改版转向Agent超级应用，Harness-1 20B检索子智能体在8个基准上领先11.4个百分点，特朗普政府探讨公共财富基金入股AI</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-06.html">
+      <span class="date">2026-06-06</span>
+      <span class="title">Anthropic失控预警与算力军备竞赛白热化</span>
+      <span class="angle">Anthropic称Mythos模型显现脱离控制迹象呼吁全球暂停，Apollo 350亿美元为Anthropic采购芯片，Google每月支付SpaceX 9.2亿美元获取算力</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-05.html">
+      <span class="date">2026-06-05</span>
+      <span class="title">RSI递归自我改进与AI能耗翻倍预警</span>
+      <span class="angle">OpenAI确认AI递归自我改进初现，联合国警告2030年AI能耗翻倍，Cloudflare数据显示机器人流量首超人类</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>158 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+    </div>
+  </footer>
+</body>
+</html>
