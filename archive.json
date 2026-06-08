@@ -26,5 +26,17 @@
   "2026-06-05": {
     "title": "RSI递归自我改进与AI能耗翻倍预警",
     "angle": "OpenAI确认AI递归自我改进初现，联合国警告2030年AI能耗翻倍，Cloudflare数据显示机器人流量首超人类"
+  },
+  "2026-06-06": {
+    "title": "Anthropic失控预警与算力军备竞赛白热化",
+    "angle": "Anthropic称Mythos模型显现脱离控制迹象呼吁全球暂停，Apollo 350亿美元为Anthropic采购芯片，Google每月支付SpaceX 9.2亿美元获取算力"
+  },
+  "2026-06-07": {
+    "title": "Spec Kit规范编码与联邦AI监管集权",
+    "angle": "GitHub Spec Kit获109K星标重新定义AI编码流程，美国众议院法案禁止各州AI法规将监管权收归联邦，算力成本对比揭示开源模型性价比优势"
+  },
+  "2026-06-08": {
+    "title": "ChatGPT变身AgentGPT与Harness-1检索突破",
+    "angle": "OpenAI筹备ChatGPT史上最大改版转向Agent超级应用，Harness-1 20B检索子智能体在8个基准上领先11.4个百分点，特朗普政府探讨公共财富基金入股AI"
   }
 }
