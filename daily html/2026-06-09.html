@@ -434,6 +434,10 @@
         <div>
           <h3>Apple Intelligence &amp; 第三代 AFM 家族发布：AI 彻底进入 OS 底层</h3>
           <p>苹果在 WWDC 2026 上正式推出第三代 Apple Foundation Models (AFM) 家族，并发布 Apple Intelligence。这是 AI 史上的一次关键节点，标志着 AI 从“外部插件”转型为“系统神经”。</p>
+          <p><b>AI PM 视角：</b>苹果定义的不是一个 Chatbot，而是基于隐私原语的“语义索引层”。Siri 的重塑意味着用户路径的缩短：从“用户找 App”变为“AI 调取能力”。PM 需要重新思考 App 的价值：如果系统级 AI 能完成 80% 的任务，App 是否会退化为纯粹的数据源或垂直执行引擎？</p>
+          <p><b>AI Builder 视角：</b>关注 Core AI 框架的开放程度。Apple 强调端侧与私有云计算（PCC）的协同，这对开发者意味着复杂的模型卸载逻辑。开发者应尽早接入 App Intents 协议，这不仅是给 Siri 用，更是让你的产品具备被“智能体化”的能力。</p>
+          <p><b>研究型 Builder 视角：</b>苹果与 Google 合作定制 AFM 的细节值得挖掘。如何在保证设备端实时性的同时，维持足够的推理深度？其 Private Cloud Compute 的验证机制（非对称加密、硬件安全模块隔离）是分布式隐私推理的工业标杆。</p>
+          <p><b>可落地的方法论：</b>- **App 智能体化自检**：检查产品的所有功能是否已通过 App Intents/MCP 等协议“原子化”，确保能被上层 OS AI 调度。</p>
           <span class="source">SOURCE /// <a href="https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models">Apple Machine Learning Research</a></span>
         </div>
         <div class="tag">STRUCTURAL</div>
@@ -443,6 +447,10 @@
         <div>
           <h3>OpenAI 战略三阶段与上市机密提交：迈向“自动化 AI 研究员”</h3>
           <p>奥尔特曼宣布 OpenAI 进入第三阶段，核心目标是打造能自主进行科学研究的 AI 系统，同时向 SEC 机密提交了 IPO 申请。</p>
+          <p><b>AI PM 视角：</b>OpenAI 的商业逻辑正在从“卖 Token”转向“卖 生产力增量”。自动化研究员的概念预示着 AI 将不再仅仅是辅助工具，而是能生成新知识的实体。PM 需关注“知识发现”类的产品形态，而非简单的“内容生成”。</p>
+          <p><b>AI Builder 视角：</b>自主研究路径意味着 Agent 需要更强的长程推理（Reasoning）和自我修正（Self-Correction）循环。重点关注 OpenAI 如何解决 Agent 陷入陷入死循环的问题，以及如何在大规模轨迹数据上进行强化学习。</p>
+          <p><b>研究型 Builder 视角：</b>Sam Altman 预测到 2028 年 AI 将主导研究。这要求模型不仅具备跨学科联想能力，还必须能与物理模拟器或实验室硬件闭环。目前的难点在于：AI 如何验证其生成的科学假设？</p>
+          <p><b>可落地的方法论：</b>- **长程任务拆解框架**：在设计 Agent 时，引入“元审视”步骤（Meta-Review），让模型在每步操作后自我评估是否偏离研究目标。</p>
           <span class="source">SOURCE /// <a href="https://openai.com/index/openai-submits-confidential-s-1">OpenAI 官网</a></span>
         </div>
         <div class="tag">GROWTH</div>
@@ -452,6 +460,10 @@
         <div>
           <h3>微信 AI 官宣内测：国民级社交生态的“降维打击”</h3>
           <p>微信确认 AI 助手正在内测，并提供自动/开发两种接入模式，用户可通过自然语言直接操作小程序。</p>
+          <p><b>AI PM 视角：</b>这是中国移动互联网最强流量入口的 AI 化。对 PM 而言，过去苦苦追求的小程序留存可能不再重要，重要的是你的服务是否能被微信 AI 精准匹配。这会重塑 SEO/SEM，进化为“AIO (AI Optimization)”。</p>
+          <p><b>AI Builder 视角：</b>自动模式下微信 AI 读取源码的能力极具吸引力，但也存在隐私和逻辑误读风险。建议开发者优先尝试开发模式，定义清晰的 API 文档，通过自定义技能确保服务质量可控。</p>
+          <p><b>研究型 Builder 视角：</b>微信海量的结构化服务数据（小程序、支付、社交）是训练“多模态执行智能体”的绝佳土壤。关注其模型如何处理异构 API 的动态调度问题。</p>
+          <p><b>可落地的方法论：</b>- **AIO 优化清单**：重新定义小程序的 `page.json` 和业务描述，使其包含更丰富的语义描述符，方便微信 AI 索引。</p>
           <span class="source">SOURCE /// <a href="https://www.ithome.com/0/961/480.htm">IT之家</a></span>
         </div>
         <div class="tag">CAPITAL</div>
@@ -461,6 +473,12 @@
         <div>
           <h3>小米 MiMo UltraSpeed：单节点 1,000 tokens/s 的性能神话</h3>
           <p>小米发布 MiMo-V2.5-Pro-UltraSpeed，在单台 8-GPGPU 节点上实现 1T 参数 MoE 模型的千代输出。</p>
+          <p><b>AI PM 视角：</b>极致的推理速度将彻底改变用户交互习惯。从“等待生成”到“实时反馈”，这使得复杂的实时翻译、游戏 NPC 对话、沉浸式写作成为可能。速度即是护城河。</p>
+          <p><b>AI Builder 视角：</b>TileRT_AI 的优化逻辑是核心。在单节点上跑 1T 模型，意味着内存管理、显存交换和并行计算达到了极致。开发者应关注其提供的 API 是否能支持高并发下的低延迟，这对于降低推理成本至关重要。</p>
+          <p><b>研究型 Builder 视角：</b>1000 tokens/s 的实现是否采用了更激进的投机采样（Speculative Decoding）或 KV Cache 压缩？在非专用硬件上达到此速度，其底层的算子融合优化值得深入拆解。</p>
+          <p><b>可落地的方法论：</b>- **高性能推理基准测试**：在评估模型选型时，不仅看 Benchmark 分数，更要测试“首字延迟”和“吞吐极限”，这决定了实时应用的生死。
+
+---</p>
           <span class="source">SOURCE /// <a href="https://x.com/XiaomiMiMo/status/2063993790587904362">X：Xiaomi MiMo</a></span>
         </div>
         <div class="tag">PLATFORM</div>
