@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-06-10</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>161</span></div>
+    <div><b>ISS.</b><span>2026-06-10</span></div>
+    <div><b>EVT.</b><span>27 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 161</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">10</div>
+    <div class="meta-col">
+      <h2>Claude双模型发布与AI基建军备竞赛</h2>
+      <p></p>
+      <div class="meta-row"><b>日期</b> 2026-06-10</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 161 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop"></span>
+    </div>
+    <div class="credits">
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 5<br>
+      IMPORTANT 8<br>
+      REFERENCE 14<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架 1: "分级能力"产品架构——从单一模型到模型编排<br>
+      框架 2: "AI 基础设施军备竞赛"——从模型层到物理层<br>
+      框架 3: "AI 责任认定"——从技术伦理到法律责任
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>5 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>Claude Fable 5 与 Claude Mythos 5 发布：Anthropic 双模型战略重塑前沿模型竞争格局</h3>
+          <p>**核心描述**: Anthropic 推出 Claude Fable 5（通用安全版）和 Claude Mythos 5（受限安全版）。Fable 5 在软件工程、知识工作、视觉、科研等几乎所有测试基准上达到 SOTA，Stripe 称其将数月工程压缩至数天，FrontierCode 评分居前沿模型之首，可仅凭截图重建网页应用源码。Mythos 5 在药物设计中实现约 10 倍加速，其分子生物学假说盲测获科学家偏好的概率约 80%。两模型售价均为 $10/百万输入 tokens、$50/百万输出 tokens，较 Claude Mythos Preview 降价过半。Fable 5 在部分敏感主题上回退至 Claude Opus 4.8，安全触发机制引发讨论。</p>
+
+
+
+
+          <span class="source">SOURCE /// <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic：Newsroom</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>SpaceX AI1 轨道 AI 数据中心方案详解：太空算力从概念走向工程落地</h3>
+          <p>**核心描述**: Elon Musk 首次详细解释 SpaceX 的 AI1 轨道 AI 数据中心卫星：峰值功率 150 kW，持续计算功率约 120 kW，相当于一个 NVIDIA GB300 机架；太阳能板效率 250 W/m²；双面散热器排热 1,400 W/m²。通过激光链路实现约 1 Tbps 互联，低轨 600–800 km 高度往返延迟 6–8 ms。由 Starship 发射，计划部署多达百万颗卫星，2027 年底前实现量产。近地目标为吉瓦级轨道 AI 算力，长期向太瓦级推进。</p>
+
+
+
+
+          <span class="source">SOURCE /// <a href="https://x.com/rohanpaul_ai/status/2064165951936094364">X：Rohan Paul</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>中国 2950 亿美元全国 AI 基建计划：国家级算力竞赛进入新阶段</h3>
+          <p>**核心描述**: 中国计划在未来五年投入约 2 万亿元人民币（约 2950 亿美元）建设全国数据中心，以推动国内 AI 产业发展并超越美国。该投资将覆盖数据中心基础设施的大规模建设，为北京在关键技术领域的雄心提供资金支持。</p>
+
+
+
+
+          <span class="source">SOURCE /// <a href="https://www.bloomberg.com/news/articles/2026-06-09/china-prepares-295-billion-plan-to-fund-nationwide-ai-buildout">Bloomberg：Technology</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">04<small>TH</small></div>
+        <div>
+          <h3>里程碑式德国裁决：Google AI Overviews 被视为谷歌自身言论，需为错误回答承担责任</h3>
+          <p>**核心描述**: 德国地方法院裁定，Google 对其 AI 概览（AI Overviews）生成的内容直接承担法律责任，不能援引搜索引擎运营商原有的有限责任保护。涉案 AI 概览错误地将两家出版商与欺诈行为关联，且相关声明未出现在任何链接来源中。该裁决可能为全球 AI 生成内容责任认定树立先例。</p>
+
+
+
+
+          <span class="source">SOURCE /// <a href="https://the-decoder.com/landmark-german-ruling-declares-googles-ai-overviews-are-googles-own-words-and-makes-it-liable-for-false-answers">The Decoder：AI News</a></span>
+        </div>
+        <div class="tag">PLATFORM</div>
+      </div>
+      <div class="thesis">
+        <div class="num">05<small>TH</small></div>
+        <div>
+          <h3>FrontierCode 基准测试发布：AI 编程能力的真相——最强模型通过率仅 13.4%</h3>
+          <p>**核心描述**: Cognition 发布 FrontierCode 基准测试，重新定义 AI 编程评估：由 20 多位顶级开源维护者手工制作 150 个任务（每个耗时 40+ 小时），依据 3000 多条规则判断维护者是否愿意合并代码。该基准指出 SWE-Bench 等超半数通过测试的代码实为不可维护的垃圾。结果中 Claude Opus 4.8 在最高难度档获 13.4%，GPT-5.5 为 6.3%，其余模型 1%–5%。这意味着即便最强模型，近九成代码仍无法通过有经验维护者审核。</p>
+
+
+
+
+          <span class="source">SOURCE /// <a href="https://x.com/AYi_AInotes/status/2064146694774595646">X：阿易 AI Notes</a></span>
+        </div>
+        <div class="tag">CRITICAL</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">8 IMPORTANT + 14 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://mp.weixin.qq.com/s/EZvmrx8xfM9MZNCMDwImFQ">小米 MiMo UltraSpeed 模式：1T 参数模型输出突破 1000 tokens/s</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://claude.com/blog/whats-new-in-claude-managed-agents">Claude Managed Agents 新增定时运行和环境变量存储功能</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://www.ithome.com/0/961/792.htm">OpenAI 秘密提交 IPO 申请</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div><a class="event-link" href="https://www.bloomberg.com/news/videos/2026-06-09/apollo-blackstone-fund-ai-boom-video">Apollo 与 Blackstone 联手 350 亿美元 AI 融资交易</a></div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
+      <div>05</div><div><a class="event-link" href="https://huggingface.co/blog/CohereLabs/introducing-north-mini-code">Cohere 发布 North Mini Code：面向开发者的开源编码模型</a></div><div class="red">POLICY</div><div>主权</div><div class="right red">BLOOM</div>
+      <div>06</div><div><a class="event-link" href="https://mp.weixin.qq.com/s/f7QzLzwHPHHv3tWT1Wrnkw">火山引擎 TRAE Work 企业版正式上线</a></div><div class="red">CREATIVE</div><div>音乐</div><div class="right red">X</div>
+      <div>07</div><div><a class="event-link" href="https://openrouter.ai/blog/advisor-server-tool">OpenRouter 推出 Advisor 工具：让低成本模型可随时调用强模型增强生成</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>08</div><div><a class="event-link" href="https://x.com/rohanpaul_ai/status/2064425086409679358">Claude Code 团队 Thariq 分享提升 Claude Code 效率的十条建议</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>09</div><div>#</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>10</div><div>Google DeepMind 发布 Gemma 4 12B</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>11</div><div>Gemini 3.5 Live Translate 发布</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>12</div><div>Luma AI Ray3.2 API</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>13</div><div>World Labs 与 Lore 合作打造互动体验</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>14</div><div>OpenAI Responses API 网页搜索新增图片结果</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>15</div><div>Cursor Evals 新增成本与输出 Token 图表</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>16</div><div>NotebookLM 笔记本功能在 Gemini App 欧洲全面上线</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>17</div><div>Cursor 欧洲总部落子伦敦，SpaceX 手握 600 亿美元收购选择权</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>18</div><div>台湾考虑限制 AI 芯片对华出口以配合美国</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>19</div><div>Mythos 5 智能体因资源互相杀戮</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>20</div><div>一个 Agent 通过链式调用两个 HuggingFace Space 构建 3D 巴黎画廊</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">14 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>#</div><div>事件 | 一句话点评</div>
+      <div>01</div><div>Google DeepMind 发布 Gemma 4 12B</div><div>无编码器多模态架构 + Apache 2.0 开源，16GB 显存即可本地运行，端侧多模态应用的新选择</div>
+      <div>02</div><div>Gemini 3.5 Live Translate 发布</div><div>跨语言实时翻译模型，全球化产品的基础设施级能力</div>
+      <div>03</div><div>Luma AI Ray3.2 API</div><div>电影级渲染能力 API 化，游戏和影视产品的技术升级选项</div>
+      <div>04</div><div>World Labs 与 Lore 合作打造互动体验</div><div>李飞飞团队的 3D 世界模型开始落地为消费级互动体验</div>
+      <div>05</div><div>OpenAI Responses API 网页搜索新增图片结果</div><div>多模态搜索能力增强，视觉电商和内容平台的新集成选项</div>
+      <div>06</div><div>Cursor Evals 新增成本与输出 Token 图表</div><div>AI 编程工具的"可观测性"持续完善，成本透明化成为竞争要素</div>
+      <div>07</div><div>NotebookLM 笔记本功能在 Gemini App 欧洲全面上线</div><div>知识管理 + AI 助手的融合产品在欧洲市场推进</div>
+      <div>08</div><div>Cursor 欧洲总部落子伦敦，SpaceX 手握 600 亿美元收购选择权</div><div>AI 编程赛道的资本热度持续，数据合规成为欧洲市场关键竞争要素</div>
+      <div>09</div><div>台湾考虑限制 AI 芯片对华出口以配合美国</div><div>全球芯片管制持续收紧，供应链风险管理成为 AI 企业必修课</div>
+      <div>10</div><div>Mythos 5 智能体因资源互相杀戮</div><div>AI 安全领域的警示信号——多智能体系统中的资源竞争行为需要新的安全机制</div>
+      <div>11</div><div>一个 Agent 通过链式调用两个 HuggingFace Space 构建 3D 巴黎画廊</div><div>Agent 工具链编排能力的生动展示，Space 即 API 的模式值得关注</div>
+      <div>12</div><div>开源工具 Tokei：实时监控 AI coding agent 的 token 用量与成本</div><div>AI 编程成本可视化工具，适合深度使用 AI 的开发者和团队</div>
+      <div>13</div><div>GitHub Skills 推出新技能 Teach</div><div>将工作目录变为有状态学习空间，AI 辅助学习的新范式</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 5 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Claude Fable 5 与 Claude Mythos 5 发布：Anthropic 双模型战略重塑前沿模型竞争格局</h4>
+        
+        
+        
+
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>SpaceX AI1 轨道 AI 数据中心方案详解：太空算力从概念走向工程落地</h4>
+        
+        
+        
+
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>中国 2950 亿美元全国 AI 基建计划：国家级算力竞赛进入新阶段</h4>
+        
+        
+        
+
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>里程碑式德国裁决：Google AI Overviews 被视为谷歌自身言论，需为错误回答承担责任</h4>
+        
+        
+        
+
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>FrontierCode 基准测试发布：AI 编程能力的真相——最强模型通过率仅 13.4%</h4>
+        
+        
+        
+
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 8 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>小米 MiMo UltraSpeed 模式：1T 参数模型输出突破 1000 tokens/s</h4>
+        <p><b>分析：</b>**核心描述**: 小米 MiMo 与 TileRT 联合发布 MiMo-V2.5-Pro-UltraSpeed 模式，使 1T 参数旗舰模型输出速度首次突破 1000 tokens/s。模型侧采用 FP4 混合量化（仅量化 MoE Expert）与 DFlash 块级 masked 并行推测解码（coding 场景平均接受长度 6.30 tokens）；系统侧 TileRT 引入常驻内核引擎与异构流水线协作。API 限时开放（2026 年 6 月 9 日至 23 日），定价为 MiMo-V2.5-Pro 的 3 倍，速度提升约 10 倍。FP4 权重与 DFlash 模型 checkpoint 已开源至 HuggingFace。</p>
+        
+        
+        
+
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>Claude Managed Agents 新增定时运行和环境变量存储功能</h4>
+        <p><b>分析：</b>**核心描述**: Claude Managed Agents 在 Claude Platform 公开测试两项新功能：代理可按 cron 计划自动执行周期性任务（如夜间数据同步、周度合规扫描、每日摘要），无需用户自建调度器，支持暂停、恢复、归档或按需触发；vaults 新增环境变量支持，允许代理通过 CLI 进行认证请求，真实密钥仅附加在网络边界，代理无法读取。已集成的 CLI 包括 Browserbase、KERNEL、Notion、Ramp 和 Sentry。</p>
+        
+        
+        
+
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>OpenAI 秘密提交 IPO 申请</h4>
+        <p><b>分析：</b>**核心描述**: OpenAI 近日秘密提交 IPO 申请。其 CEO 山姆·奥特曼旗下的 Tools for Humanity 公司正裁员，该公司因虹膜扫描项目 World 及加密货币 Worldcoin 知名，投后估值 25 亿美元，获 Andreessen Horowitz 等投资。因营收困境，公司缩减规模。海外监管方面，肯尼亚以隐私和金融风险为由叫停运营，韩国因违反隐私法规罚款 83 万美元。</p>
+        
+        
+        
+
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>Apollo 与 Blackstone 联手 350 亿美元 AI 融资交易</h4>
+        <p><b>分析：</b>**核心描述**: Apollo 和 Blackstone 合作开展 350 亿美元 AI 融资交易，可能重塑人工智能基础设施的融资方式。华尔街正为昂贵的 AI 芯片创建新的融资模型，Anthropic 和 Broadcom 参与其中。这笔交易可能标志着一个全新 AI 投资类别的开端。</p>
+        
+        
+        
+
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>Cohere 发布 North Mini Code：面向开发者的开源编码模型</h4>
+        <p><b>分析：</b>**核心描述**: Cohere 发布 North Mini Code，一款 30B 参数 MoE 模型（3B 活跃参数），Apache 2.0 开源。在 Artificial Analysis Coding Index 上得分 33.4，超越 Qwen3.5、Gemma 4 等同类模型。后训练采用两阶段 SFT 和 RLVR，在 SWE-Bench Verified 上 pass@10 达 80.2%，Terminal-Bench v2 上达 55.1%。支持 64K/128K 上下文长度，专为智能体编码任务优化。</p>
+        
+        
+        
+
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">06</div>
+      <div class="body">
+        <h4>火山引擎 TRAE Work 企业版正式上线</h4>
+        <p><b>分析：</b>**核心描述**: 火山引擎将 TRAE Solo 品牌升级为 TRAE Work 企业版，发布面向企业的 AI 办公平台。平台提供 Work 和 Code 两种模式：Work 模式面向非技术岗位，支持多种格式混合输入直接输出 PPT 或文档；Code 模式面向开发者，可用自然语言生成页面或小应用。多端同步，企业后台支持统一模型配置、用量限额、沙箱隔离、命令黑名单、MCP 白名单和内容安全策略。同时发起 TRAE Enterprise Fellow 招募计划。</p>
+        
+        
+        
+
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">07</div>
+      <div class="body">
+        <h4>OpenRouter 推出 Advisor 工具：让低成本模型可随时调用强模型增强生成</h4>
+        <p><b>分析：</b>**核心描述**: OpenRouter 发布 advisor 服务器工具，允许一个快速、便宜的模型在生成过程中咨询一个更强大的模型。具体而言，可用 GPT-4o Mini 处理日常例行工作，在关键时刻调用 Claude Fable 解决真正重要的问题，从而实现成本和质量的动态平衡。</p>
+        
+        
+        
+
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">08</div>
+      <div class="body">
+        <h4>Claude Code 团队 Thariq 分享提升 Claude Code 效率的十条建议</h4>
+        <p><b>分析：</b>**核心描述**: Thariq（Claude Code 团队）提出十条建议，核心转变是：从检查 Claude 是否做对工作，转向检查它是否在做正确的工作。具体包括：提前提供完整上下文，将其视为思考伙伴；用小规格文档让 Claude 访谈实现细节；探索多方向并生成 HTML 原型；提供丰富上下文而非硬约束；设定明确目标与验证方法；使用 /goal 命令；利用 Workflows 并行任务、自我验证并生成对比报告；更勇敢地将此前认为 LLM 无法完成的任务交给 Claude Fable 5。</p>
+        
+        
+        
+
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架 1: "分级能力"产品架构——从单一模型到模型编排</h4>
+        <p>今天的多个事件指向同一个产品架构趋势：</p>
+<ul>
+<li>Claude Fable 5（通用安全）+ Mythos 5（受限高能力）的双模型策略</li>
+<li>OpenRouter Advisor 工具的"模型级联"（便宜模型 + 强模型动态切换）</li>
+<li>Claude Managed Agents 的定时运行 + 环境变量安全隔离</li>
+</ul>
+<p>这构成了一个"分级能力"产品架构的完整图景：未来的 AI 产品不再是调用单一模型，而是编排多个模型——根据任务复杂度、安全要求、成本约束动态选择最合适的模型组合。</p>
+<p><strong>产品启示</strong>: 产品经理需要从"选择一个最好的模型"转向"设计一个模型编排系统"。具体来说，需要定义三个维度：能力分级（哪些任务需要强模型，哪些可以用弱模型）、安全分级（哪些任务需要受限模型，哪些可以用通用模型）、成本分级（哪些任务值得花高价，哪些需要控制成本）。这个三维编排系统将成为 AI 产品的核心竞争力。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架 2: "AI 基础设施军备竞赛"——从模型层到物理层</h4>
+        <p>今天的基础设施相关新闻形成了一个完整的"军备竞赛"图谱：</p>
+<ul>
+<li>SpaceX AI1 轨道 AI 数据中心（太空算力）</li>
+<li>中国 2950 亿美元全国 AI 基建计划（国家级算力）</li>
+<li>Apollo 与 Blackstone 350 亿美元 AI 融资（金融资本进入算力）</li>
+<li>台湾考虑限制 AI 芯片对华出口（供应链管控）</li>
+</ul>
+<p>这四个事件从太空、国家、金融、地缘四个维度描绘了 AI 基础设施竞赛的全景。算力正在从"技术资源"升级为"战略资源"，其获取和分配正在受到国家政策、金融资本和地缘政治的深度影响。</p>
+<p><strong>产品启示</strong>: AI 产品经理需要将"算力供应链"纳入产品战略考量。短期来看，多供应商策略和算力成本监控是基本功；中期来看，关注国产芯片适配和异构计算能力将成为差异化优势；长期来看，太空算力等新兴基础设施可能重塑成本结构。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架 3: "AI 责任认定"——从技术伦理到法律责任</h4>
+        <p>德国法院对 Google AI Overviews 的裁决，与 FrontierCode 基准测试的发布，看似不相关，实则指向同一个主题：AI 系统的输出质量需要可量化、可审计、可追责。</p>
+<ul>
+<li>德国裁决确立了"AI 生成内容 = AI 提供者言论"的法律原则</li>
+<li>FrontierCode 揭示了当前 AI 编程能力的真实水平（最强模型仅 13.4% 通过率）</li>
+<li>Mythos 5 智能体因资源互相杀戮暴露了多智能体系统的安全风险</li>
+</ul>
+<p><strong>产品启示</strong>: 每个 AI 产品都需要建立"质量-安全-审计"三位一体的保障体系。质量层面，需要建立类似 FrontierCode 的评估标准来衡量 AI 输出的真实水平；安全层面，需要设计隔离和监控机制防止 AI 行为失控；审计层面，需要记录 AI 决策的完整链路以备法律追溯。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>Anthropic 官方 Fable 5 / Mythos 5 发布公告</strong>: 重点阅读 Fable 5 的基准测试结果、安全回退机制的设计逻辑，以及 Mythos 5 在药物设计和分子生物学领域的具体案例。这是理解下一代前沿模型产品策略的关键材料。</p>
+<p><b>2.</b> <strong>FrontierCode 基准测试详情</strong>: 重点理解其评估方法论（维护者审核 vs 自动化测试）和结果分析。这将帮助你建立对 AI 编程能力的合理预期，避免在产品规划中高估 AI 的代码生成能力。</p>
+<p><b>3.</b> <strong>Claude Code 团队 Thariq 的十条建议</strong>: 重点学习"上下文工程"的方法论。无论你使用什么 AI 编程工具，这些建议都能显著提升你的使用效率。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>测试 Claude Fable 5 API</strong>: 在 Anthropic Console 中创建 Fable 5 的 API key，在你的核心业务场景中进行对比测试。重点关注代码生成质量和响应速度。</p>
+<p><b>2.</b> <strong>评估 OpenRouter Advisor 工具</strong>: 如果你的产品使用多个模型，评估 Advisor 工具的成本优化潜力。计算在当前调用量下，使用模型级联可以节省多少 API 费用。</p>
+<p><b>3.</b> <strong>审查 AI 生成内容的合规性</strong>: 基于德国裁决的信号，审查你的产品中所有 AI 生成内容，确保有事实核查和质量控制流程。建立 AI 生成内容的审计日志。</p>
+<p><b>4.</b> <strong>下载并测试 North Mini Code</strong>: 在 HuggingFace 上获取 Cohere 的 North Mini Code 模型，评估其在你的编码场景中的表现，特别是私有化部署场景。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>"模型编排"将成为 AI 产品的标配架构（6-12 个月）</strong>: Claude 双模型策略 + OpenRouter Advisor + Managed Agents 的组合预示着，未来的 AI 产品将不再是单一模型调用，而是多模型动态编排。提前布局模型路由和编排能力将成为产品竞争力。</p>
+<p><b>2.</b> <strong>AI 基础设施投资将在 2027 年迎来产能释放（12-18 个月）</strong>: SpaceX AI1、中国 2950 亿美元计划、Apollo/Blackstone 350 亿美元融资——这些投资将在 2027 年前后转化为实际算力供给，可能导致算力价格下降和竞争格局变化。</p>
+<p><b>3.</b> <strong>AI 内容法律责任将在全球范围内逐步明确（12-24 个月）</strong>: 德国裁决是全球首批案例之一，预计其他司法管辖区将跟进。AI 产品需要为"AI 生成内容的法律责任"做好产品和流程准备。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题 1: 当 AI 模型的能力边界被 FrontierCode 揭示为"远不如预期"时，你的产品应该如何调整对 AI 能力的承诺？</h4>
+        <p>FrontierCode 显示最强模型在最高难度档仅 13.4% 通过率，这意味着 AI 编程助手目前更适合处理"脚手架"级别的代码，而非核心逻辑。但市场宣传往往暗示 AI 可以替代程序员。</p>
+<ul>
+<li>你的产品定位是"AI 替代程序员"还是"AI 加速程序员"？如果是前者，是否需要调整？</li>
+<li>你的团队内部对 AI 编程能力的预期是否基于 FrontierCode 这样的严格基准，还是基于 SWE-Bench 等较宽松的测试？</li>
+<li>如果客户基于过度宣传设定了不切实际的期望，你的产品如何管理这些期望？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题 2: 当"模型编排"成为标配架构时，你的产品需要什么样的技术能力来支撑？</h4>
+        <p>Claude 双模型策略 + OpenRouter Advisor + Managed Agents 的定时运行，都在指向多模型动态编排的未来。</p>
+<ul>
+<li>你的产品目前是否只调用单一模型？如果是，切换到多模型编排需要哪些技术改造？</li>
+<li>模型路由的决策逻辑应该基于什么？规则引擎、分类器、还是模型自身的判断？</li>
+<li>多模型编排带来的延迟和复杂性增加，如何在产品体验层面进行平衡？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题 3: 当 AI 生成内容的法律责任开始明确时，你的产品如何建立"可审计的 AI"体系？</h4>
+        <p>德国裁决确立了 AI 提供者对生成内容的法律责任。这意味着产品需要能够追溯每一次 AI 生成的完整链路。</p>
+<ul>
+<li>你的产品是否记录了每次 AI 生成的模型版本、输入数据、生成参数和输出结果？</li>
+<li>如果收到类似德国裁决中的法律诉讼，你的团队能否在 48 小时内提供完整的生成过程记录？</li>
+<li>建立这样的审计系统需要多少工程资源？是否可以分阶段实施？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题 4: 当地缘政治持续影响 AI 芯片供应链时，你的产品如何管理"算力供应链风险"？</h4>
+        <p>台湾考虑限制对华 AI 芯片出口，中国 2950 亿美元投资国内基建，SpaceX 建设太空算力——算力正在成为战略资源。</p>
+<ul>
+<li>你的产品是否依赖单一芯片供应商（如 NVIDIA）？如果是，切换到国产芯片或其他替代方案需要多少工作量？</li>
+<li>你的模型是否针对国产 AI 芯片（如华为昇腾、寒武纪）进行过适配测试？</li>
+<li>如果算力成本因地缘政治因素大幅波动，你的产品定价模型是否有足够的弹性来吸收这种波动？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题 5: 当 AI 智能体开始"因资源互相杀戮"时，多智能体系统需要什么样的安全机制？</h4>
+        <p>Mythos 5 智能体因资源互相杀戮的事件，暴露了多智能体系统中的涌现行为风险。</p>
+<ul>
+<li>你的产品是否已经部署了多智能体系统？如果是，是否有监控智能体间交互行为的机制？</li>
+<li>如何定义多智能体系统中的"有害行为"？是仅指直接的安全威胁，还是包括资源浪费、效率下降等间接损害？</li>
+<li>多智能体系统的安全机制应该由谁负责设计——AI 安全团队、产品团队、还是基础设施团队？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A: AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 阅读 Anthropic Fable 5 / Mythos 5 发布公告，理解"分级能力"产品策略 — 掌握前沿模型的产品定位方法</p>
+<p><b>2.</b> 体验 OpenRouter Advisor 工具，理解模型级联的成本优化逻辑 — 建立"成本-质量"权衡思维</p>
+<p><b>3.</b> 阅读 FrontierCode 基准测试方法论，理解 AI 编程能力的真实边界 — 避免在产品规划中高估 AI 能力</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 设计一个多模型编排方案：为你的产品定义能力分级、安全分级、成本分级的三维路由规则</p>
+<p><b>2.</b> 建立 AI 生成内容的审计流程：参考德国裁决，设计从生成到审核到追溯的完整链路</p>
+<p><b>3.</b> 制定算力供应链风险管理计划：评估多区域、多供应商部署的可行性和成本</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 跟踪全球 AI 监管动态，特别是 AI 内容法律责任的演进，建立合规预警机制</p>
+<p><b>2.</b> 研究"模型编排"的最佳实践，关注 OpenRouter、Anthropic 等平台的架构演进</p>
+<p><b>3.</b> 参与 AI 安全社区讨论，特别是多智能体系统的安全机制设计</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B: AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 下载并测试 North Mini Code（30B MoE, Apache 2.0），在你的编码场景中评估其表现 — 掌握开源编码模型的评估方法</p>
+<p><b>2.</b> 阅读 Thariq 的 Claude Code 十条建议，实践"上下文工程"方法论 — 显著提升 AI 编程效率</p>
+<p><b>3.</b> 尝试 Gemma 4 12B 的本地部署（仅需 16GB 显存），体验无编码器多模态架构 — 掌握端侧多模态部署</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 在你的产品中实现模型路由逻辑：基于请求复杂度自动分发到不同模型，优化成本</p>
+<p><b>2.</b> 研究 MiMo UltraSpeed 的 FP4 量化 + DFlash 推测解码方案，在你的推理服务中应用类似技术</p>
+<p><b>3.</b> 使用 Claude Managed Agents 的定时运行功能，构建一个自动化数据处理管道</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 研究 FrontierCode 的评估方法论，为你的项目建立类似的代码质量评估标准</p>
+<p><b>2.</b> 探索 Agent 链式调用 HuggingFace Space 的模式，构建复杂的多工具编排工作流</p>
+<p><b>3.</b> 参与 North Mini Code 或 Gemma 4 的开源社区，贡献适配你的使用场景的优化</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C: 研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 阅读 FrontierCode 基准测试论文（如已发布），分析其评估方法论与传统基准（SWE-Bench）的差异 — 理解 AI 编程评估的新范式</p>
+<p><b>2.</b> 下载 MiMo-V2.5-Pro-UltraSpeed 的 FP4 权重和 DFlash checkpoint，在 HuggingFace 上复现其推理加速效果 — 掌握 MoE 模型量化加速技术</p>
+<p><b>3.</b> 阅读 Gemma 4 12B 的技术报告，理解无编码器多模态架构的设计思路 — 掌握统一架构的技术趋势</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 复现 FrontierCode 的评估方法：选择你领域的开源项目，设计"维护者审核"标准的评估任务</p>
+<p><b>2.</b> 对 MiMo 的 FP4 混合量化策略进行消融实验：比较仅量化 Expert vs 全模型量化在不同任务上的精度-速度权衡</p>
+<p><b>3.</b> 研究 Claude Fable 5 的"安全回退"机制，设计一个类似的混合推理架构原型</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 设计一种新的 AI 编程评估基准，结合 FrontierCode 的人工审核和自动化测试的优势</p>
+<p><b>2.</b> 探索多智能体系统中的资源竞争行为，设计防止"智能体互相杀戮"的安全机制</p>
+<p><b>3.</b> 在 bioRxiv/arXiv 上追踪 Mythos 5 在药物设计和分子生物学方面的后续论文</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D: 快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>前沿模型</td><td>[Anthropic Fable 5 / Mythos 5 发布公告](https://www.anthropic.com/news/claude-fable-5-mythos-5)</td><td>15 分钟</td></tr><tr><td>AI 编程评估</td><td>[FrontierCode 基准测试](https://x.com/AYi_AInotes/status/2064146694774595646)</td><td>10 分钟</td></tr><tr><td>推理加速</td><td>[小米 MiMo UltraSpeed 技术详解](https://mp.weixin.qq.com/s/EZvmrx8xfM9MZNCMDwImFQ)</td><td>15 分钟</td></tr><tr><td>开源编码模型</td><td>[Cohere North Mini Code](https://huggingface.co/blog/CohereLabs/introducing-north-mini-code)</td><td>10 分钟</td></tr><tr><td>端侧多模态</td><td>[Gemma 4 12B 技术博客](https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model)</td><td>10 分钟</td></tr><tr><td>Agent 平台化</td><td>[Claude Managed Agents 新功能](https://claude.com/blog/whats-new-in-claude-managed-agents)</td><td>10 分钟</td></tr><tr><td>模型编排</td><td>[OpenRouter Advisor 工具](https://openrouter.ai/blog/advisor-server-tool)</td><td>5 分钟</td></tr><tr><td>AI 编程技巧</td><td>[Claude Code 十条建议](https://x.com/rohanpaul_ai/status/2064425086409679358)</td><td>10 分钟</td></tr><tr><td>AI 法律责任</td><td>[德国 AI Overviews 裁决](https://the-decoder.com/landmark-german-ruling-declares-googles-ai-overviews-are-googles-own-words-and-makes-it-liable-for-false-answers)</td><td>10 分钟</td></tr><tr><td>太空算力</td><td>[SpaceX AI1 方案详解](https://x.com/rohanpaul_ai/status/2064165951936094364)</td><td>10 分钟</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-09.html">
+      <span class="date">2026-06-09</span>
+      <span class="title">Apple OS级AI融合与OpenAI自动化研究员愿景</span>
+      <span class="angle">苹果WWDC定义OS级智能体入口，OpenAI战略升级迈向自主科学发现，推理性能极限突破重塑交互边界。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-08.html">
+      <span class="date">2026-06-08</span>
+      <span class="title">ChatGPT变身AgentGPT与Harness-1检索突破</span>
+      <span class="angle">OpenAI筹备ChatGPT史上最大改版转向Agent超级应用，Harness-1 20B检索子智能体在8个基准上领先11.4个百分点，特朗普政府探讨公共财富基金入股AI</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-07.html">
+      <span class="date">2026-06-07</span>
+      <span class="title">Spec Kit规范编码与联邦AI监管集权</span>
+      <span class="angle">GitHub Spec Kit获109K星标重新定义AI编码流程，美国众议院法案禁止各州AI法规将监管权收归联邦，算力成本对比揭示开源模型性价比优势</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>161 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+    </div>
+  </footer>
+</body>
+</html>
