@@ -1,0 +1,1096 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-06-11</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>162</span></div>
+    <div><b>ISS.</b><span>2026-06-11</span></div>
+    <div><b>EVT.</b><span>29 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 162</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">11</div>
+    <div class="meta-col">
+      <h2>扩散模型开源与AI法律责任元年</h2>
+      <p></p>
+      <div class="meta-row"><b>日期</b> 2026-06-11</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 162 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop"></span>
+    </div>
+    <div class="credits">
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 5<br>
+      IMPORTANT 12<br>
+      REFERENCE 12<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架一：从"模型能力"到"责任边界"——AI 产品的合规设计框架<br>
+      框架二：扩散架构与推理效率——下一代 AI 产品的性能飞轮<br>
+      框架三：具身智能的平台化——从"机器人大脑"到"机器人云"
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>5 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>DiffusionGemma：文本生成速度提升4倍的开源扩散模型</h3>
+          <p>Google DeepMind 发布开源实验模型 DiffusionGemma，采用文本扩散技术突破自回归逐 token 生成方式，每次前向并行生成 256 个 token。该 26B MoE 模型推理时仅激活 3.8B 参数，量化后适配 18GB 显存消费级 GPU，在 H100 上达 1000+ tokens/s，RTX 5090 上 700+ tokens/s，速度提升约 4 倍。</p>
+          <p><b>AI PM 视角：</b>DiffusionGemma 的发布标志着文本生成范式的潜在转折点。自回归（AR）模型自 GPT 系列以来主导了 LLM 架构，但其逐 token 生成的串行特性构成了推理速度的理论上限。DiffusionGemma 采用扩散模型思路，将文本生成视为从噪声到文本的去噪过程，每次前向传播可并行生成 256 个 token，这从根本上改变了"速度与质量不可兼得"的权衡曲线。
+
+对于产品端，这意味着三个关键机会：第一，本地部署的可行性大幅提升——18GB 显存要求使消费级 GPU 可以运行高质量文本生成，为隐私敏感型应用（如医疗、法律文档处理）开辟了新场景；第二，交互延迟的质变——700+ tokens/s 的速度接近人类阅读速度，使得实时协同写作、流式代码补全、对话式搜索等产品的体验将从"可用"跃升为"流畅"；第三，双向注意力和自我修正能力使模型天然适合内联编辑、代码填充等需要前后文一致性的任务，这与当前自回归模型"从左到右"的偏置形成互补。从竞争格局看，Google 以 Apache 2.0 许可证开源此模型，直接对标 Meta 的 Llama 系列和 Mistral 的开源生态，但扩散架构的差异化可能吸引更多研究者和开发者围绕这一新范式构建工具链。</p>
+
+          <p><b>研究型 Builder 视角：</b>DiffusionGemma 的技术 novelty 在于将图像扩散模型的成功范式迁移到离散文本空间。关键挑战在于文本的离散性——不同于连续像素，token 是分类变量，因此需要特殊的嵌入和去噪策略。该模型采用 26B MoE 架构但仅激活 3.8B 参数，说明扩散过程可以通过稀疏激活保持计算效率。双向注意力机制意味着模型在生成每个位置时都能看到完整的上下文，这与 AR 模型的因果掩码形成对比，理论上能产生更好的全局一致性。可复现性方面，Apache 2.0 许可证和已发布的模型权重使独立验证成为可能，但扩散模型的训练稳定性、采样步数与质量的 trade-off、以及在不同任务上的泛化能力仍需社区的大规模测试。研究到产品的转化路径清晰：本地 IDE 插件、实时协作编辑器、隐私优先的写作助手都是直接的落地场景。</p>
+          <p><b>可落地的方法论：</b>- 本周行动：在本地环境（18GB+ 显存）部署 DiffusionGemma，测试其在代码补全、文档重写、翻译等任务上的速度和质量，与同等规模的 AR 模型（如 Qwen-3-4B、Llama-4-Scout）做 A/B 对比。
+- 本季度行动：如果你的产品涉及文本生成且对延迟敏感（如客服机器人、实时字幕、代码补全），评估将扩散模型作为候选架构的可行性，特别关注其在长文本一致性和内联编辑场景下的优势。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation">Google DeepMind：Blog（RSS）</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>突发：Google 因模型幻觉被判负有法律责任</h3>
+          <p>一项法律裁决判定 Google 对其 AI 模型产生的幻觉内容负有法律责任，该判决若被其他国家跟进，将对 AI 行业的责任界定产生深远影响。</p>
+          <p><b>AI PM 视角：</b>这是 AI 行业法律监管的分水岭时刻。在此之前，AI 模型的幻觉普遍被视为"技术局限"而非"法律责任"——用户协议中通常包含免责声明，将模型输出的准确性责任推给用户。此次裁决若成立，意味着平台方无法仅凭"AI 可能犯错"来规避法律后果，这从根本上改变了 AI 产品的风险模型。
+
+对产品经理而言，这一事件迫使我们重新设计三个层面的策略：首先是输出层面的"安全网"——需要建立更严格的置信度阈值、来源引用机制和人工审核流程，尤其是在医疗、法律、金融等高风险领域；其次是用户沟通层面的"预期管理"——需要更明确地告知用户哪些输出经过验证、哪些是模型生成，避免用户将 AI 输出等同于权威信息；第三是商业模式层面的"保险设计"——可能需要引入类似于错误与遗漏保险（E&amp;O insurance）的机制，或通过与第三方事实核查机构合作来转移风险。值得注意的是，这与同日发布的"豆包AI误导用户损失600元"事件形成呼应——两个案例都指向同一个问题：当非技术用户将 AI 输出视为可靠建议并据此采取行动时，责任边界在哪里？</p>
+
+          <p><b>研究型 Builder 视角：</b>从研究角度看，这一裁决将加速"可验证 AI"（Verifiable AI）领域的研究投入。当前 LLM 的幻觉问题本质上源于其概率生成机制——模型被训练为"生成合理的文本"而非"生成真实的陈述"。法律责任的明确化将推动两类技术：一是检索增强生成（RAG）和事实核查机制的工程化落地，二是模型本身的"可解释性"和"可追溯性"研究，即让模型能够展示其结论的来源和推理链条。短期内，Expectation Calibration（预期校准）和 Uncertainty Quantification（不确定性量化）将成为高优先级研究方向。</p>
+          <p><b>可落地的方法论：</b>- 本周行动：审查你所在产品中的 AI 输出免责声明，评估其法律充分性；对高风险场景（如医疗建议、财务规划、法律咨询）增加"此内容未经专业审核"的强制提示和双重确认机制。
+- 本季度行动：建立 AI 输出的"置信度标签"体系，对模型输出进行分级（已验证 / 高置信度 / 推测性），并在用户界面中显性展示，参考 Google 搜索的"About this result"设计模式。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://garymarcus.substack.com/p/breaking-google-liable-for-hallucinations">Gary Marcus：The Road to AI We Can Trust（RSS）</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>Anthropic 研究：AI 数小时内即可从安全补丁构建漏洞利用</h3>
+          <p>Anthropic 安全团队发现，其 Mythos Preview AI 模型能在几小时内将 Firefox 和 Windows 内核的安全补丁转化为可工作的漏洞利用，成本仅需数千美元，且无需专业知识。在微软自动更新到达任何设备之前，该模型已完成 8 条完整攻击链。</p>
+          <p><b>AI PM 视角：</b>这项研究揭示了一个令人不安的安全悖论：AI 正在将"补丁-攻击"的时间窗口从"数周"压缩到"数小时"，而传统的安全更新节奏（如微软的 Patch Tuesday）是以"数周"为单位设计的。这意味着，从安全补丁发布的瞬间到用户完成更新的窗口期，攻击者（或 AI 辅助的攻击者）已经有足够时间构建并利用漏洞。
+
+对产品的影响是系统性的：首先，自动更新机制需要从"定期批量更新"转向"实时连续更新"，这对基础设施提出了极高要求；其次，安全产品的价值主张需要重新定位——从"检测已知威胁"转向"预测未知威胁"，AI 驱动的威胁情报和攻击模拟将成为刚需；第三，企业采购决策中将更加重视"零日窗口期"（zero-day window）的缩短能力。对于云服务商和安全厂商，这是一个巨大的产品机会：提供 AI 驱动的自动补丁验证、攻击模拟即服务（Attack Simulation as a Service）、以及基于 AI 的漏洞优先级排序。Anthropic 主动披露此项研究也表明，领先 AI 实验室正在将安全研究作为公共产品发布，以推动整个行业升级防御体系。</p>
+
+          <p><b>研究型 Builder 视角：</b>这项研究的核心 novelty 在于展示了 LLM 在"逆向工程"和"攻击链构建"上的惊人能力。传统上，从补丁到漏洞利用需要深厚的二进制分析、内存管理和系统编程知识，而 Mythos Preview 能在数小时内自动完成这一过程，说明模型已经内化了大量的安全研究文献和漏洞利用模式。从研究到产品的转化路径包括：自动漏洞挖掘工具、补丁影响评估系统、以及红队自动化平台。但这也引发了严重的双重用途（dual-use）问题——同一能力可被防御方和攻击方使用。Anthropic 的披露策略（发布研究结果但不发布攻击细节）是负责任的，但无法阻止其他能力相近的模型被恶意使用。</p>
+          <p><b>可落地的方法论：</b>- 本周行动：如果你负责的产品涉及安全更新或漏洞管理，评估当前补丁发布到用户更新的平均时间窗口，识别可以被 AI 辅助攻击利用的薄弱环节。
+- 本季度行动：在你的安全运营中心（SOC）或 DevSecOps 流程中引入 AI 辅助的补丁影响分析，优先部署能够自动验证补丁有效性并模拟攻击链的安全工具。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://the-decoder.com/anthropic-study-shows-ai-needs-hours-not-weeks-to-build-exploits-from-security-patches">The Decoder：AI News（RSS）</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">04<small>TH</small></div>
+        <div>
+          <h3>小米发布 MiMo Code V0.1 开源终端 AI 编程助手</h3>
+          <p>小米推出开源终端 AI 编程助手 MiMo Code V0.1，附带限时免费使用的多模态模型 MiMo V2.5，支持百万 token 上下文窗口。核心特性包括无限上下文、Agent-模型深度协同、Compose 模式、自进化系统、语音输入，兼容 Claude Code，支持 Anthropic、OpenAI、DeepSeek、Kimi、GLM 等主流模型提供商。</p>
+          <p><b>AI PM 视角：</b>小米进入 AI 编程助手赛道是一个值得关注的信号。不同于 Cursor、GitHub Copilot 等欧美主导的产品，MiMo Code 从设计之初就考虑了中文开发者的需求和多模型兼容性。其"无限上下文"（通过自动知识积累与无损压缩实现）直接回应了大型代码库处理的痛点——百万 token 上下文窗口使模型可以理解整个项目的架构而不仅是当前文件。
+
+更深层的战略意义在于"Agent-模型深度协同"的设计：测试-审查-验证闭环意味着 AI 不再只是代码生成器，而是可以自主运行测试、审查代码、验证结果的开发伙伴。这与 Cursor 的 Composer 模式、Devin 的自主 Agent 能力形成竞争，但小米选择以开源（MIT 许可）和多模型兼容的差异化策略切入。对于产品经理，需要关注三个信号：第一，编程助手市场正在从"单模型绑定"（如 Copilot 绑定 OpenAI）转向"多模型路由"，用户将更重视灵活性和性价比；第二，语音输入（基于 MiMo-V2.5-ASR）的引入表明自然语言交互正在渗透到专业工具中，降低了非英语母语开发者的使用门槛；第三，小米的入局意味着硬件厂商开始将 AI 编程能力作为生态壁垒，未来可能与小米的 IoT 开发平台、汽车 SDK 等形成协同。</p>
+
+          <p><b>研究型 Builder 视角：</b>MiMo Code 的技术亮点在于"无限上下文"的实现机制——通过自动知识积累和无损压缩来扩展有效上下文长度。这与当前主流的上下文窗口扩展技术（如 Ring Attention、Sparse Attention、KV Cache 压缩）不同，可能采用了增量式索引和检索增强的结合策略。Agent-模型协同的测试-审查-验证闭环涉及多步骤规划、工具调用和结果验证，其实现质量取决于底层模型的推理能力和工具生态的完善度。作为开源项目，其代码架构和 Agent 设计模式值得深入研究，特别是 Compose 模式（规格→计划→构建→报告）的工作流编排机制。</p>
+          <p><b>可落地的方法论：</b>- 本周行动：安装 MiMo Code V0.1，在真实项目中测试其"Compose 模式"和"无限上下文"能力，特别关注其在大型代码库（&gt;10万行）中的导航和理解准确性，与 Cursor 3.7+ 进行并排对比。
+- 本季度行动：如果你负责开发者工具产品，评估多模型路由架构的可行性——让用户根据任务类型、成本和延迟要求选择不同后端模型，而不是绑定单一供应商。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/XiaomiMiMo/status/2064772356443394441">X：小米 MiMo (@XiaomiMiMo)</a></span>
+        </div>
+        <div class="tag">PLATFORM</div>
+      </div>
+      <div class="thesis">
+        <div class="num">05<small>TH</small></div>
+        <div>
+          <h3>工信部印发《"人工智能+信息通信"创新发展实施意见》</h3>
+          <p>工信部发文要求加快建设 400Gbps/800Gbps 骨干传输网络，推进城域 400Gbps 及以上高速光传输系统应用，推动 5G-A/6G、新一代光网络、"IPv6+"、工业互联网与 AI 融合发展，攻关空口智能化、网络高等级自智、智能体互联网等核心技术。</p>
+          <p><b>AI PM 视角：</b>这是中国 AI 基础设施建设的纲领性文件，其战略意义远超单一技术发布。文件明确提出"400Gbps/800Gbps 骨干传输网络"和"城域毫秒级低时延入算能力"，直接回应了 AI 大模型训练和推理对网络带宽与延迟的极端需求。当前，大模型训练需要跨数据中心的分布式计算，而推理服务需要边缘节点与中心云之间的低延迟协同——骨干网络的升级是这一切的物理基础。
+
+对产品经理的关键启示在于"智能体互联网"被正式列为攻关核心技术。这意味着中国政策制定者已经认识到，AI 的未来不仅仅是单个模型的能力提升，而是模型之间、模型与环境之间的网络化协作。"智能体互联网"（Agent Internet）概念预示着未来的 AI 产品将不再是孤立的聊天机器人或工具，而是可以相互发现、协商、协作的自主智能体网络。文件中提到的"智慧个人助理、智慧管家、家庭看护、3D 观影"等应用场景，也为消费级 AI 产品的方向提供了政策背书。从产业角度看，基础电信企业被鼓励用 AI 赋能传统业务，这意味着运营商可能成为 AI 应用分发的新渠道，类似于移动互联网时代的运营商应用商店。</p>
+
+          <p><b>研究型 Builder 视角：</b>从技术实施角度，400Gbps/800Gbps 骨干网络的建设将改变 AI 分布式训练的拓扑设计。当前，网络带宽往往是大规模模型训练的瓶颈（即"网络受限"而非"计算受限"），光传输系统的升级将使更大规模的模型并行和数据并行成为可能。"空口智能化"（AI 赋能的无线通信）和"网络高等级自智"（自治网络）是 3GPP R18+ 和 ITU-T 的研究热点，将 AI 引入无线资源管理、干扰协调和故障预测。"智能体互联网"作为一个新兴概念，其技术架构尚未标准化，可能涉及智能体发现协议、能力协商机制、信任与授权框架等，是学术研究和标准制定的前沿领域。</p>
+          <p><b>可落地的方法论：</b>- 本周行动：如果你在中国市场的 B2B 或基础设施领域工作，梳理该政策中与你的产品直接相关的条款，评估是否有政府补贴、试点项目或标准制定参与机会。
+- 本季度行动：将"智能体互联网"概念纳入你的技术雷达，开始研究智能体发现协议（如 Anthropic 的 Model Context Protocol、Google 的 A2A 协议）并评估其在你产品生态中的适用性。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.ithome.com/0/962/456.htm">IT之家（RSS）</a></span>
+        </div>
+        <div class="tag">CRITICAL</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">12 IMPORTANT + 12 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://x.com/xai/status/2064777588036530309">Grok Voice 性能出色价格低廉</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://www.theverge.com/tech/947836/google-search-privacy-settings-images-audio">Google 将保存用户的 Lens 图片、Search Live 录音和 Translate 音频用于 AI 训练</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://cursor.com/blog/bugbot-updates-june-2026">Cursor Bugbot 更新：速度提升超 3 倍、成本降低 22%、发现更多 Bug</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div><a class="event-link" href="https://x.com/HuaweiCloud1/status/2064637581652852831">华为云发布全球首个端到端具身 AI 平台 CloudRobo</a></div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
+      <div>05</div><div><a class="event-link" href="https://mp.weixin.qq.com/s/g3DxNO_3aYI4g26gQ2Yvig">火山方舟版权商业化平台上线，周星驰比高集团三大电影 IP 首批入驻</a></div><div class="red">POLICY</div><div>主权</div><div class="right red">BLOOM</div>
+      <div>06</div><div><a class="event-link" href="https://www.ithome.com/0/962/206.htm">欧盟发布临时措施，要求 Meta 向第三方 AI 助手免费开放 WhatsApp</a></div><div class="red">CREATIVE</div><div>音乐</div><div class="right red">X</div>
+      <div>07</div><div><a class="event-link" href="https://x.com/rohanpaul_ai/status/2064524448582267047">Magnetar 用数百 AI 智能体替代分析师</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>08</div><div><a class="event-link" href="https://www.bloomberg.com/news/videos/2026-06-10/google-s-backstops-underpin-35-bln-anthropic-chip-deal-video">谷歌财务担保支撑 Anthropic 350 亿美元芯片租赁交易</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>09</div><div><a class="event-link" href="https://x.ai/news/grok-etoro">eToro AI 智能体 Tori 集成 SpaceXAI 文本模型实现实时市场情绪分析</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>10</div><div><a class="event-link" href="https://x.com/AnthropicAI/status/2064783418844762489">Dario Amodei 发文呼吁缩小 AI 政策差距</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>11</div><div><a class="event-link" href="https://mp.weixin.qq.com/s/oKhawmph49YYPR63T-ekaw">百度百舸联合复旦提出 LU-KV 框架，被 ICML 2026 录用</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>12</div><div><a class="event-link" href="https://research.google/blog/new-framework-for-auditing-machine-unlearning">Google Research 提出审计机器遗忘新框架</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>13</div><div>#</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>14</div><div>MiniMax M3 上链 0G，限时免费运行</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>15</div><div>Apache Burr 进入 Apache 基金会</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>16</div><div>OpenRouter 推出 Activity explorer</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>17</div><div>通过 Oracle 云承诺访问 OpenAI 模型和 Codex</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>18</div><div>宝玉分享 Claude Design 使用经验</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>19</div><div>Emily Chang 深度对话 Anthropic 联合创始人</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>20</div><div>豆包 AI 误导用户损失 600 元</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">12 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>#</div><div>事件 | 一句话点评</div>
+      <div>01</div><div>MiniMax M3 上链 0G，限时免费运行</div><div>去中心化 AI 推理的实验性尝试，可验证+私有计算结合区块链，适合关注 Web3+AI 交叉领域的 Builder 观察其可用性和成本模型。</div>
+      <div>02</div><div>Apache Burr 进入 Apache 基金会</div><div>AI Agent 框架的标准化趋势加速，Apache 背书增强了企业采纳的信心，适合需要构建生产级 Agent 系统的团队评估。</div>
+      <div>03</div><div>OpenRouter 推出 Activity explorer</div><div>AI API 使用分析工具的成熟化，帮助团队优化模型调用成本，适合多模型策略的产品团队用于支出管理和性能监控。</div>
+      <div>04</div><div>通过 Oracle 云承诺访问 OpenAI 模型和 Codex</div><div>云厂商与 AI 模型的绑定加深，Oracle 客户可利用现有云预算使用 OpenAI，适合已有 Oracle 基础设施的企业降低采购摩擦。</div>
+      <div>05</div><div>宝玉分享 Claude Design 使用经验</div><div>AI 设计工具的实用技巧集合，强调设计系统、上下文管理和迭代调整，适合使用 Claude Design 或类似工具的产品设计师参考。</div>
+      <div>06</div><div>Emily Chang 深度对话 Anthropic 联合创始人</div><div>了解 Anthropic 安全优先战略和五角大楼合作的内部视角，适合关注 AI 安全与政策交叉领域的从业者观看。</div>
+      <div>07</div><div>豆包 AI 误导用户损失 600 元</div><div>非技术用户对 AI 过度信任的现实案例，与 Google 幻觉法律责任裁决形成呼应，提醒产品经理重视高风险场景的输出验证。</div>
+      <div>08</div><div>Text-To-Lottie：Agent 生成动画并实时验收</div><div>Agent 技能与实时预览工具的结合，展示了 Agent 输出标准格式+专用渲染引擎的验收模式，适合构建 Agent 工作流的开发者参考。</div>
+      <div>09</div><div>毕业典礼频现"谈 AI 色变"</div><div>AI 技术接受度的社会情绪指标，公众对 AI 替代的担忧正在升温，产品团队需要更谨慎地设计"增强而非替代"的价值叙事。</div>
+      <div>10</div><div>亚马逊的大规模扁平化数据中心网络</div><div>超大规模数据中心网络架构的工程实践，支撑 Anthropic 级别的计算需求，适合基础设施工程师了解网络拓扑设计趋势。</div>
+      <div>11</div><div>ChatGPT 推头发变国旗颜色功能</div><div>AI 图像编辑的趣味化应用，展示消费级 AI 的病毒传播潜力，但核心技术创新有限，属于品牌运营层面的尝试。</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 5 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>DiffusionGemma：文本生成速度提升4倍的开源扩散模型</h4>
+        <p><b>AI PM 视角：</b>DiffusionGemma 的发布标志着文本生成范式的潜在转折点。自回归（AR）模型自 GPT 系列以来主导了 LLM 架构，但其逐 token 生成的串行特性构成了推理速度的理论上限。DiffusionGemma 采用扩散模型思路，将文本生成视为从噪声到文本的去噪过程，每次前向传播可并行生成 256 个 token，这从根本上改变了"速度与质量不可兼得"的权衡曲线。</p>
+<p>对于产品端，这意味着三个关键机会：第一，本地部署的可行性大幅提升——18GB 显存要求使消费级 GPU 可以运行高质量文本生成，为隐私敏感型应用（如医疗、法律文档处理）开辟了新场景；第二，交互延迟的质变——700+ tokens/s 的速度接近人类阅读速度，使得实时协同写作、流式代码补全、对话式搜索等产品的体验将从"可用"跃升为"流畅"；第三，双向注意力和自我修正能力使模型天然适合内联编辑、代码填充等需要前后文一致性的任务，这与当前自回归模型"从左到右"的偏置形成互补。从竞争格局看，Google 以 Apache 2.0 许可证开源此模型，直接对标 Meta 的 Llama 系列和 Mistral 的开源生态，但扩散架构的差异化可能吸引更多研究者和开发者围绕这一新范式构建工具链。</p>
+        
+        <p><b>研究型 Builder 视角：</b>DiffusionGemma 的技术 novelty 在于将图像扩散模型的成功范式迁移到离散文本空间。关键挑战在于文本的离散性——不同于连续像素，token 是分类变量，因此需要特殊的嵌入和去噪策略。该模型采用 26B MoE 架构但仅激活 3.8B 参数，说明扩散过程可以通过稀疏激活保持计算效率。双向注意力机制意味着模型在生成每个位置时都能看到完整的上下文，这与 AR 模型的因果掩码形成对比，理论上能产生更好的全局一致性。可复现性方面，Apache 2.0 许可证和已发布的模型权重使独立验证成为可能，但扩散模型的训练稳定性、采样步数与质量的 trade-off、以及在不同任务上的泛化能力仍需社区的大规模测试。研究到产品的转化路径清晰：本地 IDE 插件、实时协作编辑器、隐私优先的写作助手都是直接的落地场景。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周行动：在本地环境（18GB+ 显存）部署 DiffusionGemma，测试其在代码补全、文档重写、翻译等任务上的速度和质量，与同等规模的 AR 模型（如 Qwen-3-4B、Llama-4-Scout）做 A/B 对比。</li>
+<li>本季度行动：如果你的产品涉及文本生成且对延迟敏感（如客服机器人、实时字幕、代码补全），评估将扩散模型作为候选架构的可行性，特别关注其在长文本一致性和内联编辑场景下的优势。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>突发：Google 因模型幻觉被判负有法律责任</h4>
+        <p><b>AI PM 视角：</b>这是 AI 行业法律监管的分水岭时刻。在此之前，AI 模型的幻觉普遍被视为"技术局限"而非"法律责任"——用户协议中通常包含免责声明，将模型输出的准确性责任推给用户。此次裁决若成立，意味着平台方无法仅凭"AI 可能犯错"来规避法律后果，这从根本上改变了 AI 产品的风险模型。</p>
+<p>对产品经理而言，这一事件迫使我们重新设计三个层面的策略：首先是输出层面的"安全网"——需要建立更严格的置信度阈值、来源引用机制和人工审核流程，尤其是在医疗、法律、金融等高风险领域；其次是用户沟通层面的"预期管理"——需要更明确地告知用户哪些输出经过验证、哪些是模型生成，避免用户将 AI 输出等同于权威信息；第三是商业模式层面的"保险设计"——可能需要引入类似于错误与遗漏保险（E&O insurance）的机制，或通过与第三方事实核查机构合作来转移风险。值得注意的是，这与同日发布的"豆包AI误导用户损失600元"事件形成呼应——两个案例都指向同一个问题：当非技术用户将 AI 输出视为可靠建议并据此采取行动时，责任边界在哪里？</p>
+        
+        <p><b>研究型 Builder 视角：</b>从研究角度看，这一裁决将加速"可验证 AI"（Verifiable AI）领域的研究投入。当前 LLM 的幻觉问题本质上源于其概率生成机制——模型被训练为"生成合理的文本"而非"生成真实的陈述"。法律责任的明确化将推动两类技术：一是检索增强生成（RAG）和事实核查机制的工程化落地，二是模型本身的"可解释性"和"可追溯性"研究，即让模型能够展示其结论的来源和推理链条。短期内，Expectation Calibration（预期校准）和 Uncertainty Quantification（不确定性量化）将成为高优先级研究方向。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周行动：审查你所在产品中的 AI 输出免责声明，评估其法律充分性；对高风险场景（如医疗建议、财务规划、法律咨询）增加"此内容未经专业审核"的强制提示和双重确认机制。</li>
+<li>本季度行动：建立 AI 输出的"置信度标签"体系，对模型输出进行分级（已验证 / 高置信度 / 推测性），并在用户界面中显性展示，参考 Google 搜索的"About this result"设计模式。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>Anthropic 研究：AI 数小时内即可从安全补丁构建漏洞利用</h4>
+        <p><b>AI PM 视角：</b>这项研究揭示了一个令人不安的安全悖论：AI 正在将"补丁-攻击"的时间窗口从"数周"压缩到"数小时"，而传统的安全更新节奏（如微软的 Patch Tuesday）是以"数周"为单位设计的。这意味着，从安全补丁发布的瞬间到用户完成更新的窗口期，攻击者（或 AI 辅助的攻击者）已经有足够时间构建并利用漏洞。</p>
+<p>对产品的影响是系统性的：首先，自动更新机制需要从"定期批量更新"转向"实时连续更新"，这对基础设施提出了极高要求；其次，安全产品的价值主张需要重新定位——从"检测已知威胁"转向"预测未知威胁"，AI 驱动的威胁情报和攻击模拟将成为刚需；第三，企业采购决策中将更加重视"零日窗口期"（zero-day window）的缩短能力。对于云服务商和安全厂商，这是一个巨大的产品机会：提供 AI 驱动的自动补丁验证、攻击模拟即服务（Attack Simulation as a Service）、以及基于 AI 的漏洞优先级排序。Anthropic 主动披露此项研究也表明，领先 AI 实验室正在将安全研究作为公共产品发布，以推动整个行业升级防御体系。</p>
+        
+        <p><b>研究型 Builder 视角：</b>这项研究的核心 novelty 在于展示了 LLM 在"逆向工程"和"攻击链构建"上的惊人能力。传统上，从补丁到漏洞利用需要深厚的二进制分析、内存管理和系统编程知识，而 Mythos Preview 能在数小时内自动完成这一过程，说明模型已经内化了大量的安全研究文献和漏洞利用模式。从研究到产品的转化路径包括：自动漏洞挖掘工具、补丁影响评估系统、以及红队自动化平台。但这也引发了严重的双重用途（dual-use）问题——同一能力可被防御方和攻击方使用。Anthropic 的披露策略（发布研究结果但不发布攻击细节）是负责任的，但无法阻止其他能力相近的模型被恶意使用。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周行动：如果你负责的产品涉及安全更新或漏洞管理，评估当前补丁发布到用户更新的平均时间窗口，识别可以被 AI 辅助攻击利用的薄弱环节。</li>
+<li>本季度行动：在你的安全运营中心（SOC）或 DevSecOps 流程中引入 AI 辅助的补丁影响分析，优先部署能够自动验证补丁有效性并模拟攻击链的安全工具。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>小米发布 MiMo Code V0.1 开源终端 AI 编程助手</h4>
+        <p><b>AI PM 视角：</b>小米进入 AI 编程助手赛道是一个值得关注的信号。不同于 Cursor、GitHub Copilot 等欧美主导的产品，MiMo Code 从设计之初就考虑了中文开发者的需求和多模型兼容性。其"无限上下文"（通过自动知识积累与无损压缩实现）直接回应了大型代码库处理的痛点——百万 token 上下文窗口使模型可以理解整个项目的架构而不仅是当前文件。</p>
+<p>更深层的战略意义在于"Agent-模型深度协同"的设计：测试-审查-验证闭环意味着 AI 不再只是代码生成器，而是可以自主运行测试、审查代码、验证结果的开发伙伴。这与 Cursor 的 Composer 模式、Devin 的自主 Agent 能力形成竞争，但小米选择以开源（MIT 许可）和多模型兼容的差异化策略切入。对于产品经理，需要关注三个信号：第一，编程助手市场正在从"单模型绑定"（如 Copilot 绑定 OpenAI）转向"多模型路由"，用户将更重视灵活性和性价比；第二，语音输入（基于 MiMo-V2.5-ASR）的引入表明自然语言交互正在渗透到专业工具中，降低了非英语母语开发者的使用门槛；第三，小米的入局意味着硬件厂商开始将 AI 编程能力作为生态壁垒，未来可能与小米的 IoT 开发平台、汽车 SDK 等形成协同。</p>
+        
+        <p><b>研究型 Builder 视角：</b>MiMo Code 的技术亮点在于"无限上下文"的实现机制——通过自动知识积累和无损压缩来扩展有效上下文长度。这与当前主流的上下文窗口扩展技术（如 Ring Attention、Sparse Attention、KV Cache 压缩）不同，可能采用了增量式索引和检索增强的结合策略。Agent-模型协同的测试-审查-验证闭环涉及多步骤规划、工具调用和结果验证，其实现质量取决于底层模型的推理能力和工具生态的完善度。作为开源项目，其代码架构和 Agent 设计模式值得深入研究，特别是 Compose 模式（规格→计划→构建→报告）的工作流编排机制。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周行动：安装 MiMo Code V0.1，在真实项目中测试其"Compose 模式"和"无限上下文"能力，特别关注其在大型代码库（>10万行）中的导航和理解准确性，与 Cursor 3.7+ 进行并排对比。</li>
+<li>本季度行动：如果你负责开发者工具产品，评估多模型路由架构的可行性——让用户根据任务类型、成本和延迟要求选择不同后端模型，而不是绑定单一供应商。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>工信部印发《"人工智能+信息通信"创新发展实施意见》</h4>
+        <p><b>AI PM 视角：</b>这是中国 AI 基础设施建设的纲领性文件，其战略意义远超单一技术发布。文件明确提出"400Gbps/800Gbps 骨干传输网络"和"城域毫秒级低时延入算能力"，直接回应了 AI 大模型训练和推理对网络带宽与延迟的极端需求。当前，大模型训练需要跨数据中心的分布式计算，而推理服务需要边缘节点与中心云之间的低延迟协同——骨干网络的升级是这一切的物理基础。</p>
+<p>对产品经理的关键启示在于"智能体互联网"被正式列为攻关核心技术。这意味着中国政策制定者已经认识到，AI 的未来不仅仅是单个模型的能力提升，而是模型之间、模型与环境之间的网络化协作。"智能体互联网"（Agent Internet）概念预示着未来的 AI 产品将不再是孤立的聊天机器人或工具，而是可以相互发现、协商、协作的自主智能体网络。文件中提到的"智慧个人助理、智慧管家、家庭看护、3D 观影"等应用场景，也为消费级 AI 产品的方向提供了政策背书。从产业角度看，基础电信企业被鼓励用 AI 赋能传统业务，这意味着运营商可能成为 AI 应用分发的新渠道，类似于移动互联网时代的运营商应用商店。</p>
+        
+        <p><b>研究型 Builder 视角：</b>从技术实施角度，400Gbps/800Gbps 骨干网络的建设将改变 AI 分布式训练的拓扑设计。当前，网络带宽往往是大规模模型训练的瓶颈（即"网络受限"而非"计算受限"），光传输系统的升级将使更大规模的模型并行和数据并行成为可能。"空口智能化"（AI 赋能的无线通信）和"网络高等级自智"（自治网络）是 3GPP R18+ 和 ITU-T 的研究热点，将 AI 引入无线资源管理、干扰协调和故障预测。"智能体互联网"作为一个新兴概念，其技术架构尚未标准化，可能涉及智能体发现协议、能力协商机制、信任与授权框架等，是学术研究和标准制定的前沿领域。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周行动：如果你在中国市场的 B2B 或基础设施领域工作，梳理该政策中与你的产品直接相关的条款，评估是否有政府补贴、试点项目或标准制定参与机会。</li>
+<li>本季度行动：将"智能体互联网"概念纳入你的技术雷达，开始研究智能体发现协议（如 Anthropic 的 Model Context Protocol、Google 的 A2A 协议）并评估其在你产品生态中的适用性。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 12 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Grok Voice 性能出色价格低廉</h4>
+        <p><b>分析：</b>xAI 宣布 Grok Voice 提供最先进的语音交互性能，具有类人的时机、语调和温暖感，且价格仅为竞争对手的一小部分。</p>
+        <p><b>AI PM 视角：</b>语音交互正在成为 AI 产品的差异化竞争点。Grok Voice 以"类人的时机、语调和温暖感"为卖点，表明语音 AI 的竞争已经从"准确性"转向"情感连接"。对产品经理的启示是：如果你的产品涉及语音交互（如客服、教育、陪伴），需要评估语音情感表达（prosody, intonation, timing）对用户体验的影响，而不仅是 ASR 和 TTS 的准确率。低廉的定价策略也可能引发语音 API 市场的价格战，类似于文本模型领域的趋势。</p>
+        
+        <p><b>研究型 Builder 视角：</b>语音模型的"自然度"提升通常依赖于端到端神经音频编码（如 xAI 可能采用的流式 Transformer 或扩散音频模型），以及大量的人类对话数据用于微调说话风格。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>评估你产品中语音交互的"自然度瓶颈"，考虑引入支持情感表达的语音 API（如 Grok Voice、ElevenLabs、Hume AI）进行 A/B 测试。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>Google 将保存用户的 Lens 图片、Search Live 录音和 Translate 音频用于 AI 训练</h4>
+        <p><b>分析：</b>Google 更新搜索交互数据保存方式，新增"Search Services History"设置，用于保存用户搜索时使用的图片、文件、音频和视频，包括 Google Lens 搜索的图片、实时搜索工具 Search Live 的录音、语音搜索和 Translate 中的语音片段，这些数据将被用于"提供、改进和开发 AI 模型"。</p>
+        <p><b>AI PM 视角：</b>这是 Google 在 AI 数据战略上的重要调整。多模态数据（图片、音频、视频）是训练下一代多模态模型的关键资源，而 Google 拥有全球最大的多模态交互数据流。对产品经理的启示是：多模态 AI 产品的竞争本质是数据闭环的竞争——谁能够收集到高质量、多样化的真实世界多模态交互数据，谁就能在模型能力上取得优势。但隐私风险也同步上升，用户可能因担忧而关闭数据收集，导致数据代表性偏差。</p>
+        
+        <p><b>研究型 Builder 视角：</b>多模态模型训练需要大规模对齐的图文音数据集，Google 此举意在构建私有的、持续更新的多模态数据飞轮，这是公开数据集（如 LAION、AudioCaps）无法比拟的。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>在设计多模态 AI 产品时，提前规划数据收集的知情同意机制，确保透明度和用户控制，避免因隐私争议导致的数据断流。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>Cursor Bugbot 更新：速度提升超 3 倍、成本降低 22%、发现更多 Bug</h4>
+        <p><b>分析：</b>Cursor 的代码审查工具 Bugbot 迎来重大更新：运行速度提升超 3 倍，成本降低 22%，每轮审查多发现 10% 的 bug，90% 的运行在三分钟内完成。新增 `/review` 命令，可在推送代码前运行 Bugbot 和安全审查，并与 GitHub/GitLab 同步。</p>
+        <p><b>AI PM 视角：</b>Cursor 正在将 AI 代码审查从"可选工具"转变为"开发流程的基础设施"。`/review` 命令与 GitHub/GitLab 的同步意味着 Bugbot 可以嵌入现有的 CI/CD 流程，而不需要开发者改变工作习惯。性能提升（3 倍速度、22% 成本降低）来自底层模型（Composer 2.5）的训练改进，这验证了"模型质量提升直接转化为产品竞争力"的飞轮效应。对竞品而言，Cursor 在 AI 原生 IDE 赛道的领先优势正在扩大。</p>
+        
+        <p><b>研究型 Builder 视角：</b>Bugbot 的性能提升源于驱动它的 Composer 2.5 模型的训练改进，具体可能涉及更长的代码上下文理解、更好的静态分析集成、以及针对 bug 模式的专项微调。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你正在构建 AI 辅助的代码质量工具，研究 Cursor Bugbot 的"/review"集成模式，将 AI 审查嵌入开发者已有的 Git 工作流而非创造新的工作流。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>华为云发布全球首个端到端具身 AI 平台 CloudRobo</h4>
+        <p><b>分析：</b>华为云推出全球首个端到端具身 AI 开发平台 CloudRobo，覆盖从数据、模型到部署、集成的全生命周期，基于 PB 级可信数据底座，支持机器人小时级上云、模型分钟级部署。</p>
+        <p><b>AI PM 视角：</b>具身智能（Embodied AI）正在从研究概念走向产业平台化。CloudRobo 的"小时级上云、分钟级部署"意味着机器人开发者可以像部署云应用一样部署和更新机器人大脑，这大幅降低了具身智能的试错成本。对产品经理的启示是：具身智能的商业模式可能复制云计算的"基础设施即服务"路径——先提供开发平台和数据服务，再向上层应用（如工业自动化、家庭服务、医疗辅助）延伸。</p>
+        
+        <p><b>研究型 Builder 视角：</b>具身 AI 的核心挑战在于 sim-to-real gap（仿真到现实的差距）和数据稀缺性，CloudRobo 的 PB 级数据底座和端到端平台试图解决这两个问题。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>关注具身智能的"云平台化"趋势，评估你的 AI 能力是否可以以 API 或 SDK 形式输出到机器人硬件生态。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>火山方舟版权商业化平台上线，周星驰比高集团三大电影 IP 首批入驻</h4>
+        <p><b>分析：</b>火山引擎上线火山方舟版权商业化平台，推出行业首个覆盖"授权—保护—审核—分发—变现"全链路的版权合作机制，已获周星驰旗下比高集团三部影片在 AI 视频创作场景下的版权使用权。</p>
+        <p><b>AI PM 视角：</b>AI 生成内容的版权问题是行业痛点，火山方舟的尝试提供了一个"授权-变现"的闭环解决方案。对于 AI 视频生成产品，获得正版 IP 授权可以显著降低法律风险，同时为 UGC 创作者提供高质量的训练素材和创作模板。"分润制、项目制"等变现路径也为 IP 方提供了参与 AI 生态的经济激励，这是解决"AI 侵权"争议的建设性路径。</p>
+        
+        <p><b>研究型 Builder 视角：</b>该平台基于 Seedance 2.0 视频生成模型，其版权治理体系可能涉及数字水印、生成内容溯源、以及使用范围的技术限制。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你正在开发 AI 内容生成产品，研究火山方舟的版权合作模式，探索与内容版权方的早期合作，将"正版授权"作为产品的差异化卖点。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">06</div>
+      <div class="body">
+        <h4>欧盟发布临时措施，要求 Meta 向第三方 AI 助手免费开放 WhatsApp</h4>
+        <p><b>分析：</b>欧盟委员会宣布临时措施，责令 Meta 在反垄断调查结束前免费向第三方 AI 助手开放 WhatsApp 访问权限。Meta 此前禁止第三方 AI 助手调用 WhatsApp for Business API，意图让自家 Meta AI 独占市场。</p>
+        <p><b>AI PM 视角：</b>这是"平台封锁 vs 开放生态"反垄断博弈在 AI 时代的延续。WhatsApp 拥有超过 20 亿用户，是 AI 助手触达消费者的关键渠道。欧盟的干预意味着，拥有消息平台的大公司不能利用平台优势排斥第三方 AI 竞争者。对 AI 产品的影响是：如果你正在开发消费者 AI 助手，WhatsApp 等消息平台的 API 开放可能成为一个重要的分发渠道；但同时，免费开放的定价也可能压缩商业化空间。</p>
+        
+        <p><b>研究型 Builder 视角：</b>消息平台的 AI 助手集成涉及端到端加密（E2EE）与 AI 处理的矛盾——如何在保护隐私的前提下让第三方 AI 访问消息内容是一个技术难题。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>监控欧盟 DMA（数字市场法）和反垄断案例对 AI 生态开放的影响，将消息平台 API 集成纳入你的渠道策略备选方案。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">07</div>
+      <div class="body">
+        <h4>Magnetar 用数百 AI 智能体替代分析师</h4>
+        <p><b>分析：</b>Bloomberg 报道，180 亿美元的对冲基金公司 Magnetar Capital 将在其最新产品中避免使用人类分析师，转而依靠数百个 AI 智能体进行股票研究，人类仅负责批准交易。</p>
+        <p><b>AI PM 视角：</b>AI 智能体在金融领域的规模化应用正在从概念验证走向生产部署。Magnetar 的案例表明，AI 智能体不仅可以辅助分析，还可以承担端到端的研究流程（搜索投资想法、研究公司、推荐头寸、预测趋势）。这对金融科技产品的影响是：AI 驱动的研究工具、投资组合管理、风险评估将成为核心竞争力；同时，"人类仅负责批准"的模式也提出了新的 UI/UX 挑战——如何设计一个让基金经理能够快速理解、验证和批准 AI 建议的界面。</p>
+        
+        <p><b>研究型 Builder 视角：</b>数百个 AI 智能体的协调需要多智能体系统（Multi-Agent System）架构，涉及任务分配、信息共享、冲突解决和集体决策机制。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你正在构建金融或企业分析类 AI 产品，研究 Magnetar 的多智能体研究架构，探索"AI 研究 + 人类批准"的混合工作流设计。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">08</div>
+      <div class="body">
+        <h4>谷歌财务担保支撑 Anthropic 350 亿美元芯片租赁交易</h4>
+        <p><b>分析：</b>Anthropic 在谷歌的帮助下，正在五个数据中心租赁高性能计算机芯片，谷歌同意为每个地点的租赁付款提供兜底担保，从而帮助 Anthropic 获得相当于 350 亿美元的融资。</p>
+        <p><b>AI PM 视角：</b>这是 AI 基础设施投资的史无前例的规模。350 亿美元的芯片租赁担保表明，头部 AI 实验室的竞争已经从"模型能力"下沉到"计算资源储备"。对产品经理的启示是：AI 产品的长期竞争力越来越取决于背后的计算基础设施，小型创业公司在基础模型层面与大厂竞争的门槛正在指数级上升。这也解释了为什么 Anthropic 估值已达 9650 亿美元——市场定价的不仅是当前模型能力，更是其未来计算资源的独占性。</p>
+        
+        <p><b>研究型 Builder 视角：</b>如此大规模的芯片部署涉及数据中心设计、电力供应、液冷系统、网络拓扑等工程挑战，亚马逊同日分享的"扁平化数据中心网络"文章与此直接相关。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>评估你的 AI 产品对计算资源的依赖程度，探索通过模型蒸馏、边缘推理、混合云策略来降低对单一超大规模计算集群的依赖。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">09</div>
+      <div class="body">
+        <h4>eToro AI 智能体 Tori 集成 SpaceXAI 文本模型实现实时市场情绪分析</h4>
+        <p><b>分析：</b>eToro 宣布其 AI 智能体 Tori 集成来自 SpaceXAI 的文本模型，能够从 X 平台实时读取市场情绪变化、追踪信号并分析信息，支持用户以自然语言查询和解读市场情绪。</p>
+        <p><b>AI PM 视角：</b>这是"AI 智能体 + 实时社交媒体数据 + 金融决策"的典型案例。SpaceXAI（xAI）的文本模型作为"情绪感知引擎"，被集成到 eToro 的投资流程中，使普通投资者可以像专业分析师一样获取和解读市场情绪。对产品的启示是：社交数据的实时情绪分析正在成为金融服务、品牌营销、舆情监控等领域的基础设施能力。</p>
+        
+        <p><b>研究型 Builder 视角：</b>实时情绪分析需要低延迟的流式文本处理能力和对社交媒体特定语言风格（俚语、讽刺、emoji）的鲁棒理解。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>探索将社交媒体情绪分析集成到你的产品决策流程中（如新品发布监控、竞品动态追踪、用户反馈预警）。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">010</div>
+      <div class="body">
+        <h4>Dario Amodei 发文呼吁缩小 AI 政策差距</h4>
+        <p><b>分析：</b>Anthropic CEO Dario Amodei 发布新文《Policy on the AI Exponential》，指出 AI 发展极快，远超现有政策制定流程的应对能力，并宣布启动三项新举措支持其提出的框架。</p>
+        <p><b>AI PM 视角：</b>AI 政策正在从"事后监管"转向"事前参与"。Amodei 的呼吁反映了领先 AI 实验室的共同焦虑：技术发展速度超过了政策制定者的理解速度，导致监管要么滞后要么错位。对产品经理的影响是：合规不再是"上线前检查清单"，而是需要贯穿产品全生命周期的持续投入。Anthropic 的三项新举措可能涉及行业标准、政府合作和公共教育，值得密切关注。</p>
+        
+        <p><b>研究型 Builder 视角：</b>"AI 指数"（AI Exponential）概念暗示了技术进步的加速性质，政策制定需要采用适应性监管（adaptive regulation）而非静态规则。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>在你的产品路线图中预留"政策响应缓冲"——当重大政策变化发生时，能够在数周内而非数月内调整产品策略。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">011</div>
+      <div class="body">
+        <h4>百度百舸联合复旦提出 LU-KV 框架，被 ICML 2026 录用</h4>
+        <p><b>分析：</b>百度百舸团队与复旦大学合作提出 Long-horizon Utility KV（LU-KV）框架，将头级 KV Cache 预算分配建模为面向长程边际效用的全局组合优化问题，在 80% 压缩比下性能损失小，降低显存占用和推理延迟。</p>
+        <p><b>AI PM 视角：</b>KV Cache 压缩是降低 LLM 推理成本的关键技术方向。LU-KV 将预算分配建模为"全局组合优化问题"而非独立的逐层压缩，理论上可以获得更优的压缩效率。对产品的影响是：更低的显存占用意味着同样的硬件可以服务更多并发用户，直接转化为成本优势；对长文本场景（如文档分析、代码审查）尤其重要。</p>
+        
+        <p><b>研究型 Builder 视角：</b>LU-KV 的核心 novelty 在于将注意力头的边际贡献曲线与凸包松弛结合，通过离线画像实现接近最优的预算配置，可适配多种压缩方法（SnapKV、KeyDiff 等）。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你正在优化 LLM 推理性能，评估 LU-KV 框架是否适用于你的模型架构和任务类型，特别关注长文本场景下的压缩效果。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">012</div>
+      <div class="body">
+        <h4>Google Research 提出审计机器遗忘新框架</h4>
+        <p><b>分析：</b>Google Research 在 AISTATS 2026 发表正则化 f-散度核检验，用于高效审计 LLM 等模型的机器遗忘，通过统计两样本检验判断模型是否真正"忘记"特定训练数据，避免完全重训的巨大成本。</p>
+        <p><b>AI PM 视角：</b>机器遗忘（Machine Unlearning）是 AI 合规的核心技术之一。GDPR 的"被遗忘权"和日益严格的数据隐私法规要求模型能够在不重新训练的情况下删除特定数据的影响。Google 的新框架提供了一种可审计的验证方法，这对企业 AI 产品的合规部署至关重要。</p>
+        
+        <p><b>研究型 Builder 视角：</b>该框架的理论贡献在于证明其假阴性风险随样本量增加可靠收敛至零，这是现有方法（如最大均值差异）不具备的性质。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你的产品处理敏感数据（如医疗、金融、个人信息），评估机器遗忘技术的成熟度，为未来合规要求做好技术储备。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架一：从"模型能力"到"责任边界"——AI 产品的合规设计框架</h4>
+        <p>今日的三个事件——Google 幻觉法律责任裁决、豆包 AI 误导用户案例、以及 Anthropic 关于 AI 安全政策的呼吁——共同指向一个核心问题：AI 产品的责任边界正在从"技术免责声明"转向"法律可归责"。</p>
+<ul>
+<li><strong>因果链</strong>：模型能力提升 → 用户信任增加 → 用户依据 AI 输出做出高影响决策 → 错误输出造成实际损失 → 法律系统介入界定责任 → 平台方承担赔偿责任</li>
+<li><strong>结构性洞察</strong>：这一因果链意味着 AI 产品的设计必须从"输出准确性"扩展到"输出可追溯性"和"决策可验证性"，合规不再是法务部门的独立工作，而是产品设计的核心约束</li>
+</ul>
+<p><strong>产品启示</strong>：</p>
+<p>产品经理需要建立三层防护体系：第一层是"技术防护"——通过 RAG、来源引用、置信度标签等手段降低幻觉概率；第二层是"流程防护"——在高风险场景引入人工审核或双重确认机制；第三层是"法律防护"——与法务团队合作设计用户协议中的责任分担条款，并考虑引入 AI 错误保险。特别值得注意的是，Google 的法律责任裁决与豆包的消费者案例虽然发生在不同司法管辖区，但逻辑一致：当 AI 输出被用户合理信赖并据此行动时，提供方难以完全免责。这意味着"增强人类而非替代人类"不仅是公关话术，而是法律责任规避的产品策略。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架二：扩散架构与推理效率——下一代 AI 产品的性能飞轮</h4>
+        <p>DiffusionGemma 的发布和 LU-KV 的论文共同揭示了 AI 推理效率的两个前沿方向：架构创新（扩散替代自回归）和系统优化（KV Cache 压缩）。</p>
+<ul>
+<li><strong>因果链</strong>：自回归推理的串行瓶颈 → 扩散模型的并行生成 → 推理速度数量级提升 → 本地部署成为可能 → 新场景（隐私敏感、低延迟）被解锁</li>
+<li><strong>结构互补</strong>：扩散模型解决"生成速度"问题，LU-KV 解决"长文本内存"问题，两者结合可能实现既快又长的文本处理能力</li>
+</ul>
+<p><strong>产品启示</strong>：</p>
+<p>对于 AI 产品团队，推理效率的提升不是"性能优化"而是"场景解锁"。DiffusionGemma 的 700+ tokens/s 使实时协作成为可能，18GB 显存要求使本地部署成为可能——这两个"可能"分别对应着全新的产品形态。产品经理应当将推理效率指标纳入产品路线图的核心 KPI，并建立与模型团队的紧密协作机制，确保产品设计和模型优化是相互驱动而非相互等待的关系。同时，KV Cache 压缩技术（如 LU-KV）虽然处于研究阶段，但其"80% 压缩比下性能损失小"的结果已经足够吸引工程团队投入实验——在长文本场景（法律文档、代码库、研究论文）中，显存占用往往是部署瓶颈而非计算瓶颈。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架三：具身智能的平台化——从"机器人大脑"到"机器人云"</h4>
+        <p>华为云 CloudRobo 的发布与工信部"人工智能+信息通信"政策共同指向具身智能的产业路径：从单点技术突破走向平台化基础设施。</p>
+<ul>
+<li><strong>因果链</strong>：具身智能数据稀缺 → 需要 PB 级数据底座和端到端工具链 → 云平台提供开发环境和部署能力 → 降低机器人创业门槛 → 应用生态繁荣</li>
+<li><strong>政策加速</strong>：中国政策明确支持 5G-A/6G 与 AI 融合、智能体互联网等方向，为具身智能提供了网络基础设施和频谱资源保障</li>
+</ul>
+<p><strong>产品启示</strong>：</p>
+<p>具身智能正在经历类似于云计算早期（2006-2010）的平台化阶段。当时，AWS EC2/S3 降低了互联网创业的硬件门槛；今天，CloudRobo 等平台试图降低机器人创业的 AI 门槛。对于产品经理，关键问题是：你的 AI 能力是否可以以"机器人技能"的形式输出？例如，如果你正在做视觉识别，是否可以封装为机器人视觉模块？如果你在做自然语言交互，是否可以封装为机器人对话接口？平台化的早期红利在于"率先接入"——当机器人应用生态爆发时，已经适配主流平台的技能将拥有分发优势。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>Dario Amodei《Policy on the AI Exponential》</strong>：了解 AI 领先实验室对政策差距的系统性思考，关注 Anthropic 宣布的三项新举措，评估它们对你所在行业监管环境的潜在影响。</p>
+<p><b>2.</b> <strong>DiffusionGemma 技术博客和论文</strong>：深入理解扩散语言模型的技术原理，对比自回归和扩散架构在速度、质量和一致性上的 trade-off，思考其在你产品场景中的适用性。</p>
+<p><b>3.</b> <strong>Google 幻觉法律责任裁决详情</strong>：通过 Gary Marcus 的博文了解裁决背景和潜在影响，与法务团队讨论当前产品中的 AI 输出免责声明是否需要更新。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>部署 DiffusionGemma 本地实验</strong>：在具备 18GB 显存的环境中部署模型，测试代码补全、文档重写、翻译等任务的性能，与同等规模 AR 模型做对比。</p>
+<p><b>2.</b> <strong>审查产品的 AI 输出风险分级</strong>：识别产品中 AI 输出可能被用户依赖并导致实际损失的高风险场景，评估是否需要增加强制提示、双重确认或人工审核。</p>
+<p><b>3.</b> <strong>体验 MiMo Code V0.1 和 Cursor Bugbot</strong>：对比两款 AI 编程助手在真实项目中的表现，特别关注"Compose 模式"和"/review"命令对开发流程的实际影响。</p>
+<p><b>4.</b> <strong>评估多模型路由策略的可行性</strong>：如果你的产品绑定单一模型供应商，调研切换成本和多模型路由架构的实现路径，为供应商多元化做准备。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>扩散语言模型将在 12-18 个月内成为主流架构选项之一</strong>：DiffusionGemma 的开源将催化社区研究，预计在代码生成、实时协作、本地部署场景中，扩散架构将占据显著市场份额。（证据：Google 的权威背书 + Apache 2.0 开源 + 4 倍速度提升的明确优势）</p>
+<p><b>2.</b> <strong>AI 产品的法律责任框架将在 2-3 年内全球趋严</strong>：Google 幻觉裁决和豆包案例是早期信号，预计欧盟、美国和中国都将出台更明确的 AI 责任法规，"免责声明免责"的时代将结束。（证据：多国司法实践 + 公众对 AI 的信任危机 + 政策制定者的加速响应）</p>
+<p><b>3.</b> <strong>具身智能将复制云计算的"平台-应用"生态路径</strong>：CloudRobo 等平台的出现标志着具身智能进入平台化阶段，预计 3-5 年内将出现类似于移动互联网时代的"机器人应用商店"。（证据：华为云的先发布局 + 工信部政策支持 + 亚马逊/特斯拉等巨头的硬件投入）</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题一：当 AI 输出具有法律责任时，产品应该如何设计"信任边界"？</h4>
+        <p>Google 幻觉裁决和豆包误导案例共同揭示了一个深层问题：用户对 AI 的信任往往超出了 AI 的实际能力，而产品界面设计可能无意中强化了这种过度信任。当法律开始追究平台责任时，产品经理需要在"用户体验流畅性"和"法律风险防护"之间找到新的平衡点。</p>
+<ul>
+<li>产品策略层面：如何在用户界面中设计"信任校准"机制，既不让用户因过度谨慎而放弃使用，也不让他们因过度信任而承担不可控风险？</li>
+<li>执行层面：你的团队是否具备评估 AI 输出法律风险的能力？是否需要引入法律顾问参与产品需求评审？</li>
+<li>风险与机会层面：法律责任的压力是否会加速"可验证 AI"和"人机协同"产品的市场接受度，从而形成新的竞争壁垒？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题二：扩散语言模型会重构哪些产品形态？</h4>
+        <p>DiffusionGemma 的并行生成能力不仅意味着更快，还意味着不同的交互模式——双向上下文理解使内联编辑、全局重写、多版本并行生成成为可能。</p>
+<ul>
+<li>产品策略层面：扩散架构的"非因果性"（同时看到前后文）会产生哪些自回归模型无法实现的产品特性？你的产品线中是否有场景可以受益于这种特性？</li>
+<li>执行层面：扩散模型的训练和微调方法与自回归模型有显著差异，你的技术团队是否需要提前储备相关能力？</li>
+<li>风险与机会层面：如果扩散模型在 12 个月内达到与 GPT-4o 相当的通用能力，当前基于自回归模型的产品架构是否需要重构？重构的时机和成本如何评估？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题三：AI 安全攻防的加速化如何改变安全产品的价值主张？</h4>
+        <p>Anthropic 的研究显示 AI 可以在补丁发布后数小时内构建漏洞利用，这意味着"防御窗口"被压缩到前所未有的程度。</p>
+<ul>
+<li>产品策略层面：传统的"定期扫描+月度更新"安全模式是否仍然有效？你的安全产品是否需要转向"实时响应+持续验证"的新范式？</li>
+<li>执行层面：安全团队的技术栈（SIEM、SOAR、漏洞管理）是否支持 AI 驱动的自动化响应？如果不支持，升级路径是什么？</li>
+<li>风险与机会层面：AI 安全攻防的加速是否会催生新的安全细分市场（如 AI 红队服务、自动补丁验证、攻击预测）？你的团队是否有能力进入这些市场？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题四：多模态数据收集的隐私边界在哪里？</h4>
+        <p>Google 开始收集 Lens 图片、语音搜索录音等数据用于 AI 训练，这代表了多模态 AI 发展的数据需求与个人隐私之间的张力。</p>
+<ul>
+<li>产品策略层面：你的产品在收集多模态数据时，如何设计"数据最小化"和"目的限制"机制，以在满足模型训练需求的同时降低隐私风险？</li>
+<li>执行层面：用户关闭数据收集后，模型的多模态能力是否会因数据代表性不足而下降？如何通过联邦学习、差分隐私等技术缓解这一问题？</li>
+<li>风险与机会层面：隐私保护技术的进步是否会成为新的产品差异化维度？"隐私优先"的多模态 AI 是否能吸引对数据敏感的企业客户？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题五：中国"人工智能+信息通信"政策如何重塑 AI 产业格局？</h4>
+        <p>工信部的实施意见将 AI 与通信基础设施深度融合，明确提出智能体互联网等前沿方向。</p>
+<ul>
+<li>产品策略层面：如果你的产品面向中国市场，该政策中的哪些条款（如骨干网络升级、智能体互联网、电信企业 AI 赋能）可以转化为产品机会或合作伙伴关系？</li>
+<li>执行层面：中国 AI 基础设施的升级是否会改变全球 AI 产业的竞争格局？对中国市场的依赖度是否需要重新评估？</li>
+<li>风险与机会层面：政策推动的"AI+通信"融合是否会催生新的标准和协议？你的产品是否需要提前适配这些潜在标准？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A：AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 阅读 Dario Amodei《Policy on the AI Exponential》全文，提取 3-5 个对你所在行业有直接影响的观点，撰写 1 页政策影响备忘录。——预期成果：建立 AI 政策敏感度。</p>
+<p><b>2.</b> 体验 DiffusionGemma 和 MiMo Code，分别记录 3 个与当前所用工具（如 ChatGPT、Cursor）的体验差异。——预期成果：理解新架构和新产品的用户体验差异。</p>
+<p><b>3.</b> 审查你当前产品的 AI 输出界面，识别 2-3 个可能引发用户过度信任的设计元素（如缺乏置信度提示、过于权威的语气）。——预期成果：建立"信任边界"设计意识。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 为你的产品制定"AI 输出风险分级表"，按风险等级设计不同的用户提示和确认流程，并与法务团队评审。——预期成果：可落地的合规设计框架。</p>
+<p><b>2.</b> 设计一个多模型路由的用户体验原型：当用户提出不同类型问题时，系统如何选择和展示不同模型的回答。——预期成果：多模型策略的产品概念验证。</p>
+<p><b>3.</b> 分析火山方舟版权平台的商业模式，思考你的 AI 生成产品是否需要类似的版权合作机制，并列出潜在合作方。——预期成果：版权合规的商业策略。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 建立一个"AI 政策跟踪系统"，定期（月度）评估主要市场（中、美、欧）的监管变化对产品的影响。——预期成果：前瞻性的合规管理能力。</p>
+<p><b>2.</b> 在你的产品路线图中加入"推理效率"专项，与工程团队协作制定 KV Cache 优化、模型蒸馏或扩散架构迁移的技术路径。——预期成果：技术与产品协同的优化飞轮。</p>
+<p><b>3.</b> 研究 Magnetar 的"AI 智能体替代分析师"案例，思考你的行业是否存在类似的"端到端自动化"机会，并评估组织准备度。——预期成果：战略层面的自动化转型规划。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B：AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 在本地环境部署 DiffusionGemma（需 18GB+ 显存），运行官方示例并测试代码补全任务，记录与 CodeLlama 或 Qwen-Coder 的速度对比。——预期成果：扩散语言模型的第一手实践经验。</p>
+<p><b>2.</b> 安装 MiMo Code V0.1，使用"Compose 模式"完成一个小型功能开发（如一个简单的 REST API），记录 Agent-模型协同的工作流。——预期成果：AI 原生开发工具的实操能力。</p>
+<p><b>3.</b> 阅读 Cursor Bugbot 更新博客，理解其"/review"命令与 GitHub/GitLab 的集成机制，在你的项目中配置并运行一次代码审查。——预期成果：AI 代码审查的工程集成能力。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 复现百度 LU-KV 框架的核心实验：在一个开源 LLM（如 Llama-3-8B）上实现头级 KV Cache 预算分配，在 LongBench 子集上验证压缩效果。——预期成果：KV Cache 优化的实际工程能力。</p>
+<p><b>2.</b> 基于 Apache Burr 框架构建一个简单的多智能体系统（如"研究-写作-审核"三 Agent 协作），评估其在任务分配和状态管理上的表现。——预期成果：生产级 Agent 系统的设计能力。</p>
+<p><b>3.</b> 探索 Google Research 的机器遗忘审计框架，在一个微调过的小模型上尝试验证特定数据的遗忘效果。——预期成果：AI 合规技术的实操理解。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 设计并实现一个"多模型路由网关"，根据任务类型、成本约束和延迟要求动态选择后端模型（OpenAI、Anthropic、DeepSeek、本地模型）。——预期成果：模型即服务（MaaS）的基础设施能力。</p>
+<p><b>2.</b> 为 DiffusionGemma 或类似扩散模型构建一个特定领域（如法律文书、医疗报告）的微调 pipeline，评估其在领域一致性上的表现。——预期成果：扩散模型的领域适配能力。</p>
+<p><b>3.</b> 参与一个具身智能相关的开源项目（如 CloudRobo 的 SDK 或 NVIDIA Isaac Sim），贡献一个技能模块或仿真环境。——预期成果：具身智能生态的早期参与。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C：研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 精读 DiffusionGemma 的技术博客和相关论文（如 Google 的文本扩散研究），撰写一篇技术解读，重点分析"离散空间扩散"与"连续空间扩散"的差异。——预期成果：扩散语言模型的理论理解。</p>
+<p><b>2.</b> 阅读 Anthropic 的 AI 安全研究论文（关于从补丁构建漏洞利用），评估其研究方法的可复现性，列出独立验证所需的资源和步骤。——预期成果：AI 安全研究的评估能力。</p>
+<p><b>3.</b> 学习 Google Research 的机器遗忘审计框架，理解正则化 f-散度核检验的统计性质，尝试用 Python 实现其核心检验统计量。——预期成果：机器遗忘技术的数学基础。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 对 LU-KV 框架进行扩展实验：在更多模型架构（如 MQA、GQA）和任务类型上测试其压缩效果，分析注意力头边际贡献曲线的通用性。——预期成果：KV Cache 压缩的深入研究。</p>
+<p><b>2.</b> 复现 Anthropic 的漏洞利用研究的一个简化版本：选择一个小型开源项目，让 AI 分析其安全补丁并尝试生成概念验证（PoC），记录成功率和所需时间。——预期成果：AI 辅助安全研究的实操能力。</p>
+<p><b>3.</b> 调研"智能体互联网"的技术架构，对比 Anthropic 的 MCP、Google 的 A2A 和潜在的中国标准，撰写一份技术对比报告。——预期成果：Agent 互操作性的研究视野。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 设计一种新型的"可验证生成"方法，结合扩散模型的双向注意力特性和 RAG 的来源追溯机制，使模型输出同时具有高速度和可验证性。——预期成果：原创性的研究方向。</p>
+<p><b>2.</b> 将 LU-KV 或类似压缩方法与扩散架构结合，探索"高效扩散推理"的可能性，评估其在长文本生成场景中的优势。——预期成果：跨技术方向的创新融合。</p>
+<p><b>3.</b> 组织或参与一个关于"AI 法律责任与可解释性"的学术或行业研讨会，分享你的技术观点并收集反馈。——预期成果：研究社区的影响力和网络。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D：快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>扩散语言模型入门</td><td>DiffusionGemma 技术博客 + 相关论文</td><td>2-3 小时</td></tr><tr><td>AI 政策与治理</td><td>Dario Amodei《Policy on the AI Exponential》</td><td>1-2 小时</td></tr><tr><td>AI 安全攻防</td><td>Anthropic 漏洞利用研究报道 + The Decoder 分析</td><td>1-2 小时</td></tr><tr><td>具身智能平台</td><td>华为云 CloudRobo 官方介绍 + INSPIRE2026 展示视频</td><td>1-2 小时</td></tr><tr><td>KV Cache 优化</td><td>百度 LU-KV 论文（ICML 2026）+ 公众号解读</td><td>2-3 小时</td></tr><tr><td>机器遗忘审计</td><td>Google Research 博客 + AISTATS 2026 论文</td><td>2-3 小时</td></tr><tr><td>多智能体系统</td><td>Apache Burr 官方文档 + 示例项目</td><td>1-2 小时</td></tr><tr><td>AI 编程助手对比</td><td>MiMo Code 官方文档 + Cursor Bugbot 博客</td><td>1-2 小时</td></tr><tr><td>版权与 AI 生成</td><td>火山方舟版权平台介绍 + 相关法规解读</td><td>1 小时</td></tr><tr><td>智能体互联网</td><td>Anthropic MCP 文档 + Google A2A 规范</td><td>2 小时</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-10.html">
+      <span class="date">2026-06-10</span>
+      <span class="title">Claude双模型发布与AI基建军备竞赛</span>
+      <span class="angle">Anthropic Fable/Mythos 5双模型战略重塑前沿格局，太空轨道算力与地面基建投资同步加速，AI内容法律责任边界开始明确。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-09.html">
+      <span class="date">2026-06-09</span>
+      <span class="title">Apple OS级AI融合与OpenAI自动化研究员愿景</span>
+      <span class="angle">苹果WWDC定义OS级智能体入口，OpenAI战略升级迈向自主科学发现，推理性能极限突破重塑交互边界。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-08.html">
+      <span class="date">2026-06-08</span>
+      <span class="title">ChatGPT变身AgentGPT与Harness-1检索突破</span>
+      <span class="angle">OpenAI筹备ChatGPT史上最大改版转向Agent超级应用，Harness-1 20B检索子智能体在8个基准上领先11.4个百分点，特朗普政府探讨公共财富基金入股AI</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>162 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+    </div>
+  </footer>
+</body>
+</html>
