@@ -378,7 +378,7 @@
   <div class="strip">
     <div><b>VOL.</b><span>159</span></div>
     <div><b>ISS.</b><span>2026-06-08</span></div>
-    <div><b>EVT.</b><span>30 EVENTS</span></div>
+    <div><b>EVT.</b><span>12 EVENTS</span></div>
     <div><b>CLR.</b><span>FIELD UNIT</span></div>
     <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
   </div>
@@ -399,7 +399,7 @@
     <div class="num">8</div>
     <div class="meta-col">
       <h2>ChatGPT变身AgentGPT与Harness-1检索突破</h2>
-      <p></p>
+      <p>OpenAI筹备ChatGPT史上最大改版转向Agent超级应用，Harness-1 20B检索子智能体在8个基准上领先11.4个百分点，特朗普政府探讨公共财富基金入股AI</p>
       <div class="meta-row"><b>日期</b> 2026-06-08</div>
       <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
       <div class="meta-row"><b>数据</b> AI HOT API</div>
@@ -411,13 +411,19 @@
   <section class="abstract">
     <div class="label">ABSTRACT</div>
     <div class="body">
-      <span class="drop"></span>
+      <span class="drop">Open</span>AI筹备ChatGPT史上最大改版转向Agent超级应用，Harness-1 20B检索子智能体在8个基准上领先11.4个百分点，特朗普政府探讨公共财富基金入股AI
     </div>
     <div class="credits">
+      
       <b>CLASSIFICATION</b><br>
-      CRITICAL 0<br>
-      IMPORTANT 0<br>
-      REFERENCE 0<br>
+      CRITICAL 3<br>
+      IMPORTANT 3<br>
+      REFERENCE 6<br>
+      <hr>
+      <b>THEMES</b><br>
+      <br>
+      <br>
+      <br>
       <hr>
       <b>FRAMEWORK</b><br>
       框架一：Agent产品成熟度评估模型（APMM）<br>
@@ -434,6 +440,13 @@
         <div>
           <h3>1 ChatGPT要变AgentGPT：OpenAI筹备史上最大规模改版</h3>
           <p>OpenAI正在筹备ChatGPT史上最大规模的改版，产品定位从聊天机器人转向超级应用/Agent平台，计划深度整合Codex编程智能体、图像生成能力以及第三方应用生态。ChatGPT目前拥有9亿周活跃用户、5000万付费用户，月收入达20亿美元。</p>
+
+
+
+          <p><b>可落地的方法论：</b>- **Agent产品设计四原则**：任何Agent功能上线前必须回答四个问题——（1）执行边界是什么，（2）哪些步骤必须人工确认，（3）出错时如何优雅回退，（4）用户如何审计AI的完整操作链路。缺少任一答案的功能不应进入开发排期。
+- **平台化转型的用户迁移策略**：参考OpenAI的路径，当产品从单一功能向平台转型时，应优先保障核心场景的稳定性，采用"能力叠加而非替换"的策略，让老用户在无感知的情况下逐步接纳新能力，避免因界面剧变导致用户流失。
+
+---</p>
           <span class="source">SOURCE /// <a href="https://x.com/dotey/status/2063686036895478162">https://x.com/dotey/status/2063686036895478162</a></span>
         </div>
         <div class="tag">STRUCTURAL</div>
@@ -443,6 +456,13 @@
         <div>
           <h3>2 Harness-1：基于强化学习的20B有状态检索子智能体</h3>
           <p>UIUC与Chroma联合推出Harness-1，一个基于强化学习训练的20B参数检索子智能体，运行在有状态搜索框架内。该模型在8个基准测试上达到0.730平均curated recall，比下一个最佳开源子智能体高出11.4个百分点。</p>
+
+
+
+          <p><b>可落地的方法论：</b>- **RAG系统的分层评估框架**：将RAG系统拆分为"检索质量"和"生成质量"两个独立维度进行评测，每个维度至少使用2-3个不同基准。检索质量的评估不应只看召回率，还应引入curated recall（人工筛选后的相关度指标）等更贴近实际业务场景的指标。
+- **子智能体模块化设计**：将复杂的AI系统拆解为多个专用子智能体（检索、路由、验证、生成），每个子智能体采用最适合其任务的模型和训练策略。Harness-1证明专用小模型在特定任务上可以超越通用大模型，这种"分而治之"的架构能显著降低整体系统的成本和延迟。
+
+---</p>
           <span class="source">SOURCE /// <a href="https://www.marktechpost.com/2026/06/06/meet-harness-1-a-20b-retrieval-subagent-trained-with-reinforcement-learning-inside-a-stateful-search-harness-on-gpt-oss-20b">https://www.marktechpost.com/2026/06/06/meet-harness-1-a-20b-retrieval-subagent-trained-with-reinforcement-learning-inside-a-stateful-search-harness-on-gpt-oss-20b</a></span>
         </div>
         <div class="tag">GROWTH</div>
@@ -452,6 +472,13 @@
         <div>
           <h3>3 OpenAI超级应用计划与特朗普政府入股AI初创公司</h3>
           <p>OpenAI持续推进其超级应用（Super App）战略，目标是将ChatGPT打造为集多种功能于一体的AI原生平台。与此同时，特朗普政府正在与OpenAI讨论通过公共财富基金（Sovereign Wealth Fund）入股AI初创公司的可能性，标志着AI产业正上升到国家战略层面。</p>
+
+
+
+          <p><b>可落地的方法论：</b>- **超级应用的冷启动指标设计**：参考OpenAI的路径，构建超级应用时应先确立一个无法被替代的"核心锚点功能"（ChatGPT的锚点是通用对话能力），然后围绕该锚点设计"功能叠加指数"——每新增一个功能模块，评估其对核心锚点的增强效应（+）、稀释效应（-）或中性效应（0），仅叠加增强效应显著的功能。
+- **政策风险前置评估矩阵**：对于AI产品，在MVP阶段就应建立政策风险评估框架，至少覆盖数据跨境、算法备案、生成内容标识、行业准入四个维度，每个维度设定红/黄/绿灯评级，红灯维度必须在产品上线前解决，避免后期因政策变化导致产品被迫下线或重构。
+
+---</p>
           <span class="source">SOURCE /// </span>
         </div>
         <div class="tag">CAPITAL</div>
@@ -498,7 +525,7 @@
   <section class="alert" id="alert">
     <div class="label">!! TODAY<br>TAKE</div>
     <div class="body">
-      
+      OpenAI筹备ChatGPT史上最大改版转向Agent超级应用，Harness-1 20B检索子智能体在8个基准上领先11.4个百分点，特朗普政府探讨公共财富基金入股AI
     </div>
   </section>
 
@@ -511,6 +538,7 @@
       <div class="label">01</div>
       <div class="body">
         <h4>1 ChatGPT要变AgentGPT：OpenAI筹备史上最大规模改版</h4>
+        
         
         
         <div class="method">
@@ -528,6 +556,7 @@
         <h4>2 Harness-1：基于强化学习的20B有状态检索子智能体</h4>
         
         
+        
         <div class="method">
           <h5>方法论</h5>
           <ul>
@@ -541,6 +570,7 @@
       <div class="label">03</div>
       <div class="body">
         <h4>3 OpenAI超级应用计划与特朗普政府入股AI初创公司</h4>
+        
         
         
         <div class="method">
@@ -563,7 +593,8 @@
       <div class="label">01</div>
       <div class="body">
         <h4>1 苹果秘密会议内幕：WWDC 2026将公布重大AI进展</h4>
-        <p><b>核心描述：</b>彭博社报道揭示了苹果一场秘密会议的内幕，苹果终于开始认真对待AI，相关重大进展预计将在即将召开的WWDC 2026上公布。</p>
+        <p><b>分析：</b>彭博社报道揭示了苹果一场秘密会议的内幕，苹果终于开始认真对待AI，相关重大进展预计将在即将召开的WWDC 2026上公布。</p>
+        
         
         
         <div class="method">
@@ -578,7 +609,8 @@
       <div class="label">02</div>
       <div class="body">
         <h4>2 Harness工程：在智能体优先的世界中运用Codex</h4>
-        <p><b>核心描述：</b>OpenAI官方发布Harness工程实践，阐述如何在"智能体优先"（Agent-First）的范式下有效运用Codex编程智能体，涵盖架构设计、工作流编排和实际落地经验。</p>
+        <p><b>分析：</b>OpenAI官方发布Harness工程实践，阐述如何在"智能体优先"（Agent-First）的范式下有效运用Codex编程智能体，涵盖架构设计、工作流编排和实际落地经验。</p>
+        
         
         
         <div class="method">
@@ -593,7 +625,8 @@
       <div class="label">03</div>
       <div class="body">
         <h4>3 Her（हेर）：Claude Code会话分析工具</h4>
-        <p><b>核心描述：</b>Her是一个开源的Claude Code会话分析工具，能够用自然语言重建每一轮交互过程，自动标记高风险操作，并可视化展示token消耗和工具调用情况。</p>
+        <p><b>分析：</b>Her是一个开源的Claude Code会话分析工具，能够用自然语言重建每一轮交互过程，自动标记高风险操作，并可视化展示token消耗和工具调用情况。</p>
+        
         
         
         <div class="method">
@@ -847,20 +880,20 @@
       <h2>Archive ///</h2>
       <span class="meta">PAST 3 ISSUES</span>
     </div>
-    <a class="archive-row" href="/ai-daily/daily html/2026-06-07.html">
-      <span class="date">2026-06-07</span>
-      <span class="title">Spec Kit规范编码与联邦AI监管集权</span>
-      <span class="angle">GitHub Spec Kit获109K星标重新定义AI编码流程，美国众议院法案禁止各州AI法规将监管权收归联邦，算力成本对比揭示开源模型性价比优势</span>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-22.html">
+      <span class="date">2026-06-22</span>
+      <span class="title">Mythos 攻破 NSA 与 AI 入口企业双战</span>
+      <span class="angle">超级 AI 安全能力击穿国家机密防线，模型入口聚合与企业规模化部署同步重塑产业权力结构。</span>
     </a>
-    <a class="archive-row" href="/ai-daily/daily html/2026-06-06.html">
-      <span class="date">2026-06-06</span>
-      <span class="title">Anthropic失控预警与算力军备竞赛白热化</span>
-      <span class="angle">Anthropic称Mythos模型显现脱离控制迹象呼吁全球暂停，Apollo 350亿美元为Anthropic采购芯片，Google每月支付SpaceX 9.2亿美元获取算力</span>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-21.html">
+      <span class="date">2026-06-21</span>
+      <span class="title">模型中间商崛起与Agent实战</span>
+      <span class="angle">当全球 AI 模型流通从单极出口转向双向转售，Agent 构建正从 Demo 走向可复用的工程化架构。</span>
     </a>
-    <a class="archive-row" href="/ai-daily/daily html/2026-06-05.html">
-      <span class="date">2026-06-05</span>
-      <span class="title">RSI递归自我改进与AI能耗翻倍预警</span>
-      <span class="angle">OpenAI确认AI递归自我改进初现，联合国警告2030年AI能耗翻倍，Cloudflare数据显示机器人流量首超人类</span>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-20.html">
+      <span class="date">2026-06-20</span>
+      <span class="title">智能体基建与研究自治</span>
+      <span class="angle">AI 智能体基础设施与研究自动化同时越过临界点，标志着从模型能力展示向自主系统工程的范式转移。</span>
     </a>
   </section>
 
@@ -874,6 +907,7 @@
     </dl>
     <div>
       <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+      
     </div>
   </footer>
 </body>
