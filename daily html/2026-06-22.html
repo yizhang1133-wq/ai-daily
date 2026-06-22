@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-06-22</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>173</span></div>
+    <div><b>ISS.</b><span>2026-06-22</span></div>
+    <div><b>EVT.</b><span>4 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 173</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">22</div>
+    <div class="meta-col">
+      <h2>Mythos 攻破 NSA 与 AI 入口企业双战</h2>
+      <p>超级 AI 安全能力击穿国家机密防线，模型入口聚合与企业规模化部署同步重塑产业权力结构。</p>
+      <div class="meta-row"><b>日期</b> 2026-06-22</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 173 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">超级 A</span>I 安全能力击穿国家机密防线，模型入口聚合与企业规模化部署同步重塑产业权力结构。
+    </div>
+    <div class="credits">
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 3<br>
+      IMPORTANT 1<br>
+      REFERENCE 0<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架 1：AI 权力再分配三角形 —— 入口、安全、企业<br>
+      框架 2：从“模型能力”到“模型体验”的产品跃迁<br>
+      框架 3：安全红线的“非线性突破”与企业采购的“防御性升级”
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>3 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>Mythos 数小时内攻破 NSA 几乎所有机密系统</h3>
+          <p>美国 NSA 局长公开表示，Anthropic 的 Mythos 模型在数小时内攻破了其几乎所有机密系统；此前 Mythos 已在 5 天内破解 macOS。相比之下，Google Project Zero 完成同等攻击需约 6 个月，单个 macOS 零日漏洞价值约 200 万美元。苹果原假设全球仅 10–20 个团队具备此类能力，而 Mythos 可能将这一数字扩大至数千。</p>
+          <p><b>AI PM 视角：</b>这一事件如果属实，意味着 AI 安全的威胁模型已经发生质变。过去，企业安全产品的假设是：攻击者需要极高的专业知识、时间和资源，才能攻破一套系统；因此防御体系可以围绕“延迟攻击者”来设计。但 Mythos 展现出的速度和能力密度，直接瓦解了这个假设。对产品经理来说，这首先是一个**产品定位的洗牌信号**：传统 endpoint security、EDR、零信任架构的卖点可能需要从“防人类黑客”转向“防 AI 级自动化攻击”。其次，它打开了全新的安全产品品类空间——AI 红队、自动化漏洞猎人、对抗性补丁验证、AI 安全护栏等，都可能从“研究玩具”变成“企业必选项”。
+
+更深一层看，这一事件也会重塑客户的采购决策逻辑。以往 CISO 采购安全产品主要看合规、品牌和历史战绩；未来，客户会开始追问：你的产品能否防御 AI 自主攻击？你的模型是否经过对抗性训练？你的漏洞响应速度是否能跟上 AI 级攻击节奏？这种采购标准的变化，将利好那些能够把 AI 安全能力产品化的团队，而惩罚那些仍停留在规则引擎和特征库时代的传统厂商。</p>
+
+          <p><b>研究型 Builder 视角：</b>从研究角度看，这一声明最值得追问的不是“Mythos 有多强”，而是**能力从何而来、能否复现、边界在哪里**。如果 Mythos 真的能在数小时内攻破 NSA 级别的系统，那么它很可能不是依靠记忆性的漏洞利用，而是具备某种程度的自主推理、组合攻击链和绕过防御机制的能力。这对整个 AI 安全研究领域提出了三个核心问题：第一，这种能力是可解释的还是涌现的？第二，它是否可以通过更小的开源模型复现？第三，如何在不释放危险能力的前提下研究这些能力？研究型 Builder 应该关注 Anthropic 或 NSA 是否会释放技术性评估报告、基准测试或红队审计结果，因为这些才是判断“真实能力”vs“政治修辞”的关键信号。</p>
+          <p><b>可落地的方法论：</b>- **本周可落地**: 在你负责的产品或服务中做一次“AI 红队”演练：让团队用当前最强的模型尝试寻找安全漏洞、绕过内容审核或绕过权限控制，记录成功率和所需时间，评估现有防御是否足够。
+- **本季度可落地**: 如果你是安全类产品 PM，启动一个“AI 攻击者视角”的产品路线图，至少包含三项能力：自动化漏洞扫描、对抗性补丁验证、AI 生成攻击模拟报告。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/AISafetyMemes/status/2068718552174252477">X：AI Safety Memes (@AISafetyMemes)</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>美团 tabbit 国际版免费接入 GPT-5.5 / Claude Opus 4.8 等旗舰模型</h3>
+          <p>美团上线 tabbit 国际版应用，免费集成 GPT-5.5、Claude Opus 4.8、Gemini 3.5 Flash 等海外旗舰模型，以及 Kimi-2.6、GLM-5.1、MiniMax-M3 等国内模型。用户无需单独订阅即可使用，目前处于免费推广阶段。值得注意的是，只有国际版包含海外模型，国内版仅提供国内模型。</p>
+          <p><b>AI PM 视角：</b>这是一个典型的**入口层战争**信号。当底层模型能力差距越来越小、价格越来越低时，竞争焦点会迅速上移到“谁能把模型送到用户手中”。美团 tabbit 的核心策略不是做模型，而是做**模型的超级入口**——通过免费聚合多个顶级模型，降低用户切换成本，同时把用户锁定在自己的产品生态里。对 AI PM 来说，这件事释放了三个关键信号：第一，单一模型订阅模式的护城河正在瓦解，用户开始习惯“用最好的模型，而不是用某一个模型”；第二，拥有高频场景（外卖、本地生活、支付）的平台公司，比纯 AI 公司更有机会成为 AI 入口；第三，区域合规将成为产品分化的核心变量——国际版和国内版的模型差异，说明出海与本土产品必须走不同的模型策略。
+
+从竞争格局看，tabbit 的免费策略也会加速行业洗牌。OpenAI、Anthropic、Google 等模型厂商可能不得不接受“被集成”的命运，靠 API 和 ToB 授权赚钱；而拥有流量和场景的聚合平台则可以通过补贴获取用户，再通过广告、交易佣金、增值服务变现。这种“模型免费、入口收费”的商业模式，可能会成为未来一年 AI 应用层的主流打法。</p>
+
+          <p><b>研究型 Builder 视角：</b>技术层面，tabbit 这样的聚合应用对 Builder 提出了一个有趣的架构挑战：**如何在一个统一界面下实现多模型路由、成本优化和体验一致性**。这背后涉及模型选择逻辑（根据任务类型、延迟要求、成本预算动态路由）、上下文管理（不同模型的上下文窗口和记忆机制不同）、输出风格统一（同一个对话中切换模型时如何保持人格和记忆），以及合规隔离（国内和海外模型的数据路径必须物理或逻辑隔离）。研究型 Builder 可以把这个场景当作一个真实的“多模型系统”研究对象：路由策略是否可以用一个小型分类器优化？用户满意度与模型选择之间是否存在可量化的映射关系？这些都是可发表论文或做成开源工具的方向。</p>
+          <p><b>可落地的方法论：</b>- **本周可落地**: 如果你正在做 AI 应用，评估是否引入“多模型后端”：列出你产品中的高频任务类型，测试不同模型在这些任务上的性价比，建立简单的路由规则。
+- **本季度可落地**: 设计一个“模型无关”的产品架构，让前端和 Prompt 层与后端模型解耦，确保未来可以低成本切换或同时接入多个模型，并记录不同模型对核心指标的影响。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/AYi_AInotes/status/2068637890247016607">X：阿易 AI Notes (@AYi_AInotes)</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>三星电子向全球员工部署 ChatGPT Enterprise 和 Codex</h3>
+          <p>三星电子向全球员工推出 ChatGPT Enterprise 和 Codex，这是 OpenAI 目前规模最大的企业级 AI 部署之一。</p>
+          <p><b>AI PM 视角：</b>三星这次部署是**企业 AI  adoption 跨越鸿沟**的标志性事件。过去几年，企业 AI 工具一直处于试点阶段：小范围试用、IT 部门担心数据安全、法务担心合规、员工担心被替代。但当一家拥有数十万全球员工的制造业巨头全面铺开 ChatGPT Enterprise 和 Codex 时，意味着企业 AI 已经从“实验”变成“基础设施”。对产品经理而言，最值得关注的不是部署本身，而是它预示着企业采购决策标准的成熟：数据隐私（Enterprise 版承诺不训练客户数据）、管理控制台、SSO、审计日志、成本可控性——这些 B 端能力正在成为 AI 产品的基本门槛。
+
+这件事还会加速一个趋势：**企业内部的知识工作和工作流将被 AI 深度嵌入**。三星的员工会把 ChatGPT 用于邮件、文档、会议摘要，把 Codex 用于代码生成、测试、调试。这意味着，未来企业软件的竞争力不再只是功能完整性，而是“与 AI 协作的体验”。如果一个传统 SaaS 产品不能提供原生 AI 能力，用户会直接用 ChatGPT/Codex 绕过它。这会倒逼所有企业软件重新设计核心工作流。</p>
+
+          <p><b>研究型 Builder 视角：</b>研究型 Builder 应该关注这次大规模部署的**实际效果测量问题**。 codex 和 ChatGPT 在三星这样的复杂组织中，到底能提升多少效率？哪些任务最容易被自动化？哪些任务反而因为 AI 介入变得更慢或更低质？这些问题的答案，对于未来设计企业 AI 系统至关重要。另一个值得研究的角度是**规模化部署中的“涌现问题”**：当数万人同时使用 AI 时，会出现哪些个体使用时不会暴露的问题？比如知识库污染、组织记忆失真、决策责任模糊、AI 生成内容在内部传播导致的“幻觉放大”。这些都是研究型 Builder 可以切入的真实研究课题。</p>
+          <p><b>可落地的方法论：</b>- **本周可落地**: 如果你是 B 端产品负责人，梳理你产品中的 3 个最高频“知识工作”场景，设计一个最小可用的 AI 增强版本，并明确数据安全和隐私承诺。
+- **本季度可落地**: 建立一个“企业 AI 价值测量框架”，定义 3–5 个可量化的效率指标（如任务完成时间、代码提交质量、文档产出速度），为后续大规模推广提供数据基础。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://openai.com/index/samsung-electronics-chatgpt-codex-deployment">OpenAI：官网动态</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">1 IMPORTANT + 0 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://mp.weixin.qq.com/s/xrTg2Bdy3FF3gn3C_gVBJQ">腾讯元宝父亲节活动：上传照片生成与年轻爸爸的合影</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">0 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      超级 AI 安全能力击穿国家机密防线，模型入口聚合与企业规模化部署同步重塑产业权力结构。
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 3 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Mythos 数小时内攻破 NSA 几乎所有机密系统</h4>
+        <p><b>AI PM 视角：</b>这一事件如果属实，意味着 AI 安全的威胁模型已经发生质变。过去，企业安全产品的假设是：攻击者需要极高的专业知识、时间和资源，才能攻破一套系统；因此防御体系可以围绕“延迟攻击者”来设计。但 Mythos 展现出的速度和能力密度，直接瓦解了这个假设。对产品经理来说，这首先是一个<strong>产品定位的洗牌信号</strong>：传统 endpoint security、EDR、零信任架构的卖点可能需要从“防人类黑客”转向“防 AI 级自动化攻击”。其次，它打开了全新的安全产品品类空间——AI 红队、自动化漏洞猎人、对抗性补丁验证、AI 安全护栏等，都可能从“研究玩具”变成“企业必选项”。</p>
+<p>更深一层看，这一事件也会重塑客户的采购决策逻辑。以往 CISO 采购安全产品主要看合规、品牌和历史战绩；未来，客户会开始追问：你的产品能否防御 AI 自主攻击？你的模型是否经过对抗性训练？你的漏洞响应速度是否能跟上 AI 级攻击节奏？这种采购标准的变化，将利好那些能够把 AI 安全能力产品化的团队，而惩罚那些仍停留在规则引擎和特征库时代的传统厂商。</p>
+        
+        <p><b>研究型 Builder 视角：</b>从研究角度看，这一声明最值得追问的不是“Mythos 有多强”，而是<strong>能力从何而来、能否复现、边界在哪里</strong>。如果 Mythos 真的能在数小时内攻破 NSA 级别的系统，那么它很可能不是依靠记忆性的漏洞利用，而是具备某种程度的自主推理、组合攻击链和绕过防御机制的能力。这对整个 AI 安全研究领域提出了三个核心问题：第一，这种能力是可解释的还是涌现的？第二，它是否可以通过更小的开源模型复现？第三，如何在不释放危险能力的前提下研究这些能力？研究型 Builder 应该关注 Anthropic 或 NSA 是否会释放技术性评估报告、基准测试或红队审计结果，因为这些才是判断“真实能力”vs“政治修辞”的关键信号。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可落地</strong>: 在你负责的产品或服务中做一次“AI 红队”演练：让团队用当前最强的模型尝试寻找安全漏洞、绕过内容审核或绕过权限控制，记录成功率和所需时间，评估现有防御是否足够。</li>
+<li><strong>本季度可落地</strong>: 如果你是安全类产品 PM，启动一个“AI 攻击者视角”的产品路线图，至少包含三项能力：自动化漏洞扫描、对抗性补丁验证、AI 生成攻击模拟报告。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>美团 tabbit 国际版免费接入 GPT-5.5 / Claude Opus 4.8 等旗舰模型</h4>
+        <p><b>AI PM 视角：</b>这是一个典型的<strong>入口层战争</strong>信号。当底层模型能力差距越来越小、价格越来越低时，竞争焦点会迅速上移到“谁能把模型送到用户手中”。美团 tabbit 的核心策略不是做模型，而是做<strong>模型的超级入口</strong>——通过免费聚合多个顶级模型，降低用户切换成本，同时把用户锁定在自己的产品生态里。对 AI PM 来说，这件事释放了三个关键信号：第一，单一模型订阅模式的护城河正在瓦解，用户开始习惯“用最好的模型，而不是用某一个模型”；第二，拥有高频场景（外卖、本地生活、支付）的平台公司，比纯 AI 公司更有机会成为 AI 入口；第三，区域合规将成为产品分化的核心变量——国际版和国内版的模型差异，说明出海与本土产品必须走不同的模型策略。</p>
+<p>从竞争格局看，tabbit 的免费策略也会加速行业洗牌。OpenAI、Anthropic、Google 等模型厂商可能不得不接受“被集成”的命运，靠 API 和 ToB 授权赚钱；而拥有流量和场景的聚合平台则可以通过补贴获取用户，再通过广告、交易佣金、增值服务变现。这种“模型免费、入口收费”的商业模式，可能会成为未来一年 AI 应用层的主流打法。</p>
+        
+        <p><b>研究型 Builder 视角：</b>技术层面，tabbit 这样的聚合应用对 Builder 提出了一个有趣的架构挑战：<strong>如何在一个统一界面下实现多模型路由、成本优化和体验一致性</strong>。这背后涉及模型选择逻辑（根据任务类型、延迟要求、成本预算动态路由）、上下文管理（不同模型的上下文窗口和记忆机制不同）、输出风格统一（同一个对话中切换模型时如何保持人格和记忆），以及合规隔离（国内和海外模型的数据路径必须物理或逻辑隔离）。研究型 Builder 可以把这个场景当作一个真实的“多模型系统”研究对象：路由策略是否可以用一个小型分类器优化？用户满意度与模型选择之间是否存在可量化的映射关系？这些都是可发表论文或做成开源工具的方向。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可落地</strong>: 如果你正在做 AI 应用，评估是否引入“多模型后端”：列出你产品中的高频任务类型，测试不同模型在这些任务上的性价比，建立简单的路由规则。</li>
+<li><strong>本季度可落地</strong>: 设计一个“模型无关”的产品架构，让前端和 Prompt 层与后端模型解耦，确保未来可以低成本切换或同时接入多个模型，并记录不同模型对核心指标的影响。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>三星电子向全球员工部署 ChatGPT Enterprise 和 Codex</h4>
+        <p><b>AI PM 视角：</b>三星这次部署是<strong>企业 AI  adoption 跨越鸿沟</strong>的标志性事件。过去几年，企业 AI 工具一直处于试点阶段：小范围试用、IT 部门担心数据安全、法务担心合规、员工担心被替代。但当一家拥有数十万全球员工的制造业巨头全面铺开 ChatGPT Enterprise 和 Codex 时，意味着企业 AI 已经从“实验”变成“基础设施”。对产品经理而言，最值得关注的不是部署本身，而是它预示着企业采购决策标准的成熟：数据隐私（Enterprise 版承诺不训练客户数据）、管理控制台、SSO、审计日志、成本可控性——这些 B 端能力正在成为 AI 产品的基本门槛。</p>
+<p>这件事还会加速一个趋势：<strong>企业内部的知识工作和工作流将被 AI 深度嵌入</strong>。三星的员工会把 ChatGPT 用于邮件、文档、会议摘要，把 Codex 用于代码生成、测试、调试。这意味着，未来企业软件的竞争力不再只是功能完整性，而是“与 AI 协作的体验”。如果一个传统 SaaS 产品不能提供原生 AI 能力，用户会直接用 ChatGPT/Codex 绕过它。这会倒逼所有企业软件重新设计核心工作流。</p>
+        
+        <p><b>研究型 Builder 视角：</b>研究型 Builder 应该关注这次大规模部署的<strong>实际效果测量问题</strong>。 codex 和 ChatGPT 在三星这样的复杂组织中，到底能提升多少效率？哪些任务最容易被自动化？哪些任务反而因为 AI 介入变得更慢或更低质？这些问题的答案，对于未来设计企业 AI 系统至关重要。另一个值得研究的角度是<strong>规模化部署中的“涌现问题”</strong>：当数万人同时使用 AI 时，会出现哪些个体使用时不会暴露的问题？比如知识库污染、组织记忆失真、决策责任模糊、AI 生成内容在内部传播导致的“幻觉放大”。这些都是研究型 Builder 可以切入的真实研究课题。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可落地</strong>: 如果你是 B 端产品负责人，梳理你产品中的 3 个最高频“知识工作”场景，设计一个最小可用的 AI 增强版本，并明确数据安全和隐私承诺。</li>
+<li><strong>本季度可落地</strong>: 建立一个“企业 AI 价值测量框架”，定义 3–5 个可量化的效率指标（如任务完成时间、代码提交质量、文档产出速度），为后续大规模推广提供数据基础。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 1 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>腾讯元宝父亲节活动：上传照片生成与年轻爸爸的合影</h4>
+        <p><b>分析：</b>腾讯元宝推出父亲节主题活动，用户可上传爸爸年轻时的照片和自己的照片，通过提示词生成“穿越回过去与爸爸合影”的 AI 图像，强调保留爸爸照片的背景、动作及五官，并保证人物姿态自然协调、光线与色调一致。</p>
+        <p><b>AI PM 视角：</b>这是一个典型的<strong>情感化 AI 原生功能</strong>案例。它把图像生成能力包装成一个有明确节日场景、强情感共鸣、低使用门槛的社交功能。相比“给你一个文生图工具”，这种活动化设计大大降低了用户的认知负担，同时天然具备社交传播属性。对 AI PM 来说，这件事的启示是：技术能力本身不是产品，<strong>场景 + 情感 + 分享机制</strong>才是。元宝选择父亲节这个高情感浓度的节点，用“穿越合影”打动用户，本质上是在争夺 AI 时代“情感入口”的位置。未来类似的场景还会延伸到老照片修复、家庭相册生成、虚拟陪伴等领域。</p>
+        
+        <p><b>研究型 Builder 视角：</b>这个功能涉及多图融合、身份保持、姿态协调、光照一致性等多个图像生成中的难点，是评估当前图像模型可控性的一个真实测试场景。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>在设计 AI 功能时，优先找“用户本来就想做但技术做不到”的情感化场景，而不是把模型能力直接暴露成按钮。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架 1：AI 权力再分配三角形 —— 入口、安全、企业</h4>
+        <p>今天的三个核心事件恰好构成 AI 产业权力再分配的三个顶点：</p>
+<ul>
+<li><strong>入口层</strong>：美团 tabbit 通过免费聚合模型争夺 C 端用户入口，说明模型能力正在“商品化”，入口价值上升。</li>
+<li><strong>安全层</strong>：Mythos 攻破 NSA 系统，说明 AI 能力已经强大到可以击穿传统安全假设，安全成为新的制高点。</li>
+<li><strong>企业层</strong>：三星全面部署 ChatGPT Enterprise 和 Codex，说明企业 workflow 成为 AI 价值兑现的主战场。</li>
+</ul>
+<p><strong>产品启示</strong>: 对大多数 AI 产品团队来说，继续做“通用模型能力”已经没有差异化。下一步的竞争将围绕三个问题展开：你能否控制一个高频入口？你能否提供 AI 时代的安全信任？你能否嵌入企业的核心工作流？一个产品至少要占据其中一个顶点，才有可能在长期竞争中存活。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架 2：从“模型能力”到“模型体验”的产品跃迁</h4>
+        <p>美团 tabbit 和腾讯元宝父亲节活动共同说明：用户不直接消费模型能力，而是消费<strong>模型能力在特定场景下的体验</strong>。同样的多模态生成能力，在元宝那里是“和爸爸合影”，在 tabbit 那里是“免订阅使用顶级模型”。</p>
+<p><strong>产品启示</strong>: AI PM 应该把自己的工作重心从“接入更强的模型”转向“设计更好的模型体验”。这包括：场景选择（用户在什么情境下最需要 AI）、交互设计（如何降低提示词门槛）、结果可信（如何让用户相信 AI 输出是可靠的）、情感连接（如何让 AI 输出有温度）。未来一年，模型能力差距会进一步缩小，但产品体验差距会进一步放大。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架 3：安全红线的“非线性突破”与企业采购的“防御性升级”</h4>
+        <p>Mythos 攻破 NSA 系统与三星部署企业级 AI 看似是两个独立事件，实则共同指向一个趋势：AI 带来的安全风险和效率提升正在同步加速，企业必须在“拥抱 AI”和“防御 AI”之间找到平衡。</p>
+<p><strong>产品启示</strong>: 企业级 AI 产品的设计必须内置安全思维。未来的 B 端 AI 产品不仅要回答“能帮我提升多少效率”，还要回答“会不会被 AI 攻破”“数据会不会被模型泄露”“AI 生成的内容如何审计”。能够提供“效率 + 安全”双重价值的产品，将在企业采购中占据优势。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>阅读 NSA 局长关于 Mythos 的完整发言与上下文</strong>：重点理解“数小时攻破几乎所有机密系统”这一说法的技术可信度，以及它对国家安全、企业安全采购逻辑的潜在影响。</p>
+<p><b>2.</b> <strong>体验美团 tabbit 国际版与国内版</strong>：对比两者在模型选择、交互设计、免费策略上的差异，思考“模型聚合入口”对现有 AI 应用产品的冲击。</p>
+<p><b>3.</b> <strong>回顾 OpenAI 官方关于三星部署的案例文章</strong>：重点关注企业级功能（数据隐私、管理控制台、成本管理）如何被包装成卖点。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>做一次内部 AI 红队演练</strong>：针对你负责的产品或公司系统，用当前主流模型尝试发现安全漏洞、绕过机制或幻觉风险，记录结果并制定修复优先级。</p>
+<p><b>2.</b> <strong>评估多模型后端可行性</strong>：列出你产品中的核心任务，测试 2–3 个不同模型的表现，建立初步的“任务-模型-成本”映射表。</p>
+<p><b>3.</b> <strong>设计一个情感化 AI 场景原型</strong>：参考腾讯元宝父亲节活动，找一个与你产品相关的情感化场景，做一个最小可用的交互原型。</p>
+<p><b>4.</b> <strong>梳理企业客户的安全顾虑</strong>：如果你是 B 端产品，整理客户最关心的 5 个 AI 安全/隐私问题，并准备一份 FAQ 或安全白皮书。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>模型入口聚合将成为主流，单一模型订阅模式承压</strong>：未来 6–12 个月，会出现更多 tabbit 式的模型聚合产品，用户为“最好的答案”付费，而不是为某个模型付费。</p>
+<p><b>2.</b> <strong>AI 安全将从合规成本变成产品卖点</strong>：随着 AI 攻击能力被曝光，企业会愿意为“AI 原生安全”支付溢价，安全类产品将迎来一轮重构。</p>
+<p><b>3.</b> <strong>企业 AI 部署将从试点走向标准化基础设施</strong>：像三星这样的标杆案例会带动更多大型企业全面部署 AI 工具，企业软件的 AI 原生重构将加速。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题 1: 当模型能力“商品化”后，AI 产品的护城河究竟在哪里？</h4>
+        <p>美团 tabbit 的免费聚合策略表明，单一模型的技术领先已经很难构成长期壁垒。未来 AI 产品的竞争将从“谁有更强的模型”转向“谁能更好地把模型嵌入用户生活和工作流”。</p>
+<ul>
+<li>[产品战略层面]: 你的产品是依靠模型能力差异化，还是依靠场景、数据或网络效应差异化？</li>
+<li>[执行层面]: 如果明天最强模型免费开源，你的产品是否还有用户愿意留下？</li>
+<li>[风险层面]: 过度依赖某个模型厂商，是否会让你在未来入口战争中处于被动？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题 2: Mythos 攻破 NSA 是“真实威胁”还是“修辞夸大”？我们该如何判断？</h4>
+        <p>NSA 局长的表态缺乏具体技术细节，但它已经足以影响政策、资本和公众认知。在 AI 安全领域，信号与噪声往往难以区分。</p>
+<ul>
+<li>[产品战略层面]: 如果你的产品涉及安全，你更愿意基于“最坏情况假设”还是“最可能情况假设”来设计防御？</li>
+<li>[执行层面]: 如何建立一个可验证的 AI 安全评估流程，而不是被舆论牵着走？</li>
+<li>[风险层面]: 如果超级 AI 攻击能力被过度渲染，会不会导致监管过激，反而抑制创新？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题 3: 三星全面部署 AI 后，企业内部的工作流和权力结构会如何变化？</h4>
+        <p>当数十万员工每天使用 ChatGPT 和 Codex 时，企业的知识生产、决策流程、绩效评估都会被重塑。</p>
+<ul>
+<li>[产品战略层面]: 你设计的企业 AI 工具是在“增强现有岗位”还是在“重新定义岗位”？</li>
+<li>[执行层面]: 如何衡量 AI 工具对企业效率的真实贡献，而不是被“使用次数”等虚荣指标误导？</li>
+<li>[风险层面]: AI 生成的内容在企业内部大规模流动，会不会导致组织记忆的污染或决策责任的模糊？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题 4: 情感化 AI 功能能否成为长期用户增长引擎，还是只是节日营销的短暂红利？</h4>
+        <p>腾讯元宝父亲节活动是一个成功的情感化营销案例，但它能否转化为持续的用户粘性仍存疑问。</p>
+<ul>
+<li>[产品战略层面]: 情感化 AI 功能应该作为独立产品线，还是作为现有产品的增强模块？</li>
+<li>[执行层面]: 如何在节日热点之外，持续为用户提供有情感价值的 AI 体验？</li>
+<li>[风险层面]: 当 AI 生成涉及真实人物（如已故亲人、年轻时的父母）时，伦理边界和用户心理预期如何管理？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题 5: 在 AI 入口、安全、企业三个战场上，一个小团队应该如何选择站位？</h4>
+        <p>今天的三个核心事件分别对应三个高门槛战场，资源有限的小团队不可能同时进攻。</p>
+<ul>
+<li>[产品战略层面]: 你团队的独特能力更适合做入口、安全还是企业 workflow？</li>
+<li>[执行层面]: 如何找到一个足够具体、大厂不屑于做或小厂做不好的细分切口？</li>
+<li>[风险层面]: 如果选择依附于大平台生态，如何避免被平台政策或模型升级“碾压”？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A: AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 体验美团 tabbit、腾讯元宝、ChatGPT Enterprise 三个产品，记录它们各自解决的核心场景和用户路径 —— 建立“模型入口 vs 场景入口”的直觉。</p>
+<p><b>2.</b> 选择一个你熟悉的 AI 产品，画出它的“模型-场景-用户”价值链图 —— 理解模型能力如何转化为用户价值。</p>
+<p><b>3.</b> 阅读一份企业 AI 安全白皮书（如 OpenAI Enterprise 安全说明），整理出 5 个 B 端客户最关心的安全卖点。</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 主导一次“多模型后端”的产品设计：定义任务类型、选择 2–3 个模型、设计路由逻辑和 fallback 机制。</p>
+<p><b>2.</b> 设计一个情感化 AI 功能完整方案，包含场景选择、提示词模板、用户引导、分享机制和伦理审查清单。</p>
+<p><b>3.</b> 为产品制定一份 AI 安全策略文档，涵盖数据隐私、内容审核、对抗性攻击防护和应急响应流程。</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 跟踪头部模型厂商和企业客户的安全事件，建立“AI 安全信号库”，定期更新产品安全路线图。</p>
+<p><b>2.</b> 研究平台经济中“入口聚合”的经典案例（如浏览器、操作系统、应用商店），思考 AI 时代入口战争的终局形态。</p>
+<p><b>3.</b> 建立跨部门 AI 产品决策框架，协调工程、法务、安全、运营对模型能力上线节奏达成共识。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B: AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 搭建一个多模型路由 Demo：使用 OpenAI、Anthropic、Google 等 API，根据任务类型自动选择模型并统一输出格式。</p>
+<p><b>2.</b> 实现一个 AI 红队脚本：让模型尝试发现你本地应用中的常见安全漏洞（如 SQL 注入、XSS、权限绕过），记录成功率。</p>
+<p><b>3.</b> 用图像生成 API 复刻腾讯元宝父亲节活动：实现“两张图融合 + 姿态协调 + 光线一致”的最小可用版本。</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 设计一个企业级 AI 集成架构：包含身份认证、权限管理、审计日志、数据隔离、模型选择和企业知识库接入。</p>
+<p><b>2.</b> 实现一个自动化漏洞扫描 Agent：让模型能够阅读代码、生成测试用例、定位潜在漏洞并输出修复建议。</p>
+<p><b>3.</b> 构建一个“模型效果-成本-延迟”评估 dashboard，持续跟踪不同模型在你业务场景中的表现。</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 研究对抗性机器学习前沿论文，理解 LLM 越狱、提示词注入、数据投毒等攻击手段的原理和防御方法。</p>
+<p><b>2.</b> 参与开源安全工具或红队 benchmark 项目，积累可验证的 AI 安全研究经验。</p>
+<p><b>3.</b> 探索多模态模型在企业场景中的落地边界，设计能够处理文本、代码、图像、结构化数据的统一 Agent 架构。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C: 研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 阅读 1–2 篇关于 LLM 网络安全能力的论文（如攻击自动化、漏洞发现），整理出能力边界和评估方法 —— 建立对 Mythos 类声明的批判性判断力。</p>
+<p><b>2.</b> 复现一个多模型路由 baseline：在公开 benchmark 上比较不同模型的路由策略效果。</p>
+<p><b>3.</b> 调研企业 AI 部署的实证研究：整理已有文献中关于 AI 工具对企业效率影响的测量方法和结论。</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 设计并运行一个小型红队实验：评估当前模型在特定系统上的攻击能力，控制变量并记录可复现结果。</p>
+<p><b>2.</b> 做一个图像生成可控性研究：针对身份保持、姿态迁移、光照一致性设计定量评估指标，并在多个模型上跑 benchmark。</p>
+<p><b>3.</b> 复现或扩展一个与企业 AI 安全相关的开源项目（如 AI 审计工具、模型行为监控工具）。</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 提出一个关于“AI 能力评估可信度”的研究问题，设计严格的实验方案，尝试发表或开源。</p>
+<p><b>2.</b> 研究“模型能力商品化”背景下的产品架构演进，撰写一篇连接技术趋势与产品策略的深度分析。</p>
+<p><b>3.</b> 参与 AI 安全或对齐领域的学术/工业社区，成为能够连接研究成果与产品实践的研究型 Builder。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D: 快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>多模型产品设计</td><td>美团 tabbit、Poe、You.com 产品体验</td><td>30 分钟</td></tr><tr><td>AI 安全红队</td><td>OpenAI Preparedness Framework、Anthropic Responsible Scaling Policy</td><td>1 小时</td></tr><tr><td>企业 AI 部署</td><td>OpenAI 三星案例官方博客</td><td>20 分钟</td></tr><tr><td>图像生成可控性</td><td>Stable Diffusion / Midjourney 官方文档与社区论文</td><td>1–2 小时</td></tr><tr><td>情感化 AI 设计</td><td>腾讯元宝父亲节活动页面与提示词模板</td><td>20 分钟</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-17.html">
+      <span class="date">2026-06-17</span>
+      <span class="title">具身智能爆发与产业权力重构</span>
+      <span class="angle">Qwen机器人三连发标志具身智能进入规模化阶段，SpaceX天价收购Cursor与DeepSeek融资重塑全球AI产业权力地图，Anthropic反超OpenAI预示企业市场格局逆转。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-16.html">
+      <span class="date">2026-06-16</span>
+      <span class="title">国产开源登顶与AI应用黄金时代并行</span>
+      <span class="angle">开源模型能力逼近闭源旗舰加速应用层价值迁移，Salesforce收购Fin验证AI客服商业回报，AI裁员潮与社会许可风险同步累积。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-15.html">
+      <span class="date">2026-06-15</span>
+      <span class="title">Anthropic自曝与白宫监管偏袒</span>
+      <span class="angle">AI产业正经历信任崩塌与治理失序的双重震荡，Anthropic上市前夜自曝Mythos漏洞与军事应用，白宫监管被指偏袒特定企业，地缘分裂与透明化博弈成为新常态。</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>173 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+    </div>
+  </footer>
+</body>
+</html>
