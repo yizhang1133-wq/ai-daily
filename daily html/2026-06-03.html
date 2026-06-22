@@ -433,8 +433,19 @@
         <div class="num">01<small>TH</small></div>
         <div>
           <h3>微软首款高级推理 AI 模型 MAI-Thinking-1 发布</h3>
-          <p></p>
-          <span class="source">SOURCE /// </span>
+          <p>微软在 Build 2026 上发布其首款自研高级推理模型 MAI-Thinking-1，定位"中等规模"，在软件工程关键基准测试中追平领先模型水平，完全使用干净数据从头训练，未涉及第三方知识蒸馏，标志着微软正式进入自研 AI 模型赛道。</p>
+          <p><b>AI PM 视角：</b>这一发布的战略意义远超模型本身的技术指标。微软此前在大模型层面完全依赖 OpenAI，这是其 AI 战略中最大的单点风险。MAI-Thinking-1 的出现，意味着微软已建立起独立的基础模型研发能力——即便短期内性能不及顶尖水平，这一自研能力本身就是战略资产。
+
+从产品视角看，影响将渗透微软整个产品矩阵：Azure AI、Copilot 365、GitHub Copilot、Bing 等都可能出现微软自研模型的混合调用逻辑。更关键的是，自研模型意味着定价权、SLA 控制权和数据主权的全面回收。对于依赖 Azure OpenAI 服务的企业开发者而言，这意味着未来可能存在多模型选择，议价空间将打开。
+
+近期微软与 OpenAI 重新协商了合作协议，两家公司关系已有所松绑。结合今日发布，可判断：微软正在执行一套"兼用+替代"的双轨模型战略，短期维持合作关系换取业务连续性，中长期逐步建立能够部分替代 OpenAI 依赖的自主能力。这对 AI 产业的格局影响极为深远——微软是 OpenAI 最大的资本背书方，一旦技术层面开始独立，整个 AI 产业的合纵连横格局将加速重组。</p>
+
+          <p><b>研究型 Builder 视角：</b>MAI-Thinking-1 最值得关注的技术声明是"完全使用干净数据从头训练，未涉及知识蒸馏"。这一声明在当前行业背景下具有双重含义：其一，规避了蒸馏可能带来的法律风险（参考 Meta/Google 等关于蒸馏协议的争议）；其二，也意味着微软正在验证一条不依赖现有超大模型预训练知识的独立技术路线。从研究角度，需要关注的核心问题是：在不进行蒸馏的前提下，"中等规模"模型如何在推理基准上追平顶尖模型？这指向的可能是合成数据构建、强化学习流程设计或新的训练动态，这些方向均具有高度复现价值和论文发表潜力。</p>
+          <p><b>可落地的方法论：</b>- **本周行动**：梳理当前产品技术栈中对 OpenAI/Azure OpenAI 的依赖点，标注哪些调用可以通过模型路由层实现多供应商切换，为 MAI-Thinking-1 接入做预备。
+- **季度行动**：建立内部"模型选型评估框架"，将推理能力、成本、数据主权、合规风险四个维度纳入模型切换决策模型，在 MAI-Thinking-1 公开 API 后第一时间完成对比测试。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.theverge.com/tech/941664/microsoft-ai-model-reasoning-mai-thinking-1-build-2026">The Verge：AI（RSS）</a></span>
         </div>
         <div class="tag">STRUCTURAL</div>
       </div>
@@ -442,8 +453,19 @@
         <div class="num">02<small>TH</small></div>
         <div>
           <h3>Claude Code 推出动态工作流：Agent 编程进入架构编排时代</h3>
-          <p></p>
-          <span class="source">SOURCE /// </span>
+          <p>Claude Code 新增动态工作流功能，允许模型在运行时即兴创建并协调多 Agent 框架处理复杂任务。通过执行特定 JavaScript 文件生成拥有独立上下文窗口的子 Agent，解决长任务中的"智能惰性"问题，适用于研究、安全分析、代码审查等高价值复杂场景。</p>
+          <p><b>AI PM 视角：</b>动态工作流是 Claude Code 从"AI 辅助编程工具"迈向"AI 原生工程平台"的关键跃升。此前，多 Agent 协作需要开发者预先设计编排架构（如 LangGraph、AutoGen 框架）；而动态工作流将这一编排能力内化到模型本身——模型在执行过程中自主决定何时需要分叉出子 Agent、如何分配上下文、如何合并结果。
+
+这一变化对产品组织的影响是结构性的：工程团队的瓶颈正从"写代码的速度"转向"验证、审查、安全边界维护"的速度（同日 Claude Code 工程团队分享印证了这一点）。对于 AI 产品经理而言，这意味着需要重新定义"需求颗粒度"——当 Agent 可以动态分解任务时，PRD 中对任务拆解逻辑的描述方式需要升级，从"步骤列表"转向"目标与约束条件"。
+
+从竞争格局看，动态工作流使 Claude Code 在与 GitHub Copilot、Cursor 等工具的竞争中建立了差异化优势：不仅是代码补全或生成，而是真正的任务编排。更多 token 消耗的代价换来的是复杂任务的真实完成率提升，这对高价值企业用户（安全团队、大型代码库维护者）具有强大吸引力。</p>
+
+          <p><b>研究型 Builder 视角：</b>动态工作流对研究领域最重要的信号是：它验证了"元推理"（meta-reasoning）能力的实用价值——模型不仅执行任务，还在执行中推断自身是否具备足够的上下文来完成任务，并据此决定是否创建子 Agent。这是一种涌现的任务自我评估机制，与 AI 可靠性研究、模型置信度校准等方向高度相关。值得复现验证的问题：子 Agent 的创建决策是否可被外部观测？若可观测，则为构建可解释多 Agent 系统提供了新的研究入口。</p>
+          <p><b>可落地的方法论：</b>- **本周行动**：识别团队中现有的"复杂度超过单次对话"的工程任务类型（如大型重构、多模块安全扫描），评估动态工作流是否可直接替代现有的手动分解流程。
+- **季度行动**：将 Claude Code 动态工作流的"目标+约束"驱动范式引入团队需求评审流程，测试用 AI 工作流定义替代传统技术方案文档，评估工程交付效率变化。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code">Claude：Blog（网页）</a></span>
         </div>
         <div class="tag">GROWTH</div>
       </div>
@@ -451,8 +473,21 @@
         <div class="num">03<small>TH</small></div>
         <div>
           <h3>Anthropic Project Glasswing 扩展至 150 组织：AI 安全进入基础设施实战</h3>
-          <p></p>
-          <span class="source">SOURCE /// </span>
+          <p>Anthropic 将 Project Glasswing 扩展至约 150 个新组织，覆盖电力、水务、医疗、通信、硬件等关键基础设施行业，共同特征是代码库遭攻击后影响超 1 亿人。项目使用 Claude Mythos Preview 等前沿模型扫描漏洞并协助修复，同步推出面向公开市场的 Claude Security 产品线。</p>
+          <p><b>AI PM 视角：</b>Project Glasswing 的扩张代表着 Anthropic 战略布局中极为关键的一步：通过在关键基础设施安全领域建立不可替代性，构建超越普通 AI 能力竞争的护城河。这一策略有三重产品战略含义。
+
+第一，**高壁垒市场渗透**：基础设施安全是一个对误报/漏报极度敏感、监管审查极严格、采购周期极长的市场，但一旦建立信任关系，替换成本极高。Anthropic 通过捐赠式或优惠价接入的方式，正在这些高壁垒客户中建立实战数据积累和品牌背书。
+
+第二，**能力验证闭环**：150 个关键基础设施组织提供的真实漏洞场景，是 Claude 安全能力最好的强化学习环境，无法通过合成数据复制。这意味着 Anthropic 的安全模型将持续领先于纯实验室训练的竞争对手。
+
+第三，**产品线双轨制**：Glasswing（前沿模型，定向合作）与 Claude Security（公开产品，基于 Opus 4.8）构成高低端双轨，既保留了顶尖能力的稀缺性，又打开了规模化商业变现通道。对于 AI 安全赛道的创业公司而言，这是一个明确的竞争威胁信号。</p>
+
+          <p><b>研究型 Builder 视角：</b>Anthropic 在此次扩张中使用"Claude Mythos Preview"——这是一个此前鲜见的模型名称，暗示 Anthropic 可能在 Opus/Sonnet 产品线之外，维护着一条专门针对安全/高风险场景的模型研发分支。从技术角度，关键研究问题是：面向代码漏洞检测的模型，其训练数据构成、评估基准（是否有超越 SAST 工具的指标）、以及"建议修复"能力的可靠性评估，均是尚未完全公开的研究方向。TWERA/Circuits 类可解释性技术（同日 Anthropic 也有相关论文发布）与安全分析的结合，可能是下一阶段的研究前沿。</p>
+          <p><b>可落地的方法论：</b>- **本周行动**：评估团队当前代码审查流程中的安全盲区，测试 Claude Security 对现有代码库的一次性扫描，与 SAST 工具（如 Semgrep、Snyk）输出进行对比，量化漏报差异。
+- **季度行动**：若产品服务金融、医疗、政府等受监管行业，将 AI 辅助安全审计纳入季度合规流程，并在合同/隐私条款中提前预设 AI 安全工具的数据处理边界。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.anthropic.com/news/expanding-project-glasswing">Anthropic：Newsroom（网页）</a></span>
         </div>
         <div class="tag">CAPITAL</div>
       </div>
@@ -460,8 +495,21 @@
         <div class="num">04<small>TH</small></div>
         <div>
           <h3>开放模型占 OpenRouter 69.1% Token 份额：生态决定性拐点</h3>
-          <p></p>
-          <span class="source">SOURCE /// </span>
+          <p>据 OpenRouter 平台数据，自 2025 年以来开放模型使用量显著增长，目前开放权重模型产生 69.1% 的 token 使用量，闭源模型仅占 30.9%。市场内部竞争激烈，领导地位频繁更迭，DeepSeek、MiniMax、Kimi、MiMo、Qwen、腾讯 Hy3、阿里巴巴、Arcee 等轮番占据份额高峰。</p>
+          <p><b>AI PM 视角：</b>69.1% 这个数字是一个历史性的里程碑，它意味着在 API 调用层面，开放模型已经取得了结构性主导地位。这对产品经理的战略判断有直接影响。
+
+首先，**成本基准线已被重置**。开放模型（尤其是中国模型系）的激进定价，已将 API 调用成本压缩至一年前的十分之一甚至更低。任何仍在使用 GPT-4 级闭源模型处理可以用开放模型完成的任务的产品，都面临显著的成本劣势。
+
+其次，**"领导地位频繁更迭"是一个信号而非噪音**。DeepSeek → MiniMax/Kimi → MiMo/Qwen 的份额轮替，表明开发者具有极高的模型切换意愿和能力。这要求产品架构必须具备模型无关性（model-agnostic），否则每一次模型迭代都会带来迁移成本。
+
+第三，**开放模型的 69.1% 仍只是推理总量的一部分**，但增长斜率高于闭源。结合微软自研模型入场、Holo3.1 本地 Agent 发布等同日信号，可以预判：未来 12-18 个月，开放模型在专业任务（代码、Agent、科学计算）上的占比将进一步提升，闭源模型的核心护城河将收窄至"旗舰创意能力"和"品牌信任"两个维度。</p>
+
+          <p><b>研究型 Builder 视角：</b>OpenRouter 的份额数据是目前最接近"生产流量"的开放数据集之一。69.1% 的数字背后，值得研究的不仅是结果，而是份额更迭的机制：是什么触发了开发者从 DeepSeek 迁移到 MiniMax？是 benchmark 分数、定价、延迟还是社区口碑？这是一个自然实验，可以用来研究开发者对 LLM 的选型决策函数。从技术角度，开放模型的持续崛起也验证了"中等规模 + 高质量后训练"策略（RLHF/DPO）的有效性，是规模定律之外的另一条能力提升路径。</p>
+          <p><b>可落地的方法论：</b>- **本周行动**：审查产品当前的模型调用清单，识别哪些调用场景（批处理、分类、摘要、代码生成）可以无感知地迁移至高性价比开放模型，估算年化成本节省空间。
+- **季度行动**：在技术架构中引入模型路由层（如 LiteLLM 或自建），实现基于任务类型的动态模型分发，同时建立 A/B 测试框架持续评估开放模型与闭源模型在核心指标上的差异。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.tomtunguz.com/the-thriving-ecosystem-of-models">Tomer Tunguz 博客（VC 分析）</a></span>
         </div>
         <div class="tag">PLATFORM</div>
       </div>
@@ -476,12 +524,12 @@
     <div class="index-grid">
       <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
 
-      <div>01</div><div>Holo3.1 发布：快速本地计算机使用智能体</div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
-      <div>02</div><div>GitHub Copilot App：智能体原生桌面体验</div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
-      <div>03</div><div>Alphabet 拟融资 800 亿美元 &amp; Anthropic 秘密提交 IPO 申请</div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
-      <div>04</div><div>阶跃星辰 Step 3.7 Flash：22% KV-cache 成本的高效推理架构</div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
-      <div>05</div><div>Google DeepMind 开源科学 Agent 工具包 Science Skills</div><div class="red">POLICY</div><div>主权</div><div class="right red">BLOOM</div>
-      <div>06</div><div>Claude Code 工程团队分享：智能体编程重塑工程组织</div><div class="red">CREATIVE</div><div>音乐</div><div class="right red">X</div>
+      <div>01</div><div><a class="event-link" href="https://huggingface.co/blog/Hcompany/holo31">Holo3.1 发布：快速本地计算机使用智能体</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://github.blog/news-insights/product-news/github-copilot-app-the-agent-native-desktop-experience">GitHub Copilot App：智能体原生桌面体验</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://www.bloomberg.com/news/videos/2026-06-02/bloomberg-tech-6-2-2026-video">Alphabet 拟融资 800 亿美元 &amp; Anthropic 秘密提交 IPO 申请</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div><a class="event-link" href="https://x.com/StepFun_ai/status/2061655529731342402">阶跃星辰 Step 3.7 Flash：22% KV-cache 成本的高效推理架构</a></div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
+      <div>05</div><div><a class="event-link" href="https://x.com/googleaidevs/status/2061924472245153863">Google DeepMind 开源科学 Agent 工具包 Science Skills</a></div><div class="red">POLICY</div><div>主权</div><div class="right red">BLOOM</div>
+      <div>06</div><div><a class="event-link" href="https://claude.com/blog/running-an-ai-native-engineering-org">Claude Code 工程团队分享：智能体编程重塑工程组织</a></div><div class="red">CREATIVE</div><div>音乐</div><div class="right red">X</div>
       <div>07</div><div>OpenAI Codex 发布 Python SDK</div><div>REF</div><div>—</div><div class="right">REF</div>
       <div>08</div><div>微软开源 Adaptive Spec-driven Scoring 框架</div><div>REF</div><div>—</div><div class="right">REF</div>
       <div>09</div><div>Runway API 推出 Aleph 2.0 视频编辑功能</div><div>REF</div><div>—</div><div class="right">REF</div>
@@ -545,11 +593,17 @@
       <div class="label">01</div>
       <div class="body">
         <h4>微软首款高级推理 AI 模型 MAI-Thinking-1 发布</h4>
+        <p><b>AI PM 视角：</b>这一发布的战略意义远超模型本身的技术指标。微软此前在大模型层面完全依赖 OpenAI，这是其 AI 战略中最大的单点风险。MAI-Thinking-1 的出现，意味着微软已建立起独立的基础模型研发能力——即便短期内性能不及顶尖水平，这一自研能力本身就是战略资产。</p>
+<p>从产品视角看，影响将渗透微软整个产品矩阵：Azure AI、Copilot 365、GitHub Copilot、Bing 等都可能出现微软自研模型的混合调用逻辑。更关键的是，自研模型意味着定价权、SLA 控制权和数据主权的全面回收。对于依赖 Azure OpenAI 服务的企业开发者而言，这意味着未来可能存在多模型选择，议价空间将打开。</p>
+<p>近期微软与 OpenAI 重新协商了合作协议，两家公司关系已有所松绑。结合今日发布，可判断：微软正在执行一套"兼用+替代"的双轨模型战略，短期维持合作关系换取业务连续性，中长期逐步建立能够部分替代 OpenAI 依赖的自主能力。这对 AI 产业的格局影响极为深远——微软是 OpenAI 最大的资本背书方，一旦技术层面开始独立，整个 AI 产业的合纵连横格局将加速重组。</p>
         
-        
+        <p><b>研究型 Builder 视角：</b>MAI-Thinking-1 最值得关注的技术声明是"完全使用干净数据从头训练，未涉及知识蒸馏"。这一声明在当前行业背景下具有双重含义：其一，规避了蒸馏可能带来的法律风险（参考 Meta/Google 等关于蒸馏协议的争议）；其二，也意味着微软正在验证一条不依赖现有超大模型预训练知识的独立技术路线。从研究角度，需要关注的核心问题是：在不进行蒸馏的前提下，"中等规模"模型如何在推理基准上追平顶尖模型？这指向的可能是合成数据构建、强化学习流程设计或新的训练动态，这些方向均具有高度复现价值和论文发表潜力。</p>
         <div class="method">
           <h5>方法论</h5>
-          
+          <ul>
+<li><strong>本周行动</strong>：梳理当前产品技术栈中对 OpenAI/Azure OpenAI 的依赖点，标注哪些调用可以通过模型路由层实现多供应商切换，为 MAI-Thinking-1 接入做预备。</li>
+<li><strong>季度行动</strong>：建立内部"模型选型评估框架"，将推理能力、成本、数据主权、合规风险四个维度纳入模型切换决策模型，在 MAI-Thinking-1 公开 API 后第一时间完成对比测试。</li>
+</ul>
         </div>
       </div>
     </div>
@@ -557,11 +611,17 @@
       <div class="label">02</div>
       <div class="body">
         <h4>Claude Code 推出动态工作流：Agent 编程进入架构编排时代</h4>
+        <p><b>AI PM 视角：</b>动态工作流是 Claude Code 从"AI 辅助编程工具"迈向"AI 原生工程平台"的关键跃升。此前，多 Agent 协作需要开发者预先设计编排架构（如 LangGraph、AutoGen 框架）；而动态工作流将这一编排能力内化到模型本身——模型在执行过程中自主决定何时需要分叉出子 Agent、如何分配上下文、如何合并结果。</p>
+<p>这一变化对产品组织的影响是结构性的：工程团队的瓶颈正从"写代码的速度"转向"验证、审查、安全边界维护"的速度（同日 Claude Code 工程团队分享印证了这一点）。对于 AI 产品经理而言，这意味着需要重新定义"需求颗粒度"——当 Agent 可以动态分解任务时，PRD 中对任务拆解逻辑的描述方式需要升级，从"步骤列表"转向"目标与约束条件"。</p>
+<p>从竞争格局看，动态工作流使 Claude Code 在与 GitHub Copilot、Cursor 等工具的竞争中建立了差异化优势：不仅是代码补全或生成，而是真正的任务编排。更多 token 消耗的代价换来的是复杂任务的真实完成率提升，这对高价值企业用户（安全团队、大型代码库维护者）具有强大吸引力。</p>
         
-        
+        <p><b>研究型 Builder 视角：</b>动态工作流对研究领域最重要的信号是：它验证了"元推理"（meta-reasoning）能力的实用价值——模型不仅执行任务，还在执行中推断自身是否具备足够的上下文来完成任务，并据此决定是否创建子 Agent。这是一种涌现的任务自我评估机制，与 AI 可靠性研究、模型置信度校准等方向高度相关。值得复现验证的问题：子 Agent 的创建决策是否可被外部观测？若可观测，则为构建可解释多 Agent 系统提供了新的研究入口。</p>
         <div class="method">
           <h5>方法论</h5>
-          
+          <ul>
+<li><strong>本周行动</strong>：识别团队中现有的"复杂度超过单次对话"的工程任务类型（如大型重构、多模块安全扫描），评估动态工作流是否可直接替代现有的手动分解流程。</li>
+<li><strong>季度行动</strong>：将 Claude Code 动态工作流的"目标+约束"驱动范式引入团队需求评审流程，测试用 AI 工作流定义替代传统技术方案文档，评估工程交付效率变化。</li>
+</ul>
         </div>
       </div>
     </div>
@@ -569,11 +629,18 @@
       <div class="label">03</div>
       <div class="body">
         <h4>Anthropic Project Glasswing 扩展至 150 组织：AI 安全进入基础设施实战</h4>
+        <p><b>AI PM 视角：</b>Project Glasswing 的扩张代表着 Anthropic 战略布局中极为关键的一步：通过在关键基础设施安全领域建立不可替代性，构建超越普通 AI 能力竞争的护城河。这一策略有三重产品战略含义。</p>
+<p>第一，<strong>高壁垒市场渗透</strong>：基础设施安全是一个对误报/漏报极度敏感、监管审查极严格、采购周期极长的市场，但一旦建立信任关系，替换成本极高。Anthropic 通过捐赠式或优惠价接入的方式，正在这些高壁垒客户中建立实战数据积累和品牌背书。</p>
+<p>第二，<strong>能力验证闭环</strong>：150 个关键基础设施组织提供的真实漏洞场景，是 Claude 安全能力最好的强化学习环境，无法通过合成数据复制。这意味着 Anthropic 的安全模型将持续领先于纯实验室训练的竞争对手。</p>
+<p>第三，<strong>产品线双轨制</strong>：Glasswing（前沿模型，定向合作）与 Claude Security（公开产品，基于 Opus 4.8）构成高低端双轨，既保留了顶尖能力的稀缺性，又打开了规模化商业变现通道。对于 AI 安全赛道的创业公司而言，这是一个明确的竞争威胁信号。</p>
         
-        
+        <p><b>研究型 Builder 视角：</b>Anthropic 在此次扩张中使用"Claude Mythos Preview"——这是一个此前鲜见的模型名称，暗示 Anthropic 可能在 Opus/Sonnet 产品线之外，维护着一条专门针对安全/高风险场景的模型研发分支。从技术角度，关键研究问题是：面向代码漏洞检测的模型，其训练数据构成、评估基准（是否有超越 SAST 工具的指标）、以及"建议修复"能力的可靠性评估，均是尚未完全公开的研究方向。TWERA/Circuits 类可解释性技术（同日 Anthropic 也有相关论文发布）与安全分析的结合，可能是下一阶段的研究前沿。</p>
         <div class="method">
           <h5>方法论</h5>
-          
+          <ul>
+<li><strong>本周行动</strong>：评估团队当前代码审查流程中的安全盲区，测试 Claude Security 对现有代码库的一次性扫描，与 SAST 工具（如 Semgrep、Snyk）输出进行对比，量化漏报差异。</li>
+<li><strong>季度行动</strong>：若产品服务金融、医疗、政府等受监管行业，将 AI 辅助安全审计纳入季度合规流程，并在合同/隐私条款中提前预设 AI 安全工具的数据处理边界。</li>
+</ul>
         </div>
       </div>
     </div>
@@ -581,11 +648,18 @@
       <div class="label">04</div>
       <div class="body">
         <h4>开放模型占 OpenRouter 69.1% Token 份额：生态决定性拐点</h4>
+        <p><b>AI PM 视角：</b>69.1% 这个数字是一个历史性的里程碑，它意味着在 API 调用层面，开放模型已经取得了结构性主导地位。这对产品经理的战略判断有直接影响。</p>
+<p>首先，<strong>成本基准线已被重置</strong>。开放模型（尤其是中国模型系）的激进定价，已将 API 调用成本压缩至一年前的十分之一甚至更低。任何仍在使用 GPT-4 级闭源模型处理可以用开放模型完成的任务的产品，都面临显著的成本劣势。</p>
+<p>其次，<strong>"领导地位频繁更迭"是一个信号而非噪音</strong>。DeepSeek → MiniMax/Kimi → MiMo/Qwen 的份额轮替，表明开发者具有极高的模型切换意愿和能力。这要求产品架构必须具备模型无关性（model-agnostic），否则每一次模型迭代都会带来迁移成本。</p>
+<p>第三，<strong>开放模型的 69.1% 仍只是推理总量的一部分</strong>，但增长斜率高于闭源。结合微软自研模型入场、Holo3.1 本地 Agent 发布等同日信号，可以预判：未来 12-18 个月，开放模型在专业任务（代码、Agent、科学计算）上的占比将进一步提升，闭源模型的核心护城河将收窄至"旗舰创意能力"和"品牌信任"两个维度。</p>
         
-        
+        <p><b>研究型 Builder 视角：</b>OpenRouter 的份额数据是目前最接近"生产流量"的开放数据集之一。69.1% 的数字背后，值得研究的不仅是结果，而是份额更迭的机制：是什么触发了开发者从 DeepSeek 迁移到 MiniMax？是 benchmark 分数、定价、延迟还是社区口碑？这是一个自然实验，可以用来研究开发者对 LLM 的选型决策函数。从技术角度，开放模型的持续崛起也验证了"中等规模 + 高质量后训练"策略（RLHF/DPO）的有效性，是规模定律之外的另一条能力提升路径。</p>
         <div class="method">
           <h5>方法论</h5>
-          
+          <ul>
+<li><strong>本周行动</strong>：审查产品当前的模型调用清单，识别哪些调用场景（批处理、分类、摘要、代码生成）可以无感知地迁移至高性价比开放模型，估算年化成本节省空间。</li>
+<li><strong>季度行动</strong>：在技术架构中引入模型路由层（如 LiteLLM 或自建），实现基于任务类型的动态模型分发，同时建立 A/B 测试框架持续评估开放模型与闭源模型在核心指标上的差异。</li>
+</ul>
         </div>
       </div>
     </div>
@@ -600,12 +674,13 @@
       <div class="label">01</div>
       <div class="body">
         <h4>Holo3.1 发布：快速本地计算机使用智能体</h4>
-        <p><b>核心描述：</b></p>
+        <p><b>分析：</b>Holo3.1 是基于 Qwen 的计算机使用 Agent 系列，提供 0.8B 至 35B-A3B 四种尺寸及量化版本，AndroidWorld 基准从 67% 提升至 79.3%，NVFP4 量化在 DGX Spark 上实现 1.74 倍吞吐量提升、步骤时间从 6.8 秒降至 3.3 秒。</p>
+        <p><b>AI PM 视角：</b>Holo3.1 的核心产品意义在于将"计算机使用"能力推向本地化部署。此前，Computer Use 能力（屏幕操作、GUI 交互）高度依赖云端超大模型，延迟和隐私问题严重制约了企业内网场景的落地。Holo3.1 提供的 0.8B 小模型 + FP8/GGUF 量化方案，使得在无网络连接的企业内网机器上运行 Agent 成为可能。79.3% 的 AndroidWorld 分数和 3.3 秒平均步骤时间，意味着移动端 RPA（机器人流程自动化）市场将迎来 AI 原生竞争者，传统 RPA 产品的护城河将受到显著侵蚀。</p>
         
-        
+        <p><b>研究型 Builder 视角：</b>函数调用协议的支持使 Holo3.1 可在 LangChain/AutoGen 等框架中以标准方式部署，这降低了研究者复现和对比测试的门槛；AndroidWorld 基准的提升路径值得深入分析。</p>
         <div class="method">
           <h5>方法论</h5>
-          
+          <p>立即在 Hugging Face 下载 Holo3.1 4B GGUF 版本，在本地 MacBook M 系列芯片上测试 GUI Agent 能力，评估是否可替换当前产品中基于 Selenium 或 Playwright 的自动化测试用例。</p>
         </div>
       </div>
     </div>
@@ -613,12 +688,13 @@
       <div class="label">02</div>
       <div class="body">
         <h4>GitHub Copilot App：智能体原生桌面体验</h4>
-        <p><b>核心描述：</b></p>
+        <p><b>分析：</b>微软 Build 2026 上，GitHub 将 Copilot App 定位为"智能体原生的桌面体验"，核心目标是让 AI Agent 以用户已习惯的工作方式进行操作，而非强迫用户适应 AI 的工作方式。</p>
+        <p><b>AI PM 视角：</b>"智能体原生"这一定位宣告了 Copilot 产品的第二阶段转型：从代码补全工具到桌面工作流 Agent。这与 Claude Code 动态工作流的发布形成了直接竞争，但竞争维度不同：GitHub Copilot 的优势在于与 VS Code、GitHub.com、Actions、PR Review 的深度集成；Claude Code 的优势在于多 Agent 编排能力和 Anthropic 的推理模型深度。对于企业技术选型而言，选择哪个平台的核心差异将越来越表现在"是否愿意将研发工作流的 OS 控制权交给 GitHub/微软 vs Anthropic"，而不是单纯的功能对比。</p>
         
-        
+        <p><b>研究型 Builder 视角：</b>"智能体原生"桌面的核心技术挑战是持久化上下文管理与跨会话记忆，这是目前 Agent 研究的核心开放问题之一。</p>
         <div class="method">
           <h5>方法论</h5>
-          
+          <p>申请 GitHub Copilot App 早期访问，完成一次从需求描述到 PR 创建的全流程 Agent 任务，记录 Agent 中断点（需要人工介入的节点），评估"人机协作比例"相比当前工作流的变化。</p>
         </div>
       </div>
     </div>
@@ -626,12 +702,13 @@
       <div class="label">03</div>
       <div class="body">
         <h4>Alphabet 拟融资 800 亿美元 &amp; Anthropic 秘密提交 IPO 申请</h4>
-        <p><b>核心描述：</b></p>
+        <p><b>分析：</b>Alphabet 宣布拟通过股权融资 800 亿美元用于 AI 基础设施扩张；Anthropic 已秘密提交 IPO 申请，在上市时间线上领先 OpenAI。两条消息同日出现，叠加 SK 海力士晶圆产能翻倍计划，显示 AI 基础设施投资进入超级加速周期。</p>
+        <p><b>AI PM 视角：</b>Alphabet 800 亿融资（股权）规模之大足以改变市场资金结构；Anthropic IPO 若成功，将成为 AI 原生公司上市的重要参照系，对整个 AI 创业生态的估值逻辑产生牵引效应。对 AI 产品团队而言，最直接的影响是：基础设施投资加速 → 算力成本下降斜率加快 → 产品迭代空间进一步打开。SK 海力士五年内产能翻倍的声明，也确认了存储供需紧张将延续至 2030 年，这对需要大规模向量存储或 KV-cache 优化的产品方向有直接影响。</p>
         
-        
+        <p><b>研究型 Builder 视角：</b>Anthropic IPO 文件（S-1）一旦公开，将提供迄今为止最完整的 AI 安全公司商业模式、成本结构和 R&D 投入的公开数据，对研究者和分析师都具有极高参考价值。</p>
         <div class="method">
           <h5>方法论</h5>
-          
+          <p>关注 Anthropic IPO 进程，在 S-1 公开后第一时间分析其收入结构（API vs Enterprise vs Claude.ai 订阅）和研发投入比例，作为 AI 商业模式研究的基准数据。</p>
         </div>
       </div>
     </div>
@@ -639,12 +716,13 @@
       <div class="label">04</div>
       <div class="body">
         <h4>阶跃星辰 Step 3.7 Flash：22% KV-cache 成本的高效推理架构</h4>
-        <p><b>核心描述：</b></p>
+        <p><b>分析：</b>阶跃星辰发布 Step 3.7 Flash，196B MoE 架构，采用多矩阵分解注意力机制，KV-cache 成本仅为 DeepSeek 模型的约 22%；注意力与 FFN 解耦实现硬件优化服务，已通过 Fireworks AI 提供，Apache 2.0 许可。</p>
+        <p><b>AI PM 视角：</b>Step 3.7 Flash 的核心产品价值点是"推理成本优化"而非"能力突破"。KV-cache 成本降至 DeepSeek 22%，在长上下文、高并发 API 场景下直接转化为单位成本优势。这对于需要处理大量长文档（法律合同、代码库、研究报告）的产品团队尤为重要。Apache 2.0 许可+Fireworks AI 部署渠道，意味着可以快速低风险地在生产环境测试，无需担心许可证合规问题。</p>
         
-        
+        <p><b>研究型 Builder 视角：</b>多矩阵分解注意力机制（multi-matrix decomposition attention）是一个值得深入复现的创新点，其在降低 KV-cache 的同时如何维持注意力表达能力，需要对原始技术报告进行详细分析。</p>
         <div class="method">
           <h5>方法论</h5>
-          
+          <p>通过 Fireworks AI API 对 Step 3.7 Flash 进行长上下文任务（>32K token）的成本基准测试，与 DeepSeek-V3 和 Claude Haiku 进行三方比较，建立内部的"成本-质量效率前沿"数据库。</p>
         </div>
       </div>
     </div>
@@ -652,12 +730,13 @@
       <div class="label">05</div>
       <div class="body">
         <h4>Google DeepMind 开源科学 Agent 工具包 Science Skills</h4>
-        <p><b>核心描述：</b></p>
+        <p><b>分析：</b>Google DeepMind 在 GitHub 开源 Science Skills 工具包，专为科学发现自主 Agent 设计，主打科学基础能力和更高 token 效率，加速科学研究类 Agent 工作流。</p>
+        <p><b>AI PM 视角：</b>Science Skills 的开源是 Google 在"科学 AI"赛道布局的重要信号。Aurora 天气预报（同日也有相关内容）+ Science Skills 工具包，显示 DeepMind 正在将科学推理能力从研究成果转化为可复用的 Agent 基础设施。对于科学类产品（药物发现、材料科学、气候建模）的 PM 而言，这是一个极为重要的工具链信号，可显著降低构建科学推理 Agent 的起点成本。</p>
         
-        
+        <p><b>研究型 Builder 视角：</b>工具包的 token 效率优化设计意味着其在科学文献理解、分子结构分析等高密度推理任务上有专项优化，值得与通用 Agent 框架进行专项 benchmark 对比。</p>
         <div class="method">
           <h5>方法论</h5>
-          
+          <p>克隆 Science Skills 仓库，在一个具体的科学任务（如文献综述自动化、分子性质预测）上进行原型验证，评估与通用 LangChain Agent 相比的效率差异。</p>
         </div>
       </div>
     </div>
@@ -665,12 +744,13 @@
       <div class="label">06</div>
       <div class="body">
         <h4>Claude Code 工程团队分享：智能体编程重塑工程组织</h4>
-        <p><b>核心描述：</b></p>
+        <p><b>分析：</b>在 Code w/ Claude SF 2026 活动上，Claude Code 工程团队分享了将 Agent 编程设为默认工作方式后的组织变革：规划转向即时（JIT）模式、上下文收集"先问 Claude"、代码审查中 Claude 处理风格/测试而人工专注法律/安全判断，工程瓶颈从"写代码"转向"验证、审查、安全维护"。</p>
+        <p><b>AI PM 视角：</b>这是目前关于"AI 原生工程组织"最具参考价值的第一手案例。最关键的转变是"瓶颈迁移"：当 AI 可以快速生成代码时，团队效率的限制因素不再是编写速度，而是人类的判断质量——哪些代码是对的？哪些有安全风险？哪些违反业务规则？这对研发团队的组成和能力模型有根本性影响：高级工程师的价值不再在于写出最多的代码，而在于设定最清晰的约束和边界，以及对 AI 输出进行高质量的批判性验证。</p>
         
-        
+        <p><b>研究型 Builder 视角：</b>"先问 Claude"的上下文收集模式值得关注——这实际上是一种隐性知识外化（tacit knowledge externalization）的新途径，通过 AI 对话将工程师头脑中的经验转化为可执行的上下文，是知识管理研究的新方向。</p>
         <div class="method">
           <h5>方法论</h5>
-          
+          <p>在下一个 Sprint 中引入"JIT 规划"实验：不在 Sprint 开始时做完整的任务分解，而是在每个任务启动前用 Claude Code 对话完成即时规划，比较规划质量和执行偏差率。</p>
         </div>
       </div>
     </div>
@@ -889,20 +969,20 @@
       <h2>Archive ///</h2>
       <span class="meta">PAST 3 ISSUES</span>
     </div>
-    <a class="archive-row" href="/ai-daily/daily html/2026-06-04.html">
-      <span class="date">2026-06-04</span>
-      <span class="title">微软OpenAI决裂与AI产业大分裂时代</span>
-      <span class="angle">AI产业从合作共生进入阵营对抗，资本用户规模双创历史新高，Agent商业化全面进入平台化部署阶段</span>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-22.html">
+      <span class="date">2026-06-22</span>
+      <span class="title">Mythos 攻破 NSA 与 AI 入口企业双战</span>
+      <span class="angle">超级 AI 安全能力击穿国家机密防线，模型入口聚合与企业规模化部署同步重塑产业权力结构。</span>
     </a>
-    <a class="archive-row" href="/ai-daily/daily html/2026-06-01.html">
-      <span class="date">2026-06-01</span>
-      <span class="title">OpenAI进军物理世界与FSD零干预里程碑</span>
-      <span class="angle">AI竞争从数字界面全面升级为物理世界交互，端侧部署与长周期可靠性验证成为新战场</span>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-21.html">
+      <span class="date">2026-06-21</span>
+      <span class="title">模型中间商崛起与Agent实战</span>
+      <span class="angle">当全球 AI 模型流通从单极出口转向双向转售，Agent 构建正从 Demo 走向可复用的工程化架构。</span>
     </a>
-    <a class="archive-row" href="/ai-daily/daily html/2026-05-29.html">
-      <span class="date">2026-05-29</span>
-      <span class="title">Anthropic融资650亿与AI产品大爆发</span>
-      <span class="angle">资本、产品与技术三重共振：AI行业进入规模化落地与自我改进的新阶段</span>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-20.html">
+      <span class="date">2026-06-20</span>
+      <span class="title">智能体基建与研究自治</span>
+      <span class="angle">AI 智能体基础设施与研究自动化同时越过临界点，标志着从模型能力展示向自主系统工程的范式转移。</span>
     </a>
   </section>
 
