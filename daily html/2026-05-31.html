@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-05-31</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>151</span></div>
+    <div><b>ISS.</b><span>2026-05-31</span></div>
+    <div><b>EVT.</b><span>15 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 151</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">31</div>
+    <div class="meta-col">
+      <h2>AI产业进入成本、基建与信任三重博弈</h2>
+      <p>当企业开始为 AI 配给预算、巨头转向自研训练框架、中国模型借顶级赛事出海，AI 竞争已从单纯的能力追赶进入成本可控性、基础设施自主性与全球信任构建的三重博弈阶段。</p>
+      <div class="meta-row"><b>日期</b> 2026-05-31</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 151 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">当企业开</span>始为 AI 配给预算、巨头转向自研训练框架、中国模型借顶级赛事出海，AI 竞争已从单纯的能力追赶进入成本可控性、基础设施自主性与全球信任构建的三重博弈阶段。
+    </div>
+    <div class="credits">
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 5<br>
+      IMPORTANT 5<br>
+      REFERENCE 5<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架 1：成本-效率-自主性三角<br>
+      框架 2：模型能力下沉 vs 入口与品牌上移<br>
+      框架 3：AI 信任赤字与治理红利
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>5 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>xAI 放弃 JAX GPU 转向自研 C 训练框架</h3>
+          <p>据报道，xAI 已放弃基于 JAX 和 XLA 的 GPU 训练栈，转而使用 Grok Build“氛围编程”自研的 C 训练框架；此前其 JAX 堆栈的 MFU  reportedly 低于 10%。</p>
+          <p><b>AI PM 视角：</b>这件事是**AI 基础设施自主权争夺的标志性信号**。过去两年，JAX 凭借 XLA 编译器和 Google 生态背书，成为许多大模型团队的首选训练框架；xAI 曾是其 GPU 侧最大客户之一。如今 xAI 宁愿从零写一个 C 训练框架，也不愿继续依赖 JAX，背后至少传递三个产品层面的判断：第一，**通用框架的性能天花板已经暴露**——当模型规模、并行策略和硬件拓扑越来越复杂时，通用编译器难以充分压榨定制集群的算力；第二，**训练成本在 Scaling Law 压力下的权重急剧上升**，MFU 从低于 10% 提升到更高水平，意味着同样的算力预算可以多训练数倍的 token；第三，**框架即护城河**——谁掌握训练框架，谁就能以更低的成本、更快的迭代速度推出下一代模型。
+
+对产品经理而言，这同样是一个**供应商风险管理**的警示。如果你的产品或团队深度依赖某一个训练框架、云平台或模型供应商，一旦该供应商的性能或战略方向与你的需求不再匹配，迁移成本会非常高。xAI 的选择说明，到了一定规模后，“自研”可能不是炫技，而是成本控制的必然。这也预示着未来 AI 产业会进一步分层：少数头部公司拥有自研全栈的能力，而大多数团队则需要在开源框架、云服务和垂直优化之间寻找平衡。</p>
+
+          <p><b>研究型 Builder 视角：</b>从技术真实性角度看，这一事件最值得追问的是：**MFU 低于 10% 的具体场景是什么？是端到端训练，还是特定算子或通信瓶颈？** 如果属实，说明 JAX/XLA 在超大规模 MoE 或长上下文训练中的编译优化存在明显短板。研究型 Builder 应关注 xAI 是否会开源 Grok Build 的部分组件或发布技术报告，因为这将直接改变训练框架的竞争格局。更深层的问题是：自研 C 框架能在多大程度上复现 JAX 的自动微分和分布式并行抽象？这会揭示“性能”与“可编程性”之间的新权衡边界。</p>
+          <p><b>可落地的方法论：</b>- **本周可落地**: 如果你是模型训练团队的 PM 或 Tech Lead，做一次训练栈成本审计：统计过去一个月的 GPU 利用率、通信开销和算子耗时，识别是否存在类似 xAI 遇到的“通用框架性能天花板”。
+- **本季度可落地**: 针对核心训练路径，评估是否引入自定义 CUDA kernel 或轻量化训练运行时（如 TinyGrad、PyTorch 自定义扩展）作为补充，而非全盘替换框架。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/SemiAnalysis_/status/2060571944575963482">X：SemiAnalysis (@SemiAnalysis_)</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>阿里云与 Qwen 成为 UEFA 多年全球 AI 合作伙伴</h3>
+          <p>阿里云与 Qwen 成为 UEFA 官方独家 AI、云计算与电子商务合作伙伴，合作期覆盖 2027/28 至 2032/33 赛季的 UEFA 男子俱乐部赛事及 UEFA EURO 2028，将利用 Qwen 大模型部署 AI 技术增强球迷互动与媒体内容体验。</p>
+          <p><b>AI PM 视角：</b>这是**中国 AI 技术以顶级体育赛事为跳板进行全球化品牌输出**的关键一步。UEFA 赛事拥有数十亿全球观众，对阿里云和 Qwen 而言，这不仅是云资源和模型能力的出海，更是一次“技术可信度”的国际背书。对 AI PM 来说，这件事揭示了三个战略信号：第一，**大模型的竞争正在从“参数竞赛”转向“场景绑定”**——Qwen 不再只是发布模型，而是与全球最大的足球 IP 深度绑定，形成“模型+内容+体验”的闭环；第二，**B2B 技术品牌的打造需要借道 C 端超级场景**，体育赛事是极佳的注意力入口，能让企业客户和普通用户同时感知到技术实力；第三，**多云/多模型时代的生态卡位战加剧**，阿里云通过 UEFA 合作，把 Qwen 推向了与 AWS、Google Cloud、Azure 同台竞技的国际舞台。
+
+更深一层看，这次合作的产品形态也值得关注：球迷互动、媒体内容、沉浸式观赛体验，这些都依赖实时多语言翻译、个性化内容生成、视频理解和推荐系统。Qwen 需要在这些高并发、低延迟、强监管的场景中证明自己。这意味着，未来一年 Qwen 的产品迭代将明显受到“国际大型赛事可用性”的牵引，这对于观察其多模态、实时推理和全球化合规能力非常有价值。</p>
+
+          <p><b>研究型 Builder 视角：</b>从研究型 Builder 的角度看，UEFA 合作是一个**真实世界的大规模多模态 AI 测试场**。赛事场景下的实时翻译、视频高光生成、球迷情绪分析、跨语言内容理解，都是学术界和工业界长期关注但难以获得真实数据的课题。如果阿里云和 Qwen 愿意开放部分脱敏数据或发布技术案例，将为社区提供宝贵的研究素材。同时，这也是评估 Qwen 模型在“非中文、非美国市场”下泛化能力和文化适配性的重要窗口。</p>
+          <p><b>可落地的方法论：</b>- **本周可落地**: 如果你是做 AI 出海或国际化产品的 PM，研究 UEFA 合作中提到的具体应用场景（球迷互动、媒体内容、电商），列出其中 3 个可以用你现有模型或产品能力复刻的用例。
+- **本季度可落地**: 设计一个“超级场景绑定”的品牌或获客策略：找到一个你目标用户高度聚集的垂直场景（赛事、展会、行业峰会），用 AI 能力提供差异化体验，而不是只做通用工具。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/alibaba_cloud/status/2060520586489770167">X：阿里云 / Alibaba Cloud (@alibaba_cloud)</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>美国企业开始对人工智能实施配给</h3>
+          <p>据 WSJ 报道，由于 AI 工具运行和使用成本持续飙升，美国企业正通过限制使用量、设置分层审批流程等方式对 AI 实施配给，标志着企业 AI 应用从广泛采用转向成本精细化管理。</p>
+          <p><b>AI PM 视角：</b>这是**企业 AI 从“免费试用”走向“成本问责”**的拐点事件。过去几年，企业 AI 的推广逻辑是“先让大家用起来，再算 ROI”；但现在，CFO 和采购部门开始发现，未经控制的 AI 使用会带来惊人的账单——尤其是按 token 计费的编码助手、按调用计费的 API、以及 AI 驱动的数据分析工具。配给制的出现意味着：**AI 产品的采购决策正在从“功能驱动”转向“单位经济模型驱动”**。对 PM 来说，这是一个明确的信号：如果你的产品不能清晰展示“每花一美元 AI 预算能带来多少回报”，将在企业采购中处于劣势。
+
+这件事还会深刻影响产品设计和定价策略。企业客户会越来越关注：是否支持用量配额、是否有成本预警、是否能按部门/项目拆分账单、是否提供离线或本地化部署以降低成本。这些原本属于“企业级功能”的能力，正在变成 AI 产品的基本功。同时，配给也会催生新的产品机会：AI 成本治理平台、用量优化助手、模型路由与降级策略工具等，都可能成为下一个企业服务热点。</p>
+
+          <p><b>研究型 Builder 视角：</b>从研究角度看，企业配给制暴露了一个长期被忽视的问题：**大多数企业并不清楚 AI 的真实成本结构，也缺乏衡量 AI 产出价值的方法论**。研究型 Builder 可以在这个方向上做很多事情：建立企业 AI 任务的 cost-benefit 评估框架、开发自动化的模型选择算法以在成本和性能之间动态权衡、设计可解释的 ROI 归因模型。这些研究不仅具有学术价值，也极易转化为 SaaS 产品。</p>
+          <p><b>可落地的方法论：</b>- **本周可落地**: 如果你是 ToB AI 产品 PM，立刻梳理你产品的定价模型和单位成本：每个核心功能的单次调用成本是多少？客户平均每月花费多少？是否存在“用量暴增但价值未增”的场景？
+- **本季度可落地**: 在产品中上线“成本可视化”功能：向企业客户展示 AI 用量、成本分布和效率指标，并提供预算阈值预警和自动降级选项。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.wsj.com/tech/ai/corporate-america-is-starting-to-ration-ai-as-cost-skyrockets-1eb99d7a">Hacker News 热门（buzzing.cc 中文翻译）</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">04<small>TH</small></div>
+        <div>
+          <h3>DynoSim：模拟驱动推理堆栈优化</h3>
+          <p>NVIDIA 发布 DynoSim，一个针对 Dynamo 推理服务栈的工作负载驱动仿真工具，可在单一虚拟时间线上建模整个推理堆栈，以高保真仿真快速筛查数千种配置，仅将最佳候选方案投入实机验证，运行速度达实时的 1500 倍。</p>
+          <p><b>AI PM 视角：</b>DynoSim 的发布代表了**推理基础设施优化范式的根本转变：从“部署-测试-调优”的物理循环，转向“模拟-筛选-验证”的数字孪生循环**。对于任何需要在大规模生产环境中提供 AI 服务的团队来说，这都是一个重大突破。传统上，优化推理堆栈（批处理大小、调度策略、缓存策略、硬件配置等）需要在真实集群上进行大量实验，耗时且昂贵；DynoSim 让团队可以在虚拟环境中快速遍历配置空间，只把最有希望的方案放到真实硬件上验证。这意味着**推理部署的试错成本被数量级压缩**。
+
+对 AI PM 来说，这件事有几个重要启示：第一，**推理成本优化将从“经验驱动”变成“仿真驱动”**，未来优秀的 AI 工程团队会配备强大的仿真和建模能力；第二，**NVIDIA 正在通过软件栈（Dynamo + DynoSim）进一步锁定推理生态**，这既是机会也是供应商锁定风险；第三，**产品化空间巨大**——类似 DynoSim 的能力可以封装成企业级服务，帮助客户自动优化其 AI 推理成本。此外，DynoSim 用 Rust 实现并达到 1500 倍实时速度，也说明高性能系统仿真正在成为 AI  infra 的核心技术之一。</p>
+
+          <p><b>研究型 Builder 视角：</b>DynoSim 最吸引人的研究问题是：**如何构建一个既足够快又足够准确的推理系统仿真器？** 这涉及对 GPU 计算、内存层次、网络通信、请求到达模式、调度器行为等多层次因素的抽象与建模。研究型 Builder 可以思考：能否将这种方法扩展到非 NVIDIA 硬件？能否用机器学习来替代部分物理仿真，从而进一步加速？能否把仿真器开源或做成通用框架，让社区受益？这些都是非常具有研究价值和产品潜力的问题。</p>
+          <p><b>可落地的方法论：</b>- **本周可落地**: 如果你已经有生产环境的推理服务，建立一个简单的“配置实验日志”：记录不同批大小、并发度和缓存策略下的延迟、吞吐和成本，为后续引入仿真优化打下基础。
+- **本季度可落地**: 评估 NVIDIA Dynamo/DynoSim 或类似开源工具（如 vLLM 的 profiling 工具、TensorRT-LLM 的 benchmark）是否适合你的推理栈，制定一个“仿真优先、实机验证”的优化流程。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/NVIDIAAI/status/2060781385686659416">X：NVIDIA AI (@NVIDIAAI)</a></span>
+        </div>
+        <div class="tag">PLATFORM</div>
+      </div>
+      <div class="thesis">
+        <div class="num">05<small>TH</small></div>
+        <div>
+          <h3>GitHub Copilot 新的基于 token 的计费模式引发开发者不满</h3>
+          <p>GitHub Copilot 推出新的按 token 计量计费模式，改变了原有的订阅制，引发开发者广泛担忧与不满，认为其黄金时代可能正在终结。</p>
+          <p><b>AI PM 视角：</b>Copilot 的计费模式转变是**AI 编程助手商业模式成熟化的阵痛，也是整个行业定价逻辑的缩影**。从固定月费转向按 token 计费，本质上是把成本波动和风险从 GitHub 转移给用户。对 GitHub 而言，这是必要的：随着模型能力增强和用户使用频率上升，固定订阅的毛利空间被严重压缩；但对开发者而言，这意味着不可预测的账单、更复杂的使用决策，以及潜在的使用萎缩。这件事对 AI PM 的核心启示是：**AI 产品的定价设计必须同时平衡成本可预测性、用户心理账户和商业模式可持续性**。
+
+这次争议还揭示了一个更深层的问题：**当 AI 从“偶尔使用”变成“工作流核心”时，订阅制可能不再适用，但按量计费又会抑制使用**。企业客户和个人开发者的付费意愿和预算结构完全不同，因此未来的 AI 编程助手很可能出现分层定价：个人开发者偏向固定订阅或免费额度，企业客户接受按量计费但需要预算控制工具。Copilot 的这次调整可能会成为行业参照，也会给竞争对手（Cursor、Windsurf、Codex 等）带来定价策略上的窗口期。</p>
+
+          <p><b>研究型 Builder 视角：</b>从技术角度看，按 token 计费倒逼一个研究问题：**如何在不牺牲代码质量的前提下，减少模型输出的 token 数量？** 这涉及更高效的 prompt 压缩、 speculative decoding、模型蒸馏、以及“小模型处理简单任务、大模型处理复杂任务”的路由策略。研究型 Builder 可以关注的是：在编码场景下，输入 token 和输出 token 的成本结构如何？是否存在大量冗余上下文？能否通过代码表示学习来压缩上下文？</p>
+          <p><b>可落地的方法论：</b>- **本周可落地**: 如果你是 AI 编程产品的 PM，立即分析你的用户在不同计费模式下的支出分布：哪些用户会因按 token 计费而多付费？哪些会因使用受限而流失？设计一套沟通策略和价格保护机制。
+- **本季度可落地**: 在产品中引入“成本感知”功能：实时显示每次 AI 交互的 token 消耗和预估成本，并提供“经济模式”选项（使用更快/更便宜的模型完成简单任务）。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://techcrunch.com/2026/05/30/what-a-joke-github-copilots-new-token-based-billing-spurs-consternation-among-devs">TechCrunch：AI（RSS）</a></span>
+        </div>
+        <div class="tag">CRITICAL</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">5 IMPORTANT + 5 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://x.com/googleaidevs/status/2060685345738375640">Nano Banana Pro 与 Nano Banana 2 正式发布</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://x.com/StepFun_ai/status/2060678753030947226">小即是美：阶跃星辰开源多模态模型发布</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://github.com/jmaczan/tiny-vllm">Show HN: Tiny-vLLM——基于 C 和 CUDA 的高性能 LLM 推理引擎</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div><a class="event-link" href="https://www.bloomberg.com/news/articles/2026-05-30/softbank-to-invest-some-75-billion-in-ai-in-france-reports-say">软银将在法国投资 750 亿欧元用于 AI</a></div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
+      <div>05</div><div><a class="event-link" href="https://www.theverge.com/ai-artificial-intelligence/938844/ai-tiktok-shop-blackface-shein-dropshipping">AI 骗子正在创建虚假的黑人形象来销售 Shein 劣质商品</a></div><div class="red">POLICY</div><div>主权</div><div class="right red">BLOOM</div>
+      <div>06</div><div>新加坡防务论坛：AI 风险超过核武器</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>07</div><div>NVIDIA 或将于六月发布整合 Blackwell GPU 与 AI 单元的 ARM 笔记本芯片 N1X</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>08</div><div>免费领取 6 个月 ChatGPT Pro</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>09</div><div>在浏览器中通过 Pyodide 和 Service Worker 运行 Python ASGI 应用</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>10</div><div>最后一次技术面试</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">5 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>新加坡防务论坛：AI 风险超过核武器</div><div>战略稳定层面的 AI 风险认知正在升级，安全类 AI 产品和政策合规能力将成为长期刚需。</div>
+      <div>02</div><div>NVIDIA 或将于六月发布整合 Blackwell GPU 与 AI 单元的 ARM 笔记本芯片 N1X</div><div>如果属实，将标志着 NVIDIA 从显卡供应商向整机核心方案提供商的战略转型，PC 市场格局可能被重写。</div>
+      <div>03</div><div>免费领取 6 个月 ChatGPT Pro</div><div>OpenAI 通过开源维护者福利扩大开发者生态，是模型厂商争夺核心用户群体的典型获客策略。</div>
+      <div>04</div><div>在浏览器中通过 Pyodide 和 Service Worker 运行 Python ASGI 应用</div><div>浏览器内运行完整 Python Web 应用的能力，为无服务器前端、数据工具和可复现演示开辟了新场景。</div>
+      <div>05</div><div>最后一次技术面试</div><div>Steve Yegge 引发 HN 热议的文章，提示 AI 时代传统技术面试正在失效，人才评估体系需要重构。</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      当企业开始为 AI 配给预算、巨头转向自研训练框架、中国模型借顶级赛事出海，AI 竞争已从单纯的能力追赶进入成本可控性、基础设施自主性与全球信任构建的三重博弈阶段。
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 5 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>xAI 放弃 JAX GPU 转向自研 C 训练框架</h4>
+        <p><b>AI PM 视角：</b>这件事是<strong>AI 基础设施自主权争夺的标志性信号</strong>。过去两年，JAX 凭借 XLA 编译器和 Google 生态背书，成为许多大模型团队的首选训练框架；xAI 曾是其 GPU 侧最大客户之一。如今 xAI 宁愿从零写一个 C 训练框架，也不愿继续依赖 JAX，背后至少传递三个产品层面的判断：第一，<strong>通用框架的性能天花板已经暴露</strong>——当模型规模、并行策略和硬件拓扑越来越复杂时，通用编译器难以充分压榨定制集群的算力；第二，<strong>训练成本在 Scaling Law 压力下的权重急剧上升</strong>，MFU 从低于 10% 提升到更高水平，意味着同样的算力预算可以多训练数倍的 token；第三，<strong>框架即护城河</strong>——谁掌握训练框架，谁就能以更低的成本、更快的迭代速度推出下一代模型。</p>
+<p>对产品经理而言，这同样是一个<strong>供应商风险管理</strong>的警示。如果你的产品或团队深度依赖某一个训练框架、云平台或模型供应商，一旦该供应商的性能或战略方向与你的需求不再匹配，迁移成本会非常高。xAI 的选择说明，到了一定规模后，“自研”可能不是炫技，而是成本控制的必然。这也预示着未来 AI 产业会进一步分层：少数头部公司拥有自研全栈的能力，而大多数团队则需要在开源框架、云服务和垂直优化之间寻找平衡。</p>
+        
+        <p><b>研究型 Builder 视角：</b>从技术真实性角度看，这一事件最值得追问的是：<strong>MFU 低于 10% 的具体场景是什么？是端到端训练，还是特定算子或通信瓶颈？</strong> 如果属实，说明 JAX/XLA 在超大规模 MoE 或长上下文训练中的编译优化存在明显短板。研究型 Builder 应关注 xAI 是否会开源 Grok Build 的部分组件或发布技术报告，因为这将直接改变训练框架的竞争格局。更深层的问题是：自研 C 框架能在多大程度上复现 JAX 的自动微分和分布式并行抽象？这会揭示“性能”与“可编程性”之间的新权衡边界。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可落地</strong>: 如果你是模型训练团队的 PM 或 Tech Lead，做一次训练栈成本审计：统计过去一个月的 GPU 利用率、通信开销和算子耗时，识别是否存在类似 xAI 遇到的“通用框架性能天花板”。</li>
+<li><strong>本季度可落地</strong>: 针对核心训练路径，评估是否引入自定义 CUDA kernel 或轻量化训练运行时（如 TinyGrad、PyTorch 自定义扩展）作为补充，而非全盘替换框架。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>阿里云与 Qwen 成为 UEFA 多年全球 AI 合作伙伴</h4>
+        <p><b>AI PM 视角：</b>这是<strong>中国 AI 技术以顶级体育赛事为跳板进行全球化品牌输出</strong>的关键一步。UEFA 赛事拥有数十亿全球观众，对阿里云和 Qwen 而言，这不仅是云资源和模型能力的出海，更是一次“技术可信度”的国际背书。对 AI PM 来说，这件事揭示了三个战略信号：第一，<strong>大模型的竞争正在从“参数竞赛”转向“场景绑定”</strong>——Qwen 不再只是发布模型，而是与全球最大的足球 IP 深度绑定，形成“模型+内容+体验”的闭环；第二，<strong>B2B 技术品牌的打造需要借道 C 端超级场景</strong>，体育赛事是极佳的注意力入口，能让企业客户和普通用户同时感知到技术实力；第三，<strong>多云/多模型时代的生态卡位战加剧</strong>，阿里云通过 UEFA 合作，把 Qwen 推向了与 AWS、Google Cloud、Azure 同台竞技的国际舞台。</p>
+<p>更深一层看，这次合作的产品形态也值得关注：球迷互动、媒体内容、沉浸式观赛体验，这些都依赖实时多语言翻译、个性化内容生成、视频理解和推荐系统。Qwen 需要在这些高并发、低延迟、强监管的场景中证明自己。这意味着，未来一年 Qwen 的产品迭代将明显受到“国际大型赛事可用性”的牵引，这对于观察其多模态、实时推理和全球化合规能力非常有价值。</p>
+        
+        <p><b>研究型 Builder 视角：</b>从研究型 Builder 的角度看，UEFA 合作是一个<strong>真实世界的大规模多模态 AI 测试场</strong>。赛事场景下的实时翻译、视频高光生成、球迷情绪分析、跨语言内容理解，都是学术界和工业界长期关注但难以获得真实数据的课题。如果阿里云和 Qwen 愿意开放部分脱敏数据或发布技术案例，将为社区提供宝贵的研究素材。同时，这也是评估 Qwen 模型在“非中文、非美国市场”下泛化能力和文化适配性的重要窗口。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可落地</strong>: 如果你是做 AI 出海或国际化产品的 PM，研究 UEFA 合作中提到的具体应用场景（球迷互动、媒体内容、电商），列出其中 3 个可以用你现有模型或产品能力复刻的用例。</li>
+<li><strong>本季度可落地</strong>: 设计一个“超级场景绑定”的品牌或获客策略：找到一个你目标用户高度聚集的垂直场景（赛事、展会、行业峰会），用 AI 能力提供差异化体验，而不是只做通用工具。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>美国企业开始对人工智能实施配给</h4>
+        <p><b>AI PM 视角：</b>这是<strong>企业 AI 从“免费试用”走向“成本问责”</strong>的拐点事件。过去几年，企业 AI 的推广逻辑是“先让大家用起来，再算 ROI”；但现在，CFO 和采购部门开始发现，未经控制的 AI 使用会带来惊人的账单——尤其是按 token 计费的编码助手、按调用计费的 API、以及 AI 驱动的数据分析工具。配给制的出现意味着：<strong>AI 产品的采购决策正在从“功能驱动”转向“单位经济模型驱动”</strong>。对 PM 来说，这是一个明确的信号：如果你的产品不能清晰展示“每花一美元 AI 预算能带来多少回报”，将在企业采购中处于劣势。</p>
+<p>这件事还会深刻影响产品设计和定价策略。企业客户会越来越关注：是否支持用量配额、是否有成本预警、是否能按部门/项目拆分账单、是否提供离线或本地化部署以降低成本。这些原本属于“企业级功能”的能力，正在变成 AI 产品的基本功。同时，配给也会催生新的产品机会：AI 成本治理平台、用量优化助手、模型路由与降级策略工具等，都可能成为下一个企业服务热点。</p>
+        
+        <p><b>研究型 Builder 视角：</b>从研究角度看，企业配给制暴露了一个长期被忽视的问题：<strong>大多数企业并不清楚 AI 的真实成本结构，也缺乏衡量 AI 产出价值的方法论</strong>。研究型 Builder 可以在这个方向上做很多事情：建立企业 AI 任务的 cost-benefit 评估框架、开发自动化的模型选择算法以在成本和性能之间动态权衡、设计可解释的 ROI 归因模型。这些研究不仅具有学术价值，也极易转化为 SaaS 产品。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可落地</strong>: 如果你是 ToB AI 产品 PM，立刻梳理你产品的定价模型和单位成本：每个核心功能的单次调用成本是多少？客户平均每月花费多少？是否存在“用量暴增但价值未增”的场景？</li>
+<li><strong>本季度可落地</strong>: 在产品中上线“成本可视化”功能：向企业客户展示 AI 用量、成本分布和效率指标，并提供预算阈值预警和自动降级选项。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>DynoSim：模拟驱动推理堆栈优化</h4>
+        <p><b>AI PM 视角：</b>DynoSim 的发布代表了<strong>推理基础设施优化范式的根本转变：从“部署-测试-调优”的物理循环，转向“模拟-筛选-验证”的数字孪生循环</strong>。对于任何需要在大规模生产环境中提供 AI 服务的团队来说，这都是一个重大突破。传统上，优化推理堆栈（批处理大小、调度策略、缓存策略、硬件配置等）需要在真实集群上进行大量实验，耗时且昂贵；DynoSim 让团队可以在虚拟环境中快速遍历配置空间，只把最有希望的方案放到真实硬件上验证。这意味着<strong>推理部署的试错成本被数量级压缩</strong>。</p>
+<p>对 AI PM 来说，这件事有几个重要启示：第一，<strong>推理成本优化将从“经验驱动”变成“仿真驱动”</strong>，未来优秀的 AI 工程团队会配备强大的仿真和建模能力；第二，<strong>NVIDIA 正在通过软件栈（Dynamo + DynoSim）进一步锁定推理生态</strong>，这既是机会也是供应商锁定风险；第三，<strong>产品化空间巨大</strong>——类似 DynoSim 的能力可以封装成企业级服务，帮助客户自动优化其 AI 推理成本。此外，DynoSim 用 Rust 实现并达到 1500 倍实时速度，也说明高性能系统仿真正在成为 AI  infra 的核心技术之一。</p>
+        
+        <p><b>研究型 Builder 视角：</b>DynoSim 最吸引人的研究问题是：<strong>如何构建一个既足够快又足够准确的推理系统仿真器？</strong> 这涉及对 GPU 计算、内存层次、网络通信、请求到达模式、调度器行为等多层次因素的抽象与建模。研究型 Builder 可以思考：能否将这种方法扩展到非 NVIDIA 硬件？能否用机器学习来替代部分物理仿真，从而进一步加速？能否把仿真器开源或做成通用框架，让社区受益？这些都是非常具有研究价值和产品潜力的问题。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可落地</strong>: 如果你已经有生产环境的推理服务，建立一个简单的“配置实验日志”：记录不同批大小、并发度和缓存策略下的延迟、吞吐和成本，为后续引入仿真优化打下基础。</li>
+<li><strong>本季度可落地</strong>: 评估 NVIDIA Dynamo/DynoSim 或类似开源工具（如 vLLM 的 profiling 工具、TensorRT-LLM 的 benchmark）是否适合你的推理栈，制定一个“仿真优先、实机验证”的优化流程。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>GitHub Copilot 新的基于 token 的计费模式引发开发者不满</h4>
+        <p><b>AI PM 视角：</b>Copilot 的计费模式转变是<strong>AI 编程助手商业模式成熟化的阵痛，也是整个行业定价逻辑的缩影</strong>。从固定月费转向按 token 计费，本质上是把成本波动和风险从 GitHub 转移给用户。对 GitHub 而言，这是必要的：随着模型能力增强和用户使用频率上升，固定订阅的毛利空间被严重压缩；但对开发者而言，这意味着不可预测的账单、更复杂的使用决策，以及潜在的使用萎缩。这件事对 AI PM 的核心启示是：<strong>AI 产品的定价设计必须同时平衡成本可预测性、用户心理账户和商业模式可持续性</strong>。</p>
+<p>这次争议还揭示了一个更深层的问题：<strong>当 AI 从“偶尔使用”变成“工作流核心”时，订阅制可能不再适用，但按量计费又会抑制使用</strong>。企业客户和个人开发者的付费意愿和预算结构完全不同，因此未来的 AI 编程助手很可能出现分层定价：个人开发者偏向固定订阅或免费额度，企业客户接受按量计费但需要预算控制工具。Copilot 的这次调整可能会成为行业参照，也会给竞争对手（Cursor、Windsurf、Codex 等）带来定价策略上的窗口期。</p>
+        
+        <p><b>研究型 Builder 视角：</b>从技术角度看，按 token 计费倒逼一个研究问题：<strong>如何在不牺牲代码质量的前提下，减少模型输出的 token 数量？</strong> 这涉及更高效的 prompt 压缩、 speculative decoding、模型蒸馏、以及“小模型处理简单任务、大模型处理复杂任务”的路由策略。研究型 Builder 可以关注的是：在编码场景下，输入 token 和输出 token 的成本结构如何？是否存在大量冗余上下文？能否通过代码表示学习来压缩上下文？</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可落地</strong>: 如果你是 AI 编程产品的 PM，立即分析你的用户在不同计费模式下的支出分布：哪些用户会因按 token 计费而多付费？哪些会因使用受限而流失？设计一套沟通策略和价格保护机制。</li>
+<li><strong>本季度可落地</strong>: 在产品中引入“成本感知”功能：实时显示每次 AI 交互的 token 消耗和预估成本，并提供“经济模式”选项（使用更快/更便宜的模型完成简单任务）。</li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 5 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Nano Banana Pro 与 Nano Banana 2 正式发布</h4>
+        <p><b>分析：</b>Google 正式发布 Nano Banana Pro 和 Nano Banana 2 两个图像/多模态模型，现已可通过 Gemini API 投入生产使用。</p>
+        <p><b>AI PM 视角：</b>Google 继续推进其“Banana”系列端侧/高效多模态模型的产品化，Nano Banana Pro 和 Nano Banana 2 的正式 API 可用意味着开发者可以将这些模型集成到生产环境中。对 PM 而言，这是“小模型+多模态”趋势的重要信号：在视觉理解、图像生成、OCR 等场景中，专用小模型往往比通用大模型更具成本优势和延迟优势。建议关注这两个模型在移动应用、电商、教育等垂直场景中的落地机会，同时评估它们与 Gemini 系列其他模型的能力边界，避免过度工程化。</p>
+        
+        <p><b>研究型 Builder 视角：</b>值得关注的是 Nano Banana 系列在模型压缩、蒸馏和视觉编码器设计上的技术取舍，以及它们与 Gemini 3.x 图像能力的差异来源。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你的产品涉及图像或多模态任务，本周内用 Nano Banana 系列跑一次基准测试，对比现有方案在准确率、延迟和成本上的表现。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>小即是美：阶跃星辰开源多模态模型发布</h4>
+        <p><b>分析：</b>阶跃星辰 StepFun 发布新的开源多模态模型，强调“小即是美”的高效模型理念。</p>
+        <p><b>AI PM 视角：</b>阶跃星辰加入“小模型开源”阵营，进一步验证了中国模型厂商在端侧和高效多模态方向上的布局。与海外 Gemini Nano、Phi 系列类似，国产小模型更适合私有化部署、边缘设备和成本敏感场景。对 PM 来说，这意味着多模态能力的获取门槛正在快速下降，未来产品竞争将更多体现在“如何把小模型组合成完整体验”，而不是单纯比拼模型大小。需要关注的是，StepFun 是否提供足够的微调工具、量化版本和部署文档，这些将决定开源模型的实际 adoption。</p>
+        
+        <p><b>研究型 Builder 视角：</b>可重点研究该模型在参数量、训练数据和多模态对齐方面的具体设计，以及与 Step-1、Step-2 系列的能力继承关系。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你是做端侧 AI 或私有化部署的 Builder，把 StepFun 的新模型加入候选清单，评估其在你的目标硬件上的推理表现。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>Show HN: Tiny-vLLM——基于 C 和 CUDA 的高性能 LLM 推理引擎</h4>
+        <p><b>分析：</b>Tiny-vLLM 是一个用 C 和 CUDA 从头编写的高性能大语言模型推理引擎，项目已开源至 GitHub。</p>
+        <p><b>AI PM 视角：</b>Tiny-vLLM 代表了“去框架化”的推理引擎趋势：用底层 C/CUDA 直接实现核心算子，绕过 PyTorch、JAX 等通用框架的开销，从而获得极致性能。对 PM 而言，这类项目的价值在于为特定场景（如边缘设备、高并发 API、低延迟交互）提供了更轻量的选择。但也要注意其生态成熟度：是否支持主流模型格式、是否有量化/并行/流式生成能力、维护社区是否活跃。建议将其视为技术储备和性能基准，而非立即替代 vLLM、TensorRT-LLM 等成熟方案。</p>
+        
+        <p><b>研究型 Builder 视角：</b>这是一个极佳的学习项目，可以深入理解 LLM 推理的内存管理、KV cache、attention 算子和 CUDA kernel 优化细节。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周内拉取 Tiny-vLLM 代码仓库，运行示例并在你的目标模型上做一次延迟和吞吐 benchmark，记录与 vLLM 的差距。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>软银将在法国投资 750 亿欧元用于 AI</h4>
+        <p><b>分析：</b>软银集团计划投资高达 750 亿欧元（约 870 亿美元）在法国建设人工智能数据中心，相关消息由《论坛报》和《金融时报》报道。</p>
+        <p><b>AI PM 视角：</b>软银的巨额投资是<strong>全球 AI 数据中心军备竞赛升级</strong>的又一佐证。对法国和欧洲而言，这意味着 AI 算力主权和产业链吸引力的提升；对软银和孙正义而言，这是围绕“AI 基础设施+能源+芯片”构建长期生态押注的延续。对 PM 来说，这一事件提示：AI 的底层竞争正在从模型能力扩展到能源、土地、冷却、网络等物理基础设施。如果你的产品或业务涉及欧洲市场，未来法国可能成为一个重要的 AI 算力和合规枢纽。</p>
+        
+        <p><b>研究型 Builder 视角：</b>如此大规模的投资将推动液冷、核能/可再生能源供电、高速互联网络等数据中心技术的研究和落地。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你是做 ToB AI 基础设施或云服务的 PM，关注法国和欧洲 AI 数据中心的建设进度，评估是否需要提前布局欧洲节点或合作伙伴。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>AI 骗子正在创建虚假的黑人形象来销售 Shein 劣质商品</h4>
+        <p><b>分析：</b>有卖家利用 AI 生成虚假黑人形象，在 TikTok、Facebook、Instagram 等平台上扮演手工制品创作者进行直播和带货，实则通过代发货模式销售批量生产品。</p>
+        <p><b>AI PM 视角：</b>这是<strong>AI 生成内容滥用进入电商和社交媒体带货领域</strong>的典型案例。虚假身份、虚假故事、虚假“手工创作”过程，正在侵蚀消费者信任和平台内容生态。对 PM 来说，这件事揭示了 AI 内容治理的紧迫性：平台需要更强的身份验证、内容溯源、AI 生成标识和异常行为检测能力。同时，它也提醒所有做 AI 生成内容产品的团队：<strong>技术能力越强，伦理和合规责任越大</strong>。在产品设计中应前置考虑滥用风险、用户告知义务和快速下架机制。</p>
+        
+        <p><b>研究型 Builder 视角：</b>技术上值得研究的是如何高效检测深度伪造视频、AI 生成头像和脚本化直播内容，以及如何在保护隐私的前提下实现内容溯源。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你是内容平台或社交电商 PM，本周内审查现有的 AI 生成内容识别和创作者身份验证流程，识别是否存在类似漏洞。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架 1：成本-效率-自主性三角</h4>
+        <p>今天的多个事件可以放入同一个分析框架：xAI 自研训练框架是为了<strong>自主性</strong>和<strong>效率</strong>，DynoSim 是为了用仿真提升<strong>效率</strong>，美国企业 AI 配给和 Copilot 按 token 计费是为了应对<strong>成本</strong>压力。这三个变量构成了 AI 产品化阶段的核心三角。</p>
+<ul>
+<li><strong>自主性</strong>决定你能以多低的依赖成本迭代和优化；</li>
+<li><strong>效率</strong>决定你每单位算力能产生多少价值；</li>
+<li><strong>成本</strong>决定你的商业模式是否可持续、用户是否用得起。</li>
+</ul>
+<p><strong>产品启示</strong>: AI PM 在评估任何技术决策时，都应同时问自己：这个选择如何影响自主性、效率和成本？例如，选择云服务 API 牺牲自主性换取效率；选择自研模型提升自主性但增加成本；选择仿真优化工具提升效率但需要警惕供应商锁定。没有一个选择是 universally 最优的，关键是根据团队规模和业务阶段找到三角形的平衡点。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架 2：模型能力下沉 vs 入口与品牌上移</h4>
+        <p>Nano Banana、Tiny-vLLM、阶跃星辰小模型代表了<strong>模型能力持续下沉</strong>——更小、更快、更便宜、更易部署；而阿里云与 UEFA 的合作、软银法国数据中心投资则代表了<strong>品牌和入口持续上移</strong>——通过超级场景、基础设施投资和全球合作伙伴关系争夺用户心智。</p>
+<ul>
+<li>能力下沉意味着“模型本身”越来越 commoditized；</li>
+<li>入口上移意味着“谁能把模型送到用户手中”越来越重要。</li>
+</ul>
+<p><strong>产品启示</strong>: 如果你做的 AI 产品只是“套壳调用模型”，未来会越来越难建立护城河。真正有价值的产品要么在垂直场景中形成深度工作流集成（如 Perplexity 进 Office），要么在多模型时代成为高效的“模型路由器”和“体验编排者”。同时，品牌建设和场景绑定将比单纯的功能迭代更能带来长期复利。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架 3：AI 信任赤字与治理红利</h4>
+        <p>AI 虚假黑人形象带货、新加坡防务论坛对 AI 风险的警告，共同指向一个被低估的趋势：<strong>AI 信任赤字正在扩大</strong>。当生成内容越来越逼真、AI 代理能力越来越强，社会对“内容真实性”“系统可控性”“决策可审计性”的需求会指数级增长。</p>
+<ul>
+<li>内容平台需要更强的 AI 生成检测和身份验证；</li>
+<li>企业需要可解释、可审计的 AI 决策流程；</li>
+<li>政府和国际组织需要更完善的安全治理框架。</li>
+</ul>
+<p><strong>产品启示</strong>: “AI 治理”不应被视为合规负担，而应被视为新的产品机会。无论是内容溯源工具、模型红队服务、AI 安全护栏，还是企业级 AI 审计平台，都有可能从成本中心变成收入来源。对 PM 来说，越早把信任和治理嵌入产品架构，越能在下一轮竞争中占据有利位置。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>xAI 自研训练框架相关讨论</strong>：重点读 SemiAnalysis 的推文和评论区，理解 JAX/XLA 在超大规模训练中的瓶颈，以及为什么巨头开始“去框架化”。</p>
+<p><b>2.</b> <strong>NVIDIA DynoSim 官方介绍</strong>：关注其仿真器设计理念、与 Dynamo 的集成方式，以及 1500 倍实时加速的实现方法。</p>
+<p><b>3.</b> <strong>WSJ 关于企业 AI 配给的报道</strong>：理解企业 CFO 和 IT 部门如何重新评估 AI 支出，这对 ToB AI 产品定价和功能设计有直接影响。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>做一次 AI 成本审计</strong>：列出你产品或团队所有按 token/API/算力计费的 AI 支出，识别成本增长最快的环节和性价比最低的用例。</p>
+<p><b>2.</b> <strong>评估多模型后端可行性</strong>：针对核心任务类型，测试 2-3 个不同模型的性价比，建立初步的路由规则。</p>
+<p><b>3.</b> <strong>审查 AI 内容治理流程</strong>：如果你是内容/社交平台，检查现有的 AI 生成内容检测、身份验证和申诉机制是否存在漏洞。</p>
+<p><b>4.</b> <strong>研究 UEFA/阿里云合作的落地场景</strong>：如果你是做体育、媒体、电商或出海产品的 PM，提炼出 2-3 个可复用的 AI 体验设计。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>训练框架将进一步分化</strong>：未来 12 个月内，头部模型公司会加速自研训练运行时，开源框架（PyTorch、JAX）将更多成为研究和中型团队的选择，而非超大规模训练的首选。</p>
+<p><b>2.</b> <strong>AI 成本治理将成为企业标配</strong>：到 2027 年，超过 50% 的中大型企业将采用专门的 AI 成本治理工具或内置功能，按量计费的 AI 产品必须提供预算控制和分析能力。</p>
+<p><b>3.</b> <strong>多模态小模型将主导端侧和垂直场景</strong>：随着 Nano Banana、StepFun 等模型的发布，端侧多模态能力将快速普及，催生大量离线、低延迟、隐私优先的 AI 应用。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题 1: 当“自研训练框架”成为头部公司的标准动作时，中小团队的生存策略是什么？</h4>
+        <p>xAI 放弃 JAX、NVIDIA 推进 Dynamo/DynoSim，都说明 AI 基础设施正在快速分层。中小团队不可能也没有必要自研全栈，但过度依赖单一供应商又会带来战略风险。这个问题关系到未来五年的技术选型、团队组建和融资叙事。</p>
+<ul>
+<li><strong>产品战略层面</strong>：你的团队应该在哪些层面积累自主能力，在哪些层面使用开源或云服务？</li>
+<li><strong>执行层面</strong>：如何设计一个既能快速迭代、又能低成本迁移的技术架构？</li>
+<li><strong>风险层面</strong>：如果主要依赖的云厂商或框架发生战略转向，你的业务连续性计划是什么？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题 2: AI 产品的定价模式是否正在从“订阅制”全面转向“按量计费+配额制”？</h4>
+        <p>Copilot 的 token 计费争议、企业 AI 配给、按 API 调用付费的普及，都指向同一个方向：AI 产品的商业模式正在从“买断式/订阅式”向“用量敏感型”转变。这对产品设计、用户心理和销售流程都会带来深远影响。</p>
+<ul>
+<li><strong>产品战略层面</strong>：你的定价模式是否能同时满足个人用户的“可预测性”和企业用户的“弹性”？</li>
+<li><strong>执行层面</strong>：如何在产品中自然地暴露成本信息，而不让用户感到焦虑或被“吸血”？</li>
+<li><strong>风险层面</strong>：按量计费是否会抑制用户高频使用，从而降低产品的网络效应和数据飞轮？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题 3: “模型能力下沉”与“入口/品牌上移”之间的矛盾，会如何重塑 AI 应用层的竞争格局？</h4>
+        <p>模型越来越小、越来越快、越来越便宜，但用户注意力越来越集中在少数超级入口和场景中。这意味着纯模型套壳产品的窗口期正在关闭。</p>
+<ul>
+<li><strong>产品战略层面</strong>：你的产品是否依赖某一家模型的独占优势？如果是，如何构建不依赖模型能力本身的护城河？</li>
+<li><strong>执行层面</strong>：你是否找到了一个用户每天愿意停留、愿意付费的垂直工作流？</li>
+<li><strong>风险层面</strong>：当多个模型在能力上趋同时，用户切换成本是否足够高？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题 4: AI 信任赤字会催生哪些新的产品品类和商业模式？</h4>
+        <p>从虚假 AI 形象带货到防务论坛对 AI 风险的警告，社会对 AI 的信任正在经受考验。但每一次信任危机也伴随着治理红利。</p>
+<ul>
+<li><strong>产品战略层面</strong>：在你的行业中，客户最担心哪些 AI 相关风险？是否有机会把这些担忧转化为付费功能？</li>
+<li><strong>执行层面</strong>：如何在产品设计中前置“可解释性”“可审计性”“内容溯源”等能力？</li>
+<li><strong>风险层面</strong>：如果监管突然收紧，你的产品是否已经具备合规基础？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题 5: 当 AI 开始替代或增强高技能工作时，人才评估体系应该如何进化？</h4>
+        <p>Steve Yegge 的《最后一次技术面试》引发热议，说明传统技术面试在 AI 时代面临失效。这个问题不仅关乎招聘，也关乎教育、职业发展和组织设计。</p>
+<ul>
+<li><strong>产品战略层面</strong>：如果你的产品是面向开发者的工具或教育产品，AI 辅助编程的普及会改变用户的学习路径和评估标准吗？</li>
+<li><strong>执行层面</strong>：你的团队在招聘和绩效评估中，如何区分“会使用 AI”和“能驾驭 AI”？</li>
+<li><strong>风险层面</strong>：当面试无法有效评估真实能力时，企业和产品团队如何识别真正的人才？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A: AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 阅读 WSJ 企业 AI 配给报道并整理一份“AI 成本管理检查清单”——预期成果：能识别产品中 3 个以上的成本优化机会。</p>
+<p><b>2.</b> 体验 Nano Banana Pro/2 和 StepFun 新模型的 API 或演示，记录它们在图像/多模态任务上的优缺点——预期成果：形成一份模型选型备忘录。</p>
+<p><b>3.</b> 分析 Copilot 新计费模式的用户反馈（Reddit、HN、Twitter），总结开发者最关心的 5 个定价问题——预期成果：输出一份定价设计参考。</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 为你的产品设计一个“多模型路由”原型，根据任务复杂度自动选择模型。</p>
+<p><b>2.</b> 建立 AI 功能的使用量和成本 dashboard，并设置预算预警。</p>
+<p><b>3.</b> 与法务、安全团队合作，制定 AI 生成内容的用户告知和异常处理流程。</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 跟踪 2-3 个头部模型公司的训练框架和基础设施动向，每季度更新技术选型评估。</p>
+<p><b>2.</b> 研究 AI 信任治理领域的标杆产品（如内容溯源、AI 审计平台），提炼可借鉴的产品原则。</p>
+<p><b>3.</b> 参与至少一个 AI 产品经理社区或线下活动，持续校准行业认知。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B: AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 拉取 Tiny-vLLM 仓库，成功运行一个示例模型并记录延迟/吞吐数据。</p>
+<p><b>2.</b> 阅读 NVIDIA DynoSim 相关介绍，理解其“仿真-筛选-验证”的设计思想。</p>
+<p><b>3.</b> 尝试用 Pyodide + Service Worker 在浏览器中跑一个简单的 Python ASGI 应用。</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 在你的推理服务中引入成本/延迟 benchmark，比较不同 batch size 和量化策略的效果。</p>
+<p><b>2.</b> 实现一个简单的模型路由器，根据任务类型和成本预算动态选择后端模型。</p>
+<p><b>3.</b> 学习一个 AI 生成内容检测工具或方法，并在真实数据上验证其效果。</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 深入研究一个高性能推理引擎（vLLM、TensorRT-LLM、SGLang）的源码，理解其关键优化点。</p>
+<p><b>2.</b> 尝试为某个开源项目贡献代码或性能优化 patch。</p>
+<p><b>3.</b> 设计并实现一个“成本感知”的 AI 应用架构，能够根据预算自动降级模型或功能。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C: 研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 阅读 SemiAnalysis 关于 xAI 放弃 JAX 的讨论，整理 JAX/XLA 在超大规模训练中的已知瓶颈清单——预期成果：形成一份技术问题假设集。</p>
+<p><b>2.</b> 调研 DynoSim 的仿真方法，思考其核心抽象（请求到达模型、调度器模型、GPU 执行模型）——预期成果：写一篇简短的技术笔记。</p>
+<p><b>3.</b> 复现一个 AI 生成图像/视频的检测方法，记录误报率和漏报率——预期成果：获得对当前检测技术边界的直观理解。</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 在一个公开 benchmark 上做小模型 vs 大模型的多模态能力对比实验，分析效率-准确率 trade-off。</p>
+<p><b>2.</b> 设计并运行一个关于“模型选择策略对成本和用户体验影响”的 ablation study。</p>
+<p><b>3.</b> 尝试把某个研究论文中的方法（如新的 attention 算子、KV cache 压缩技术）集成到现有推理引擎中。</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 提出一个关于训练框架、推理系统或 AI 安全的新研究问题，并撰写一份研究提案。</p>
+<p><b>2.</b> 将一个研究成果转化为可演示的产品原型或开源工具，验证其 product-market fit。</p>
+<p><b>3.</b> 在学术会议、技术博客或开源社区分享你的研究成果，建立研究影响力。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D: 快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>训练框架与基础设施</td><td>SemiAnalysis 关于 xAI JAX 的推文及讨论</td><td>30 分钟</td></tr><tr><td>推理仿真优化</td><td>NVIDIA DynoSim 官方介绍与技术博客</td><td>45 分钟</td></tr><tr><td>企业 AI 成本管理</td><td>WSJ《Corporate America Is Starting to Ration AI》</td><td>20 分钟</td></tr><tr><td>多模态小模型</td><td>Google Nano Banana 社区示例 + StepFun 发布信息</td><td>40 分钟</td></tr><tr><td>AI 内容治理</td><td>The Verge 关于 AI 虚假形象带货的报道</td><td>15 分钟</td></tr><tr><td>AI 与人才评估</td><td>Steve Yegge《The Last Technical Interview》</td><td>30 分钟</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-22.html">
+      <span class="date">2026-06-22</span>
+      <span class="title">Mythos 攻破 NSA 与 AI 入口企业双战</span>
+      <span class="angle">超级 AI 安全能力击穿国家机密防线，模型入口聚合与企业规模化部署同步重塑产业权力结构。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-21.html">
+      <span class="date">2026-06-21</span>
+      <span class="title">模型中间商崛起与Agent实战</span>
+      <span class="angle">当全球 AI 模型流通从单极出口转向双向转售，Agent 构建正从 Demo 走向可复用的工程化架构。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-20.html">
+      <span class="date">2026-06-20</span>
+      <span class="title">智能体基建与研究自治</span>
+      <span class="angle">AI 智能体基础设施与研究自动化同时越过临界点，标志着从模型能力展示向自主系统工程的范式转移。</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>151 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+    </div>
+  </footer>
+</body>
+</html>
