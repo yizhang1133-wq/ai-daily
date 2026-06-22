@@ -1,0 +1,1064 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-06-17</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>168</span></div>
+    <div><b>ISS.</b><span>2026-06-17</span></div>
+    <div><b>EVT.</b><span>26 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 168</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">17</div>
+    <div class="meta-col">
+      <h2>具身智能爆发与产业权力重构</h2>
+      <p>Qwen机器人三连发标志具身智能进入规模化阶段，SpaceX天价收购Cursor与DeepSeek融资重塑全球AI产业权力地图，Anthropic反超OpenAI预示企业市场格局逆转。</p>
+      <div class="meta-row"><b>日期</b> 2026-06-17</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 168 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">Qwen</span>机器人三连发标志具身智能进入规模化阶段，SpaceX天价收购Cursor与DeepSeek融资重塑全球AI产业权力地图，Anthropic反超OpenAI预示企业市场格局逆转。
+    </div>
+    <div class="credits">
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 5<br>
+      IMPORTANT 10<br>
+      REFERENCE 11<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架1: 具身智能的"语言统一层"范式<br>
+      框架2: AI成本战争的"不对称定价"策略<br>
+      框架3: AI治理的"原则即品牌"效应
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>5 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>Qwen 具身智能三连发：RobotManip、RobotWorld、RobotNav</h3>
+          <p>通义千问同日发布三款机器人/导航模型：RobotManip（VLA操作基础模型，多基准SOTA）、RobotWorld（MMDiT架构统一20余种机器人形态的多模态世界模型）、RobotNav（统一五大导航领域的可扩展导航模型）。三者形成"感知-理解-行动"完整闭环，覆盖操作、导航、世界建模三大具身智能核心能力。</p>
+          <p><b>AI PM 视角：</b>Qwen此次三连发标志着一个关键拐点：大模型厂商开始系统性布局具身智能全栈，而非零散的单点突破。RobotManip在LIBERO-Plus达到91.4%的成功率，这意味着基于开源数据的通用机器人操作已接近可商业化部署的门槛。更值得警惕的是"统一"这个词在三款模型中反复出现——统一对齐框架、统一语言动作接口、统一五大导航领域——这揭示了一个产品战略：通过语言作为跨形态、跨任务的通用控制层，降低机器人应用的碎片化成本。
+
+对AI PM的启示在于，机器人赛道正在从"专用机器人+专用算法"向"通用基础模型+形态适配"迁移。这与自动驾驶领域的端到端大模型趋势同构。RobotWorld支持Scene2Robot人类到机器人转移和多视角视频生成，这意味着产品团队可以用人类演示视频快速适配新机器人形态，大幅降低数据获取成本。未来6-12个月，基于Qwen Robot系列的机器人中间件和垂直场景应用（仓储物流、家庭服务、工业检测）将迎来一波创业窗口。</p>
+
+          <p><b>研究型 Builder 视角：</b>RobotManip的核心技术 novelty 在于三维统一对齐框架（表示、运动、行为），这比传统的模仿学习或强化学习更能跨数据集泛化。38,100小时预训练语料全部来自开源数据和人演示视频，没有依赖昂贵的真实机器人遥操作数据，这一点对研究社区的可复现性至关重要。RobotWorld采用的双流MMDiT架构将Qwen2.5-VL作为动作编码器，本质上是把视觉语言模型的语义理解能力蒸馏到动作生成中，这种"冻结大模型+训练动作头"的范式可能成为VLA模型的标准配方。RobotNav的可调四轴（视觉token预算、时间衰减、相机权重、帧采样）为研究者提供了清晰的消融实验空间。</p>
+          <p><b>可落地的方法论：</b>- 本周：如果团队在探索机器人或物理世界交互产品，立即下载Qwen Robot系列的开源权重，在目标场景做零样本/少样本测试，评估通用VLA模型对专用方案的替代潜力
+- 本季度：建立"语言动作接口"作为产品设计原则，无论做硬件还是软件，将用户意图转化为结构化语言指令，再映射到具体执行，这将成为跨形态兼容的关键架构决策
+
+---</p>
+          <span class="source">SOURCE /// </span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>SpaceX 以 600 亿美元股票收购 Cursor</h3>
+          <p>SpaceX在IPO数天后宣布以600亿美元股票收购AI编程公司Cursor，后者此前正以500亿美元估值进行20亿美元融资。SpaceX声称其AI产品可寻址市场达26万亿美元，交易预计Q3完成。</p>
+          <p><b>AI PM 视角：</b>这是AI编程工具领域迄今最大的并购案，也是SpaceX IPO后资本布局的第一枚棋子。600亿美元的估值意味着Cursor的溢价来自两个预期：一是SpaceX的AI部门急需一流工程人才和开发者生态来追赶OpenAI/Anthropic；二是Cursor作为开发者入口的战略价值——它不仅是代码编辑器，更是下一代AI原生工作流的试验场。
+
+信号在于：马斯克正在将xAI、SpaceX、Cursor编织成一个"AI+硬件+开发者生态"的三角。SpaceX在IPO材料中抛出26万亿美元TAM，说明其野心远不止火箭和卫星，而是将AI能力渗透到所有工程领域。对竞品而言，Cursor被收购后可能获得更多算力和模型定制资源（Grok集成、卫星边缘计算），这会加速AI编程工具的分化——独立工具vs巨头生态附属品。</p>
+
+          <p><b>研究型 Builder 视角：</b>Cursor的核心价值在于其基于抽象语法树（AST）的上下文理解和多文件编辑能力，而非底层模型本身。SpaceX收购Cursor而非自研，说明"开发者体验层"的技术壁垒已经显现——这涉及编辑器架构、索引系统、预测性补全算法等工程细节，不是简单接入一个API就能复制。研究视角下值得关注的是，Cursor的代码理解层如何与xAI的Grok模型深度耦合，以及这种耦合是否会降低对其他模型（Claude、GPT）的支持质量，从而影响开发者选择权。</p>
+          <p><b>可落地的方法论：</b>- 本周：评估团队使用的AI编程工具栈，如果重度依赖Cursor，需制定迁移预案（VS Code + Cline/Copilot、Windsurf等），以防收购后产品路线变化
+- 本季度：如果你是AI工具创业者，重新思考"被巨头收购"vs"独立发展"的战略选择——Cursor的案例证明，当巨头需要开发者生态时，工具层的估值可以超越许多基础模型公司
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://techcrunch.com/2026/06/16/spacex-to-acquire-cursor-for-60b-in-stock-days-after-blockbuster-ipo">TechCrunch：AI（RSS）</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>DeepSeek 完成首轮外部融资，估值超 500 亿美元</h3>
+          <p>DeepSeek完成超500亿元人民币（约74亿美元）首轮融资，估值超500亿美元。投资结构特殊：多数投资者投入梁文锋管理的有限合伙企业，无投票权且锁定期五年；仅国资AI基金直接投资并保留投票权。腾讯、宁德时代为主要外部投资者，梁文锋个人投入约200亿元。DeepSeek承诺继续开源和AGI研究优先。</p>
+          <p><b>AI PM 视角：</b>DeepSeek的融资结构是今天最值得产品人细读的细节。无投票权+五年锁定的设计，本质上是用资本换时间——梁文锋用极高的治理控制权换取了不受短期业绩压力干扰的研究自由度。国资AI基金保留投票权则满足了政策层面的合规要求。这种"创始人绝对控制+国家象征性参与+产业资本财务投资"的三层架构，可能成为未来中国AI独角兽的标准模板。
+
+对全球AI竞争格局而言，500亿美元估值使DeepSeek成为中国仅次于字节（若考虑豆包部门）的AI公司，且其V4运行于华为芯片、V4 Pro定价仅为GPT-5.5的1/11（输入）和1/35（输出），这意味着中国AI不仅在模型能力上追赶，更在成本结构上形成了不对称优势。微软考虑将DeepSeek V4集成到Copilot Cowork中，进一步验证了DeepSeek模型的国际竞争力。产品团队在做AI功能成本测算时，应将DeepSeek API作为基准价格锚点重新计算ROI。</p>
+
+          <p><b>研究型 Builder 视角：</b>DeepSeek V4在华为芯片上达到开源权重模型最大规模，这是一个关键的技术独立信号。V4 Pro永久75%折扣的定价策略，说明DeepSeek在训练效率和推理优化上有结构性成本优势——这不是简单的烧钱补贴，而是基于MoE架构和底层计算栈优化的结果。研究社区应关注其V4技术报告中关于华为昇腾集群的训练效率数据，这可能揭示非NVIDIA生态下的大规模训练可行性边界。腾讯和宁德时代的投资也暗示DeepSeek的模型将被深度集成到社交、游戏、新能源等场景中，形成独特的应用反馈闭环。</p>
+          <p><b>可落地的方法论：</b>- 本周：将DeepSeek V4/V4 Pro加入团队的模型评估矩阵，在中文理解、代码生成、长文本等核心场景做A/B测试，对比成本-质量曲线
+- 本季度：如果你是做B2B AI服务，重新计算定价策略——DeepSeek的极端低价可能迫使你从"卖API调用"转向"卖端到端解决方案"，避免陷入纯价格竞争
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://the-decoder.com/deepseek-takes-outside-money-for-the-first-time-at-a-50-billion-valuation">The Decoder：AI News（RSS）</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">04<small>TH</small></div>
+        <div>
+          <h3>Anthropic 5月企业AI订阅份额首超OpenAI</h3>
+          <p>Ramp数据显示，Anthropic 5月企业AI订阅市场份额达41%，首次超越OpenAI的39.5%。Anthropic刚完成650亿美元融资、估值9650亿美元，并因首次盈利季度秘密提交IPO。企业支出主要流向Claude Opus模型。</p>
+          <p><b>AI PM 视角：</b>这是企业AI市场的一个历史性转折点。OpenAI自ChatGPT以来长期占据企业心智，但Anthropic凭借Claude在企业级场景（长文档分析、代码审查、多步骤推理）的可靠性优势，完成了反超。值得注意的是，企业支出集中在Opus模型——这说明企业用户愿意为最高质量付费，而非一味追求低价。这与消费市场的"够用就行"逻辑形成鲜明对比。
+
+更深层信号在于：Anthropic的"原则驱动"品牌正在转化为商业资产。五角大楼将其列为供应链风险、特朗普政府要求限制非美国人访问其最新模型，这些争议在消费端可能引发担忧，但在企业端反而强化了"Anthropic是安全、可信、不妥协"的品牌认知。Ramp首席经济学家明确指出了这一点：争议推动了采用量创纪录。对AI PM而言，这是一个关于"品牌定位如何在B2B市场中被危机反向强化"的经典案例。</p>
+
+          <p><b>研究型 Builder 视角：</b>从模型能力角度，Claude Opus在长上下文（200K+ tokens）和指令遵循方面的优势，使其在法律、金融、研发等企业高价值场景中更具实用性。OpenAI的领先优势缩小（GPT-5.5在部分基准上被超越）可能与后者在多模态和Agent化上的资源分散有关。研究视角下值得关注的是，企业采用数据是否反映了模型能力的真实差异，还是仅仅是市场动量的滞后指标——Ramp数据基于企业信用卡支出，可能更多反映采购决策周期而非即时模型质量变化。</p>
+          <p><b>可落地的方法论：</b>- 本周：如果团队在使用OpenAI API做企业功能，快速评估Claude Opus在核心工作流中的表现差异，特别是长文本理解和复杂指令遵循场景
+- 本季度：建立多模型供应商策略，避免单一模型依赖。Anthropic与OpenAI的竞争加剧意味着议价空间正在打开，企业用户应利用这一点重新谈判合同条款
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://techcrunch.com/2026/06/16/anthropics-latest-feud-with-the-trump-admin-may-actually-help-it-sales-data-suggests">TechCrunch：AI（RSS）</a></span>
+        </div>
+        <div class="tag">PLATFORM</div>
+      </div>
+      <div class="thesis">
+        <div class="num">05<small>TH</small></div>
+        <div>
+          <h3>五角大楼将大部分日常AI工作流从Anthropic转移，目标9月前完全切断</h3>
+          <p>五角大楼宣布已将超2/3日常AI工作流从Anthropic转移，目标9月前清零。起因是年初五角大楼要求Anthropic签署协议允许Claude用于大规模监控和全自动武器，CEO Dario Amodei以模型不可靠为由拒绝。OpenAI调整立场获得订单。Polymarket预测6月底前和解概率仅9%。</p>
+          <p><b>AI PM 视角：</b>这是AI公司与政府博弈的最激烈案例，揭示了AI产品治理中一个根本张力：安全原则 vs 商业利益。Anthropic选择拒绝五角大楼的监控/武器使用要求，短期付出了巨大代价（失去政府订单、被列为供应链风险、模型遭封禁），但长期可能赢得企业市场的信任溢价。与此同时，OpenAI调整立场获得政府订单，微软也在疏远OpenAI并考虑集成DeepSeek——巨头的站队正在重塑AI产业的权力地图。
+
+对AI PM的核心启示是：你的产品治理立场正在成为市场竞争变量。在B2B场景中，客户越来越关注供应商的AI安全政策、数据使用承诺和伦理边界。Anthropic的案例证明，"说不"的能力本身可以成为一种差异化定位。但这也提出了一个残酷问题：当政府（尤其是本国政府）要求你配合时，你的原则底线在哪里？这个问题不仅关乎Anthropic，也关乎所有计划进入政府、金融、医疗等敏感行业的AI产品团队。</p>
+
+          <p><b>研究型 Builder 视角：</b>从AI安全研究角度，五角大楼要求Anthropic允许Claude用于"全自动武器"，触及了AI对齐研究的核心禁区—— lethal autonomous weapons systems（LAWS）。Amodei以"模型不可靠"为由拒绝，实际上是在说：当前大模型的可解释性和可控性还不足以支持高风险军事决策。这与OpenAI Deployment Simulation论文中揭示的模型行为预测难题形成呼应。研究社区应关注Anthropic是否会公开更多关于其拒绝军事应用的内部技术评估，这可能成为AI安全政策制定的重要参考。</p>
+          <p><b>可落地的方法论：</b>- 本周：审查你的产品AI使用政策，明确列出禁止/限制的应用场景（监控、武器、歧视性决策等），并将其作为销售材料中的信任资产
+- 本季度：如果你是做政府或敏感行业AI产品，建立"伦理审查委员会"机制，在接单前评估使用场景的对齐风险，避免事后被动应对
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/AYi_AInotes/status/2066679835607412846">X：阿易 AI Notes (@AYi_AInotes)</a></span>
+        </div>
+        <div class="tag">CRITICAL</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">10 IMPORTANT + 11 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://x.com/testingcatalog/status/2066773392527655252">Cartesia 发布 Sonic 3.5 与 Ink 2 实时语音模型</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://www.ithome.com/0/964/672.htm">成本砍半，字节跳动推出 Seedance 2.0 Mini 视频生成模型</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://x.com/satyanadella/status/2066911399494963335">Copilot Cowork 全球正式可用，支持多模型</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div><a class="event-link" href="https://www.ithome.com/0/964/691.htm">AI 版支付宝官宣开启邀测：右滑打开"阿宝"</a></div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
+      <div>05</div><div><a class="event-link" href="https://mp.weixin.qq.com/s/N5ac768a8LkhEjOVpkR1dQ">小米 MiMo Claw 正式版发布：旗舰模型+金山办公，全新订阅服务上线</a></div><div class="red">POLICY</div><div>主权</div><div class="right red">BLOOM</div>
+      <div>06</div><div><a class="event-link" href="https://x.ai/news/introducing-powerpoint-addin">Grok for PowerPoint 发布：在 Microsoft PowerPoint 内直接生成和编辑幻灯片</a></div><div class="red">CREATIVE</div><div>音乐</div><div class="right red">X</div>
+      <div>07</div><div><a class="event-link" href="https://openai.com/index/deployment-simulation">OpenAI 发布 Deployment Simulation 方法：通过模拟部署预测模型发布前行为</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>08</div><div><a class="event-link" href="https://www.anthropic.com/research/claude-code-expertise">Anthropic：智能体编码中专业知识回报持续存在</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>09</div><div><a class="event-link" href="https://x.com/kimmonismus/status/2066946013026263110">微软考虑为 Copilot Cowork 集成 DeepSeek V4</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>10</div><div><a class="event-link" href="https://runtimewire.com/article/microsoft-github-aws-ai-capacity-crunch">微软旗下 GitHub 遭遇 AI 算力短缺，转而向 AWS 寻求支持</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>11</div><div>Google Cloud 推出 OKF v0.1 供应商中立 Markdown 规范</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>12</div><div>教育部"阳光志愿"信息服务系统全新升级上线</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>13</div><div>Subagent：让模型把琐碎任务委托出去</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>14</div><div>Midjourney V8.1 推出 Draft mode 草稿模式</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>15</div><div>美国司法部援引国家安全为xAI未经许可的燃气轮机辩护</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>16</div><div>Fable 遭美国政府封禁，TechCrunch 质疑真正原因</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>17</div><div>Meta 解散工程部门引发热议</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>18</div><div>毕业生陷入AI检测荒诞循环</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>19</div><div>WorkBuddy日活飙升至行业第二的3-4倍</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>20</div><div>OpenAI 的领先优势正在快速缩小</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">11 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>Google Cloud 推出 OKF v0.1 供应商中立 Markdown 规范</div><div>为AI智能体提供结构化上下文知识，解决组织知识碎片化问题，产品团队可将其作为AI知识库的数据格式标准。</div>
+      <div>02</div><div>教育部"阳光志愿"信息服务系统全新升级上线</div><div>官方数据+AI助手的高考志愿填报服务，代表了政务AI从"信息展示"向"决策辅助"的演进，教育科技产品需关注官方竞争。</div>
+      <div>03</div><div>Subagent：让模型把琐碎任务委托出去</div><div>OpenRouter允许前沿模型将独立琐碎任务委托给小模型执行，节省token消耗，是Agent经济性的关键优化方向。</div>
+      <div>04</div><div>Midjourney V8.1 推出 Draft mode 草稿模式</div><div>每次生成24张低分辨率图，可Vary为全质量版，消耗快速小时数减半，代表了AI创意工具的"快速迭代+精选精修"交互范式。</div>
+      <div>05</div><div>美国司法部援引国家安全为xAI未经许可的燃气轮机辩护</div><div>xAI以Grok支持军事任务为由为污染排放辩护，揭示了AI基础设施扩张与环保法规的冲突，数据中心选址和能源策略需纳入合规考量。</div>
+      <div>06</div><div>Fable 遭美国政府封禁，TechCrunch 质疑真正原因</div><div>政府以模型越狱为由封禁Anthropic模型，但媒体质疑背后有其他动机，AI产品进入国际市场需评估地缘政治风险。</div>
+      <div>07</div><div>Meta 解散工程部门引发热议</div><div>Hacker News热议Meta engineering组织变动，虽细节不明，但大厂的工程组织重构可能影响AI人才流动和开源贡献。</div>
+      <div>08</div><div>毕业生陷入AI检测荒诞循环</div><div>手写内容被判99%AI率、纯AI写部分0%，暴露了AI检测工具的可靠性危机，教育科技产品不应将AIGC检测作为硬性门槛。</div>
+      <div>09</div><div>WorkBuddy日活飙升至行业第二的3-4倍</div><div>Agent办公场景从开发者扩展到HR、运营等非技术岗位，"Work"类产品改名潮表明Agent办公赛道进入白热化竞争期。</div>
+      <div>10</div><div>OpenAI 的领先优势正在快速缩小</div><div>评论指出OpenAI面临护城河缺失、微软疏远、亏损加速等多重危机，AI PM应关注其模型能力和市场地位的持续变化。</div>
+      <div>11</div><div>前沿大模型后训练配方回顾</div><div>从InstructGPT到DeepSeek R1再到2026年MOPD（Multi-teacher On-Policy Distillation），后训练正在从统一模型走向领域专家再合并的范式。</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      Qwen机器人三连发标志具身智能进入规模化阶段，SpaceX天价收购Cursor与DeepSeek融资重塑全球AI产业权力地图，Anthropic反超OpenAI预示企业市场格局逆转。
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 5 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Qwen 具身智能三连发：RobotManip、RobotWorld、RobotNav</h4>
+        <p><b>AI PM 视角：</b>Qwen此次三连发标志着一个关键拐点：大模型厂商开始系统性布局具身智能全栈，而非零散的单点突破。RobotManip在LIBERO-Plus达到91.4%的成功率，这意味着基于开源数据的通用机器人操作已接近可商业化部署的门槛。更值得警惕的是"统一"这个词在三款模型中反复出现——统一对齐框架、统一语言动作接口、统一五大导航领域——这揭示了一个产品战略：通过语言作为跨形态、跨任务的通用控制层，降低机器人应用的碎片化成本。</p>
+<p>对AI PM的启示在于，机器人赛道正在从"专用机器人+专用算法"向"通用基础模型+形态适配"迁移。这与自动驾驶领域的端到端大模型趋势同构。RobotWorld支持Scene2Robot人类到机器人转移和多视角视频生成，这意味着产品团队可以用人类演示视频快速适配新机器人形态，大幅降低数据获取成本。未来6-12个月，基于Qwen Robot系列的机器人中间件和垂直场景应用（仓储物流、家庭服务、工业检测）将迎来一波创业窗口。</p>
+        
+        <p><b>研究型 Builder 视角：</b>RobotManip的核心技术 novelty 在于三维统一对齐框架（表示、运动、行为），这比传统的模仿学习或强化学习更能跨数据集泛化。38,100小时预训练语料全部来自开源数据和人演示视频，没有依赖昂贵的真实机器人遥操作数据，这一点对研究社区的可复现性至关重要。RobotWorld采用的双流MMDiT架构将Qwen2.5-VL作为动作编码器，本质上是把视觉语言模型的语义理解能力蒸馏到动作生成中，这种"冻结大模型+训练动作头"的范式可能成为VLA模型的标准配方。RobotNav的可调四轴（视觉token预算、时间衰减、相机权重、帧采样）为研究者提供了清晰的消融实验空间。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：如果团队在探索机器人或物理世界交互产品，立即下载Qwen Robot系列的开源权重，在目标场景做零样本/少样本测试，评估通用VLA模型对专用方案的替代潜力</li>
+<li>本季度：建立"语言动作接口"作为产品设计原则，无论做硬件还是软件，将用户意图转化为结构化语言指令，再映射到具体执行，这将成为跨形态兼容的关键架构决策</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>SpaceX 以 600 亿美元股票收购 Cursor</h4>
+        <p><b>AI PM 视角：</b>这是AI编程工具领域迄今最大的并购案，也是SpaceX IPO后资本布局的第一枚棋子。600亿美元的估值意味着Cursor的溢价来自两个预期：一是SpaceX的AI部门急需一流工程人才和开发者生态来追赶OpenAI/Anthropic；二是Cursor作为开发者入口的战略价值——它不仅是代码编辑器，更是下一代AI原生工作流的试验场。</p>
+<p>信号在于：马斯克正在将xAI、SpaceX、Cursor编织成一个"AI+硬件+开发者生态"的三角。SpaceX在IPO材料中抛出26万亿美元TAM，说明其野心远不止火箭和卫星，而是将AI能力渗透到所有工程领域。对竞品而言，Cursor被收购后可能获得更多算力和模型定制资源（Grok集成、卫星边缘计算），这会加速AI编程工具的分化——独立工具vs巨头生态附属品。</p>
+        
+        <p><b>研究型 Builder 视角：</b>Cursor的核心价值在于其基于抽象语法树（AST）的上下文理解和多文件编辑能力，而非底层模型本身。SpaceX收购Cursor而非自研，说明"开发者体验层"的技术壁垒已经显现——这涉及编辑器架构、索引系统、预测性补全算法等工程细节，不是简单接入一个API就能复制。研究视角下值得关注的是，Cursor的代码理解层如何与xAI的Grok模型深度耦合，以及这种耦合是否会降低对其他模型（Claude、GPT）的支持质量，从而影响开发者选择权。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：评估团队使用的AI编程工具栈，如果重度依赖Cursor，需制定迁移预案（VS Code + Cline/Copilot、Windsurf等），以防收购后产品路线变化</li>
+<li>本季度：如果你是AI工具创业者，重新思考"被巨头收购"vs"独立发展"的战略选择——Cursor的案例证明，当巨头需要开发者生态时，工具层的估值可以超越许多基础模型公司</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>DeepSeek 完成首轮外部融资，估值超 500 亿美元</h4>
+        <p><b>AI PM 视角：</b>DeepSeek的融资结构是今天最值得产品人细读的细节。无投票权+五年锁定的设计，本质上是用资本换时间——梁文锋用极高的治理控制权换取了不受短期业绩压力干扰的研究自由度。国资AI基金保留投票权则满足了政策层面的合规要求。这种"创始人绝对控制+国家象征性参与+产业资本财务投资"的三层架构，可能成为未来中国AI独角兽的标准模板。</p>
+<p>对全球AI竞争格局而言，500亿美元估值使DeepSeek成为中国仅次于字节（若考虑豆包部门）的AI公司，且其V4运行于华为芯片、V4 Pro定价仅为GPT-5.5的1/11（输入）和1/35（输出），这意味着中国AI不仅在模型能力上追赶，更在成本结构上形成了不对称优势。微软考虑将DeepSeek V4集成到Copilot Cowork中，进一步验证了DeepSeek模型的国际竞争力。产品团队在做AI功能成本测算时，应将DeepSeek API作为基准价格锚点重新计算ROI。</p>
+        
+        <p><b>研究型 Builder 视角：</b>DeepSeek V4在华为芯片上达到开源权重模型最大规模，这是一个关键的技术独立信号。V4 Pro永久75%折扣的定价策略，说明DeepSeek在训练效率和推理优化上有结构性成本优势——这不是简单的烧钱补贴，而是基于MoE架构和底层计算栈优化的结果。研究社区应关注其V4技术报告中关于华为昇腾集群的训练效率数据，这可能揭示非NVIDIA生态下的大规模训练可行性边界。腾讯和宁德时代的投资也暗示DeepSeek的模型将被深度集成到社交、游戏、新能源等场景中，形成独特的应用反馈闭环。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：将DeepSeek V4/V4 Pro加入团队的模型评估矩阵，在中文理解、代码生成、长文本等核心场景做A/B测试，对比成本-质量曲线</li>
+<li>本季度：如果你是做B2B AI服务，重新计算定价策略——DeepSeek的极端低价可能迫使你从"卖API调用"转向"卖端到端解决方案"，避免陷入纯价格竞争</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>Anthropic 5月企业AI订阅份额首超OpenAI</h4>
+        <p><b>AI PM 视角：</b>这是企业AI市场的一个历史性转折点。OpenAI自ChatGPT以来长期占据企业心智，但Anthropic凭借Claude在企业级场景（长文档分析、代码审查、多步骤推理）的可靠性优势，完成了反超。值得注意的是，企业支出集中在Opus模型——这说明企业用户愿意为最高质量付费，而非一味追求低价。这与消费市场的"够用就行"逻辑形成鲜明对比。</p>
+<p>更深层信号在于：Anthropic的"原则驱动"品牌正在转化为商业资产。五角大楼将其列为供应链风险、特朗普政府要求限制非美国人访问其最新模型，这些争议在消费端可能引发担忧，但在企业端反而强化了"Anthropic是安全、可信、不妥协"的品牌认知。Ramp首席经济学家明确指出了这一点：争议推动了采用量创纪录。对AI PM而言，这是一个关于"品牌定位如何在B2B市场中被危机反向强化"的经典案例。</p>
+        
+        <p><b>研究型 Builder 视角：</b>从模型能力角度，Claude Opus在长上下文（200K+ tokens）和指令遵循方面的优势，使其在法律、金融、研发等企业高价值场景中更具实用性。OpenAI的领先优势缩小（GPT-5.5在部分基准上被超越）可能与后者在多模态和Agent化上的资源分散有关。研究视角下值得关注的是，企业采用数据是否反映了模型能力的真实差异，还是仅仅是市场动量的滞后指标——Ramp数据基于企业信用卡支出，可能更多反映采购决策周期而非即时模型质量变化。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：如果团队在使用OpenAI API做企业功能，快速评估Claude Opus在核心工作流中的表现差异，特别是长文本理解和复杂指令遵循场景</li>
+<li>本季度：建立多模型供应商策略，避免单一模型依赖。Anthropic与OpenAI的竞争加剧意味着议价空间正在打开，企业用户应利用这一点重新谈判合同条款</li>
+</ul>
+        </div>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>五角大楼将大部分日常AI工作流从Anthropic转移，目标9月前完全切断</h4>
+        <p><b>AI PM 视角：</b>这是AI公司与政府博弈的最激烈案例，揭示了AI产品治理中一个根本张力：安全原则 vs 商业利益。Anthropic选择拒绝五角大楼的监控/武器使用要求，短期付出了巨大代价（失去政府订单、被列为供应链风险、模型遭封禁），但长期可能赢得企业市场的信任溢价。与此同时，OpenAI调整立场获得政府订单，微软也在疏远OpenAI并考虑集成DeepSeek——巨头的站队正在重塑AI产业的权力地图。</p>
+<p>对AI PM的核心启示是：你的产品治理立场正在成为市场竞争变量。在B2B场景中，客户越来越关注供应商的AI安全政策、数据使用承诺和伦理边界。Anthropic的案例证明，"说不"的能力本身可以成为一种差异化定位。但这也提出了一个残酷问题：当政府（尤其是本国政府）要求你配合时，你的原则底线在哪里？这个问题不仅关乎Anthropic，也关乎所有计划进入政府、金融、医疗等敏感行业的AI产品团队。</p>
+        
+        <p><b>研究型 Builder 视角：</b>从AI安全研究角度，五角大楼要求Anthropic允许Claude用于"全自动武器"，触及了AI对齐研究的核心禁区—— lethal autonomous weapons systems（LAWS）。Amodei以"模型不可靠"为由拒绝，实际上是在说：当前大模型的可解释性和可控性还不足以支持高风险军事决策。这与OpenAI Deployment Simulation论文中揭示的模型行为预测难题形成呼应。研究社区应关注Anthropic是否会公开更多关于其拒绝军事应用的内部技术评估，这可能成为AI安全政策制定的重要参考。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：审查你的产品AI使用政策，明确列出禁止/限制的应用场景（监控、武器、歧视性决策等），并将其作为销售材料中的信任资产</li>
+<li>本季度：如果你是做政府或敏感行业AI产品，建立"伦理审查委员会"机制，在接单前评估使用场景的对齐风险，避免事后被动应对</li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 10 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Cartesia 发布 Sonic 3.5 与 Ink 2 实时语音模型</h4>
+        <p><b>分析：</b>Cartesia推出Sonic 3.5（TTS）和Ink 2（STT），在Artificial Analysis排行榜上双双登顶，首音频延迟约82ms，成为唯一同时拥有第一听与说模型的提供商。</p>
+        <p><b>AI PM 视角：</b>82ms首音频延迟意味着实时语音交互已接近人类对话的自然阈值（约200ms被认为是"即时"）。这对语音助手、实时翻译、AI客服等场景是质变——用户将不再感知到"机器在思考"的停顿。Cartesia的双冠也标志着语音模型赛道从"通用大模型附带语音能力"向"专业语音厂商深耕"分化。产品团队在做语音交互设计时，应将"全双工实时对话"作为默认假设，而非未来功能。</p>
+        
+        <p><b>研究型 Builder 视角：</b>82ms延迟的达成可能依赖于模型架构创新（如流式解码、推测解码）和硬件协同优化，而非单纯增大模型规模。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你在做语音交互产品，本周测试Cartesia API与OpenAI Realtime API在延迟、成本和中文表现上的差异，评估是否需要切换供应商。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>成本砍半，字节跳动推出 Seedance 2.0 Mini 视频生成模型</h4>
+        <p><b>分析：</b>字节跳动上线Seedance 2.0 Mini，速度比Fast版快2倍，720P单秒生成成本约0.5元，较标准版降低约一半，面向电商内容、营销素材、UGC创作等高频场景。</p>
+        <p><b>AI PM 视角：</b>视频生成正在经历与图像生成类似的"成本悬崖"——当单秒成本降至0.5元时，中小商家批量生成营销视频的经济门槛基本消失。字节跳动的策略很明确：用极致性价比抢占电商和视频内容生产的基础设施位置。这与DeepSeek在文本模型上的低价策略同构，预示着中国AI厂商正在全球范围内发动"成本战争"。</p>
+        
+        <p><b>研究型 Builder 视角：</b>成本减半的实现可能来自模型蒸馏、量化推理和自研芯片（如果涉及火山引擎底层硬件）的组合优化。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>电商和内容团队的AI PM应立即重新计算视频内容生产的成本模型，评估用AI生成替代外包拍摄/剪辑的盈亏平衡点。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>Copilot Cowork 全球正式可用，支持多模型</h4>
+        <p><b>分析：</b>微软宣布Copilot Cowork全球GA，支持多模型，允许长期运行的智能体处理复杂多步骤任务，基于组织独特知识工作。</p>
+        <p><b>AI PM 视角：</b>Cowork的GA标志着微软从"AI辅助编辑"正式跨入"AI智能体执行"阶段。长期运行+多步骤+组织知识三个关键词，意味着它瞄准的是业务流程自动化（RPA的AI升级版），而非个人效率工具。但微软同时考虑放弃无限定价转向按量计费、并集成DeepSeek V4，说明成本压力巨大——智能体执行数百任务/周的费用已经让微软难以承受。</p>
+        
+        <p><b>研究型 Builder 视角：</b>多模型支持的背后是模型路由和动态选择机制，这是智能体基础设施的关键组件。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>企业IT团队应申请Cowork试用，但在采购决策前要求微软提供明确的按量计费率表，避免无限定价取消后的成本失控。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>AI 版支付宝官宣开启邀测：右滑打开"阿宝"</h4>
+        <p><b>分析：</b>支付宝开启AI版邀测，用户右滑进入新版界面，"阿宝"助手可代办事项，自动匹配小程序和服务入口，资金变动需用户确认。首批100个邀请码。</p>
+        <p><b>AI PM 视角：</b>这是国民级支付应用AI化的里程碑。支付宝的交互设计（右滑进入、语音/文字指令、自动匹配服务、人工确认支付）揭示了一个关键产品原则：在涉及资金和隐私的场景，AI应该做"入口折叠"（把多步跳转压缩为一句指令），而非"自动执行"。资金变动必须人工确认的红线设计，是AI PM在设计高信任场景时的黄金标准。</p>
+        
+        <p><b>研究型 Builder 视角：</b>"阿宝"的核心技术挑战在于意图理解（将自然语言映射到支付宝数千个小程序和服务）和上下文管理（跨多轮对话保持支付状态）。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你在做金融、医疗、政务等高风险场景的AI产品，复制支付宝的"AI推荐+人工确认"双轨设计，将自动执行限制在低风险操作，高影响操作保留人类在环。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>小米 MiMo Claw 正式版发布：旗舰模型+金山办公，全新订阅服务上线</h4>
+        <p><b>分析：</b>小米发布MiMo Claw正式版，搭载MiMo-V2.5-Pro旗舰模型，原生兼容MCP工具调用，支持单会话千次以上连续工具调用，ClawEval任务达标率63.8%，Token消耗降低40%-60%，联动金山办公生态。</p>
+        <p><b>AI PM 视角：</b>小米的Claw产品定位非常清晰：用"云端轻量化+办公生态联动"切入企业Agent市场。与Cursor专注代码不同，MiMo Claw瞄准的是文档处理、表格分析、PPT生成等通用办公场景。金山办公的联动意味着它可以直接读写WPS格式文件，这对中国企业市场是差异化优势。Token消耗降低40%-60%则直击当前Agent产品的成本痛点。</p>
+        
+        <p><b>研究型 Builder 视角：</b>MTP三层解码架构提升3倍吞吐效率，这是Agent推理优化的关键方向——Agent场景的特点是大量短token交互，传统自回归解码的延迟瓶颈明显。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>办公自动化产品团队应评估MiMo Claw的MCP兼容性，如果团队已采用MCP协议，可以低成本接入MiMo-V2.5-Pro作为备选模型。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">06</div>
+      <div class="body">
+        <h4>Grok for PowerPoint 发布：在 Microsoft PowerPoint 内直接生成和编辑幻灯片</h4>
+        <p><b>分析：</b>xAI发布Grok for PowerPoint免费插件，用户可在PowerPoint内直接生成幻灯片、进行内容研究、排版，并支持从邮件或SharePoint获取信息。同样适用于Word和Excel。</p>
+        <p><b>AI PM 视角：</b>xAI选择Office插件作为Grok的企业入口，是一个聪明的差异化策略——避开与ChatGPT/Claude在聊天界面的正面竞争，直接在用户现有工作流中嵌入AI能力。支持从邮件和SharePoint获取信息，说明Grok正在构建Microsoft生态内的知识连接能力。免费策略则可能是为了快速获取企业用户数据，优化模型在企业场景的表现。</p>
+        
+        <p><b>研究型 Builder 视角：</b>Office插件的技术挑战在于与Microsoft COM/Office.js API的深度集成，以及跨文档类型（PPT/Word/Excel）的统一内容理解和生成。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你在做B2B AI产品，优先考虑"现有工具嵌入"而非"新平台搭建"——用户切换成本是 adoption 的最大障碍。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">07</div>
+      <div class="body">
+        <h4>OpenAI 发布 Deployment Simulation 方法：通过模拟部署预测模型发布前行为</h4>
+        <p><b>分析：</b>OpenAI发布Deployment Simulation方法，通过隐私保护下重放历史对话、用候选模型重新生成回复，模拟上线后表现，比传统评估更准确估计不良行为频率，发现新型对齐问题。</p>
+        <p><b>AI PM 视角：</b>这是AI安全评估方法论的重要演进。传统评估（如静态benchmark、红队测试）存在覆盖不足、选择偏差和模型可识别测试等局限，而Deployment Simulation用真实对话分布缓解了这些问题。对AI PM而言，这意味着未来上线前的安全评估可以更准确地预测真实用户场景中的风险，减少"上线后翻车"的概率。但方法也有局限：无法测量频率低于每20万条消息1次的行为。</p>
+        
+        <p><b>研究型 Builder 视角：</b>该方法的核心创新在于用生产数据分布替代人工构造的测试集，从而消除评估-部署分布偏移。研究社区应关注其隐私保护机制（差分隐私？联邦学习？），以及该方法对非英语语言和长尾场景的适用性。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>AI产品团队应建立"影子部署"机制——在正式全量发布前，用5%-10%流量运行新版本模型，监控关键安全指标，作为Deployment Simulation的补充验证层。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">08</div>
+      <div class="body">
+        <h4>Anthropic：智能体编码中专业知识回报持续存在</h4>
+        <p><b>分析：</b>Anthropic基于约40万次Claude Code交互分析发现：人类主导规划决策、Claude主导执行决策；领域专业知识越强，模型每次指令完成的工作量越多；七个月间调试会话占比下降近一半，使用转向端到端智能体任务。</p>
+        <p><b>AI PM 视角：</b>这项研究提供了AI辅助编码的"人机分工"实证数据。关键发现是：领域专家与中级用户的成功率差距"不大"——这意味着AI正在拉平编程能力的分布，专家的优势从"写代码"转向"规划架构"。调试占比下降、端到端任务上升的趋势，说明AI编程正在从"助手模式"进化到"代理模式"。对团队管理而言，这意味着未来工程团队的组织方式需要重新设计：初级工程师+AI可能产出接近高级工程师+AI的代码量，但架构设计和需求拆解仍需要资深人才。</p>
+        
+        <p><b>研究型 Builder 视角：</b>40万次会话的真实生产数据是这项研究的最大价值。"专家与中级用户差距不大"的发现与认知科学中的" expertise reversal effect"（专家在高度结构化环境中优势减弱）相呼应。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>工程团队负责人应重新评估团队技能结构，将招聘重点从"编码能力"转向"系统设计、需求拆解、代码审查"等高阶能力，同时给初级成员配备AI工具提升产出。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">09</div>
+      <div class="body">
+        <h4>微软考虑为 Copilot Cowork 集成 DeepSeek V4</h4>
+        <p><b>分析：</b>微软正考虑为Copilot Cowork提供微软托管的DeepSeek V4版本作为更便宜选项，已微调一个可用模型，最终决定待定。Cowork将放弃无限定价转向按量计费。</p>
+        <p><b>AI PM 视角：</b>微软考虑集成DeepSeek V4是一个极具象征意义的事件——美国AI巨头开始将中国模型纳入核心产品线。驱动力是成本：Cowork用户每周执行数百项任务导致费用激增，无限定价不可持续。DeepSeek V4的输入价格约为GPT-5.5的1/11，输出价格约为1/35，这种成本差异在Agent高频调用场景下是决定性的。对AI PM的启示是：多模型策略不再只是"备选方案"，而是"成本优化的必选项"。</p>
+        
+        <p><b>研究型 Builder 视角：</b>微软托管+微调的DeepSeek V4意味着模型将在Azure基础设施上运行，涉及模型权重安全、数据传输合规、输出内容过滤等技术问题。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>在AI产品架构中引入"模型路由层"，根据任务复杂度、成本预算和合规要求动态选择模型（简单任务用DeepSeek/轻量模型，复杂任务用GPT-5.5/Claude Opus）。</p>
+        </div>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">010</div>
+      <div class="body">
+        <h4>微软旗下 GitHub 遭遇 AI 算力短缺，转而向 AWS 寻求支持</h4>
+        <p><b>分析：</b>微软旗下GitHub面临AI算力短缺，微软因此转向亚马逊AWS寻求计算资源支持。</p>
+        <p><b>AI PM 视角：</b>这是一个令人意外的信号：即便是微软这样的云巨头，也无法为旗下核心产品（GitHub Copilot）提供足够的AI算力，不得不向竞争对手AWS求助。这说明AI算力需求的增长速度超过了供给扩张，即便是拥有Azure的微软也面临瓶颈。对AI产品团队而言，算力规划应成为产品路线图的核心约束条件——不是"我们能做什么"，而是"我们能以什么成本规模做什么"。</p>
+        
+        <p><b>研究型 Builder 视角：</b>GitHub Copilot的算力短缺可能与其用户基数（数千万开发者）和模型复杂度（多文件上下文理解）的乘积效应有关。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>在产品设计阶段引入"算力预算"概念，为每个AI功能设定推理成本上限，超出预算的功能要么优化模型（蒸馏、量化），要么改为异步处理。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架1: 具身智能的"语言统一层"范式</h4>
+        <p>今天Qwen三款机器人模型共享一个核心架构决策：用语言作为跨形态、跨任务的通用控制接口。RobotManip用语言描述动作目标，RobotWorld用语言标准化500多种动作类别，RobotNav用语言统一五大导航领域。这种"语言统一层"设计正在从文本/图像领域向物理世界迁移。</p>
+<ul>
+<li><strong>因果链</strong>: 大模型的语义理解能力 → 语言作为中间表示 → 统一控制不同物理形态 → 降低数据获取和系统适配成本</li>
+<li><strong>结构洞察</strong>: 这与自动驾驶领域的端到端大模型趋势（感知→语言/向量→控制）同构，预示着一个跨领域的通用架构模式</li>
+</ul>
+<p><strong>产品启示</strong>: AI PM在设计任何涉及物理交互或复杂工作流的产品时，应考虑引入"语言中间层"——将用户意图转化为结构化语言指令，再映射到具体执行动作。这不仅能提高系统的可解释性（用户可以读/改语言指令），还能为未来的多形态兼容和跨平台迁移奠定基础。短期内，这适用于机器人、IoT设备控制、RPA流程编排；长期来看，这可能成为"物理世界API"的标准范式。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架2: AI成本战争的"不对称定价"策略</h4>
+        <p>今天同时出现了三个极端定价信号：DeepSeek V4 Pro永久75%折扣（输入价格为GPT-5.5的1/11）、字节Seedance 2.0 Mini单秒成本0.5元（较标准版减半）、微软因Cowork成本过高而考虑集成DeepSeek。这三个事件共同指向一个趋势：中国AI厂商正在全球范围内发动"成本不对称战争"。</p>
+<ul>
+<li><strong>因果链</strong>: 训练效率优化（MoE、蒸馏）+ 推理基础设施创新 + 规模效应 → 结构性成本优势 → 极限低价抢占市场 → 迫使竞争对手降价或失去份额</li>
+<li><strong>结构洞察</strong>: 这与云计算早期的AWS价格战逻辑相似，但区别在于AI模型的差异化（质量差异）比云资源（同质化）更大，因此"低价"需要以"可接受的质量"为前提</li>
+</ul>
+<p><strong>产品启示</strong>: AI产品的定价策略需要从"模型能力定价"转向"场景价值定价"。当基础模型成本趋于零时，真正的差异化在于垂直场景的理解、工作流的深度集成、以及数据飞轮的构建。如果你是AI应用层创业者，不要试图在API价格上竞争，而应将模型成本视为可变成本的一部分，通过端到端解决方案的溢价来覆盖。如果你是企业AI采购者，现在正是重新谈判供应商合同、引入多模型竞价机制的最佳时机。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架3: AI治理的"原则即品牌"效应</h4>
+        <p>Anthropic与五角大楼的冲突、xAI以国家安全为由为污染辩护、美国政府对Fable的封禁，这三个事件揭示了AI治理正在成为市场竞争的核心变量。</p>
+<ul>
+<li><strong>因果链</strong>: AI能力增强 → 应用场景触及敏感领域（军事、监控、关键基础设施） → 政府介入监管 → AI公司面临"配合vs拒绝"的选择 → 选择成为品牌信号 → 影响B2B采购决策</li>
+<li><strong>结构洞察</strong>: 在传统软件行业，安全合规是"底线要求"；在AI行业，由于技术的双重用途特性（dual-use），安全立场正在成为"品牌差异化"。Anthropic的拒绝反而推动了企业采用量创纪录，这是危机公关的反向案例。</li>
+</ul>
+<p><strong>产品启示</strong>: AI产品团队应将治理立场从"合规成本"重新定义为"信任资产"。在B2B销售中，主动展示你的AI伦理政策、数据使用边界、和对齐安全措施，可能比功能清单更能打动风险敏感的客户（金融、医疗、跨国企业）。同时，建立"伦理红线"机制——在需求评审阶段就评估新功能是否可能触及监控、武器、歧视等敏感场景，避免事后被动应对。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>Qwen Robot系列技术博客</strong>: 通读RobotManip、RobotWorld、RobotNav三篇博客，重点关注"统一对齐框架"、"语言动作接口"和"可调四轴"的设计细节。如果你在做任何物理世界交互产品，这些架构决策将直接影响你的产品技术路线。</p>
+<p><b>2.</b> <strong>Anthropic企业AI份额超越OpenAI的新闻</strong>: 重点阅读Ramp首席经济学家关于"争议推动采用"的分析。这不仅是市场数据，更是一个关于B2B品牌定位的经典案例——理解为什么"说不"能在企业市场中转化为商业优势。</p>
+<p><b>3.</b> <strong>OpenAI Deployment Simulation论文/博客</strong>: 了解这种新型模型安全评估方法的核心机制，特别是"重放历史对话+候选模型重新生成"的实现方式和"每20万条消息1次"的检测下限。如果你负责AI产品的上线安全评估，这将是你方法论工具箱的重要补充。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>多模型成本评估</strong>: 选取团队核心AI工作流（代码生成、内容创作、客服问答等），用DeepSeek V4/V4 Pro、Claude Opus、GPT-5.5分别运行相同测试集，绘制"成本-质量-延迟"三维散点图。目标是在每个工作流上确定最优模型或模型组合。</p>
+<p><b>2.</b> <strong>语音交互产品体验审计</strong>: 如果你的产品涉及语音交互，用Cartesia Sonic 3.5 + Ink 2做一次完整的端到端测试，对比当前方案的延迟和 naturalness。82ms的首音频延迟可能已经改变了用户对"实时"的期望。</p>
+<p><b>3.</b> <strong>AI治理政策文档化</strong>: 起草或更新产品的AI使用政策，明确列出禁止/限制的应用场景（参考Anthropic拒绝的五角大楼要求：大规模监控、全自动武器、歧视性决策）。将这份文档作为销售材料中的信任资产。</p>
+<p><b>4.</b> <strong>Agent成本压力测试</strong>: 如果你的产品使用AI Agent执行多步骤任务，计算当前每个用户每周的平均Agent调用次数和总token消耗，然后模拟切换到按量计费后的成本结构。如果成本不可持续，开始设计模型路由层（简单任务用小模型/DeepSeek，复杂任务用大模型）。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>具身智能将在12-18个月内出现可商业化的通用基础模型</strong>: Qwen Robot系列、Google的RT系列、Figure的Helix模型正在快速逼近通用机器人操作的商业化阈值。产品团队应开始关注"机器人即服务"（RaaS）的商业模式，以及如何将软件产品的交互逻辑迁移到物理世界。</p>
+<p><b>2.</b> <strong>AI编程工具将在6-12个月内完成巨头生态整合，独立工具空间收窄</strong>: SpaceX收购Cursor、GitHub Copilot与Azure深度绑定、Cursor可能被xAI生态独占——AI编程工具正在从独立产品变成巨头生态的组件。创业者应考虑从"通用代码编辑器"转向"垂直领域IDE"（如生物信息学、硬件设计、法律合同）。</p>
+<p><b>3.</b> <strong>中美AI技术栈将在3-5年内形成"双轨并行"格局</strong>: DeepSeek运行于华为芯片、微软考虑集成DeepSeek、美国封禁Anthropic模型——技术脱钩与交织同时进行。产品团队在设计全球化AI产品时，应预设"双轨架构"：一条轨道使用美国模型栈（OpenAI/Anthropic/Azure），一条使用中国模型栈（DeepSeek/Qwen/火山引擎），根据市场动态切换。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题1: 当AI模型的成本趋近于零时，你的产品的护城河在哪里？</h4>
+        <p>今天DeepSeek V4 Pro的输入价格是GPT-5.5的1/11，输出价格是1/35，字节Seedance 2.0 Mini将视频生成成本减半。如果这种成本下降趋势持续，基于"接入API+简单包装"的AI产品将在12-18个月内失去竞争力。你的产品的核心壁垒是数据飞轮、工作流深度集成、领域知识、品牌信任，还是其他？</p>
+<ul>
+<li><strong>产品战略层面</strong>: 如果竞争对手可以用1/10的成本复制你的核心功能，你的差异化定位需要如何调整？</li>
+<li><strong>执行/团队层面</strong>: 团队的技术投入是否过度集中在模型调用层，而忽视了应用层的数据架构和用户交互设计？</li>
+<li><strong>风险/机会层面</strong>: 成本下降是否会创造新的市场（例如，当视频生成成本降至0.1元/秒时，哪些现在不经济的应用场景将变得可行）？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题2: AI产品的"伦理红线"应该由谁划定？</h4>
+        <p>Anthropic拒绝了五角大楼的全自动武器要求，但OpenAI接受了政府订单；xAI以国家安全为由为污染排放辩护。当你的产品能力足够强大，可以被用于有益或有害的目的时，谁来决定边界？是创始人、董事会、政府、用户投票，还是某种技术机制？</p>
+<ul>
+<li><strong>产品战略层面</strong>: 你的目标市场中是否存在"灰色地带"客户（例如，要求AI辅助监控员工、自动化裁员决策、预测性警务）？拒绝这些客户是否会带来长期品牌溢价，还是仅仅让竞争对手获利？</li>
+<li><strong>执行/团队层面</strong>: 你的团队是否建立了"伦理审查"机制，还是仅依赖个别产品经理的道德直觉？</li>
+<li><strong>风险/机会层面</strong>: 如果未来政府强制要求AI产品预留"执法后门"，你的产品架构是否有能力在不完全重构的情况下满足或拒绝这一要求？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题3: 具身智能的"语言统一层"是否会改变所有物理交互产品的设计范式？</h4>
+        <p>Qwen Robot系列用语言作为跨机器人形态的统一控制接口。如果这一范式被广泛接受，未来用户可能通过自然语言直接指挥任何智能设备，而不需要学习专用的App界面或遥控器。</p>
+<ul>
+<li><strong>产品战略层面</strong>: 如果你的产品涉及硬件或物理交互，是否需要重新设计用户界面，将语音/语言指令作为首要输入方式，而非触摸屏或按钮？</li>
+<li><strong>执行/团队层面</strong>: 你的工程团队是否具备将自然语言转化为物理动作控制的能力？这需要哪些新技能（VLA模型微调、物理仿真、安全约束）？</li>
+<li><strong>风险/机会层面</strong>: "语言控制一切"的愿景下，哪些传统产品类别（遥控器、专用App、物理按键）可能消失？哪些新的产品类别（自然语言驱动的自动化编排工具、跨设备意图理解层）会出现？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题4: 微软集成DeepSeek V4是否标志着全球AI供应链的"再全球化"？</h4>
+        <p>微软作为美国AI生态的核心支柱，考虑将中国公司的模型集成到其旗舰产品中。这与美国政府对Anthropic模型的封禁、对xAI的保护形成了复杂的政策图景。</p>
+<ul>
+<li><strong>产品战略层面</strong>: 如果你的产品面向全球市场，是否需要设计"地缘政治适配层"——在不同国家/地区使用不同的模型供应商以符合当地法规？</li>
+<li><strong>执行/团队层面</strong>: 多模型策略的技术复杂度（模型路由、输出对齐、质量监控）是否已经被低估？团队是否有足够的人才储备来管理3-5个不同来源的模型？</li>
+<li><strong>风险/机会层面</strong>: 如果中美关系恶化导致DeepSeek等中国模型在美国被限制使用，那些已经深度集成这些模型的产品将面临何种技术债务？如何设计"可插拔模型架构"来降低这种风险？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题5: AI辅助编码正在拉平工程师能力分布，这对技术团队的组织方式意味着什么？</h4>
+        <p>Anthropic的研究发现，领域专家与中级用户在AI辅助编码中的成功率差距"不大"，且调试占比下降、端到端任务上升。</p>
+<ul>
+<li><strong>产品战略层面</strong>: 如果你的公司依赖技术团队的产品开发能力，当AI拉平了编码效率后，你的核心竞争优势是否需要从"工程执行力"转向其他维度（如用户洞察、商业模式创新、运营效率）？</li>
+<li><strong>执行/团队层面</strong>: 团队是否需要重新定义"初级"、"中级"、"高级"工程师的能力标准？当AI可以完成大部分编码任务时，人类工程师的价值体现在哪里（架构设计？需求拆解？代码审查？跨团队协调？）？</li>
+<li><strong>风险/机会层面</strong>: 如果AI编码能力继续提升，软件工程师的总需求是会增长（因为软件开发门槛降低，需求爆发），还是下降（因为更少的人可以完成更多工作）？这对招聘策略、薪酬结构和团队规模规划有何影响？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A: AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 体验Qwen Robot系列Demo（如有）或阅读三篇技术博客，理解"语言动作接口"的产品设计逻辑 —— 预期产出：一份关于该产品如何应用于你所在行业的简要分析</p>
+<p><b>2.</b> 对比测试Claude Opus和GPT-5.5在你核心工作流中的表现差异 —— 预期产出：一份模型选择决策矩阵</p>
+<p><b>3.</b> 研究Anthropic与五角大楼冲突的完整时间线，分析其品牌定位策略 —— 预期产出：一份AI产品治理立场框架草案</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 为你的产品设计一个"模型路由层"原型，根据任务类型动态选择DeepSeek/Claude/GPT —— 预期产出：可运行的POC和成本对比报告</p>
+<p><b>2.</b> 做一次完整的Agent成本压力测试，计算当前架构在按量计费模式下的单位经济学 —— 预期产出：成本优化路线图</p>
+<p><b>3.</b> 研究具身智能在目标行业的应用案例（物流、制造、医疗），评估通用VLA模型的商业化时间线 —— 预期产出：市场进入策略建议</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 建立"AI产品伦理审查委员会"机制，将治理审查嵌入需求评审流程 —— 预期产出：伦理审查SOP和决策树</p>
+<p><b>2.</b> 设计一个基于"场景价值定价"而非"API成本加成"的定价模型 —— 预期产出：新定价方案和客户测试反馈</p>
+<p><b>3.</b> 跟踪中美AI政策动态，建立"地缘政治风险评估"作为产品路线图的标准输入 —— 预期产出：季度风险简报模板</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B: AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 下载Qwen-RobotManip开源权重，在本地运行一个简单机器人操作任务（或仿真环境） —— 预期产出：运行截图和延迟/成功率基准</p>
+<p><b>2.</b> 使用Cartesia API实现一个实时语音对话Demo，测量首音频延迟 —— 预期产出：与OpenAI Realtime API的对比数据</p>
+<p><b>3.</b> 为现有项目集成MCP协议，让AI Agent能够调用至少3个外部工具 —— 预期产出：可演示的Agent工作流</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 实现一个"模型路由层"，根据输入复杂度、成本预算和延迟要求动态选择模型 —— 预期产出：开源一个小型路由框架</p>
+<p><b>2.</b> 对DeepSeek V4在你的核心任务上做系统评估（质量、速度、成本），与GPT-5.5/Claude做A/B对比 —— 预期产出：技术评估报告</p>
+<p><b>3.</b> 实验OpenAI Deployment Simulation的核心思想：用历史对话重放测试新模型版本 —— 预期产出：内部安全评估流程改进</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 研究VLA模型的统一对齐框架（Qwen-RobotManip的三维对齐），尝试在自定义数据集上复现核心思想 —— 预期产出：技术博客或开源代码</p>
+<p><b>2.</b> 设计并实现一个支持"语言动作接口"的物理设备控制原型 —— 预期产出：端到端Demo和架构文档</p>
+<p><b>3.</b> 为团队建立多模型CI/CD管道，自动在新模型版本发布时运行回归测试 —— 预期产出：自动化测试框架</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C: 研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 精读Qwen-RobotManip论文/博客，重点分析三维统一对齐框架的设计 —— 预期产出：框架原理图解和与其他VLA方法的对比表</p>
+<p><b>2.</b> 阅读OpenAI Deployment Simulation博客，理解其与Traditional Evaluation的核心差异 —— 预期产出：方法论对比笔记</p>
+<p><b>3.</b> 实验Anthropic Claude Code的40万会话数据集分析方法，在自有代码库上复现"调试占比趋势"分析 —— 预期产出：内部开发流程洞察报告</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 在开源机器人仿真环境（如RoboSuite、Isaac Gym）中复现Qwen-RobotManip的一个基准测试 —— 预期产出：可复现的实验代码和结果对比</p>
+<p><b>2.</b> 对DeepSeek V4做系统性的能力边界测试（长文本、多语言、代码、推理），识别其相对于GPT-5.5的优势和劣势区间 —— 预期产出：能力边界图谱</p>
+<p><b>3.</b> 研究MOPD（Multi-teacher On-Policy Distillation）后训练配方，尝试理解DeepSeek V4是否采用了类似方法 —— 预期产出：技术假设和验证实验设计</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 设计一个 novel 的VLA对齐方法，在至少一个公开基准上做初步验证 —— 预期产出：预印本论文或技术报告</p>
+<p><b>2.</b> 将Deployment Simulation方法扩展到多模态或Agent场景，设计隐私保护机制 —— 预期产出：研究提案或开源工具</p>
+<p><b>3.</b> 组织一个研究社区活动（读书会、论文复现挑战、Hackathon），推动团队/社区对具身智能或AI安全的深入理解 —— 预期产出：社区影响力度量（参与人数、后续引用/使用）</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D: 快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>Qwen RobotManip</td><td>[Qwen Blog](https://qwen.ai/blog?id=qwen-robotmanip)</td><td>20分钟</td></tr><tr><td>Qwen RobotWorld</td><td>[Qwen Blog](https://qwen.ai/blog?id=qwen-robotworld)</td><td>20分钟</td></tr><tr><td>Qwen RobotNav</td><td>[Qwen Blog](https://qwen.ai/blog?id=qwen-robotnav)</td><td>20分钟</td></tr><tr><td>SpaceX收购Cursor</td><td>[TechCrunch报道](https://techcrunch.com/2026/06/16/spacex-to-acquire-cursor-for-60b-in-stock-days-after-blockbuster-ipo)</td><td>10分钟</td></tr><tr><td>DeepSeek融资</td><td>[The Decoder报道](https://the-decoder.com/deepseek-takes-outside-money-for-the-first-time-at-a-50-billion-valuation)</td><td>15分钟</td></tr><tr><td>Anthropic超OpenAI</td><td>[TechCrunch报道](https://techcrunch.com/2026/06/16/anthropics-latest-feud-with-the-trump-admin-may-actually-help-it-sales-data-suggests)</td><td>10分钟</td></tr><tr><td>五角大楼转移Anthropic</td><td>[X线程](https://x.com/AYi_AInotes/status/2066679835607412846)</td><td>10分钟</td></tr><tr><td>OpenAI Deployment Simulation</td><td>[OpenAI Blog](https://openai.com/index/deployment-simulation)</td><td>15分钟</td></tr><tr><td>Anthropic编码研究</td><td>[Anthropic Research](https://www.anthropic.com/research/claude-code-expertise)</td><td>15分钟</td></tr><tr><td>后训练配方回顾</td><td>[Interconnects播客](https://www.interconnects.ai/p/frontier-post-training-recipe-review)</td><td>45分钟</td></tr><tr><td>Cartesia Sonic 3.5 / Ink 2</td><td>[X推文](https://x.com/testingcatalog/status/2066773392527655252)</td><td>5分钟</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-22.html">
+      <span class="date">2026-06-22</span>
+      <span class="title">Mythos 攻破 NSA 与 AI 入口企业双战</span>
+      <span class="angle">超级 AI 安全能力击穿国家机密防线，模型入口聚合与企业规模化部署同步重塑产业权力结构。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-21.html">
+      <span class="date">2026-06-21</span>
+      <span class="title">模型中间商崛起与Agent实战</span>
+      <span class="angle">当全球 AI 模型流通从单极出口转向双向转售，Agent 构建正从 Demo 走向可复用的工程化架构。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-20.html">
+      <span class="date">2026-06-20</span>
+      <span class="title">智能体基建与研究自治</span>
+      <span class="angle">AI 智能体基础设施与研究自动化同时越过临界点，标志着从模型能力展示向自主系统工程的范式转移。</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>168 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+    </div>
+  </footer>
+</body>
+</html>
