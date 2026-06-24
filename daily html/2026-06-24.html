@@ -1,0 +1,1057 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-06-24</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>175</span></div>
+    <div><b>ISS.</b><span>2026-06-24</span></div>
+    <div><b>EVT.</b><span>25 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 175</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">24</div>
+    <div class="meta-col">
+      <h2>Agent协作身份与端云生成并行</h2>
+      <p>AI 产品从能力展示转向 Agent 协作身份、端侧生成与全栈交互的工程化落地，同时评测偏见与安全审计成为信任基础设施新焦点。</p>
+      <div class="meta-row"><b>日期</b> 2026-06-24</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 175 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">AI 产</span>品从能力展示转向 Agent 协作身份、端侧生成与全栈交互的工程化落地，同时评测偏见与安全审计成为信任基础设施新焦点。
+    </div>
+    <div class="credits">
+      
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 5<br>
+      IMPORTANT 8<br>
+      REFERENCE 12<br>
+      <hr>
+      <b>THEMES</b><br>
+      生产力 Agent、实时视频交互、企业协作 Agent、端侧视频生成、文档结<br>
+      音频/TTS、轻量 Agent 框架、企业权限模型、AI 劳动力替代、AI <br>
+      产品更新、硬件工程、开源治理、科学研究应用、开发工具链<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架 1: 从“工具”到“同事”——AI 的交互范式迁移<br>
+      框架 2: 端云协同的生成式 AI 架构<br>
+      框架 3: 评测、偏见与信任基础设施
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>5 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>Seed2.1 正式发布，深入 AI 生产力</h3>
+          <p>字节 Seed 发布 Seed2.1 系列，面向真实生产力场景的智能体，强化通用 Agent 能力、代码工程交付与多模态理解。Seed2.1 Pro 在 GDPval 基准获最高分，Agents' Last Exam 位列参评模型第一梯队；MobileWorld 手机 GUI 任务最高分，CreativeWork 多环境任务表现突出；多模态在 CharXiv-RQ 等多项基准取得 SOTA。模型已在豆包、TRAE 上线，API 通过火山方舟提供。</p>
+          <p><b>AI PM 视角：</b>Seed2.1 的发布意味着字节正式将“模型能力”与“工作流交付”对齐。在 Agents' Last Exam、MobileWorld、CreativeWork、NL2Repo-Bench 等基准上同时进入第一梯队，说明它不是单一任务刷榜，而是瞄准了“端到端完成复杂任务”这一下一代 LLM 产品的核心战场。对 AI PM 而言，这比单纯的 Chatbot 能力提升更有商业价值：它直接对应企业 Agent、代码助手、手机 GUI 自动化等可定价的场景。豆包、TRAE、火山方舟的同时上线也表明字节在尝试通过产品矩阵快速验证 PMF，而不是等待模型完美。
+
+值得注意的是，Seed2.1 Pro 在开发者评测中对比 Claude Opus 4.6 取得 59.1% 胜率，说明在中文开发者生态和工程化场景里已经形成差异化竞争力。这一信号与同日京东 JoyAI-VL-Interaction 的发布共同指向 2026 年 AI 产品的主旋律：从“能回答”转向“能执行、能交互、能交付”。PM 在规划功能时，应当把“任务完成率”和“端到端闭环”作为首要指标，而不是停留在单轮对话质量。</p>
+          <p><b>AI Builder 视角：</b>Seed2.1 对 Builder 的价值在于它提供了一条“模型即服务 + 多场景入口”的工程路径。火山方舟 API、豆包 App、TRAE IDE 的同时覆盖，意味着开发者可以根据场景选择不同的集成深度：快速原型走 API，深度编码走 TRAE，C 端交互走豆包。Builder 需要关注的是，其通用 Agent 能力是否能在真实业务工具链中稳定拆解长程任务，以及在 NL2Repo-Bench 上的代码工程能力能否迁移到私有代码库。</p>
+          <p><b>研究型 Builder 视角：</b>Seed2.1 的技术 novelty 在于多任务联合优化与 Agent 能力的系统级整合。GDPval、CharXiv-RQ 等多模态基准的 SOTA 以及 NL2Repo-Bench 的代码能力，提示其可能在 post-training 阶段引入了更多跨模态、长程规划和工具调用数据。Reproducibility 方面，目前公开的是博客与 API，尚未放出模型权重或训练细节，Builder 可通过火山方舟 API 做迁移测试，验证其在自身业务数据上的代码生成与 Agent 表现。研究-to-product 管线：其“通用 Agent + 代码工程 + 多模态”的三位一体架构，很可能是未来半年头部模型厂商的标配。</p>
+          <p><b>可落地的方法论：</b>- 本周：在豆包或 TRAE 中选择一个真实工作流（如需求文档→代码框架→单元测试），记录 Seed2.1 与现有模型在任务完成率上的差异。
+- 本季度：评估是否将 Seed2.1 API 接入内部 Agent 编排层，重点测试长程任务拆分到工具调用的稳定性。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://seed.bytedance.com/zh/blog/seed2-1-%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83-%E6%B7%B1%E5%85%A5-ai-%E7%94%9F%E4%BA%A7%E5%8A%9B">字节 Seed：Research Feed</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>京东全栈开源 JoyAI-VL-Interaction，从“一问一答”走向“边看边说”</h3>
+          <p>京东开源全球首个全栈交互模型 JoyAI-VL-Interaction，获 vLLM-Omni 原生支持。该模型能持续观察视频流、主动判断关键事件并实时响应，支持将复杂任务委托后台 Agent 处理。在 58 个真人盲评中，对比豆包视频通话助手胜率 77.6%，对比 Gemini 视频通话助手胜率 87.9%，监控预警场景达 100% 胜率。开源内容包括模型权重、交互数据集、训练方案及完整可部署系统。</p>
+          <p><b>AI PM 视角：</b>JoyAI-VL-Interaction 标志着“视频通话式 AI”从演示走向可部署的产品形态。与当前多数多模态模型“上传视频→等待回答”的异步交互不同，它强调持续观察、主动判断、语音实时响应、长期记忆以及后台 Agent 委托，这几乎重构了安防监控、老人看护、直播讲解、工业巡检等场景的人机协作模式。对 PM 而言，其核心启示是：多模态交互的竞争焦点已经从“识别准确率”转向“交互自然度 + 任务闭环能力”。
+
+京东选择全栈开源（模型权重、数据集、训练方案、部署系统），意味着它希望建立生态标准，并通过 vLLM-Omni 原生支持降低接入门槛。监控预警场景 100% 胜率尤其值得注意，这说明在特定垂直场景中，全栈优化可以形成对通用模型的碾压优势。PM 在设计多模态产品时，应优先选择“端到端体验可被明确定义且数据可闭环”的垂直场景，而不是在开放域与通用模型正面竞争。</p>
+          <p><b>AI Builder 视角：</b>对 Builder 而言，JoyAI-VL-Interaction 的最大吸引力是全栈开源与 vLLM-Omni 原生支持。它提供了一条从摄像头/直播流输入到语音交互输出的完整部署路径，开发者可以用本地摄像头快速复现监控/看护场景。需要重点验证的是实时延迟、误报率和长期记忆的上下文一致性，这些才是从 demo 走向生产的关键。</p>
+          <p><b>研究型 Builder 视角：</b>该模型的技术 novelty 在于“流式视频理解 + 语音交互 + 长期记忆 + Agent 委托”的端到端系统整合，而非单一模型架构突破。vLLM-Omni 原生支持暗示其在推理引擎层做了针对性优化。Reproducibility 较好：权重、数据集、训练方案均已开源，Builder 可以在本地摄像头或直播流上复现监控/看护场景。研究-to-product 管线：它证明了“全栈开源 + 垂直场景”是追赶甚至超越闭源通用模型的有效路径。</p>
+          <p><b>可落地的方法论：</b>- 本周：用开源部署包跑通一个摄像头实时告警 demo，记录延迟与误报率。
+- 本季度：在 1-2 个垂直场景（如门店督导、家庭看护）定义“主动判断”的事件触发规则，评估产品化 ROI。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/IY6XGp4k6VgD9ZPH6YprCA">公众号：京东 JoyAI</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>Anthropic 推出 Claude Tag：在 Slack 中通过 @Claude 协作</h3>
+          <p>Anthropic 推出 Claude Tag，一种在 Slack 频道中通过 @Claude 委托任务的新协作方式。Claude 可记住频道上下文，支持多用户交互，经授权后可自动学习其他频道和数据源。开启“环境”行为后，能主动更新未解决的线程或任务，可自主推进项目数小时或数天。即日起面向 Claude Enterprise 和 Team 客户提供 beta 版。</p>
+          <p><b>AI PM 视角：</b>Claude Tag 是企业协作 AI 从“个人副驾驶”转向“团队参与者”的关键一步。过去的 AI 产品大多嵌入在文档或 IDE 中，服务单个用户；而 Claude Tag 以独立 agent identity 进入共享频道，意味着 AI 开始具备“组织成员”属性——它可以记住上下文、异步推进项目、被多人调用。对 PM 的启示是：B2B AI 的下一波增长将来自“工作流嵌入深度”而非“模型参数规模”。
+
+结合同日发布的 Agent Identity 访问模型，Anthropic 正在构建一套企业级权限、审计、记忆和异步执行的完整叙事。这与 Slack 早期被 Salesforce 收购后未能充分 AI 化的历史形成对照，也可能对微软 Copilot、Notion AI 等构成直接竞争。PM 在设计企业 AI 功能时，应把“AI 在组织中的身份与权限”作为核心架构问题，而不是简单地把 Chatbot 塞进协作工具。</p>
+          <p><b>AI Builder 视角：</b>Claude Tag 的工程挑战不在模型而在系统：频道级上下文记忆、多用户身份隔离、异步任务调度、工具权限细粒度控制、操作日志审计。Builder 需要设计清晰的人机交接协议，防止 AI 在异步推进中“越界”或产生无法追溯的决策。</p>
+          <p><b>研究型 Builder 视角：</b>技术 novelty 在于 agent identity 和权限模型的设计，以及多用户长线程中的上下文一致性。这不是模型能力突破，而是“多智能体协作系统”的工程范式。Reproducibility 上，权限模型和审计日志设计可被其他企业 AI 产品借鉴。研究-to-product 管线：它验证了“AI 作为组织成员”的可行性，未来研究可关注多智能体冲突解决、共享记忆隐私边界等议题。</p>
+          <p><b>可落地的方法论：</b>- 本周：在 Slack 工作区中试点 Claude Tag，限定 1 个频道和 3-5 个成员，记录异步任务完成率。
+- 本季度：梳理团队高频协作 SOP，识别可由 AI 异步推进的“长线程任务”，设计人机交接规则。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.anthropic.com/news/introducing-claude-tag">Anthropic：Newsroom</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">04<small>TH</small></div>
+        <div>
+          <h3>FastWan-QAD：单卡 5090 上 1.8 秒生成 5 秒视频</h3>
+          <p>Sky Computing Lab 发布 FastWan-QAD 视频生成模型系列，基于 FastVideo 的量化感知蒸馏（QAD）方案训练。在单张 NVIDIA GeForce RTX 5090 上，端到端生成一段 5 秒 480P 视频仅需 1.8 秒。模型、代码及博客已开源。</p>
+          <p><b>AI PM 视角：</b>FastWan-QAD 的最大意义在于将“高质量视频生成”从云端 GPU 集群下放到单张消费级显卡。1.8 秒生成 5 秒 480P 视频，意味着创作者可以在本地工作站实现接近实时的视频迭代，这对广告、短视频、游戏过场、工业设计预览等场景的交互模式是颠覆性的。对 PM 而言，它降低了视频生成产品的获客门槛：用户不再需要按秒付费的云 API，而可以采用“本地模型 + 订阅/工具”模式。
+
+同时，开源策略会加速社区生态和垂直微调模型的涌现。它与 Runway Seedance 4K 等云端高端模型形成互补：云端负责电影级长视频，本地负责快速原型和隐私敏感内容。PM 在规划视频生成产品时，应明确目标用户的硬件基线和隐私需求，而不是默认走云端 API 路线。</p>
+          <p><b>AI Builder 视角：</b>FastWan-QAD 给 Builder 的启示是：消费级显卡的生成性能正在进入可用区间。开发者可以用 RTX 40/50 系列搭建本地视频工作流，避免云 API 的延迟和成本波动。关键工程点在于量化感知蒸馏对生成质量的损失、480P 到更高分辨率的 upscaling 链路，以及与现有视频编辑工具（如 Premiere、DaVinci、Blender）的集成。</p>
+          <p><b>研究型 Builder 视角：</b>技术 novelty 来自量化感知蒸馏（QAD）在视频生成上的成功应用，以及 FastVideo 生态的端到端优化。Reproducibility 优秀：模型和代码已开源，且有明确的硬件基准（RTX 5090）。研究-to-product 管线：它展示了蒸馏+量化如何打开消费级硬件上的生成式视频市场，Builder 可在此基础上做风格化 LoRA、实时交互式视频编辑等二次创新。</p>
+          <p><b>可落地的方法论：</b>- 本周：下载 FastWan-QAD 代码，在本地 RTX 40/50 系列显卡上测试生成延迟与显存占用。
+- 本季度：评估将本地视频生成能力集成到创意工作流中的可行性，尤其是需要数据不出域的行业客户。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/haoailab/status/2069493820732170695">X：Sky Computing Lab (@haoailab)</a></span>
+        </div>
+        <div class="tag">PLATFORM</div>
+      </div>
+      <div class="thesis">
+        <div class="num">05<small>TH</small></div>
+        <div>
+          <h3>Mistral OCR 4</h3>
+          <p>Mistral AI 发布 OCR 4，新增边界框、块分类（标题、表格、方程式、签名等）及逐页逐词置信度分数。支持 170 种语言、10 个语系，可单容器全自托管部署。在 OlmOCRBench 上得分 85.20，独立标注者偏好率平均 72%。定价每 1000 页 $4，Batch API 享 50% 折扣。</p>
+          <p><b>AI PM 视角：</b>OCR 4 的发布将文档 AI 从“文字提取”推进到“结构化理解”。边界框 + 块分类 + 置信度分数的组合，使下游 RAG、合同审核、财报解析、科研文献处理等场景可以直接获得带版式语义的文档对象，而不是纯文本流。对 PM 来说，这降低了构建文档 Agent 的前置成本：过去需要多模型流水线（OCR→版面分析→表格识别→公式识别），现在可能单模型即可覆盖。
+
+全自托管部署与 170 种语言支持，对金融、法律、政务等数据敏感且多语言的垂直市场是强卖点。定价 $4/1000 页在批量场景下具备竞争力。PM 在评估文档 AI 方案时，应优先测试 OCR 4 在自身文档类型（尤其是表格、印章、手写签名）上的召回率，而不是只看公开基准分。</p>
+          <p><b>AI Builder 视角：</b>对 Builder 来说，OCR 4 的价值在于“统一文档理解模型”可以显著压缩传统多阶段 pipeline 的复杂度。自托管选项意味着可以在私有云中部署，满足合规要求。集成时需要关注块分类 schema 与下游 RAG/审核系统的对齐，以及置信度分数如何用于人工复核路由。</p>
+          <p><b>研究型 Builder 视角：</b>Novelty 在于统一的文档理解模型，将 OCR、版面分析、区域分类和置信度估计整合。Reproducibility 方面，Mistral 提供了 API 和自托管选项，可在自有文档集上验证。研究-to-product 管线：它提示“文档智能”正在从多阶段 pipeline 向端到端多模态模型收敛，Builder 可借此重构知识库、合同审核等产品。</p>
+          <p><b>可落地的方法论：</b>- 本周：用 Mistral OCR 4 API 处理 50-100 份内部文档，对比现有 OCR/版面分析方案在表格、公式、签名上的召回率。
+- 本季度：将 OCR 4 接入 RAG 或文档审核 pipeline，评估是否可减少 30% 以上的预处理代码。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://mistral.ai/news/ocr-4">Mistral AI：News</a></span>
+        </div>
+        <div class="tag">CRITICAL</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">8 IMPORTANT + 12 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://mp.weixin.qq.com/s/iL0uyUjOMUEfudeuDP6wQQ">豆包音频生成模型 1.0 发布，重新定义 AI 音频创作</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://www.ithome.com/0/967/636.htm">网易有道发布 Confucius4-TTS：14 语种跨语种无口音语音克隆开源模型</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://huggingface.co/blog/ibm-research/cuga-apps">IBM 开源 CUGA：轻量级智能体框架，提供二十余个单文件示例应用</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div><a class="event-link" href="https://claude.com/blog/agent-identity-access-model">Claude Tag 的 Agent Identity 访问模型</a></div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
+      <div>05</div><div><a class="event-link" href="https://arstechnica.com/ai/2026/06/oracles-21000-layoffs-help-drive-its-debt-fueled-ai-investments">Oracle 因 AI 应用裁员 21000 人，债务驱动云基础设施投资</a></div><div class="red">POLICY</div><div>主权</div><div class="right red">BLOOM</div>
+      <div>06</div><div><a class="event-link" href="https://www.artificialintelligence-news.com/news/five-eyes-warning-ai-cyber-threats">五眼联盟警告：AI 网络威胁数月内将影响普通用户</a></div><div class="red">CREATIVE</div><div>音乐</div><div class="right red">X</div>
+      <div>07</div><div><a class="event-link" href="https://hai.stanford.edu/news/ai-hiring-tools-can-yield-racial-bias-and-systemic-rejection">AI 招聘工具存在种族偏见和系统性排斥；黑人占比 26%，亚裔占比 15%</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>08</div><div><a class="event-link" href="https://machinelearning.apple.com/research/correlated-llm-evaluation-panels">九位评委，两个有效投票：相关错误削弱 LLM 评审面板</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>09</div><div>Krea 2 技术报告正式发布</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>10</div><div>Runway 推出 Seedance 4K 等三款新模型</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>11</div><div>Unlimited OCR：单次长时域解析</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>12</div><div>国内首个高考志愿 AI 测评出炉，千问多项表现超过资深咨询师</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>13</div><div>Claude Code v2.1.187 发布</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>14</div><div>GitHub 联合开源联盟呼吁修改加州 AI 透明度法案以保护开源</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>15</div><div>OpenAI 助力 Appia Foundation 推动先进 AI 共享标准建设</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>16</div><div>Omio 如何构建对话式旅行的未来</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>17</div><div>huggingface_hub 实现每周发布：AI、开源工具、人工审核闭环</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>18</div><div>在 Transformers.js 中实验提议的跨源存储 API</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>19</div><div>Meta 如何为 AI 眼镜设计超窄钢壳电池</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>20</div><div>GPT-5 帮助免疫学家解开三年未解之谜</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">12 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>Krea 2 技术报告正式发布</div><div>生成式设计工具的技术透明度提升，值得 PM 研究其数据与训练策略如何支撑产品差异化。</div>
+      <div>02</div><div>Runway 推出 Seedance 4K 等三款新模型</div><div>云端高端视频生成继续堆料，与 FastWan-QAD 的端侧路线形成互补。</div>
+      <div>03</div><div>Unlimited OCR：单次长时域解析</div><div>百度开源项目，指向长文档 OCR 的端到端方向，适合研究型 Builder 关注。</div>
+      <div>04</div><div>国内首个高考志愿 AI 测评出炉，千问多项表现超过资深咨询师</div><div>垂直 Agent 在结构化决策场景中开始超越人类专家，教育/咨询类 PM 可参考。</div>
+      <div>05</div><div>Claude Code v2.1.187 发布</div><div>沙箱凭证隔离和组织模型限制是企业级 AI 编码工具的安全演进。</div>
+      <div>06</div><div>GitHub 联合开源联盟呼吁修改加州 AI 透明度法案以保护开源</div><div>开源治理与监管合规的博弈持续，开源模型产品的 PM 需关注许可证风险。</div>
+      <div>07</div><div>OpenAI 助力 Appia Foundation 推动先进 AI 共享标准建设</div><div>AI 安全标准的国际协调加速，对出海产品和合规策略有长期影响。</div>
+      <div>08</div><div>Omio 如何构建对话式旅行的未来</div><div>OpenAI 客户案例，展示对话式 UI 在旅游预订中的产品化路径。</div>
+      <div>09</div><div>huggingface_hub 实现每周发布：AI、开源工具、人工审核闭环</div><div>开源项目发布流程的自动化示范，值得工程团队借鉴。</div>
+      <div>10</div><div>在 Transformers.js 中实验提议的跨源存储 API</div><div>浏览器端 AI 模型缓存共享的早期探索，端侧 AI 部署的存储效率问题。</div>
+      <div>11</div><div>Meta 如何为 AI 眼镜设计超窄钢壳电池</div><div>AI 硬件的电池工程创新，说明端侧 AI 设备的核心瓶颈仍在物理层。</div>
+      <div>12</div><div>GPT-5 帮助免疫学家解开三年未解之谜</div><div>AI for Science 的又一案例，基础研究领域的 PM 可关注科研付费转化。</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      AI 产品从能力展示转向 Agent 协作身份、端侧生成与全栈交互的工程化落地，同时评测偏见与安全审计成为信任基础设施新焦点。
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 5 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Seed2.1 正式发布，深入 AI 生产力</h4>
+        <p><b>AI PM 视角：</b>Seed2.1 的发布意味着字节正式将“模型能力”与“工作流交付”对齐。在 Agents' Last Exam、MobileWorld、CreativeWork、NL2Repo-Bench 等基准上同时进入第一梯队，说明它不是单一任务刷榜，而是瞄准了“端到端完成复杂任务”这一下一代 LLM 产品的核心战场。对 AI PM 而言，这比单纯的 Chatbot 能力提升更有商业价值：它直接对应企业 Agent、代码助手、手机 GUI 自动化等可定价的场景。豆包、TRAE、火山方舟的同时上线也表明字节在尝试通过产品矩阵快速验证 PMF，而不是等待模型完美。</p>
+<p>值得注意的是，Seed2.1 Pro 在开发者评测中对比 Claude Opus 4.6 取得 59.1% 胜率，说明在中文开发者生态和工程化场景里已经形成差异化竞争力。这一信号与同日京东 JoyAI-VL-Interaction 的发布共同指向 2026 年 AI 产品的主旋律：从“能回答”转向“能执行、能交互、能交付”。PM 在规划功能时，应当把“任务完成率”和“端到端闭环”作为首要指标，而不是停留在单轮对话质量。</p>
+        <p><b>AI Builder 视角：</b>Seed2.1 对 Builder 的价值在于它提供了一条“模型即服务 + 多场景入口”的工程路径。火山方舟 API、豆包 App、TRAE IDE 的同时覆盖，意味着开发者可以根据场景选择不同的集成深度：快速原型走 API，深度编码走 TRAE，C 端交互走豆包。Builder 需要关注的是，其通用 Agent 能力是否能在真实业务工具链中稳定拆解长程任务，以及在 NL2Repo-Bench 上的代码工程能力能否迁移到私有代码库。</p>
+        <p><b>研究型 Builder 视角：</b>Seed2.1 的技术 novelty 在于多任务联合优化与 Agent 能力的系统级整合。GDPval、CharXiv-RQ 等多模态基准的 SOTA 以及 NL2Repo-Bench 的代码能力，提示其可能在 post-training 阶段引入了更多跨模态、长程规划和工具调用数据。Reproducibility 方面，目前公开的是博客与 API，尚未放出模型权重或训练细节，Builder 可通过火山方舟 API 做迁移测试，验证其在自身业务数据上的代码生成与 Agent 表现。研究-to-product 管线：其“通用 Agent + 代码工程 + 多模态”的三位一体架构，很可能是未来半年头部模型厂商的标配。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：在豆包或 TRAE 中选择一个真实工作流（如需求文档→代码框架→单元测试），记录 Seed2.1 与现有模型在任务完成率上的差异。</li>
+<li>本季度：评估是否将 Seed2.1 API 接入内部 Agent 编排层，重点测试长程任务拆分到工具调用的稳定性。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://seed.bytedance.com/zh/blog/seed2-1-%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83-%E6%B7%B1%E5%85%A5-ai-%E7%94%9F%E4%BA%A7%E5%8A%9B">字节 Seed：Research Feed</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>京东全栈开源 JoyAI-VL-Interaction，从“一问一答”走向“边看边说”</h4>
+        <p><b>AI PM 视角：</b>JoyAI-VL-Interaction 标志着“视频通话式 AI”从演示走向可部署的产品形态。与当前多数多模态模型“上传视频→等待回答”的异步交互不同，它强调持续观察、主动判断、语音实时响应、长期记忆以及后台 Agent 委托，这几乎重构了安防监控、老人看护、直播讲解、工业巡检等场景的人机协作模式。对 PM 而言，其核心启示是：多模态交互的竞争焦点已经从“识别准确率”转向“交互自然度 + 任务闭环能力”。</p>
+<p>京东选择全栈开源（模型权重、数据集、训练方案、部署系统），意味着它希望建立生态标准，并通过 vLLM-Omni 原生支持降低接入门槛。监控预警场景 100% 胜率尤其值得注意，这说明在特定垂直场景中，全栈优化可以形成对通用模型的碾压优势。PM 在设计多模态产品时，应优先选择“端到端体验可被明确定义且数据可闭环”的垂直场景，而不是在开放域与通用模型正面竞争。</p>
+        <p><b>AI Builder 视角：</b>对 Builder 而言，JoyAI-VL-Interaction 的最大吸引力是全栈开源与 vLLM-Omni 原生支持。它提供了一条从摄像头/直播流输入到语音交互输出的完整部署路径，开发者可以用本地摄像头快速复现监控/看护场景。需要重点验证的是实时延迟、误报率和长期记忆的上下文一致性，这些才是从 demo 走向生产的关键。</p>
+        <p><b>研究型 Builder 视角：</b>该模型的技术 novelty 在于“流式视频理解 + 语音交互 + 长期记忆 + Agent 委托”的端到端系统整合，而非单一模型架构突破。vLLM-Omni 原生支持暗示其在推理引擎层做了针对性优化。Reproducibility 较好：权重、数据集、训练方案均已开源，Builder 可以在本地摄像头或直播流上复现监控/看护场景。研究-to-product 管线：它证明了“全栈开源 + 垂直场景”是追赶甚至超越闭源通用模型的有效路径。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：用开源部署包跑通一个摄像头实时告警 demo，记录延迟与误报率。</li>
+<li>本季度：在 1-2 个垂直场景（如门店督导、家庭看护）定义“主动判断”的事件触发规则，评估产品化 ROI。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/IY6XGp4k6VgD9ZPH6YprCA">公众号：京东 JoyAI</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>Anthropic 推出 Claude Tag：在 Slack 中通过 @Claude 协作</h4>
+        <p><b>AI PM 视角：</b>Claude Tag 是企业协作 AI 从“个人副驾驶”转向“团队参与者”的关键一步。过去的 AI 产品大多嵌入在文档或 IDE 中，服务单个用户；而 Claude Tag 以独立 agent identity 进入共享频道，意味着 AI 开始具备“组织成员”属性——它可以记住上下文、异步推进项目、被多人调用。对 PM 的启示是：B2B AI 的下一波增长将来自“工作流嵌入深度”而非“模型参数规模”。</p>
+<p>结合同日发布的 Agent Identity 访问模型，Anthropic 正在构建一套企业级权限、审计、记忆和异步执行的完整叙事。这与 Slack 早期被 Salesforce 收购后未能充分 AI 化的历史形成对照，也可能对微软 Copilot、Notion AI 等构成直接竞争。PM 在设计企业 AI 功能时，应把“AI 在组织中的身份与权限”作为核心架构问题，而不是简单地把 Chatbot 塞进协作工具。</p>
+        <p><b>AI Builder 视角：</b>Claude Tag 的工程挑战不在模型而在系统：频道级上下文记忆、多用户身份隔离、异步任务调度、工具权限细粒度控制、操作日志审计。Builder 需要设计清晰的人机交接协议，防止 AI 在异步推进中“越界”或产生无法追溯的决策。</p>
+        <p><b>研究型 Builder 视角：</b>技术 novelty 在于 agent identity 和权限模型的设计，以及多用户长线程中的上下文一致性。这不是模型能力突破，而是“多智能体协作系统”的工程范式。Reproducibility 上，权限模型和审计日志设计可被其他企业 AI 产品借鉴。研究-to-product 管线：它验证了“AI 作为组织成员”的可行性，未来研究可关注多智能体冲突解决、共享记忆隐私边界等议题。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：在 Slack 工作区中试点 Claude Tag，限定 1 个频道和 3-5 个成员，记录异步任务完成率。</li>
+<li>本季度：梳理团队高频协作 SOP，识别可由 AI 异步推进的“长线程任务”，设计人机交接规则。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.anthropic.com/news/introducing-claude-tag">Anthropic：Newsroom</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>FastWan-QAD：单卡 5090 上 1.8 秒生成 5 秒视频</h4>
+        <p><b>AI PM 视角：</b>FastWan-QAD 的最大意义在于将“高质量视频生成”从云端 GPU 集群下放到单张消费级显卡。1.8 秒生成 5 秒 480P 视频，意味着创作者可以在本地工作站实现接近实时的视频迭代，这对广告、短视频、游戏过场、工业设计预览等场景的交互模式是颠覆性的。对 PM 而言，它降低了视频生成产品的获客门槛：用户不再需要按秒付费的云 API，而可以采用“本地模型 + 订阅/工具”模式。</p>
+<p>同时，开源策略会加速社区生态和垂直微调模型的涌现。它与 Runway Seedance 4K 等云端高端模型形成互补：云端负责电影级长视频，本地负责快速原型和隐私敏感内容。PM 在规划视频生成产品时，应明确目标用户的硬件基线和隐私需求，而不是默认走云端 API 路线。</p>
+        <p><b>AI Builder 视角：</b>FastWan-QAD 给 Builder 的启示是：消费级显卡的生成性能正在进入可用区间。开发者可以用 RTX 40/50 系列搭建本地视频工作流，避免云 API 的延迟和成本波动。关键工程点在于量化感知蒸馏对生成质量的损失、480P 到更高分辨率的 upscaling 链路，以及与现有视频编辑工具（如 Premiere、DaVinci、Blender）的集成。</p>
+        <p><b>研究型 Builder 视角：</b>技术 novelty 来自量化感知蒸馏（QAD）在视频生成上的成功应用，以及 FastVideo 生态的端到端优化。Reproducibility 优秀：模型和代码已开源，且有明确的硬件基准（RTX 5090）。研究-to-product 管线：它展示了蒸馏+量化如何打开消费级硬件上的生成式视频市场，Builder 可在此基础上做风格化 LoRA、实时交互式视频编辑等二次创新。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：下载 FastWan-QAD 代码，在本地 RTX 40/50 系列显卡上测试生成延迟与显存占用。</li>
+<li>本季度：评估将本地视频生成能力集成到创意工作流中的可行性，尤其是需要数据不出域的行业客户。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/haoailab/status/2069493820732170695">X：Sky Computing Lab (@haoailab)</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>Mistral OCR 4</h4>
+        <p><b>AI PM 视角：</b>OCR 4 的发布将文档 AI 从“文字提取”推进到“结构化理解”。边界框 + 块分类 + 置信度分数的组合，使下游 RAG、合同审核、财报解析、科研文献处理等场景可以直接获得带版式语义的文档对象，而不是纯文本流。对 PM 来说，这降低了构建文档 Agent 的前置成本：过去需要多模型流水线（OCR→版面分析→表格识别→公式识别），现在可能单模型即可覆盖。</p>
+<p>全自托管部署与 170 种语言支持，对金融、法律、政务等数据敏感且多语言的垂直市场是强卖点。定价 $4/1000 页在批量场景下具备竞争力。PM 在评估文档 AI 方案时，应优先测试 OCR 4 在自身文档类型（尤其是表格、印章、手写签名）上的召回率，而不是只看公开基准分。</p>
+        <p><b>AI Builder 视角：</b>对 Builder 来说，OCR 4 的价值在于“统一文档理解模型”可以显著压缩传统多阶段 pipeline 的复杂度。自托管选项意味着可以在私有云中部署，满足合规要求。集成时需要关注块分类 schema 与下游 RAG/审核系统的对齐，以及置信度分数如何用于人工复核路由。</p>
+        <p><b>研究型 Builder 视角：</b>Novelty 在于统一的文档理解模型，将 OCR、版面分析、区域分类和置信度估计整合。Reproducibility 方面，Mistral 提供了 API 和自托管选项，可在自有文档集上验证。研究-to-product 管线：它提示“文档智能”正在从多阶段 pipeline 向端到端多模态模型收敛，Builder 可借此重构知识库、合同审核等产品。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：用 Mistral OCR 4 API 处理 50-100 份内部文档，对比现有 OCR/版面分析方案在表格、公式、签名上的召回率。</li>
+<li>本季度：将 OCR 4 接入 RAG 或文档审核 pipeline，评估是否可减少 30% 以上的预处理代码。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://mistral.ai/news/ocr-4">Mistral AI：News</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 8 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>豆包音频生成模型 1.0 发布，重新定义 AI 音频创作</h4>
+        <p><b>分析：</b>火山引擎正式发布豆包音频生成模型 1.0（Doubao-Seed-Audio 1.0），支持文本与音频参考生成，端到端输出目标音频；单条 Prompt 可编排多角色对白、情绪语气、背景音乐及环境氛围，长时生成中保持多角色音色一致性。</p>
+        <p><b>AI PM 视角：</b>豆包音频生成模型将“声音设计”从专业录音棚 democratize 到 Prompt 工程。对播客、有声书、游戏配音、广告等场景，这意味着内容生产成本可能下降一个数量级。与 Seed2.1 同日发布，显示字节在多模态内容生成上的全面布局。产品化关键在于版权音色管理、生成内容的平台合规审核，以及“一声多角”在多角色剧本中的可用性。</p>
+        <p><b>AI Builder 视角：</b>端到端多角色音色一致性和“一声多角”暗示模型在 speaker embedding 和 prosody 控制上做了解耦设计，值得在内容生产 pipeline 中做模块化封装。</p>
+        <p><b>研究型 Builder 视角：</b>端到端音频生成相比传统 TTS+音效拼接，减少了多轨混音的后处理成本，其音色与风格解耦控制是值得关注的技术点。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周注册火山方舟 API 邀测，用 1 个 2 分钟音频脚本测试多角色对白和音色延长能力。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/iL0uyUjOMUEfudeuDP6wQQ">公众号：火山引擎</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>网易有道发布 Confucius4-TTS：14 语种跨语种无口音语音克隆开源模型</h4>
+        <p><b>分析：</b>网易有道推出 Confucius4-TTS，业内首个支持 14 种语言跨语种无口音、且无需参考文本即可完成语音克隆的开源模型。用户仅需 3 秒音频即可实现零样本音色克隆，克隆音色与原声相似度超 85%，任务准确度达 97%。模型已全量开源（Apache 协议），提供 54GB 资源包供本地部署。</p>
+        <p><b>AI PM 视角：</b>跨语种无口音语音克隆对全球化产品（教育、客服、内容出海）极具价值。开源 Apache 协议降低了商业化门槛，3 秒样本即可克隆也显著降低了用户采集成本。产品化时需注意音色授权的合规边界，以及 54GB 资源包对部署环境的要求。</p>
+        <p><b>AI Builder 视角：</b>GPT 式语义大模型 + SSL 预训练 + ECAPA-TDNN + Flow Matching 的组合代表当前 TTS 的主流架构路线，可在本地部署并做垂直场景微调。</p>
+        <p><b>研究型 Builder 视角：</b>情感克隆迁移和跨语种无口音生成是研究亮点，值得复现其在低资源语种上的表现。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周用 3 秒样本测试中文→英文音色保持度，评估在语音客服/教育产品中的替换可行性。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.ithome.com/0/967/636.htm">IT之家（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>IBM 开源 CUGA：轻量级智能体框架，提供二十余个单文件示例应用</h4>
+        <p><b>分析：</b>IBM 开源了 CUGA（Configurable Generalist Agent），一个处理规划、执行循环、工具调用和状态管理的轻量级智能体框架。内置计划-执行-反思循环，在 AppWorld 和 WebArena 基准上排名第一，支持 Fast / Balanced / Accurate 三种推理模式。</p>
+        <p><b>AI PM 视角：</b>CUGA 的轻量化和“单文件示例”策略降低了企业开发者理解 Agent 范式的门槛。在 AppWorld 和 WebArena 上排名第一说明其 planner 设计有效，三种推理模式也贴合实际业务对 latency 与质量的 trade-off。对中小企业 PM 而言，这是一个比 LangChain 更聚焦的 Agent 原型起点。</p>
+        <p><b>AI Builder 视角：</b>计划-执行-反思循环与可互换工具层（OpenAPI/MCP/LangChain）是工程可组合性的关键设计，适合作为内部 Agent 平台的参考架构。</p>
+        <p><b>研究型 Builder 视角：</b>CUGA 的 planner 在开放域 benchmark 上的表现值得深入研究，尤其是其反思机制在不同错误类型下的收敛性。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周用 CUGA 的示例应用跑通一个工具调用任务，评估其 planner 在真实 API 上的稳定性。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://huggingface.co/blog/ibm-research/cuga-apps">Hugging Face：Blog（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>Claude Tag 的 Agent Identity 访问模型</h4>
+        <p><b>分析：</b>Claude Tag 推出 agent identity 访问模型，让 Claude 在共享频道中以独立身份工作，而非模拟某个用户。管理员在工作区级配置连接器、仓库访问、技能插件和固定指令等权限，每个频道可覆盖继承的基线设置；私有频道拥有独立身份，记忆和访问不跨频道流转。</p>
+        <p><b>AI PM 视角：</b>Agent Identity 是企业 AI 权限管理的新范式。它把 AI 从“用户代理”变成“独立主体”，简化了审计和撤销，也为多用户共享 AI 场景奠定了基础。PM 在设计企业 AI 产品时，必须提前考虑 AI 身份的生命周期管理（创建、授权、审计、撤销）。</p>
+        <p><b>AI Builder 视角：</b>权限继承、私有频道隔离、公共频道共享身份是多人协作 AI 系统的基础架构问题，需要与现有 IAM/SSO 体系集成。</p>
+        <p><b>研究型 Builder 视角：</b>该模型为研究“多智能体系统中的访问控制与记忆边界”提供了真实产品案例。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周梳理现有企业系统的权限模型，评估是否能映射到 agent identity 的三层结构（工作区/频道/私有）。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://claude.com/blog/agent-identity-access-model">Claude：Blog（网页）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>Oracle 因 AI 应用裁员 21000 人，债务驱动云基础设施投资</h4>
+        <p><b>分析：</b>Oracle 在截至 5 月 31 日的财年裁员 21000 人，员工总数降至 141,000 人，降幅 12.9%。公司称 AI 技术的采用导致劳动力缩减，同时计划 2026 年通过债务和股权筹集 450 至 500 亿美元扩建 Oracle Cloud Infrastructure。</p>
+        <p><b>AI PM 视角：</b>Oracle 的大规模裁员与 AI 投资并重，是“AI 替代白领”叙事在企业级市场的具体案例。对 PM 的警示是：AI 产品的价值主张必须明确指向可量化的效率提升或人力替代，否则企业客户难以承担转型成本。</p>
+        <p><b>AI Builder 视角：</b>OCI 的大规模扩建意味着更多企业工作负载将迁移到云端 GPU/AI 基础设施，Builder 需要关注多云部署和成本控制。</p>
+        <p><b>研究型 Builder 视角：</b>这更多是一个商业/劳动力市场信号，而非技术创新，但对研究 AI 社会影响具有参考价值。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周复盘你负责的 AI 功能是否能量化节省人天或提升产出，准备 ROI 案例。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://arstechnica.com/ai/2026/06/oracles-21000-layoffs-help-drive-its-debt-fueled-ai-investments">Ars Technica：AI（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">06</div>
+      <div class="body">
+        <h4>五眼联盟警告：AI 网络威胁数月内将影响普通用户</h4>
+        <p><b>分析：</b>五眼联盟网络安全部门联合警告，即将到来的 AI 模型将降低编写复杂攻击代码的门槛；自动化智能体可全天候扫描互联网漏洞，AI 驱动的超个性化钓鱼诈骗已在亚太蔓延。</p>
+        <p><b>AI PM 视角：</b>AI 安全从合规话题变成产品差异化卖点。企业客户将更关注 AI 产品的安全边界、数据隔离、审计和对抗性攻击防护。对安全类产品 PM 而言，这是明确的市场需求信号。</p>
+        <p><b>AI Builder 视角：</b>AI 驱动的自动化漏洞扫描和钓鱼需要防御侧 AI 的同步进化，安全团队应引入 AI 辅助的威胁检测与响应。</p>
+        <p><b>研究型 Builder 视角：</b>攻防双方的 AI 化是一个值得持续跟踪的研究领域，尤其是 AI 生成攻击代码的可检测性。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周审查产品中 AI 生成内容的审核策略和敏感数据访问日志。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.artificialintelligence-news.com/news/five-eyes-warning-ai-cyber-threats">Artificial Intelligence News（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">07</div>
+      <div class="body">
+        <h4>AI 招聘工具存在种族偏见和系统性排斥；黑人占比 26%，亚裔占比 15%</h4>
+        <p><b>分析：</b>一项覆盖 340 万人、400 万份申请、150 家雇主和 1700 个职位的大规模实地研究发现，AI 招聘筛选工具存在显著种族歧视：26% 的黑人申请者和 15% 的亚裔申请者遭遇算法对其族群的系统性排斥。</p>
+        <p><b>AI PM 视角：</b>这是 AI 公平性与合规风险的又一记警钟。对 HR Tech PM 而言，算法单一文化、第三方供应商黑箱、缺乏独立监管是三大风险点。产品设计上必须引入多样性基线测试、人工复核和可解释性报告。</p>
+        <p><b>AI Builder 视角：</b>需要建立算法公平性评估 pipeline，包括代表性测试集、偏见指标监控和模型版本对比。</p>
+        <p><b>研究型 Builder 视角：</b>大规模实地研究与同期未用 AI 数据的对照增强了因果推断可信度，“算法单一文化”的概念值得产品化风险评估借鉴。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周检查产品中涉及排序/推荐的算法是否有多样性基线测试和人工复核机制。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://hai.stanford.edu/news/ai-hiring-tools-can-yield-racial-bias-and-systemic-rejection">Stanford HAI</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">08</div>
+      <div class="body">
+        <h4>九位评委，两个有效投票：相关错误削弱 LLM 评审面板</h4>
+        <p><b>分析：</b>苹果机器学习研究团队发现，LLM-as-a-judge 面板因模型间高度相关而严重受限。对 7 个模型家族的 9 个前沿大语言模型测试表明，9 位评委实际仅提供约 2 个独立投票的信息量，面板准确率比独立投票理想值低 8-22 个百分点。</p>
+        <p><b>AI PM 视角：</b>该研究直接挑战了“多模型投票更可靠”的评估假设。对依赖 LLM 做内容审核、推荐排序、自动评测的产品，这意味着需要引入真正异构的评委或人工兜底，避免伪多样性带来的评估偏差。</p>
+        <p><b>AI Builder 视角：</b>增加评委数量不如引入跨家族、跨规模、跨训练目标的异构模型，同时需要人工校准集作为 ground truth。</p>
+        <p><b>研究型 Builder 视角：</b>瓶颈在于评委间相关性而非聚合算法，这对自动评估方法论有根本性影响。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周检查产品中 LLM 评估流程是否引入跨家族/跨规模模型，避免同一家族多模型的伪多样性。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://machinelearning.apple.com/research/correlated-llm-evaluation-panels">Apple Machine Learning Research（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架 1: 从“工具”到“同事”——AI 的交互范式迁移</h4>
+        <p>今日多条事件共同说明，2026 年 AI 产品竞争的核心正在从“模型能力”转向“任务闭环”和“协作身份”：</p>
+<ul>
+<li>Seed2.1 强调通用 Agent 在生产力场景中的端到端交付；JoyAI-VL-Interaction 把多模态交互从“上传回答”推进到“边看边说”的持续协作；Claude Tag 则让 AI 以独立 agent identity 进入 Slack 频道，成为团队的一员。</li>
+<li>这三条线的交汇点是：AI 不再只是生成内容的工具，而是可以异步推进工作、与其他成员共享上下文、对结果负责的“数字同事”。</li>
+</ul>
+<p><strong>产品启示</strong>: PM 在定义 AI 功能时，应把“任务完成率”“人机交接协议”“组织身份与权限”作为核心设计变量，而不是只优化单轮生成质量。评估标准要从“模型好不好”升级为“AI 能不能在真实工作流里被信任地委托任务”。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架 2: 端云协同的生成式 AI 架构</h4>
+        <p>今天的生成能力发布呈现出明显的部署形态分化：</p>
+<ul>
+<li>FastWan-QAD 走本地消费级显卡路线，强调低延迟和隐私；豆包音频生成和 Seed2.1 走云端 API 路线，强调易接入和全栈能力；Mistral OCR 4 则同时提供 API 和自托管，试图兼顾灵活性与合规。</li>
+<li>三种形态并非替代关系，而是对应不同的数据敏感度、延迟要求和成本结构。</li>
+</ul>
+<p><strong>产品启示</strong>: 选择部署形态时应从用户场景出发，而不是默认 SaaS API。隐私敏感、需要实时反馈、生成频次高的场景更适合端侧或私有化；需要最新模型能力、多租户、低频高精度的场景更适合云端。PM 应在产品架构中预留“端-边-云”切换能力，以应对未来硬件和政策的快速变化。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架 3: 评测、偏见与信任基础设施</h4>
+        <p>LLM-as-judge 相关错误、AI 招聘偏见、五眼联盟安全警告三件事共同指向一个趋势：AI 系统需要更独立的评测、审计和防御层。</p>
+<ul>
+<li>评委相关性研究表明，现有自动评估方法可能系统性高估模型表现；招聘偏见研究表明，AI 系统会在真实社会中放大结构性不平等；五眼警告则表明，AI 本身正在成为新的攻击面。</li>
+<li>这三件事都在说：AI 产品的“信任基础设施”还没有跟上模型能力的发展。</li>
+</ul>
+<p><strong>产品启示</strong>: 将评测、安全审核和公平性测试作为产品功能而非后置合规。对 B2B 产品，可提供模型评估报告、偏见检测工具和审计日志作为增值服务；对 C 端产品，应建立用户可感知的安全边界和申诉机制。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>Seed2.1 官方博客</strong>: 理解字节对生产力 Agent 的基准定义，重点关注 Agents' Last Exam、MobileWorld、CreativeWork 三个任务如何映射到真实工作流。</p>
+<p><b>2.</b> <strong>Claude Tag 官方介绍</strong>: 体验 Slack 中 AI 作为团队成员的协作模式，记录“环境行为”可能带来的权限和审计挑战。</p>
+<p><b>3.</b> <strong>Stanford HAI 招聘偏见研究</strong>: 了解 AI 公平性的大规模实证证据，思考如何在你的产品中建立算法问责机制。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>在豆包/TRAE 中跑通一个 Seed2.1 真实工作流</strong>: 选择需求文档→代码框架→单元测试链路，记录任务完成率与现有模型对比。</p>
+<p><b>2.</b> <strong>用 Mistral OCR 4 处理内部文档并对比现有方案</strong>: 重点测试表格、公式、签名和手写内容的召回率。</p>
+<p><b>3.</b> <strong>为团队制定 Claude Tag / Agent Identity 试点方案</strong>: 限定 1 个频道、3-5 名成员、明确人机交接规则。</p>
+<p><b>4.</b> <strong>检查产品中 LLM-as-judge 评估流程的评委多样性</strong>: 避免同一家族多模型的伪多样性，引入人工校准集。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>未来 6 个月：具备“Agent 身份”的协作 AI 将成为企业 SaaS 标配</strong>: 证据来自 Claude Tag、Agent Identity 访问模型以及 Seed2.1 对企业 Agent 的强调。</p>
+<p><b>2.</b> <strong>未来 12 个月：端侧生成模型将催生新的本地创意工具品类</strong>: 证据来自 FastWan-QAD 在消费级显卡上的可用性，以及 Meta AI 眼镜硬件的持续投入。</p>
+<p><b>3.</b> <strong>未来 12-18 个月：AI 评测、安全与公平性审计将成为独立产品线</strong>: 证据来自 LLM-as-judge 相关性研究、招聘偏见研究和五眼联盟安全警告共同催生的合规需求。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题 1: 当 AI 从“工具”变成“同事”，产品的成功标准应该如何重新定义？</h4>
+        <p>今日 Seed2.1、Claude Tag 和 JoyAI-VL-Interaction 都在推动 AI 向“可委托任务的协作者”演进。传统以单轮生成质量、BLEU、幻觉率等指标为核心的评估体系，可能无法捕捉 AI 在异步协作中的真实价值。PM 需要思考：如何衡量 AI 在团队中的“可信度”和“任务推进效率”？</p>
+<ul>
+<li><strong>产品策略层面</strong>: 你的核心场景是否允许 AI 在少量人工监督下自主推进任务？</li>
+<li><strong>团队执行层面</strong>: 你需要哪些新指标（如任务完成率、回滚率、人机交接次数）来评估 AI 同事的表现？</li>
+<li><strong>风险机会层面</strong>: 当 AI 以独立身份行动时，责任边界和审计机制如何设计才能避免组织风险？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题 2: 端侧生成能力崛起后，云端 API 的护城河还剩什么？</h4>
+        <p>FastWan-QAD 在单张 RTX 5090 上实现 1.8 秒生成 5 秒视频，说明消费级硬件正在快速逼近云端模型的可用性边界。这对以 API 为核心的商业模式构成潜在冲击。</p>
+<ul>
+<li><strong>产品策略层面</strong>: 你的视频/音频/图像生成产品是否区分了“原型”和“生产”两个场景，并匹配不同的部署形态？</li>
+<li><strong>团队执行层面</strong>: 如何在产品架构中预留端云切换能力，以应对硬件性能跃迁？</li>
+<li><strong>风险机会层面</strong>: 当本地模型足够好时，云端 API 应通过什么（更大模型、更全功能、更优服务）维持溢价？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题 3: 多模态交互的下一个战场是“准确率”还是“自然度”？</h4>
+        <p>JoyAI-VL-Interaction 在监控预警场景取得 100% 胜率，却在通用视频通话中只取得 77.6%-87.9% 的胜率。这说明多模态 AI 在垂直封闭场景中表现优异，但在开放域自然交互中仍有明显天花板。</p>
+<ul>
+<li><strong>产品策略层面</strong>: 你的多模态产品应优先切入封闭可控的垂直场景，还是追求开放域通用体验？</li>
+<li><strong>团队执行层面</strong>: 如何设计产品边界，让用户明确知道 AI 能主动做什么、不能做什么？</li>
+<li><strong>风险机会层面</strong>: 当 AI 主动判断错误时，如何设计纠错机制以保护用户安全和信任？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题 4: AI 评测基础设施的失效会如何反噬产品决策？</h4>
+        <p>苹果的研究表明，LLM-as-judge 面板中 9 个评委实际只提供约 2 个独立投票的信息量。这意味着许多基于 LLM 评测的产品决策可能建立在不稳健的评估之上。</p>
+<ul>
+<li><strong>产品策略层面</strong>: 你的产品是否过度依赖自动化评测来筛选功能或模型版本？</li>
+<li><strong>团队执行层面</strong>: 如何建立一个既高效又可信的混合评测体系（自动+人工+异构模型）？</li>
+<li><strong>风险机会层面</strong>: 评测基础设施的不完善，是否会为第三方评测/审计服务创造新的市场机会？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题 5: 当 AI 安全从合规变成产品卖点，企业应如何构建“可信 AI”叙事？</h4>
+        <p>五眼联盟警告、Oracle AI 裁员、招聘偏见研究共同将 AI 的安全、公平和劳动力影响推到前台。企业客户不再只问“AI 能做什么”，还会问“AI 会不会带来风险”。</p>
+<ul>
+<li><strong>产品策略层面</strong>: 你的 AI 产品是否有清晰可解释的安全边界和审计能力？</li>
+<li><strong>团队执行层面</strong>: 如何将公平性测试、安全审核和人工复核嵌入产品发布流程？</li>
+<li><strong>风险机会层面</strong>: 在监管逐步收紧的背景下，“可信 AI”认证或审计报告是否会成为 B2B 销售的关键差异化因素？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A: AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 在豆包或 TRAE 中完成一次端到端任务闭环（如从需求描述生成可运行代码）—— 体验 Seed2.1 的产品化能力。</p>
+<p><b>2.</b> 在 Slack 中试用 Claude Tag（如可获得权限），观察多用户协作中的上下文记忆与异步推进机制。</p>
+<p><b>3.</b> 用 Mistral OCR 4 处理一份真实业务文档，记录其在表格、公式、签名上的表现。</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 为你的产品设计一个“AI 同事”任务委托流程，明确触发条件、执行边界、人工复核点和回滚机制。</p>
+<p><b>2.</b> 建立端到端任务完成率的评估框架，替代单一的单轮对话指标。</p>
+<p><b>3.</b> 调研目标客户对端侧部署 vs 云端 API 的偏好，制定灵活的部署策略。</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 跟踪 Agents' Last Exam、MobileWorld、CreativeWork 等 Agent 基准的演进，建立行业能力坐标。</p>
+<p><b>2.</b> 将算法公平性、安全审计和可信 AI 纳入产品路线图和卖点设计。</p>
+<p><b>3.</b> 研究 Claude Tag、Agent Identity 等企业协作 AI 的权限模型，为未来 B2B 功能做架构储备。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B: AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 通过火山方舟调用 Seed2.1 API，测试其在代码生成、多模态理解和 Agent 任务拆解上的表现。</p>
+<p><b>2.</b> 下载 JoyAI-VL-Interaction 开源部署包，用本地摄像头跑通一个实时告警 demo。</p>
+<p><b>3.</b> 在本地 RTX 40/50 系列显卡上部署 FastWan-QAD，测量生成延迟和显存占用。</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 用 CUGA 框架搭建一个内部工具调用 Agent，对比其 planner 与现有方案在真实 API 上的稳定性。</p>
+<p><b>2.</b> 将 Mistral OCR 4 接入内部 RAG pipeline，对比预处理代码量和检索质量。</p>
+<p><b>3.</b> 为产品构建一个 LLM-as-judge 评估体系，引入跨家族模型和人工校准集。</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 研究 Seed2.1 和 JoyAI-VL-Interaction 的 post-training 策略，尝试在自有数据上做 SFT/RLHF。</p>
+<p><b>2.</b> 探索 FastWan-QAD 的量化感知蒸馏方案在本地音频/图像生成上的迁移可能。</p>
+<p><b>3.</b> 设计一个企业级 Agent Identity 权限系统，与现有 IAM/SSO 集成。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C: 研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 阅读 Seed2.1 官方博客，梳理其在 Agent、代码、多模态三个方向的能力矩阵和研究假设。</p>
+<p><b>2.</b> 复现 Apple 的 LLM-as-judge 相关性研究，用自有评估数据验证评委多样性假设。</p>
+<p><b>3.</b> 用 Stanford HAI 的招聘偏见研究框架，分析你的排序/推荐模型在不同人群上的表现。</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 对 JoyAI-VL-Interaction 做垂直场景微调，量化其在主动事件检测上的准确率和延迟。</p>
+<p><b>2.</b> 在自有文档集上复现 Mistral OCR 4 的版面分析能力，分析错误模式。</p>
+<p><b>3.</b> 复现 FastWan-QAD 的 QAD 蒸馏流程，评估其对生成质量和推理速度的影响。</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 设计一个新的多模态 Agent 评测任务，弥补现有基准与真实工作流之间的差距。</p>
+<p><b>2.</b> 研究“AI 作为组织成员”的权限、记忆和审计问题，发表技术博客或开源工具。</p>
+<p><b>3.</b> 探索端云协同的生成模型架构，提出一种新的部署或缓存策略。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D: 快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>生产力 Agent 能力</td><td>Seed2.1 官方博客</td><td>20 分钟</td></tr><tr><td>实时视频交互</td><td>JoyAI-VL-Interaction 开源仓库与部署文档</td><td>2-4 小时</td></tr><tr><td>企业协作 AI 设计</td><td>Claude Tag 与 Agent Identity 官方博客</td><td>30 分钟</td></tr><tr><td>端侧视频生成</td><td>FastWan-QAD GitHub 仓库</td><td>2-4 小时</td></tr><tr><td>文档结构理解</td><td>Mistral OCR 4 官方文档</td><td>1 小时</td></tr><tr><td>LLM 评测方法论</td><td>Apple: Correlated Errors in LLM Evaluation Panels</td><td>1 小时</td></tr><tr><td>AI 公平性实证</td><td>Stanford HAI: AI Hiring Tools Can Yield Racial Bias</td><td>1 小时</td></tr><tr><td>轻量 Agent 框架</td><td>IBM CUGA on Hugging Face</td><td>1-2 小时</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-23.html">
+      <span class="date">2026-06-23</span>
+      <span class="title">Agent 产品化加速与基准可信危机</span>
+      <span class="angle">Agent 正从能力演示收敛为产品形态与工程规范，同时公开 benchmark 的奖励黑客问题敲响评估可信警钟</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-22.html">
+      <span class="date">2026-06-22</span>
+      <span class="title">Mythos 攻破 NSA 与 AI 入口企业双战</span>
+      <span class="angle">超级 AI 安全能力击穿国家机密防线，模型入口聚合与企业规模化部署同步重塑产业权力结构。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-21.html">
+      <span class="date">2026-06-21</span>
+      <span class="title">模型中间商崛起与Agent实战</span>
+      <span class="angle">当全球 AI 模型流通从单极出口转向双向转售，Agent 构建正从 Demo 走向可复用的工程化架构。</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>175 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+      <div class="meta" style="margin-top:8px;color:var(--ink-soft)"><strong>生成时间</strong>: 2026-06-24 <strong>数据来源</strong>: <a href="https://aihot.virxact.com">AI HOT</a> 日报 API <strong>解读视角</strong>: AI 产品经理 & AI Builder & 研究型 Builder</div>
+    </div>
+  </footer>
+</body>
+</html>
