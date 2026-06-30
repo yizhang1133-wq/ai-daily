@@ -123,8 +123,20 @@
     "title": "Agentic 工作拐点与开源-监管-硬件三力重塑",
     "angle": "Codex 内部数据验证 Agent 成为知识工作默认界面，开源编码模型、政府安全审查与亚纳米芯片同时改写 AI 产品的成本、合规与竞争格局"
   },
+  "2026-06-27": {
+    "title": "GPT-5.6预览与SWE-bench信任危机",
+    "angle": "OpenAI 预告 GPT-5.6 Sol、Cursor 揭示 SWE-bench Pro 奖励攻击、出版业集体诉讼同日爆发，AI 行业正从能力竞赛进入可信度与合规性双重考验"
+  },
+  "2026-06-28": {
+    "title": "DeepSeek加速与企业模型成本转向",
+    "angle": "DeepSeek 开源 DSpark 投机解码框架、SpaceX 合并 xAI 为 SpaceXAI、美国企业因账单失控转向低成本模型，AI 产业进入成本优化与垂直整合并行的新阶段"
+  },
   "2026-06-29": {
     "title": "小模型推理突围与Agent可靠性质疑",
     "angle": "Grok 4.5 私测与 VibeThinker-3B 开源显示模型能力仍在快速迭代，但 CEO-Bench 和《文明 VI》实验同时暴露 Agent 长期一致性与感知执行仍是产品化瓶颈"
+  },
+  "2026-06-30": {
+    "title": "移动Agent入口与推理成本革命",
+    "angle": "国产超大MoE登顶、移动Agent入口爆发与推理引擎优化同日共振，AI产品竞争正从模型能力转向异步体验与单位经济模型"
   }
 }
