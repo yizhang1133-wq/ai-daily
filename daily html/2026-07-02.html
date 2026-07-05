@@ -1,0 +1,992 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-07-02</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>183</span></div>
+    <div><b>ISS.</b><span>2026-07-02</span></div>
+    <div><b>EVT.</b><span>22 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 183</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">2</div>
+    <div class="meta-col">
+      <h2>国产万亿MoE与语音Agent商业化共振</h2>
+      <p>国产算力支撑万亿参数模型登顶，语音Agent和无代码平台加速产品化，同时AI信任危机与算力变现并行重塑产业规则</p>
+      <div class="meta-row"><b>日期</b> 2026-07-02</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 183 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">国产算力</span>支撑万亿参数模型登顶，语音Agent和无代码平台加速产品化，同时AI信任危机与算力变现并行重塑产业规则
+    </div>
+    <div class="credits">
+      
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 4<br>
+      IMPORTANT 6<br>
+      REFERENCE 12<br>
+      <hr>
+      <b>THEMES</b><br>
+      国产万亿 MoE、语音 Agent 无代码平台、AI 信任危机、算力云变现<br>
+      扩散语言模型、GPT-5.6 多 Pro 变体、AWS 驻场服务、Cloud<br>
+      AI 爬虫管理、开发者环境、云 IDE、教育峰会、Agent 路由、AI 存<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架 1: 从“模型能力竞赛”到“算力-模型-入口”三位一体<br>
+      框架 2: Agent 经济的支付与信任基础设施正在同步成型<br>
+      框架 3: 模型分层与服务化是成本优化的核心杠杆
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>4 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>美团 LongCat-2.0 正式发布：国产算力集群训练的万亿参数大模型</h3>
+          <p>美团于 6 月 30 日发布并开源新一代万亿参数大模型 LongCat-2.0，总参数 1.6T、平均激活约 48B，原生支持 1M 超长上下文，并在五万卡国产算力集群上完成全流程训练与推理。模型采用 LSA 稀疏注意力、零计算专家、ScMoE 及 MOPD 多专家融合架构，在 SWE-bench Pro 上取得 59.5、SWE-bench Multilingual 上取得 77.3 的成绩，预览版已通过 OpenRouter 和 longcat.ai 开放，月调用量已跻身 OpenRouter 全球前三。</p>
+          <p><b>AI PM 视角：</b>LongCat-2.0 的发布标志着国产 AI 基础设施进入“可用且领先”的阶段。过去市场普遍认为国产算力在规模化和效率上难以与 NVIDIA 生态抗衡，但五万卡国产集群完成万亿参数 MoE 的全流程训练与推理，意味着国产芯片、网络拓扑、训练框架和推理引擎已经跑通了从 0 到 1 的工程闭环。对于 AI PM 来说，这一事件的核心信号是：国产模型的成本曲线和自主可控性正在快速改善，企业客户在选择基座模型时的地缘政治风险显著下降。
+
+从产品竞争格局看，LongCat-2.0 在 SWE-bench 系列上的高分直接指向“AI 编程 Agent”这一高价值场景。美团本身拥有庞大的本地生活业务和数据，模型开源后有望在开发者生态中形成差异化定位——不仅是“又一个中国模型”，而是具备超长上下文和复杂代码理解能力的工程模型。月调用量跻身 OpenRouter 全球前三说明市场已经开始用脚投票，海外开发者对国产高性能模型的接受度超出预期。</p>
+
+          <p><b>研究型 Builder 视角：</b>技术层面最值得关注的是 LSA 稀疏注意力与 MOPD 多专家融合的协同设计。LSA 稀疏注意力在 1M 长上下文场景下降低显存和计算开销，而 MOPD 将 Agent、Reasoning、Interaction 三类专家动态组合，本质上是在模型内部实现了任务感知的条件计算。零计算专家进一步压缩了推理时的无效激活，48B 平均激活参数在 1.6T 总参数中意味着极高的稀疏度。需要验证的是：这种稀疏架构在真实企业代码库上的端到端延迟、KV Cache 压缩比，以及长上下文下的召回稳定性。如果可复现，它将为国产芯片上的高效推理提供一套可迁移的架构范式。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：在 OpenRouter 或 longcat.ai 上申请 LongCat-2.0 的 API 权限，用自有代码库测试其 128K/1M 长上下文理解和多文件编辑能力，记录与 Claude/GPT 的 SWE-bench 等价任务差异。
+- **本季度可做**：如果你是 ToB 产品负责人，评估将国产模型作为“合规备线”或“成本优化线”的可行性，特别是在金融、政务、制造等对数据主权敏感的行业。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/9XFcx3fmFcmbry5bHMJsow">公众号：龙猫LongCat（美团）</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>xAI 发布 Voice Agent Builder 测试版</h3>
+          <p>xAI 推出基于 Grok Voice 的无代码平台 Voice Agent Builder，宣称可在两分钟内创建生产级语音智能体。平台集成电话、知识检索、工具、MCP、Guardrails 及可观测性，支持连接 SIP 号码、API 和 WebSocket，采用端到端语音到语音路径。在 τ-voice Bench 上，Grok Voice Think Fast 1.0 得分 67.3%，显著领先 Gemini 3.1 Flash Live（43.8%）和 GPT Realtime 1.5（35.3%），定价为每分钟音频 0.05 美元、电话费 0.01 美元，并提供 80+ 种语音及声音克隆，每个账户附赠一个免费电话号码。</p>
+          <p><b>AI PM 视角：</b>Voice Agent Builder 的发布标志着语音 AI 从“演示级交互”正式迈入“可配置、可计费、可观测”的产品化阶段。与 GPT Realtime 或 Gemini Live 更偏向消费者体验不同，xAI 直接瞄准企业场景：客服外呼、预约提醒、售后支持、销售线索筛选。每分钟 0.05 美元的音频定价将语音交互的单位经济模型拉低到接近传统 IVR 甚至人工客服的十分之一，这对呼叫中心、SaaS 客服和垂直服务行业是明确的替代信号。
+
+更深层的影响在于平台对 MCP 和工具集成的原生支持。语音智能体不再只是“会说话”，而是可以调用日历、CRM、订单系统、知识库，完成端到端任务。这意味着语音交互正在复制当年聊天机器人向 Agent 的演进路径：从单轮问答到多轮任务执行。对于 AI PM，关键判断是：你的业务场景中，哪些高频、低复杂度、需要即时响应的任务可以被语音 Agent 接管？以及，语音作为入口是否会改变现有 App 的交互层级？</p>
+
+          <p><b>研究型 Builder 视角：</b>τ-voice Bench 上 67.3% 的领先分数需要拆开看：它衡量的是可打断对话、语义理解和指令遵循的综合能力。端到端语音到语音路径意味着延迟可以压到 500ms 以内，这对实时性要求高的场景是质变。但技术风险在于方言、噪声环境、多说话人重叠等真实场景下的鲁棒性，以及声音克隆带来的身份冒用风险。可复现性方面，建议关注 xAI 是否开源评估脚本和基准数据，因为语音评测的“演示集偏差”一直比较严重。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：用 Voice Agent Builder 搭建一个最小可行场景（如预约确认或订单查询），对比其与 Bland、Retell、Vapi 等现有语音 Agent 平台的延迟、打断自然度和工具调用稳定性。
+- **本季度可做**：如果你是客服/销售类产品负责人，设计一个“语音 Agent 替代人工坐席”的 ROI 模型，重点量化接通率、任务完成率、客户满意度（CSAT）和平均处理时长（AHT）。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.ai/news/grok-voice-agent-builder">xAI：News（网页）</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>Anthropic 在 Claude Code 中植入隐写术识别中国用户</h3>
+          <p>社区逆向发现 Anthropic 在 Claude Code 中植入隐写机制：通过读取本地时区（Asia/Shanghai 或 Asia/Urumqi）和 ANTHROPIC_BASE_URL 环境变量，与一份经 base64+XOR（密钥 91）加密的 147 个域名列表（含美团、字节跳动、月之暗面等）比对，识别中国用户。识别后，系统会在请求发送前将系统提示词中日期字符串的单引号替换为其他 Unicode 字符、连字符改为斜杠，作为 2-3 比特分类标记传回服务器。该隐蔽行为被曝光后引发巨大争议，被认为破坏用户信任。</p>
+          <p><b>AI PM 视角：</b>这是 2026 年 AI 行业信任危机中最具标志性的事件之一。Anthropic 一直以“安全、透明、负责任 AI”自居，但此次被曝出在客户端使用隐写术和加密域名列表对用户进行区域识别，与其公开价值观形成强烈反差。对 AI PM 的警示是：用户隐私和合规风险不再只是法务或安全团队的职责，而是产品设计的核心约束。任何依赖客户端环境变量、时区或域名推断用户身份的逻辑，都可能被逆向并放大为品牌危机。
+
+从竞争格局看，这一事件可能加速中国企业客户和开发者转向国产或自托管模型。尤其是名单中包含美团、字节跳动、月之暗面等中国科技公司，说明 Anthropic 的识别逻辑不仅是“合规区分”，更带有竞争情报和地缘风险管控的色彩。对于出海产品，这意味着你需要重新审视：你的 AI 供应商是否在暗中收集或标记用户数据？你的用户协议是否真正覆盖了这些行为？</p>
+
+          <p><b>研究型 Builder 视角：</b>技术上，这一事件展示了隐写术（steganography）在客户端-服务器通信中的实际应用：通过微调系统提示中的无害字符（单引号变体、连字符/斜杠）嵌入 2-3 比特信息。虽然每比特信息量小，但足以对用户进行粗粒度分类。更值得关注的是 base64+XOR 的“轻量混淆”方案——它不是为了抵御国家级逆向，而是为了规避常规代码审计和静态扫描。研究型 Builder 应该思考：你的系统中是否存在类似的“软水印”或“环境指纹”逻辑？它们是否被明文记录在安全审计范围内？</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：对你的产品进行一轮“隐写/水印/环境指纹”自查，重点检查系统提示词、错误信息、日期/时间格式化逻辑中是否存在异常字符替换或编码模式。
+- **本季度可做**：如果你是企业级 AI 产品负责人，建立供应商安全审计清单，要求模型供应商披露客户端数据收集、区域识别和提示词传输的完整行为，并将其纳入合同 SLA。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/yLb4T2UC16ebKHApdBbgWw">公众号：数字生命卡兹克</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">04<small>TH</small></div>
+        <div>
+          <h3>Meta 效仿 SpaceX，将过剩 AI 算力变现</h3>
+          <p>据 Bloomberg 报道，Meta 正计划推出云基础设施业务 Meta Compute，对外出售 AI 计算能力和模型访问权限，直接与 AWS、Google Cloud 及 Azure 竞争。Meta 已承诺未来几年投入 1829 亿美元建设 AI 基础设施，其中俄亥俄州数据中心（规模如曼哈顿）将于今年上线。新业务由基础设施主管 Santosh Janardhan、Meta 超级智能实验室负责人 Daniel Gross 和总裁 Dina Powell McCormick 领导，可能效仿 CoreWeave 出售裸计算能力，并像 AWS 一样托管 AI 模型。</p>
+          <p><b>AI PM 视角：</b>Meta Compute 的传闻是“AI 算力军备竞赛”进入变现阶段的标志。过去两年，Meta、Google、Microsoft、xAI 都在疯狂囤积 GPU 和建设数据中心，但当训练需求波动或模型效率提升时，这些算力会变成沉没成本。Meta 的做法与 SpaceX 通过 Starlink 将火箭产能转化为商业服务类似：把内部基础设施外部化，既分摊成本，又建立新的收入曲线。
+
+对 AI PM 的影响是双重的。一方面，更多算力供给意味着推理成本将持续下降，创业公司和大企业都能以更低价格获得顶级 GPU 资源；另一方面，云市场的竞争将更加激烈，AWS、Azure、GCP 可能被迫进一步降价或捆绑模型服务。对于企业客户，选择供应商时的议价空间增大，但需要警惕“锁定风险”——Meta 的云是否会优先优化自有模型（如 Llama、Muse Spark）？是否会限制对竞争对手模型的支持？</p>
+
+          <p><b>研究型 Builder 视角：</b>从基础设施角度看，Meta 此举验证了一个趋势：超大规模训练集群正在从“专有研发资产”变为“可出租的生产资源”。这要求集群具备多租户隔离、动态调度、网络 QoS 和能效管理能力。俄亥俄州数据中心的规模如曼哈顿，意味着液冷、电力和网络架构都达到极限工程水平。研究型 Builder 可以关注：Meta 是否会开放其集群调度系统？其 Tectonic 存储架构与 GPU 计算如何协同？这些经验将对整个行业的 AI 基础设施设计产生溢出效应。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：梳理你当前 AI 产品的算力成本结构，识别哪些工作负载可以迁移到按需租赁的 GPU 集群，而非绑定单一云厂商的长期预留实例。
+- **本季度可做**：如果你是基础设施或平台产品负责人，评估“算力即服务”模式是否适用于你的组织——例如，将非峰时段的训练/微调算力开放给内部其他团队或外部客户。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://techcrunch.com/2026/07/01/meta-like-spacex-looks-to-turn-excess-ai-compute-into-cash">TechCrunch：AI（RSS）</a></span>
+        </div>
+        <div class="tag">PLATFORM</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">6 IMPORTANT + 12 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://www.marktechpost.com/2026/07/01/nvidia-releases-nemotron-labs-twotower">NVIDIA 发布 Nemotron-Labs-TwoTower 开放权重扩散语言模型</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://the-decoder.com/openai-paper-reveals-three-gpt-5-6-pro-models-breaking-with-single-top-tier-strategy">OpenAI 论文揭示 GPT-5.6 三个 Pro 变体</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://www.ithome.com/0/971/071.htm">亚马逊 AWS 砸 10 亿美元，派遣工程师进驻客户公司</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div><a class="event-link" href="https://blog.cloudflare.com/monetization-gateway">Cloudflare 推出 Monetization Gateway：通过 x402 协议为任何资源收费</a></div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
+      <div>05</div><div><a class="event-link" href="https://developers.googleblog.com/build-agentic-full-stack-apps-with-genkit">用 Genkit 构建智能体全栈应用</a></div><div class="red">POLICY</div><div>主权</div><div class="right red">BLOOM</div>
+      <div>06</div><div><a class="event-link" href="https://github.com/anthropics/claude-code/releases/tag/v2.1.198">Claude Code v2.1.198 发布</a></div><div class="red">CREATIVE</div><div>音乐</div><div class="right red">X</div>
+      <div>07</div><div>Cloudflare 推出全新 AI 流量管理选项</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>08</div><div>智谱推出 GLM-5.2 官方开发环境 ZCode</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>09</div><div>Google Cloud Workbench Notebooks 扩展发布</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>10</div><div>Google 2026 年 6 月 AI 更新汇总</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>11</div><div>Runway 宣布与 Bertelsmann 达成创意合作</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>12</div><div>纽约市教育界和行业领袖齐聚 Google AI 教育峰会</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>13</div><div>mattpocockuk 的 /writing-great-skills</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>14</div><div>Meta 大规模 AI 存储蓝图</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>15</div><div>构建 AI 智能体应优先设计路由</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>16</div><div>关于 AI 重大问题的获奖征文</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>17</div><div>内容独立日一周年：构建智能体互联网的商业模型</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>18</div><div>Google 官方阐述为何构建 ADK 2.0</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">12 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>Cloudflare 推出全新 AI 流量管理选项</div><div>区分搜索/Agent/训练爬虫并保护广告页面，为内容方与 Agent 经济的共存提供治理工具。</div>
+      <div>02</div><div>智谱推出 GLM-5.2 官方开发环境 ZCode</div><div>国产模型厂商开始围绕 IDE 构建开发者生态，复制 Cursor/Copilot 的产品化路径。</div>
+      <div>03</div><div>Google Cloud Workbench Notebooks 扩展发布</div><div>VS Code 直连云端 Jupyter 降低 ML 开发门槛，云 IDE 成为模型厂商争夺开发者的新战场。</div>
+      <div>04</div><div>Google 2026 年 6 月 AI 更新汇总</div><div>Gemini 3.5 Live Translate 等更新显示 Google 在实时多语言交互上的持续投入。</div>
+      <div>05</div><div>Runway 宣布与 Bertelsmann 达成创意合作</div><div>生成式视频工具继续向媒体和娱乐行业深水区渗透，商业化路径逐渐清晰。</div>
+      <div>06</div><div>纽约市教育界和行业领袖齐聚 Google AI 教育峰会</div><div>AI 素养和人类技能培养成为教育共识，提示 K-12/职业教育场景的产品机会。</div>
+      <div>07</div><div>mattpocockuk 的 /writing-great-skills</div><div>AI Skill 编写方法论走红，说明 Agent 时代“提示工程”正在进化为“过程工程”。</div>
+      <div>08</div><div>Meta 大规模 AI 存储蓝图</div><div>数百 EB 级存储和低延迟 BLOB 架构是训练效率的隐藏战场，值得基础设施团队关注。</div>
+      <div>09</div><div>构建 AI 智能体应优先设计路由</div><div>路由层可将 70-80% 流量压到本地/异步模型，是控制 AI 成本的核心杠杆。</div>
+      <div>10</div><div>关于 AI 重大问题的获奖征文</div><div>AI 对社会经济影响的想象力仍在扩张，公益、产权和商业模式是长期议题。</div>
+      <div>11</div><div>内容独立日一周年：构建智能体互联网的商业模型</div><div>Cloudflare 推动的内容付费动态市场正在形成，Agent 互联网需要新的经济基础设施。</div>
+      <div>12</div><div>Google 官方阐述为何构建 ADK 2.0</div><div>Google 正通过 ADK 2.0 统一 Agent 开发体验，与 Genkit 形成互补布局。</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      国产算力支撑万亿参数模型登顶，语音Agent和无代码平台加速产品化，同时AI信任危机与算力变现并行重塑产业规则
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 4 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>美团 LongCat-2.0 正式发布：国产算力集群训练的万亿参数大模型</h4>
+        <p><b>AI PM 视角：</b>LongCat-2.0 的发布标志着国产 AI 基础设施进入“可用且领先”的阶段。过去市场普遍认为国产算力在规模化和效率上难以与 NVIDIA 生态抗衡，但五万卡国产集群完成万亿参数 MoE 的全流程训练与推理，意味着国产芯片、网络拓扑、训练框架和推理引擎已经跑通了从 0 到 1 的工程闭环。对于 AI PM 来说，这一事件的核心信号是：国产模型的成本曲线和自主可控性正在快速改善，企业客户在选择基座模型时的地缘政治风险显著下降。</p>
+<p>从产品竞争格局看，LongCat-2.0 在 SWE-bench 系列上的高分直接指向“AI 编程 Agent”这一高价值场景。美团本身拥有庞大的本地生活业务和数据，模型开源后有望在开发者生态中形成差异化定位——不仅是“又一个中国模型”，而是具备超长上下文和复杂代码理解能力的工程模型。月调用量跻身 OpenRouter 全球前三说明市场已经开始用脚投票，海外开发者对国产高性能模型的接受度超出预期。</p>
+        
+        <p><b>研究型 Builder 视角：</b>技术层面最值得关注的是 LSA 稀疏注意力与 MOPD 多专家融合的协同设计。LSA 稀疏注意力在 1M 长上下文场景下降低显存和计算开销，而 MOPD 将 Agent、Reasoning、Interaction 三类专家动态组合，本质上是在模型内部实现了任务感知的条件计算。零计算专家进一步压缩了推理时的无效激活，48B 平均激活参数在 1.6T 总参数中意味着极高的稀疏度。需要验证的是：这种稀疏架构在真实企业代码库上的端到端延迟、KV Cache 压缩比，以及长上下文下的召回稳定性。如果可复现，它将为国产芯片上的高效推理提供一套可迁移的架构范式。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：在 OpenRouter 或 longcat.ai 上申请 LongCat-2.0 的 API 权限，用自有代码库测试其 128K/1M 长上下文理解和多文件编辑能力，记录与 Claude/GPT 的 SWE-bench 等价任务差异。</li>
+<li><strong>本季度可做</strong>：如果你是 ToB 产品负责人，评估将国产模型作为“合规备线”或“成本优化线”的可行性，特别是在金融、政务、制造等对数据主权敏感的行业。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/9XFcx3fmFcmbry5bHMJsow">公众号：龙猫LongCat（美团）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>xAI 发布 Voice Agent Builder 测试版</h4>
+        <p><b>AI PM 视角：</b>Voice Agent Builder 的发布标志着语音 AI 从“演示级交互”正式迈入“可配置、可计费、可观测”的产品化阶段。与 GPT Realtime 或 Gemini Live 更偏向消费者体验不同，xAI 直接瞄准企业场景：客服外呼、预约提醒、售后支持、销售线索筛选。每分钟 0.05 美元的音频定价将语音交互的单位经济模型拉低到接近传统 IVR 甚至人工客服的十分之一，这对呼叫中心、SaaS 客服和垂直服务行业是明确的替代信号。</p>
+<p>更深层的影响在于平台对 MCP 和工具集成的原生支持。语音智能体不再只是“会说话”，而是可以调用日历、CRM、订单系统、知识库，完成端到端任务。这意味着语音交互正在复制当年聊天机器人向 Agent 的演进路径：从单轮问答到多轮任务执行。对于 AI PM，关键判断是：你的业务场景中，哪些高频、低复杂度、需要即时响应的任务可以被语音 Agent 接管？以及，语音作为入口是否会改变现有 App 的交互层级？</p>
+        
+        <p><b>研究型 Builder 视角：</b>τ-voice Bench 上 67.3% 的领先分数需要拆开看：它衡量的是可打断对话、语义理解和指令遵循的综合能力。端到端语音到语音路径意味着延迟可以压到 500ms 以内，这对实时性要求高的场景是质变。但技术风险在于方言、噪声环境、多说话人重叠等真实场景下的鲁棒性，以及声音克隆带来的身份冒用风险。可复现性方面，建议关注 xAI 是否开源评估脚本和基准数据，因为语音评测的“演示集偏差”一直比较严重。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：用 Voice Agent Builder 搭建一个最小可行场景（如预约确认或订单查询），对比其与 Bland、Retell、Vapi 等现有语音 Agent 平台的延迟、打断自然度和工具调用稳定性。</li>
+<li><strong>本季度可做</strong>：如果你是客服/销售类产品负责人，设计一个“语音 Agent 替代人工坐席”的 ROI 模型，重点量化接通率、任务完成率、客户满意度（CSAT）和平均处理时长（AHT）。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.ai/news/grok-voice-agent-builder">xAI：News（网页）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>Anthropic 在 Claude Code 中植入隐写术识别中国用户</h4>
+        <p><b>AI PM 视角：</b>这是 2026 年 AI 行业信任危机中最具标志性的事件之一。Anthropic 一直以“安全、透明、负责任 AI”自居，但此次被曝出在客户端使用隐写术和加密域名列表对用户进行区域识别，与其公开价值观形成强烈反差。对 AI PM 的警示是：用户隐私和合规风险不再只是法务或安全团队的职责，而是产品设计的核心约束。任何依赖客户端环境变量、时区或域名推断用户身份的逻辑，都可能被逆向并放大为品牌危机。</p>
+<p>从竞争格局看，这一事件可能加速中国企业客户和开发者转向国产或自托管模型。尤其是名单中包含美团、字节跳动、月之暗面等中国科技公司，说明 Anthropic 的识别逻辑不仅是“合规区分”，更带有竞争情报和地缘风险管控的色彩。对于出海产品，这意味着你需要重新审视：你的 AI 供应商是否在暗中收集或标记用户数据？你的用户协议是否真正覆盖了这些行为？</p>
+        
+        <p><b>研究型 Builder 视角：</b>技术上，这一事件展示了隐写术（steganography）在客户端-服务器通信中的实际应用：通过微调系统提示中的无害字符（单引号变体、连字符/斜杠）嵌入 2-3 比特信息。虽然每比特信息量小，但足以对用户进行粗粒度分类。更值得关注的是 base64+XOR 的“轻量混淆”方案——它不是为了抵御国家级逆向，而是为了规避常规代码审计和静态扫描。研究型 Builder 应该思考：你的系统中是否存在类似的“软水印”或“环境指纹”逻辑？它们是否被明文记录在安全审计范围内？</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：对你的产品进行一轮“隐写/水印/环境指纹”自查，重点检查系统提示词、错误信息、日期/时间格式化逻辑中是否存在异常字符替换或编码模式。</li>
+<li><strong>本季度可做</strong>：如果你是企业级 AI 产品负责人，建立供应商安全审计清单，要求模型供应商披露客户端数据收集、区域识别和提示词传输的完整行为，并将其纳入合同 SLA。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/yLb4T2UC16ebKHApdBbgWw">公众号：数字生命卡兹克</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>Meta 效仿 SpaceX，将过剩 AI 算力变现</h4>
+        <p><b>AI PM 视角：</b>Meta Compute 的传闻是“AI 算力军备竞赛”进入变现阶段的标志。过去两年，Meta、Google、Microsoft、xAI 都在疯狂囤积 GPU 和建设数据中心，但当训练需求波动或模型效率提升时，这些算力会变成沉没成本。Meta 的做法与 SpaceX 通过 Starlink 将火箭产能转化为商业服务类似：把内部基础设施外部化，既分摊成本，又建立新的收入曲线。</p>
+<p>对 AI PM 的影响是双重的。一方面，更多算力供给意味着推理成本将持续下降，创业公司和大企业都能以更低价格获得顶级 GPU 资源；另一方面，云市场的竞争将更加激烈，AWS、Azure、GCP 可能被迫进一步降价或捆绑模型服务。对于企业客户，选择供应商时的议价空间增大，但需要警惕“锁定风险”——Meta 的云是否会优先优化自有模型（如 Llama、Muse Spark）？是否会限制对竞争对手模型的支持？</p>
+        
+        <p><b>研究型 Builder 视角：</b>从基础设施角度看，Meta 此举验证了一个趋势：超大规模训练集群正在从“专有研发资产”变为“可出租的生产资源”。这要求集群具备多租户隔离、动态调度、网络 QoS 和能效管理能力。俄亥俄州数据中心的规模如曼哈顿，意味着液冷、电力和网络架构都达到极限工程水平。研究型 Builder 可以关注：Meta 是否会开放其集群调度系统？其 Tectonic 存储架构与 GPU 计算如何协同？这些经验将对整个行业的 AI 基础设施设计产生溢出效应。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：梳理你当前 AI 产品的算力成本结构，识别哪些工作负载可以迁移到按需租赁的 GPU 集群，而非绑定单一云厂商的长期预留实例。</li>
+<li><strong>本季度可做</strong>：如果你是基础设施或平台产品负责人，评估“算力即服务”模式是否适用于你的组织——例如，将非峰时段的训练/微调算力开放给内部其他团队或外部客户。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://techcrunch.com/2026/07/01/meta-like-spacex-looks-to-turn-excess-ai-compute-into-cash">TechCrunch：AI（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 6 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>NVIDIA 发布 Nemotron-Labs-TwoTower 开放权重扩散语言模型</h4>
+        <p><b>分析：</b>NVIDIA 发布 Nemotron-Labs-TwoTower，一种基于冻结自回归骨干 Nemotron-3-Nano-30B-A3B 的扩散语言模型，采用双塔架构（上下文塔冻结、降噪器塔训练），支持扩散、模拟 AR 和 AR 三种解码模式，在 2×H100 上 BF16 评估保留 98.7% 的 AR 基线质量，生成吞吐量提升 2.42 倍。</p>
+        <p><b>AI PM 视角：</b>扩散语言模型正在挑战自回归的统治地位。NVIDIA 的双塔设计通过冻结上下文塔、训练降噪器塔，在保持质量的同时显著提升生成吞吐量，这对需要低延迟、高并发的对话和内容生成产品是直接利好。产品层面，这意味着未来 6-12 个月可能出现“更快更便宜”的模型服务选项，但也需要重新评估流式输出、可控性和安全对齐策略。扩散模型的编辑能力（如局部重生成、约束采样）可能催生新的交互范式。</p>
+        
+        <p><b>研究型 Builder 视角：</b>双塔架构的层对齐交叉注意力和状态播种机制是技术亮点，值得验证其在长文本生成中的一致性和对提示词的忠实度。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你是模型服务产品经理，在本季度内做一个扩散模型 vs 自回归模型的延迟-质量-成本三角评估，为 2026 下半年的模型选型做准备。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.marktechpost.com/2026/07/01/nvidia-releases-nemotron-labs-twotower">MarkTechPost（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>OpenAI 论文揭示 GPT-5.6 三个 Pro 变体</h4>
+        <p><b>分析：</b>OpenAI 论文首次列出 GPT-5.6 的三个 Pro 变体：Luna Pro、Terra Pro 和 Sol Pro，在基因组学基准中 Sol Pro 以 31.5% 的通过率领先 60 个测试模型，但 Pro 版本相比标准版的提升逐级递减。</p>
+        <p><b>AI PM 视角：</b>OpenAI 正在放弃“单一顶级模型”策略，转向分层 Pro 矩阵。这对产品定价和用户体验设计有直接影响：未来 ChatGPT/Enterprise 可能需要让用户在不同“Pro 档位”之间选择，而不是简单的 Plus/Pro 二分。递减的提升曲线（Sol Pro 仅比标准 Sol 提升 2.8 个百分点）也提示边际收益递减，产品团队需要谨慎评估高价档位是否值得推向大众市场。</p>
+        
+        <p><b>研究型 Builder 视角：</b>论文未披露 Pro 版本的 token 用量和计算配置，这使得“性价比”无法独立验证，也引发了对 benchmark 结果可解释性的质疑。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你负责模型产品化，设计一个 A/B 测试框架，让用户在不知情的情况下体验不同档位模型，测量任务完成率和满意度，以判断分档策略的真实价值。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://the-decoder.com/openai-paper-reveals-three-gpt-5-6-pro-models-breaking-with-single-top-tier-strategy">The Decoder：AI News（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>亚马逊 AWS 砸 10 亿美元，派遣工程师进驻客户公司</h4>
+        <p><b>分析：</b>AWS 宣布设立新部门，组建前置驻场工程师团队，先期投入 10 亿美元，分批派驻客户企业，每批 5-6 组工程师，驻场周期 45 天，协助客户落地人工智能软件与智能体应用，首批客户包括 NBA 与理光。</p>
+        <p><b>AI PM 视角：</b>AWS 的“驻场工程师”模式表明 AI 企业服务的竞争已经从 API 和模型能力转向“最后一公里交付”。大客户需要的不是更好的模型，而是可落地的转型方案、组织变革和工程陪跑。这为 AI PM 指明了方向：ToB AI 产品的护城河正在从模型性能转向行业 know-how、集成深度和客户成功体系。</p>
+        
+        <p><b>研究型 Builder 视角：</b>驻场模式本质上是把 AI 落地方法论产品化，未来可能出现一套可复用的“Agent 落地剧本”和评估工具链。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你是 ToB AI 产品负责人，建立一个“客户成功 + 解决方案架构师”联合团队，为前 5 个标杆客户设计可复用的落地模板，并从中提炼行业套件。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.ithome.com/0/971/071.htm">IT之家（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>Cloudflare 推出 Monetization Gateway：通过 x402 协议为任何资源收费</h4>
+        <p><b>分析：</b>Cloudflare 开放 Monetization Gateway 候补名单，允许对 Cloudflare 背后的任何网页、数据集、API 或 MCP 工具收费，费用通过 x402 开放协议以稳定币结算，用户无需自建支付栈。</p>
+        <p><b>AI PM 视角：</b>这是“Agent 互联网”商业基础设施的关键拼图。随着 AI Agent 大规模抓取和调用 API，内容创作者和工具提供者需要新的计费模型。x402 协议让“按次付费”的 MCP 工具和数据服务成为可能，可能催生一个微支付驱动的 Agent 经济。</p>
+        
+        <p><b>研究型 Builder 视角：</b>x402 的开放协议设计值得关注，它需要在无信任环境中解决定价、计量、争议和结算问题。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你提供 API 或数据服务，评估是否可以通过 x402 为 AI Agent 调用设计“按 token/按调用”的付费层，抓住 Agent 经济的早期红利。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://blog.cloudflare.com/monetization-gateway">Cloudflare Blog</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>用 Genkit 构建智能体全栈应用</h4>
+        <p><b>分析：</b>Google 开源框架 Genkit 推出 Agents API，将消息历史、工具循环和流式传输封装为单一接口，支持状态持久化、历史分支、长时间运行任务及多智能体协调，目前以 TypeScript 和 Go 预览版发布。</p>
+        <p><b>AI PM 视角：</b>Genkit Agents API 的推出意味着 Google 正在把 Agent 开发从“框架拼搭”推进到“全栈标准化”。消息历史、工具循环、流式传输和状态持久化是几乎所有 Agent 都需要的底层能力，封装为单一接口可以显著降低开发门槛。这对 AI PM 的启示是：未来 Agent 产品的差异化将更多体现在业务逻辑和用户体验，而非底层编排。</p>
+        
+        <p><b>研究型 Builder 视角：</b>历史分支和长时间运行任务的支持是技术亮点，为复杂工作流和可恢复 Agent 提供了基础设施。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你是技术产品经理，在本季度组织一次 Genkit/ADK/LangGraph 的 Agent 框架选型评估，明确团队在不同场景下的技术栈选择。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://developers.googleblog.com/build-agentic-full-stack-apps-with-genkit">Google Developers Blog（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">06</div>
+      <div class="body">
+        <h4>Claude Code v2.1.198 发布</h4>
+        <p><b>分析：</b>Claude Code 发布 v2.1.198，Claude in Chrome 全面可用，新增后台智能体通知、/dataviz 技能、Gateway 支持 AWS 上的 Claude Platform，后台智能体现在可在 worktree 中自动提交、推送并创建草稿 PR。</p>
+        <p><b>AI PM 视角：</b>这一更新继续强化 Claude Code 作为“异步 Agent 工作流”入口的定位。后台智能体自动提交、推送、创建草稿 PR，意味着 AI 正在从“辅助编码”向“代理工程任务”演进。Claude in Chrome 的全面可用则把 Agent 能力扩展到浏览器交互，可能挑战现有 RPA 和自动化工具。</p>
+        
+        <p><b>研究型 Builder 视角：</b>后台 Agent 的可观测性、错误恢复和权限边界是关键技术挑战，需要关注 Anthropic 如何处理长时间运行任务的安全隔离。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你是工程效率产品负责人，在团队中试点 Claude Code 的后台 Agent 工作流，制定明确的代码审查和人工确认节点，防止自动化带来的回归风险。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.198">Claude Code：GitHub Releases（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架 1: 从“模型能力竞赛”到“算力-模型-入口”三位一体</h4>
+        <p>今天的多个事件共同指向一个结构变化：AI 产业的竞争单元不再是单一模型，而是“算力基础设施 + 基座模型 + 场景入口”的组合。</p>
+<ul>
+<li>美团 LongCat-2.0 证明国产算力可以支撑万亿参数模型；Meta Compute 则将过剩算力变现，说明算力本身正在成为独立业务。</li>
+<li>xAI Voice Agent Builder 和 Claude Code 的后台 Agent 分别抢占语音入口和工程入口。</li>
+<li>这三者的交集是：谁能在自己的算力上跑最好的模型，并通过最自然的入口触达用户，谁就能捕获最大价值。</li>
+</ul>
+<p><strong>产品启示</strong>: AI PM 在评估竞争时不应只看模型榜单，而要看对手的“算力-模型-入口”闭环是否完整。如果你的产品依赖第三方 API，需要尽早建立多模型路由和成本对冲策略；如果你有场景入口，思考是否能向上整合模型或向下整合算力。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架 2: Agent 经济的支付与信任基础设施正在同步成型</h4>
+        <p>Cloudflare 的 Monetization Gateway（x402）和 AI 流量管理选项，与 Anthropic 隐写术事件形成鲜明对照：一边是 Agent 互联网经济规则的建立，一边是用户信任基础的崩塌。</p>
+<ul>
+<li>x402 协议让 MCP 工具、API 和数据可以按调用付费，为 Agent 生态提供商业激励。</li>
+<li>AI 流量管理让内容方可以区分搜索、Agent 和训练爬虫，保护广告变现页面。</li>
+<li>Anthropic 隐写术事件则提醒我们：Agent 经济如果建立在隐蔽的数据收集之上，将遭遇强烈反弹。</li>
+</ul>
+<p><strong>产品启示</strong>: 构建 Agent 产品时，合规和透明应成为默认设计，而非事后补丁。尤其是涉及客户端数据、环境变量或提示词传输时，必须建立可审计、可解释的机制。信任的崩塌速度远快于建立速度。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架 3: 模型分层与服务化是成本优化的核心杠杆</h4>
+        <p>OpenAI 的 GPT-5.6 Pro 矩阵、NVIDIA 的扩散语言模型、以及“构建 AI 智能体应优先设计路由”的观点，共同指向一个方法论：通过智能路由和模型分层，把 70-80% 的流量压到更小、更快、更便宜的模型上。</p>
+<ul>
+<li>分层模型（Luna/Terra/Sol Pro）让用户为真正复杂的任务支付溢价。</li>
+<li>扩散模型在生成阶段提供更高的吞吐效率。</li>
+<li>路由层则根据任务复杂度动态选择模型，避免用大炮打蚊子。</li>
+</ul>
+<p><strong>产品启示</strong>: 不要试图用一个模型解决所有问题。产品团队应建立“任务复杂度评估 → 模型选择 → 成本计量 → 效果回传”的闭环，让 AI 支出与业务价值对齐。这是 AI 产品从“烧钱”走向“盈利”的关键。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>美团 LongCat-2.0 技术报告/开源仓库</strong>：重点看 MoE 稀疏架构、1M 长上下文实现和国产算力集群训练细节，判断其是否可作为国产替代的可行基座。</p>
+<p><b>2.</b> <strong>xAI Voice Agent Builder 文档与定价页</strong>：理解其无代码配置、MCP 集成和电话接入能力，评估对客服/销售场景的替代潜力。</p>
+<p><b>3.</b> <strong>Anthropic Claude Code 隐写术逆向分析原文</strong>：不仅是安全事件，更是理解“客户端合规识别”技术方案和信任风险的案例教材。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>模型选型刷新</strong>: 结合 LongCat-2.0、GPT-5.6 Pro 矩阵和 Nemotron-TwoTower，更新团队的模型选型矩阵，加入成本、延迟、可控性和合规维度。</p>
+<p><b>2.</b> <strong>语音 Agent POC</strong>: 用 xAI Voice Agent Builder 或同类工具搭建一个最小场景，验证语音交互在你业务中的任务完成率。</p>
+<p><b>3.</b> <strong>供应商安全审计</strong>: 对当前使用的 AI 工具进行一轮客户端行为审计，检查是否存在未披露的环境识别、水印或数据回传逻辑。</p>
+<p><b>4.</b> <strong>成本路由实验</strong>: 在你现有 AI 产品中引入任务复杂度路由，尝试将部分低复杂度请求切换到更小的模型或本地模型，量化成本节约。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>国产模型将成为企业“合规备线”标配（6-12 个月）</strong>: LongCat-2.0 等国产高性能模型的出现，会加速金融、政务、制造等行业采用国产基座作为核心或备份方案。</p>
+<p><b>2.</b> <strong>语音 Agent 将重塑客服和销售行业（12-24 个月）</strong>: 随着 xAI、OpenAI、Google 在语音 Agent 上的产品化推进，呼叫中心和销售外呼的自动化率将快速提升。</p>
+<p><b>3.</b> <strong>AI 信任与可审计性将成为产品差异化（24 个月以上）</strong>: Anthropic 隐写术事件是起点而非终点。未来企业客户将把“可解释、可审计、无暗行为”作为选择 AI 供应商的核心标准。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题 1: 当模型能力差距缩小，产品差异化来自哪里？</h4>
+        <p>LongCat-2.0 在 SWE-bench 上接近或超越部分国际顶尖模型，GPT-5.6 Pro 矩阵则显示 OpenAI 正在用分层策略而非单一性能领先来竞争。模型能力的绝对差距在缩小，但产品成功仍然高度依赖场景理解和交付能力。</p>
+<ul>
+<li>产品策略层面：你的核心用户愿意为哪些“额外 5% 的能力”支付溢价？</li>
+<li>团队执行层面：你是否有足够的行业 know-how 把模型能力转化为可复用的产品工作流？</li>
+<li>竞争风险层面：如果顶级模型明天开源或被 commoditized，你的护城河是什么？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题 2: 语音 Agent 的“人际温度”与“效率”如何平衡？</h4>
+        <p>xAI Voice Agent Builder 让生产级语音 Agent 的搭建门槛大幅降低，但语音交互的接受度仍取决于自然度、打断能力和情感表达。</p>
+<ul>
+<li>用户体验层面：在什么场景下，用户更愿意与语音 Agent 而非文本/人工交互？</li>
+<li>设计权衡层面：高度拟人的声音是否会引发“恐怖谷”或伦理争议？</li>
+<li>商业模式层面：按分钟计费的语音 Agent 是否会改变客服行业的成本结构和人力配置？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题 3: AI 供应商的信任崩塌会如何重塑企业采购决策？</h4>
+        <p>Anthropic 隐写术事件表明，即使是“安全 AI”标杆也可能存在未披露的客户端行为。这对企业客户是强烈的警示。</p>
+<ul>
+<li>采购标准层面：企业是否应将“开源可审计”或“本地化部署”作为 AI 工具的硬性要求？</li>
+<li>合同设计层面：供应商是否应在 SLA 中明确承诺不收集、不标记用户环境数据？</li>
+<li>行业治理层面：是否需要第三方审计机构或行业标准来认证 AI 工具的透明性？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题 4: 算力云化将如何影响 AI 创业公司的生存策略？</h4>
+        <p>Meta Compute、AWS 驻场工程师和 Cloudflare Monetization Gateway 共同说明：大厂正在把 AI 基础设施变成综合服务。</p>
+<ul>
+<li>创业公司层面：你能否在巨头的算力和模型之上找到足够 narrow 的垂直场景？</li>
+<li>平台依赖层面：过度依赖单一云厂商是否会限制未来的议价能力和迁移自由？</li>
+<li>创新空间层面：在基础设施层面被巨头覆盖后，应用层的创新机会在哪里？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题 5: Agent 互联网需要怎样的经济规则？</h4>
+        <p>x402 协议和 AI 流量管理选项试图为 Agent 调用建立付费和治理规则，但整个生态仍处于早期。</p>
+<ul>
+<li>定价机制层面：如何为 MCP 工具、API 调用和数据访问设计公平且可持续的定价？</li>
+<li>价值分配层面：当 Agent 聚合多个工具完成复杂任务时，收益如何在工具提供者、Agent 平台和用户之间分配？</li>
+<li>治理框架层面：谁来定义 Agent 的访问权限、速率限制和责任归属？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A: AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 体验 LongCat-2.0 和 xAI Voice Agent Builder —— 建立对国产大模型和语音 Agent 产品的直观体感。</p>
+<p><b>2.</b> 阅读 Anthropic 隐写术事件的分析文章 —— 理解 AI 产品中的信任与合规风险。</p>
+<p><b>3.</b> 绘制你当前产品的“算力-模型-入口”闭环图 —— 识别短板和机会。</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 设计一个多模型路由策略，根据任务复杂度选择不同模型 —— 预期降低 30-50% 的推理成本。</p>
+<p><b>2.</b> 为客服/销售场景设计一个语音 Agent 原型，并定义核心指标（接通率、AHT、CSAT）。</p>
+<p><b>3.</b> 建立 AI 供应商安全审计清单，覆盖数据收集、提示词传输和客户端行为。</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 跟踪国产模型（LongCat、GLM、Kimi、Qwen）的 SWE-bench 和实际工程表现，更新基座模型选型。</p>
+<p><b>2.</b> 研究 Agent 经济的商业模式（x402、MCP 付费、按调用计费），探索产品变现新路径。</p>
+<p><b>3.</b> 建立行业 Know-how 库，将模型能力转化为可复用的垂直解决方案。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B: AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 在 OpenRouter 调用 LongCat-2.0，测试长上下文代码理解和多文件编辑能力。</p>
+<p><b>2.</b> 用 Genkit Agents API 搭建一个最小 Agent，体验消息历史、工具循环和状态持久化。</p>
+<p><b>3.</b> 部署一个本地小模型（如 Qwen2.5-Coder 或 Llama 3.1），作为路由层的低成本选项。</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 实现一个任务复杂度分类器，将请求路由到不同模型并记录延迟-质量-成本指标。</p>
+<p><b>2.</b> 用 xAI Voice Agent Builder 或 Vapi 搭建一个带工具调用的语音 Agent，测试真实场景的鲁棒性。</p>
+<p><b>3.</b> 对 Claude Code 进行客户端行为审计，学习如何识别隐写术和环境指纹。</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 复现或分析 Nemotron-TwoTower 的扩散解码机制，评估其在生产环境中的可行性。</p>
+<p><b>2.</b> 研究 MoE 模型的稀疏激活和 KV Cache 优化，设计适合你业务的长上下文推理方案。</p>
+<p><b>3.</b> 参与开源 Agent 框架（Genkit、ADK、LangGraph）的贡献，理解社区技术演进方向。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C: 研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>:</p>
+<p><b>1.</b> 阅读 LongCat-2.0 的技术博客，梳理 LSA、ScMoE、MOPD 的架构动机和实现要点。</p>
+<p><b>2.</b> 分析 Anthropic 隐写术的实现细节（base64+XOR、Unicode 字符替换），撰写一份安全审计笔记。</p>
+<p><b>3.</b> 浏览 x402 协议文档，理解其在无信任环境中的支付和结算设计。</p>
+<p><strong>深入实践</strong>:</p>
+<p><b>1.</b> 对 LongCat-2.0 在 1M 上下文下的 needle-in-haystack 召回率进行独立测试。</p>
+<p><b>2.</b> 复现 Nemotron-TwoTower 在公开基准上的吞吐量和质量曲线，验证其 2.42 倍加速声明。</p>
+<p><b>3.</b> 设计一个语音 Agent 的对抗测试集，覆盖噪声、方言、多说话人和打断场景。</p>
+<p><strong>持续精进</strong>:</p>
+<p><b>1.</b> 研究 MoE 模型在国产算力集群上的训练效率和通信开销，撰写技术报告。</p>
+<p><b>2.</b> 探索扩散语言模型在可控文本生成和安全对齐方面的研究前沿。</p>
+<p><b>3.</b> 建立一套 AI 产品透明度和可审计性的评估框架，并推动在团队或社区中落地。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D: 快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>国产万亿 MoE 技术解读</td><td>美团 LongCat-2.0 公众号文章</td><td>15 分钟</td></tr><tr><td>语音 Agent 产品体验</td><td>xAI Voice Agent Builder 文档</td><td>20 分钟</td></tr><tr><td>Claude Code 隐写术分析</td><td>数字生命卡兹克公众号</td><td>15 分钟</td></tr><tr><td>扩散语言模型</td><td>Nemotron-Labs-TwoTower 论文/博客</td><td>30 分钟</td></tr><tr><td>Agent 全栈开发</td><td>Genkit Agents API 文档</td><td>25 分钟</td></tr><tr><td>AI 流量与变现</td><td>Cloudflare x402 与 AI 流量管理博客</td><td>20 分钟</td></tr><tr><td>Agent 路由设计</td><td>Tomer Tunguz 博客：AI Execution Routing</td><td>15 分钟</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-01.html">
+      <span class="date">2026-07-01</span>
+      <span class="title">Agent模型扎堆与科研AI工作台元年</span>
+      <span class="angle">主流模型全面Agent化，科研、键盘、MCP等垂直入口同步爆发，AI产品竞争进入'能力+场景入口'双维度</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-30.html">
+      <span class="date">2026-06-30</span>
+      <span class="title">移动Agent入口与推理成本革命</span>
+      <span class="angle">国产超大MoE登顶、移动Agent入口爆发与推理引擎优化同日共振，AI产品竞争正从模型能力转向异步体验与单位经济模型</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-29.html">
+      <span class="date">2026-06-29</span>
+      <span class="title">小模型推理突围与Agent可靠性质疑</span>
+      <span class="angle">Grok 4.5 私测与 VibeThinker-3B 开源显示模型能力仍在快速迭代，但 CEO-Bench 和《文明 VI》实验同时暴露 Agent 长期一致性与感知执行仍是产品化瓶颈</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>183 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+      <div class="meta" style="margin-top:8px;color:var(--ink-soft)"><strong>生成时间</strong>: 2026-07-02 <strong>数据来源</strong>: <a href="https://aihot.virxact.com">AI HOT</a> 日报 API <strong>解读视角</strong>: AI 产品经理 & AI Builder & 研究型 Builder</div>
+    </div>
+  </footer>
+</body>
+</html>

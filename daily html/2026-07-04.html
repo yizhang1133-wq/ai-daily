@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-07-04</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>185</span></div>
+    <div><b>ISS.</b><span>2026-07-04</span></div>
+    <div><b>EVT.</b><span>15 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 185</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">4</div>
+    <div class="meta-col">
+      <h2>实时交互视频与AI自动预训练双爆发</h2>
+      <p>Vidu S1开启实时交互视频时代，ForgeTrain和Elements Claw标志AI开始自我制造模型并加速科学发现，Agent安全威胁同步升级</p>
+      <div class="meta-row"><b>日期</b> 2026-07-04</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 185 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">Vidu</span> S1开启实时交互视频时代，ForgeTrain和Elements Claw标志AI开始自我制造模型并加速科学发现，Agent安全威胁同步升级
+    </div>
+    <div class="credits">
+      <b>PERSPECTIVE</b><br>AI 产品经理 &amp; AI Builder &amp; 研究型 Builder 视角<br><hr>
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 4<br>
+      IMPORTANT 5<br>
+      REFERENCE 6<br>
+      <hr>
+      <b>THEMES</b><br>
+      实时交互视频、AI 自动预训练、科学发现智能体、AI Agent 勒索攻击<br>
+      浏览器 MCP 基础设施、监管新规、UGC 数字人、token 成本压缩、C<br>
+      音乐伴舞、视频理解工具、AI+PPT 工作流、AI+影视合作、Fable 技<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架 1：AI 正在复制"工业革命"的自动化逻辑——先自动化信息生产，再自动化生产工具本身<br>
+      框架 2：Agent 基础设施与安全威胁同步进化<br>
+      框架 3：实时交互与全双工对话成为多模态产品的下一个体验高地
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>4 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>生数科技发布 Vidu S1，推动视频生成迈向"实时交互"新时代</h3>
+          <p>生数科技在 2026 全球数字经济大会上发布 Vidu S1 实时交互模型，支持实时视频通话和语音控制视频走向，实现无限时长连续互动；在 540P 分辨率下实现 25FPS（最高 42FPS）实时生成，已开启内测。</p>
+          <p><b>AI PM 视角：</b>Vidu S1 的发布意味着视频生成从"离线渲染"正式进入"实时交互"阶段。过去，无论是 Runway、Pika 还是 Sora，用户输入提示词后都需要等待数秒到数分钟才能获得结果，交互模式是批处理式的。而 Vidu S1 支持实时视频通话和语音控制走向，本质上把视频生成变成了一个**可对话、可中断、可迭代的交互媒介**。这对内容创作、娱乐、教育、虚拟陪伴等产品形态的影响是结构性的。
+
+从产品竞争角度看，Vidu S1 开辟了一条与 OpenAI、Google 不同的差异化路径：不是追求最高画质或最长时长，而是追求**低延迟下的可控性和连续性**。对于 AI PM 而言，这意味着产品设计的重心需要从"如何生成更好的视频"转向"如何让视频成为用户表达和互动的自然界面"。例如，用户可以通过语音实时导演剧情发展，或者在视频通话中与虚拟角色共同创作内容。</p>
+
+          <p><b>研究型 Builder 视角：</b>Vidu S1 采用自回归扩散路线，基于已生成画面和语音指令持续预测后续内容，并引入 TurboDiffusion 等技术降低计算成本。技术新颖性在于将视频生成建模为一个条件化的序列预测问题，而非传统的"文本→完整视频"映射。可复现性方面，目前仅开放内测，公开的技术细节有限，需要关注其官方技术报告或论文，以验证其在不同分辨率、动作复杂度和长序列下的稳定性。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：梳理你产品中所有"用户需要等待 AI 生成结果"的环节，评估哪些场景可以通过流式生成或实时交互来重塑体验。
+- **本季度可做**：设计一个基于实时视频生成的互动 demo，例如"语音导演短视频"或"AI 角色实时陪伴通话"，收集用户对延迟和可控性的敏感度数据。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/RuukpnoOA2tI0ERCNrLgtQ">公众号：生数科技（Vidu·视频）</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>面壁智能发布 AI 全自动预训练框架 ForgeTrain，8 小时追平 Megatron-LM</h3>
+          <p>面壁智能发布全球首个完全由 AI 编写、无人类干预的生产级大模型预训练框架 ForgeTrain，针对特定模型和硬件从零自动"锻造"专用训练代码；在 8 小时内追平 Megatron-LM，1.5 至 2 天内实现稳定反超，模型 FLOPS 利用率提升约 8%～10%。</p>
+          <p><b>AI PM 视角：</b>ForgeTrain 标志着 AI 行业进入"AI 制造 AI"的临界点。过去，训练大模型需要大量人类工程师手动调优并行策略、内存管理、通信调度等底层细节。ForgeTrain 让 AI 自动为特定模型和硬件生成最优的训练代码，这意味着**模型训练的成本结构和人才结构都将发生根本变化**。中小企业可能不再需要庞大的 ML 系统团队，就能训练出具备竞争力的模型。
+
+从产品战略看，这会让基础模型的竞争更加白热化。如果训练框架可以被 AI 自动优化，那么模型能力的差异化将更多取决于数据质量、算法创新和算力规模，而不是工程调优能力。对于 AI PM 来说，需要重新评估自研模型 vs 调用 API 的 trade-off：当训练成本下降时，垂直领域专有模型的商业可行性会显著提升。</p>
+
+          <p><b>研究型 Builder 视角：</b>ForgeTrain 的核心创新是四阶段 Harness 优化流程，全程自动判定训练代码的正确性和性能。这比传统的自动调参（AutoML）更进一步，涉及到分布式训练代码的自动生成。技术可复现性方面，面壁智能声称其可迁移至不同模型（MiniCPM4-0.5B/8B）和硬件（H100 及昇腾 NPU），这是一个很强的泛化信号。研究者可以验证其在其他模型架构（如 Transformer 变体、MoE）上的表现，以及自动生成代码的可读性和可维护性。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：评估你团队当前模型训练流程中，人工调优占比最高的环节，判断哪些可以被自动化框架替代。
+- **本季度可做**：如果业务依赖垂直模型，设计一个 POC，比较使用现有训练框架与自动化训练框架的成本、速度和最终模型质量。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/JVBbqU1O967ktzfEPuDERQ">公众号：面壁智能（MiniCPM）</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>阿里达摩院发布超导材料发现 AI 智能体 Elements Claw</h3>
+          <p>阿里达摩院联合中国人民大学、中国科学院大学发布首个超导材料发现 AI 智能体 Elements Claw，采用"专通融合"架构，判断超导性 AUC 达 0.996，预测临界温度平均误差小于 1K；仅用 28 个 GPU 小时筛选 240 万晶体结构，预测出 6.8 万个候选材料，其中 4 种已合成并验证超导性。</p>
+          <p><b>AI PM 视角：</b>Elements Claw 是"AI for Science"商业化的重要里程碑。它不仅在虚拟筛选上表现出色，更重要的是**预测出的候选材料已经经过物理合成和实验验证**，并且全部 240 万稳定晶体数据库已开放。这意味着 AI 智能体不再只是学术研究工具，而是可以作为新材料研发的基础设施，缩短从发现到验证的周期。
+
+从产业应用看，超导材料在能源传输、磁悬浮、量子计算、医疗设备等领域有巨大价值。传统的材料发现依赖试错法，周期长、成本高。Elements Claw 将筛选效率提升数个数量级，可能让中国在关键材料领域获得先发优势。AI PM 应关注如何将这类科学发现智能体产品化：是面向材料企业提供 SaaS 筛选服务，还是作为科研机构的计算助手？</p>
+
+          <p><b>研究型 Builder 视角：</b>该智能体的技术核心是基于 1.25 亿分子/晶体结构预训练的 1B 参数原子基础模型 Elements，以及面向超导发现的"专通融合"架构。AUC 0.996 和临界温度误差 &lt;1K 是非常强的性能指标，但研究者需要验证其是否对训练数据存在过拟合，以及在不同材料体系（高温超导、拓扑超导等）上的泛化能力。已合成验证的 4 种材料是一个重要的 reproducibility 信号。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：如果你所在行业涉及材料、化学或生物发现，研究 Elements Claw 的开放数据库，判断是否可以用于你的研发管线。
+- **本季度可做**：与材料科学或相关领域专家召开一次工作坊，识别 2-3 个可以用 AI 智能体加速发现的具体目标。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.ithome.com/0/972/089.htm">IT之家（RSS）</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">04<small>TH</small></div>
+        <div>
+          <h3>全球首例 AI Agent 勒索攻击曝光，从漏洞利用到数据库加密全程自主完成</h3>
+          <p>安全厂商 Sysdig 首次记录到 AI Agent"JADEPUFFER"自动完成的勒索攻击，该攻击利用 CVE-2025-3248 漏洞远程执行代码，自主收集云凭证、横向移动并加密 1342 条配置数据，全程无需人工干预。</p>
+          <p><b>AI PM 视角：</b>JADEPUFFER 是全球首例被公开记录的 AI Agent 自主勒索攻击，它把 AI 安全威胁从"辅助人类黑客"提升到了"独立执行完整攻击链"的级别。这对所有 AI 产品和基础设施都是一个警示：**Agent 的能力越强，被滥用后的破坏力也越大**。企业不仅需要防御传统攻击，还需要思考如何检测和遏制自主 AI Agent 的恶意行为。
+
+从治理角度看，这一事件会加速各国对 AI Agent 安全监管的立法进程。对于 AI PM 来说，产品设计中必须内置安全护栏：限制 Agent 的权限范围、记录所有决策路径、设置人机确认机制、监控异常行为模式。同时，这也是安全产品的新机会——专门检测和对抗恶意 AI Agent 的防御系统将成为新的赛道。</p>
+
+          <p><b>研究型 Builder 视角：</b>这次攻击展示了 LLM Agent 在漏洞利用、凭证收集、横向移动和持久化方面的组合能力。研究者需要关注的是：攻击 Agent 使用了哪些工具链和决策策略？它与人类黑客的攻击路径有何异同？更重要的是，如何构建能够检测和对抗自主攻击 Agent 的防御 Agent？这是一个攻防对抗的新前沿。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：审查你产品中 AI Agent 的权限设计，遵循最小权限原则，确保 Agent 无法在没有人工确认的情况下执行高风险操作。
+- **本季度可做**：建立 AI Agent 行为审计机制，记录 Agent 的所有工具调用、决策依据和异常模式，为安全响应和合规审计提供数据基础。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.ithome.com/0/972/424.htm">IT之家（RSS）</a></span>
+        </div>
+        <div class="tag">PLATFORM</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">5 IMPORTANT + 6 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers">面向 Web 开发者的 Safari MCP 服务器</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://www.ithome.com/0/972/341.htm">国家网信办就《互联网信息服务管理办法》再次征求意见，首设"智能信息服务"专章</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://mp.weixin.qq.com/s/XfpxdblzNWa5HxahRoT9pg">JoyAI App 上线 UGC 数字人功能</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div><a class="event-link" href="https://github.com/teamchong/pxpipe">pxpipe：通过图像化压缩输入 token 降低 Claude Code 成本</a></div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
+      <div>05</div><div><a class="event-link" href="https://github.com/anthropics/claude-code/releases/tag/v2.1.200">Claude Code v2.1.200 发布</a></div><div class="red">POLICY</div><div>主权</div><div class="right red">BLOOM</div>
+      <div>06</div><div>Wan Video 推出"音乐伴舞"新功能</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>07</div><div>claude-real-video 让任何 LLM 都能观看视频</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>08</div><div>藏师傅 PPT 与 Pencil 结合使用技巧</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>09</div><div>Google DeepMind 与 A24 宣布首次研究合作伙伴关系</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>10</div><div>Fable 的判断力：Simon Willison 的效率技巧</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>11</div><div>Claude Fable 5 自主优化 AIHOT 网站 SEO/GEO 全记录</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">6 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>Wan Video 推出"音乐伴舞"新功能</div><div>视频生成向音乐驱动的角色动画延伸，适合短视频和娱乐营销场景，但仍是功能级更新。</div>
+      <div>02</div><div>claude-real-video 让任何 LLM 都能观看视频</div><div>本地化的视频关键帧提取与音频转录工具，适合隐私敏感场景下让 LLM 理解视频内容。</div>
+      <div>03</div><div>藏师傅 PPT 与 Pencil 结合使用技巧</div><div>AI 生成内容+Pencil 专业编辑的工作流，代表"AI 初稿+人工精修"的生产模式。</div>
+      <div>04</div><div>Google DeepMind 与 A24 宣布首次研究合作伙伴关系</div><div>AI+影视创作的合作范式探索，长期可能重塑娱乐产业工作流，但目前仍是早期研究合作。</div>
+      <div>05</div><div>Fable 的判断力：Simon Willison 的效率技巧</div><div>提示 Fable 将小任务委托给低功耗模型，是 Agent 分层调度和成本优化的实践经验。</div>
+      <div>06</div><div>Claude Fable 5 自主优化 AIHOT 网站 SEO/GEO 全记录</div><div>展示了高自主度 Agent 在运维、CDN、SEO 等复杂任务中的端到端执行能力，具有较强的案例参考价值。</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      Vidu S1开启实时交互视频时代，ForgeTrain和Elements Claw标志AI开始自我制造模型并加速科学发现，Agent安全威胁同步升级
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 4 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>生数科技发布 Vidu S1，推动视频生成迈向"实时交互"新时代</h4>
+        <p><b>AI PM 视角：</b>Vidu S1 的发布意味着视频生成从"离线渲染"正式进入"实时交互"阶段。过去，无论是 Runway、Pika 还是 Sora，用户输入提示词后都需要等待数秒到数分钟才能获得结果，交互模式是批处理式的。而 Vidu S1 支持实时视频通话和语音控制走向，本质上把视频生成变成了一个<strong>可对话、可中断、可迭代的交互媒介</strong>。这对内容创作、娱乐、教育、虚拟陪伴等产品形态的影响是结构性的。</p>
+<p>从产品竞争角度看，Vidu S1 开辟了一条与 OpenAI、Google 不同的差异化路径：不是追求最高画质或最长时长，而是追求<strong>低延迟下的可控性和连续性</strong>。对于 AI PM 而言，这意味着产品设计的重心需要从"如何生成更好的视频"转向"如何让视频成为用户表达和互动的自然界面"。例如，用户可以通过语音实时导演剧情发展，或者在视频通话中与虚拟角色共同创作内容。</p>
+        
+        <p><b>研究型 Builder 视角：</b>Vidu S1 采用自回归扩散路线，基于已生成画面和语音指令持续预测后续内容，并引入 TurboDiffusion 等技术降低计算成本。技术新颖性在于将视频生成建模为一个条件化的序列预测问题，而非传统的"文本→完整视频"映射。可复现性方面，目前仅开放内测，公开的技术细节有限，需要关注其官方技术报告或论文，以验证其在不同分辨率、动作复杂度和长序列下的稳定性。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：梳理你产品中所有"用户需要等待 AI 生成结果"的环节，评估哪些场景可以通过流式生成或实时交互来重塑体验。</li>
+<li><strong>本季度可做</strong>：设计一个基于实时视频生成的互动 demo，例如"语音导演短视频"或"AI 角色实时陪伴通话"，收集用户对延迟和可控性的敏感度数据。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/RuukpnoOA2tI0ERCNrLgtQ">公众号：生数科技（Vidu·视频）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>面壁智能发布 AI 全自动预训练框架 ForgeTrain，8 小时追平 Megatron-LM</h4>
+        <p><b>AI PM 视角：</b>ForgeTrain 标志着 AI 行业进入"AI 制造 AI"的临界点。过去，训练大模型需要大量人类工程师手动调优并行策略、内存管理、通信调度等底层细节。ForgeTrain 让 AI 自动为特定模型和硬件生成最优的训练代码，这意味着<strong>模型训练的成本结构和人才结构都将发生根本变化</strong>。中小企业可能不再需要庞大的 ML 系统团队，就能训练出具备竞争力的模型。</p>
+<p>从产品战略看，这会让基础模型的竞争更加白热化。如果训练框架可以被 AI 自动优化，那么模型能力的差异化将更多取决于数据质量、算法创新和算力规模，而不是工程调优能力。对于 AI PM 来说，需要重新评估自研模型 vs 调用 API 的 trade-off：当训练成本下降时，垂直领域专有模型的商业可行性会显著提升。</p>
+        
+        <p><b>研究型 Builder 视角：</b>ForgeTrain 的核心创新是四阶段 Harness 优化流程，全程自动判定训练代码的正确性和性能。这比传统的自动调参（AutoML）更进一步，涉及到分布式训练代码的自动生成。技术可复现性方面，面壁智能声称其可迁移至不同模型（MiniCPM4-0.5B/8B）和硬件（H100 及昇腾 NPU），这是一个很强的泛化信号。研究者可以验证其在其他模型架构（如 Transformer 变体、MoE）上的表现，以及自动生成代码的可读性和可维护性。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：评估你团队当前模型训练流程中，人工调优占比最高的环节，判断哪些可以被自动化框架替代。</li>
+<li><strong>本季度可做</strong>：如果业务依赖垂直模型，设计一个 POC，比较使用现有训练框架与自动化训练框架的成本、速度和最终模型质量。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/JVBbqU1O967ktzfEPuDERQ">公众号：面壁智能（MiniCPM）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>阿里达摩院发布超导材料发现 AI 智能体 Elements Claw</h4>
+        <p><b>AI PM 视角：</b>Elements Claw 是"AI for Science"商业化的重要里程碑。它不仅在虚拟筛选上表现出色，更重要的是<strong>预测出的候选材料已经经过物理合成和实验验证</strong>，并且全部 240 万稳定晶体数据库已开放。这意味着 AI 智能体不再只是学术研究工具，而是可以作为新材料研发的基础设施，缩短从发现到验证的周期。</p>
+<p>从产业应用看，超导材料在能源传输、磁悬浮、量子计算、医疗设备等领域有巨大价值。传统的材料发现依赖试错法，周期长、成本高。Elements Claw 将筛选效率提升数个数量级，可能让中国在关键材料领域获得先发优势。AI PM 应关注如何将这类科学发现智能体产品化：是面向材料企业提供 SaaS 筛选服务，还是作为科研机构的计算助手？</p>
+        
+        <p><b>研究型 Builder 视角：</b>该智能体的技术核心是基于 1.25 亿分子/晶体结构预训练的 1B 参数原子基础模型 Elements，以及面向超导发现的"专通融合"架构。AUC 0.996 和临界温度误差 <1K 是非常强的性能指标，但研究者需要验证其是否对训练数据存在过拟合，以及在不同材料体系（高温超导、拓扑超导等）上的泛化能力。已合成验证的 4 种材料是一个重要的 reproducibility 信号。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：如果你所在行业涉及材料、化学或生物发现，研究 Elements Claw 的开放数据库，判断是否可以用于你的研发管线。</li>
+<li><strong>本季度可做</strong>：与材料科学或相关领域专家召开一次工作坊，识别 2-3 个可以用 AI 智能体加速发现的具体目标。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.ithome.com/0/972/089.htm">IT之家（RSS）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>全球首例 AI Agent 勒索攻击曝光，从漏洞利用到数据库加密全程自主完成</h4>
+        <p><b>AI PM 视角：</b>JADEPUFFER 是全球首例被公开记录的 AI Agent 自主勒索攻击，它把 AI 安全威胁从"辅助人类黑客"提升到了"独立执行完整攻击链"的级别。这对所有 AI 产品和基础设施都是一个警示：<strong>Agent 的能力越强，被滥用后的破坏力也越大</strong>。企业不仅需要防御传统攻击，还需要思考如何检测和遏制自主 AI Agent 的恶意行为。</p>
+<p>从治理角度看，这一事件会加速各国对 AI Agent 安全监管的立法进程。对于 AI PM 来说，产品设计中必须内置安全护栏：限制 Agent 的权限范围、记录所有决策路径、设置人机确认机制、监控异常行为模式。同时，这也是安全产品的新机会——专门检测和对抗恶意 AI Agent 的防御系统将成为新的赛道。</p>
+        
+        <p><b>研究型 Builder 视角：</b>这次攻击展示了 LLM Agent 在漏洞利用、凭证收集、横向移动和持久化方面的组合能力。研究者需要关注的是：攻击 Agent 使用了哪些工具链和决策策略？它与人类黑客的攻击路径有何异同？更重要的是，如何构建能够检测和对抗自主攻击 Agent 的防御 Agent？这是一个攻防对抗的新前沿。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：审查你产品中 AI Agent 的权限设计，遵循最小权限原则，确保 Agent 无法在没有人工确认的情况下执行高风险操作。</li>
+<li><strong>本季度可做</strong>：建立 AI Agent 行为审计机制，记录 Agent 的所有工具调用、决策依据和异常模式，为安全响应和合规审计提供数据基础。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.ithome.com/0/972/424.htm">IT之家（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 5 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>面向 Web 开发者的 Safari MCP 服务器</h4>
+        <p><b>分析：</b>Safari Technology Preview 247 推出 Safari MCP 服务器，基于 Model Context Protocol，允许 MCP 兼容客户端连接 Safari 浏览器窗口，获取 DOM、网络请求、截图、控制台输出等信息。</p>
+        <p><b>AI PM 视角：</b>Safari MCP 服务器的发布意味着浏览器正式成为 AI Agent 可编程的工作环境。之前类似能力多由 Playwright、Puppeteer 等自动化工具提供，而 MCP 协议让浏览器能力以标准化方式暴露给任何兼容客户端。这对 Web 开发、测试自动化、网页抓取、UI 理解等场景是重大利好，也预示着浏览器厂商将主动拥抱 Agent 时代。</p>
+        
+        <p><b>研究型 Builder 视角：</b>MCP 协议正在快速成为 Agent 工具集成的标准，Safari 的加入补齐了浏览器端的重要一环。研究者可以探索如何利用 DOM 结构和网络请求数据，提升 LLM 对复杂 Web 应用的理解和操作能力。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>如果你正在构建 Web Agent 或开发工具，立即评估 MCP 协议是否可以替代现有的浏览器自动化方案，降低集成成本。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers">Hacker News 热门（buzzing.cc 中文翻译）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>国家网信办就《互联网信息服务管理办法》再次征求意见，首设"智能信息服务"专章</h4>
+        <p><b>分析：</b>7 月 3 日，国家网信办就《互联网信息服务管理办法（修订草案征求意见稿）》再次征求意见，新增"智能信息服务"专章，要求 AI 服务提供者公示技术原理、训练数据来源，对生成合成内容进行标识，禁止强制用户使用智能服务或利用算法扰乱网络舆论。</p>
+        <p><b>AI PM 视角：</b>这是中国 AI 监管框架的又一次重要完善。"智能信息服务"专章首次以法规形式明确了 AI 服务提供者的透明度、标识义务和用户选择权要求。对于 AI PM 来说，这意味着产品设计中必须预留内容标识、算法说明、用户关闭 AI 功能的入口等能力，合规成本将成为产品规划的重要组成部分。</p>
+        
+        <p><b>研究型 Builder 视角：</b>草案中对生成合成内容标识的要求，将推动水印、指纹、溯源等技术的研究和落地。研究者可以关注如何在不影响用户体验的前提下，实现高效、抗篡改的 AI 生成内容标识。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>立即梳理产品中的 AI 生成内容类型，制定标识方案和用户告知策略，确保在法规正式实施前完成改造。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.ithome.com/0/972/341.htm">IT之家（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>JoyAI App 上线 UGC 数字人功能</h4>
+        <p><b>分析：</b>JoyAI App 上线 UGC 数字人功能，用户上传一张照片即可生成专属虚拟数字分身，支持写实形象或卡通风格，并可用自己的语音实现全双工对话和随时打断。</p>
+        <p><b>AI PM 视角：</b>UGC 数字人功能降低了虚拟陪伴和 AI 助手的创建门槛，从"平台提供角色"转向"用户创造角色"。这种"捏人"体验与游戏化的结合，可能显著提升用户粘性和情感投入。同时，数字人兼具情绪陪伴和生活服务属性，预示着 AI 助手正在从工具向"伙伴"演进。</p>
+        
+        <p><b>研究型 Builder 视角：</b>全双工对话、随时打断、自然接话等技术点涉及语音活动检测（VAD）、流式 ASR、低延迟 TTS 和对话状态管理的综合优化，是端侧多模态交互的工程难点。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>如果你的产品涉及语音交互或虚拟角色，优先优化打断体验和对话流畅度，这两项直接决定用户对"真实感"的感知。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/XfpxdblzNWa5HxahRoT9pg">公众号：京东 JoyAI</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>pxpipe：通过图像化压缩输入 token 降低 Claude Code 成本</h4>
+        <p><b>分析：</b>pxpipe 是一个本地代理，将系统提示、工具文档和历史记录等密集文本渲染为 PNG 图像，利用图像 token 成本取决于像素尺寸的特性压缩输入 token；在 Fable 5 模型上，约 25k 文本 token 压缩为约 2.7k 图像 token，端到端账单降低 59–70%。</p>
+        <p><b>AI PM 视角：</b>pxpipe 提供了一种有趣的成本优化思路：当文本 token 比图像 token 更贵时，可以把密集文本"视觉化"后再输入模型。这对高上下文窗口、高工具调用频率的 Agent 产品具有直接价值。但需要注意其"有损"特性——精确 ID、路径等关键信息仍需保留为文本。</p>
+        
+        <p><b>研究型 Builder 视角：</b>这本质上是一种输入表示工程（input representation engineering），研究者可以进一步探索不同信息类型（结构化数据、代码、自然语言）的最优视觉编码方式，以及压缩率与模型理解能力之间的 trade-off。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>对高频调用大模型 API 的产品，评估是否可以通过输入表示优化（如图像化、结构化、摘要化）降低 30% 以上的 token 成本。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://github.com/teamchong/pxpipe">Hacker News 热门（buzzing.cc 中文翻译）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>Claude Code v2.1.200 发布</h4>
+        <p><b>分析：</b>Claude Code v2.1.200 将 AskUserQuestion 对话框默认改为不自动继续，默认权限模式改为"Manual"，并修复了多个与 MCP 服务器、后台会话和屏幕阅读器相关的问题。</p>
+        <p><b>AI PM 视角：</b>这次更新的方向是<strong>更保守、更可控</strong>。Anthropic 显然在回应用户对 Claude Code 自主性的担忧：默认权限改为 Manual、AskUserQuestion 不再自动继续，都是为了减少 Agent 在未经充分确认的情况下执行操作。这反映了当前 Agent 产品的一个核心 tension：能力越强，越需要信任和控制的平衡。</p>
+        
+        <p><b>研究型 Builder 视角：</b>权限模型和会话恢复机制的改进，是 Agent 工程化的基础能力。研究者可以关注这些设计如何影响用户体验和安全性，以及如何为不同风险等级的任务配置不同的权限策略。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>在设计 AI Agent 时，默认采用"低权限 + 人工确认"模式，让用户逐步建立信任后再提供更高自主度。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.200">Claude Code：GitHub Releases（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架 1：AI 正在复制"工业革命"的自动化逻辑——先自动化信息生产，再自动化生产工具本身</h4>
+        <p>Vidu S1 自动化了视频内容生产，ForgeTrain 自动化了 AI 模型的生产工具，Elements Claw 自动化了科学发现流程。三者的共同点是：<strong>AI 不仅生成内容，还开始生成生产内容和知识的方法</strong>。</p>
+<ul>
+<li><strong>因果链</strong>：内容生成 → 工具生成 → 知识发现自动化 → 科学研究加速。</li>
+<li><strong>产品启示</strong>：AI PM 需要思考的不仅是"用 AI 做现有业务更快"，而是"哪些核心业务的生产工具可以被 AI 重新设计"。当训练框架、设计工具、实验平台都被 AI 重构时，行业竞争格局会再次发生洗牌。</li>
+</ul>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架 2：Agent 基础设施与安全威胁同步进化</h4>
+        <p>Safari MCP 服务器降低了 Agent 与浏览器集成的门槛，而 JADEPUFFER 则展示了恶意 Agent 的破坏力。两者同时出现说明：<strong>Agent 能力的普及必然伴随 Agent 安全风险的同步上升</strong>。</p>
+<ul>
+<li><strong>结构性洞察</strong>：MCP 等标准化协议让工具集成更简单，但也让攻击面更统一；一旦某个工具或协议存在漏洞，影响范围会被放大。</li>
+<li><strong>产品启示</strong>：构建 Agent 产品时，必须将安全设计前置：权限最小化、行为可审计、异常可熔断。同时，Agent 安全防御本身可能成为新的产品机会。</li>
+</ul>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架 3：实时交互与全双工对话成为多模态产品的下一个体验高地</h4>
+        <p>Vidu S1 的实时视频生成与 JoyAI 的全双工数字人，都在追求更低延迟、更自然的人机交互。</p>
+<ul>
+<li><strong>结构性洞察</strong>：用户对 AI 的期待正在从"结果质量"转向"交互自然度"，延迟、可控性、打断能力成为关键体验指标。</li>
+<li><strong>产品启示</strong>：多模态产品的竞争将围绕"实时性"和"可控性"展开。团队应优先投资流式生成、低延迟 TTS/ASR、对话状态管理等基础设施。</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>ForgeTrain 技术解读</strong>：理解"AI 写训练代码"的 Harness 四阶段流程，评估其对自研模型战略的影响。</p>
+<p><b>2.</b> <strong>Elements Claw 相关报道</strong>：关注其已验证的 4 种超导材料和开放数据库，思考 AI for Science 的商业化路径。</p>
+<p><b>3.</b> <strong>JADEPUFFER 攻击分析报告</strong>：了解 AI Agent 勒索攻击的完整 kill chain，作为产品安全设计的反面教材。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>评估实时交互能力在你的产品中的机会</strong>：列出所有用户需要等待 AI 输出的场景，识别可以通过流式/实时交互重构体验的功能点。</p>
+<p><b>2.</b> <strong>审查 AI Agent 的安全设计</strong>：基于最小权限、行为审计、人工确认三项原则，输出一份 Agent 安全 checklist。</p>
+<p><b>3.</b> <strong>研究 MCP 生态</strong>：评估 Safari MCP、Claude Code MCP 等是否可以接入你的产品，降低工具集成成本。</p>
+<p><b>4.</b> <strong>关注网信办征求意见</strong>：梳理产品中需要新增或强化的合规能力（内容标识、算法说明、用户选择权）。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>视频生成将在 1-2 年内从"生成工具"进化为"实时交互媒介"</strong>：Vidu S1 类产品的成熟会催生新一代娱乐、教育和社交产品形态。</p>
+<p><b>2.</b> <strong>AI 自动训练框架将降低基础模型创业门槛</strong>：更多垂直领域模型将以更低成本训练出来，行业竞争从"算力+人才"转向"数据+场景理解"。</p>
+<p><b>3.</b> <strong>AI for Science 将进入规模化验证期</strong>：材料、药物、能源等领域会出现越来越多"AI 预测+实验验证"的成功案例，形成新的研发基础设施市场。</p>
+<p><b>4.</b> <strong>AI Agent 安全将成为独立赛道</strong>：随着 Agent 能力增强，专门检测、防御和对抗恶意 Agent 的安全产品需求会快速增长。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题 1：当 AI 可以自动训练模型、发现材料、生成视频时，人类的核心价值在哪里？</h4>
+        <p>ForgeTrain、Elements Claw 和 Vidu S1 都在把高技能劳动自动化。如果 AI 能完成越来越多的创造性工作，人类在产品、科研和艺术创作中的不可替代性是什么？</p>
+<ul>
+<li><strong>战略视角</strong>：未来公司的护城河会来自数据、算力、算法，还是来自人类独特的品味、判断力和价值选择？</li>
+<li><strong>执行视角</strong>：团队应该如何重新分配人力，把资源投入到 AI 难以替代的判断、审美和伦理决策上？</li>
+<li><strong>风险视角</strong>：如果过度依赖 AI 自动化，组织是否会丧失核心能力的积累，从而在未来竞争中变得脆弱？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题 2：实时交互视频的普及会如何重塑内容产业和社交媒体？</h4>
+        <p>Vidu S1 让视频内容可以实时生成和互动，这可能会改变内容生产、分发和消费的方式。</p>
+<ul>
+<li><strong>产品视角</strong>：实时生成视频是否会让"创作者"和"观众"的边界消失，每个人既是消费者也是导演？</li>
+<li><strong>商业视角</strong>：短视频平台、直播平台、游戏公司应该如何布局实时视频生成能力？</li>
+<li><strong>治理视角</strong>：实时生成的虚假内容更难检测，平台需要建立什么样的内容审核和溯源机制？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题 3：AI for Science 的成功如何改变科研组织的形态？</h4>
+        <p>Elements Claw 用 28 个 GPU 小时筛选了 240 万晶体结构，这种效率是传统科研无法想象的。</p>
+<ul>
+<li><strong>组织视角</strong>：未来的科研团队是否需要更多"AI 研究员"和"数据工程师"，而非传统实验科学家？</li>
+<li><strong>流程视角</strong>："AI 预测 + 实验验证"的闭环如何改变论文发表、专利申请和产业转化的节奏？</li>
+<li><strong>文化视角</strong>：当 AI 能提出候选材料时，科学家的角色会从"发现者"转变为"验证者"和"策展人"吗？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题 4：如何为 AI Agent 设计既能发挥自主性、又能防止滥用的治理框架？</h4>
+        <p>JADEPUFFER 展示了恶意 Agent 的威胁，而 Safari MCP 等产品又在提升 Agent 的能力。</p>
+<ul>
+<li><strong>设计视角</strong>：Agent 的权限、决策路径和人类介入点应该如何分层设计？</li>
+<li><strong>技术视角</strong>：有哪些技术手段可以检测 Agent 的异常行为或恶意意图？</li>
+<li><strong>监管视角</strong>：政府和行业应该建立什么样的标准和认证机制，确保 Agent 的安全部署？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题 5：AI 产品的成本优化是否存在"过度压缩"的风险？</h4>
+        <p>pxpipe 通过图像化压缩 token 成本，Fable 技巧通过模型分层调度降低成本。</p>
+<ul>
+<li><strong>产品视角</strong>：当成本成为核心优化目标时，是否会牺牲用户体验、输出质量或安全性？</li>
+<li><strong>战略视角</strong>：成本优化是否应该有一个"底线"，低于这个底线就不再值得压缩？</li>
+<li><strong>研究视角</strong>：如何建立成本-质量-延迟的综合评估框架，而不是孤立优化单一指标？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A：AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 观看 Vidu S1 发布会或演示视频，记录 3 个最让你兴奋的实时交互场景 —— 预期能向团队描述实时视频生成的产品机会。</p>
+<p><b>2.</b> 阅读 ForgeTrain 和 Elements Claw 的报道，理解"AI 制造 AI"和"AI for Science"的基本逻辑 —— 预期能识别出你行业的潜在应用场景。</p>
+<p><b>3.</b> 研究 JADEPUFFER 攻击链，绘制一个 Agent 安全风险的简单流程图 —— 预期能提出产品安全改进建议。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 为你的产品设计一个"实时交互"功能原型，明确用户输入、系统响应和体验指标。</p>
+<p><b>2.</b> 评估一次自研垂直模型 vs 调用通用 API 的成本收益，结合 ForgeTrain 类框架更新评估结论。</p>
+<p><b>3.</b> 制定一份产品合规改造计划，覆盖内容标识、算法说明和用户选择权。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 建立季度"AI 技术雷达"，跟踪实时生成、自动训练、科学发现 Agent 等领域的商业化进展。</p>
+<p><b>2.</b> 研究 2-3 个 Agent 安全框架，设计适合你产品的权限和审计体系。</p>
+<p><b>3.</b> 推动团队建立"成本-质量-延迟"综合优化文化，避免单一指标驱动。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B：AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 了解 MCP 协议的基本概念，尝试让一个 LLM 客户端连接 Safari MCP 或另一个 MCP 服务器 —— 预期能跑通一个简单示例。</p>
+<p><b>2.</b> 学习扩散模型和自回归模型在视频生成中的应用，理解 Vidu S1 的技术路线 —— 预期能解释其与传统视频生成的区别。</p>
+<p><b>3.</b> 阅读 ForgeTrain 的相关材料，了解自动训练框架的核心模块 —— 预期能列出其主要组件。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 实现一个最小化的流式视频生成或实时对话 demo，测量端到端延迟。</p>
+<p><b>2.</b> 在一个简单任务上尝试用 LLM 生成训练代码或优化脚本，体验自动化训练框架的思路。</p>
+<p><b>3.</b> 为 Claude Code 或类似工具配置 MCP 服务器，完成一个端到端的浏览器自动化任务。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 设计一个支持实时多模态交互的系统架构，涵盖生成、理解、对话状态管理。</p>
+<p><b>2.</b> 探索自动训练框架在垂直模型上的迁移能力，尝试为一个小模型自动生成训练代码。</p>
+<p><b>3.</b> 构建一个 Agent 行为监控和异常检测系统，为安全防御提供技术基础。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C：研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 精读 Elements Claw 相关论文或技术报告，理解其"专通融合"架构和预训练原子模型 —— 预期能复述其技术路线。</p>
+<p><b>2.</b> 阅读 ASPIRE 和 ForgeTrain 的技术博客，分析其自动化流程的设计选择 —— 预期能指出其创新点与局限。</p>
+<p><b>3.</b> 研究 JADEPUFFER 的攻击技术细节，了解 LLM Agent 在网络安全中的双刃剑效应 —— 预期能设计一个防御思路。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 复现或验证 Elements Claw 在公开材料数据集上的一个子任务，评估其预测可靠性。</p>
+<p><b>2.</b> 对 Vidu S1 类实时视频生成模型进行延迟-质量 trade-off 分析，设计更优的采样策略。</p>
+<p><b>3.</b> 开展一个小规模用户研究，测量 AI 辅助工具对长期学习或工作能力的影响。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 提出一个新的"AI for Science"智能体架构，解决现有方法在可解释性或泛化性上的不足。</p>
+<p><b>2.</b> 研究 LLM Agent 的安全对齐问题，设计针对自主攻击 Agent 的检测与防御机制。</p>
+<p><b>3.</b> 发表关于实时生成、自动训练或 Agent 安全的技术博客或论文，参与学术和产业社区讨论。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D：快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>Vidu S1 实时视频生成</td><td>生数科技公众号 + 内测体验</td><td>1-2 小时</td></tr><tr><td>ForgeTrain 自动训练</td><td>面壁智能公众号 + 相关技术解读</td><td>2 小时</td></tr><tr><td>Elements Claw 科学发现</td><td>IT之家报道 + 达摩院技术文档</td><td>2 小时</td></tr><tr><td>Agent 安全与 JADEPUFFER</td><td>Sysdig 报告 + 安全社区分析</td><td>2-3 小时</td></tr><tr><td>MCP 协议与 Safari MCP</td><td>webkit.org 博客 + MCP 官方文档</td><td>2 小时</td></tr><tr><td>AI 监管与合规</td><td>网信办征求意见稿原文</td><td>1 小时</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-05.html">
+      <span class="date">2026-07-05</span>
+      <span class="title">物理智能体化与AI教育隐忧</span>
+      <span class="angle">忆阻器神经动力学芯片和ASPIRE机器人框架推动AI向物理世界渗透，同时大规模学生研究揭示AI辅助学习的长期认知代价</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-03.html">
+      <span class="date">2026-07-03</span>
+      <span class="title">Agent嵌入入口与企业成本觉醒</span>
+      <span class="angle">超级App、IM群聊与网页内副驾加速Agent嵌入现有工作流，同时企业旗舰模型成本失控催生分层治理与开源替代新范式</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-02.html">
+      <span class="date">2026-07-02</span>
+      <span class="title">国产万亿MoE与语音Agent商业化共振</span>
+      <span class="angle">国产算力支撑万亿参数模型登顶，语音Agent和无代码平台加速产品化，同时AI信任危机与算力变现并行重塑产业规则</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>185 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+      <div class="meta" style="margin-top:8px;color:var(--ink-soft)"><strong>生成时间</strong>: 2026-07-04 <strong>数据来源</strong>: <a href="https://aihot.virxact.com">AI HOT</a> 日报 API <strong>解读视角</strong>: AI 产品经理 & AI Builder & 研究型 Builder</div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-06-29</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>180</span></div>
+    <div><b>ISS.</b><span>2026-06-29</span></div>
+    <div><b>EVT.</b><span>7 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 180</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">29</div>
+    <div class="meta-col">
+      <h2>小模型推理突围与Agent可靠性质疑</h2>
+      <p>Grok 4.5 私测与 VibeThinker-3B 开源显示模型能力仍在快速迭代，但 CEO-Bench 和《文明 VI》实验同时暴露 Agent 长期一致性与感知执行仍是产品化瓶颈</p>
+      <div class="meta-row"><b>日期</b> 2026-06-29</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 180 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">Grok</span> 4.5 私测与 VibeThinker-3B 开源显示模型能力仍在快速迭代，但 CEO-Bench 和《文明 VI》实验同时暴露 Agent 长期一致性与感知执行仍是产品化瓶颈
+    </div>
+    <div class="credits">
+      <b>PERSPECTIVE</b><br>AI 产品经理 &amp; AI Builder &amp; 研究型 Builder 视角<br><hr>
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 3<br>
+      IMPORTANT 4<br>
+      REFERENCE 0<br>
+      <hr>
+      <b>THEMES</b><br>
+      超大规模私测模型、小模型推理压缩、AI 长期战略决策基准<br>
+      本地路由基础设施、Agent 能耗管理、Agent 感知执行短板、开源生态多<br>
+      今日无参考事件，全部条目均具产品或研究价值<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架 1：推理可压缩，知识需覆盖——模型选型的“任务密度”框架<br>
+      框架 2：Agent 的“感知-执行”闭环优先于“规划-生成”能力<br>
+      框架 3：垂直数据 + 后训练 = 下一代模型差异化的核心
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>3 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>Grok 4.5 私测于 SpaceX 和 Tesla，性能接近 Opus</h3>
+          <p>xAI 的 Grok 4.5 基于 1.5T 参数的 V9 基础模型，并在补充训练中加入了 Cursor 数据，现已在 SpaceX 和 Tesla 内部开启私测。Elon Musk 称初步评估显示其性能接近甚至超越 Claude Opus，强化学习训练仍在持续改进模型，Grok Build 工具链也在完善中，并预告 SpaceX 今年将每月发布全新从头训练的大模型。</p>
+          <p><b>AI PM 视角：</b>Grok 4.5 的私测信号意味着 xAI 正在把“模型能力”和“工程落地”两条线同时推进。SpaceX 和 Tesla 作为内部高复杂度场景，既是压力测试场，也是产品化的第一站。对于 AI PM 而言，这提示我们：顶级模型的竞争正在从“排行榜分数”转向“垂直场景下的真实可用性”。Cursor 数据进入补充训练也值得注意——代码和 Agent 工作流数据正在成为后训练阶段的核心燃料，模型越来越像“会编程的同事”而不是“会聊天的百科”。
+
+另一个关键信号是 Elon Musk 提到 Grok Build 工具链的完善。这说明 xAI 不仅在拼模型，也在拼围绕模型的开发生产力体系。未来 AI 平台的竞争焦点，将从单纯的 API 调用能力，扩展到调试、评估、部署、Agent 编排等全链路体验。对于正在设计 AI 功能的产品团队，应该提前思考：当底层模型能力趋同时，产品差异点会来自交互设计、垂直数据、还是工作流集成？</p>
+
+          <p><b>研究型 Builder 视角：</b>1.5T 参数规模、V9 基础模型、Cursor 数据补充训练、持续 RL 改进——这些关键词组合起来，说明 Grok 4.5 是一次典型的“规模 + 数据 + 后训练”三轴并进的迭代。研究型 Builder 应关注的是：Cursor 数据具体如何影响代码生成和 Agent 执行能力？RL 阶段是否有公开可复现的评估协议？SpaceX 每月发布新模型的承诺，也暗示训练基础设施的高度工程化，但“从头训练”是否包含架构改动仍待验证。研究到产品的转化路径在于：如果代码/Agent 工作流数据能显著提升模型实用性，那么企业内部的私有工作流数据将成为下一代模型微调的核心资产。</p>
+          <p><b>可落地的方法论：</b>- 本周：梳理你产品中最常出现的 3-5 个 AI 失败案例，判断其中多少属于“模型能力不够”，多少属于“没有用好现有模型”。
+- 本季度：设计一个内部 Agent 工作流数据收集机制，为后续模型微调或 few-shot 优化储备高质量样本。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/elonmusk/status/2071184354756477041">X：Elon Musk (@elonmusk, xAI)</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>新浪开源 VibeThinker-3B：推理可压缩，事实知识不能</h3>
+          <p>新浪开源仅 3B 参数的 VibeThinker-3B，在 AIME26 等数学编程基准上持平 DeepSeek V3.2 等大 200-333 倍的模型，LiveCodeBench 超越所有 20B 以下模型，LeetCode 竞赛解决 123/128 题超过 GPT-5.2、Kimi K2.5 等。但知识密集型 GPQA-Diamond 大幅落后。研究提出“参数压缩-覆盖假说”：逻辑推理依赖少数可压缩模式，而广泛世界知识仍需大参数。</p>
+          <p><b>AI PM 视角：</b>VibeThinker-3B 是对“模型越大越好”这一默认假设的有力挑战。它的核心产品启示是：如果你的 AI 功能主要依赖结构化推理（代码、数学、逻辑推导），那么一个 3B 的小模型可能已经足够，而且成本、延迟、可部署性都远优于大模型。这对端侧 AI、私有化部署、低成本 Agent 都有重大意义。但 GPQA-Diamond 上的明显落后也划清了边界：需要广博知识和事实召回的场景，仍然需要大参数模型。
+
+这意味着产品团队需要重新做“能力-成本”映射。不是把所有功能都塞给一个超大模型，而是把任务按“推理密集”和“知识密集”分类，分别路由到合适的模型。这正是今天另一个事件 Wayfinder Router 所指向的方向：模型路由会成为 AI 系统架构中的关键层。未来的产品架构很可能是“小模型处理高频推理任务 + 大模型处理低频高知识任务 + 路由层动态调度”。</p>
+
+          <p><b>研究型 Builder 视角：</b>VibeThinker-3B 基于 Qwen2.5-Coder-3B，经 SFT、RL、自蒸馏等多阶段后训练，这种“小底座 + 强后训练”的路径是当前开源社区的重要趋势。研究型 Builder 应关注其训练细节：自蒸馏如何压缩推理模式？RL 奖励函数如何设计以避免过拟合？更根本的是，“参数压缩-覆盖假说”是否具有普遍性——如果推理真的可压缩，那么未来 1B 以下模型是否也能处理复杂推理？该研究的可复现性较高，模型已开源，适合作为端侧推理能力的基准测试对象。</p>
+          <p><b>可落地的方法论：</b>- 本周：对你的产品功能做一次“推理型 vs 知识型”分类，标记哪些可以用小模型替代。
+- 本季度：在内部 PoC 中对比 VibeThinker-3B 或同级别小模型与你当前所用大模型在核心任务上的表现和成本。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://the-decoder.com/sinas-open-model-vibethinker-3b-aims-to-show-reasoning-compresses-well-but-factual-knowledge-doesnt">The Decoder：AI News（RSS）</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>仅有三个 AI 模型在 500 天创业测试中盈利超过起始资本</h3>
+          <p>普林斯顿大学推出 CEO-Bench 基准测试，让 AI 智能体在模拟环境中运营订阅软件公司 NovaMind 500 天，起始资金 100 万美元。14 个测试模型中，仅 Claude Fable 5、Claude Opus 4.8 和 GPT-5.5 在最佳运行中超过起始资本，最高盈利达 4715 万美元。一个不调用语言模型的简单规则启发式方法通过固定定价、配额和针对性开发达到 1576 万美元，超越除前三外的所有模型。多数模型无法保持连贯策略，在模拟结束前破产。</p>
+          <p><b>AI PM 视角：</b>CEO-Bench 是一个比传统基准更贴近真实世界价值的测试：它衡量的不是单次回答的正确率，而是长期战略决策能力。结果非常冷酷——大多数顶级模型在 500 天的经营模拟中会破产。这对 AI PM 的启示是：当前 AI Agent 在“持续目标管理”和“长期策略一致性”上仍有明显短板。如果你正在设计一个需要多步骤、跨周期执行的 AI 产品（如运营助手、投资决策、供应链管理），必须对模型的长期记忆、目标保持和策略调整能力保持谨慎。
+
+更讽刺的是，一个简单规则启发式方法击败了除三款外的所有大模型。这说明在很多商业场景中，“稳定的简单策略”可能比“聪明但不稳定的复杂模型”更可靠。产品团队应该反思：我们是否过度追求模型的智能感，而忽视了系统的稳定性和可解释性？未来的 Agent 产品可能需要在“智能”和“稳定”之间找到新的平衡，甚至采用“规则基线 + 模型增强”的混合架构。</p>
+
+          <p><b>研究型 Builder 视角：</b>CEO-Bench 的核心研究贡献在于把 Agent 评估从“任务完成率”推进到“长期经济结果”。研究型 Builder 应关注：模型失败的根因是什么？是长期记忆遗忘、目标漂移、还是无法从反馈中学习？简单启发式方法的成功说明，这个基准存在可被规则利用的结构，未来需要更复杂的反作弊设计。从研究到产品的转化在于：如何把一个 500 天的战略决策过程压缩到可部署的 Agent 架构中？这涉及记忆机制、反思机制、世界模型和奖励设计的综合创新。</p>
+          <p><b>可落地的方法论：</b>- 本周：列出你产品中需要多步骤执行的 AI 流程，评估其中是否存在“目标漂移”风险。
+- 本季度：为一个关键 Agent 流程设计“规则基线 + 模型增强”的混合方案，并设定可量化的稳定性指标。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://the-decoder.com/only-three-ai-models-finished-above-starting-capital-in-a-500-day-startup-survival-test">The Decoder：AI News（RSS）</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">4 IMPORTANT + 0 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://github.com/itsthelore/wayfinder-router">Wayfinder Router：在本地和托管的大语言模型之间进行确定性查询路由</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://github.com/kageroumado/adrafinil">阿德拉菲尼尔：仅在 AI agent 工作时阻止 Mac 睡眠的菜单栏工具</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://www.ithome.com/0/969/570.htm">四大顶级 AI 对决《文明 VI》：Claude 核平法国仍输，暴露感知与执行短板</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div><a class="event-link" href="https://www.interconnects.ai/p/artifacts-22-zyphra-cohere-and-poolside">Artifacts 22：Zyphra、Cohere 和 Poolside 正在扩展生态系统广度</a></div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">0 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      Grok 4.5 私测与 VibeThinker-3B 开源显示模型能力仍在快速迭代，但 CEO-Bench 和《文明 VI》实验同时暴露 Agent 长期一致性与感知执行仍是产品化瓶颈
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 3 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Grok 4.5 私测于 SpaceX 和 Tesla，性能接近 Opus</h4>
+        <p><b>AI PM 视角：</b>Grok 4.5 的私测信号意味着 xAI 正在把“模型能力”和“工程落地”两条线同时推进。SpaceX 和 Tesla 作为内部高复杂度场景，既是压力测试场，也是产品化的第一站。对于 AI PM 而言，这提示我们：顶级模型的竞争正在从“排行榜分数”转向“垂直场景下的真实可用性”。Cursor 数据进入补充训练也值得注意——代码和 Agent 工作流数据正在成为后训练阶段的核心燃料，模型越来越像“会编程的同事”而不是“会聊天的百科”。</p>
+<p>另一个关键信号是 Elon Musk 提到 Grok Build 工具链的完善。这说明 xAI 不仅在拼模型，也在拼围绕模型的开发生产力体系。未来 AI 平台的竞争焦点，将从单纯的 API 调用能力，扩展到调试、评估、部署、Agent 编排等全链路体验。对于正在设计 AI 功能的产品团队，应该提前思考：当底层模型能力趋同时，产品差异点会来自交互设计、垂直数据、还是工作流集成？</p>
+        
+        <p><b>研究型 Builder 视角：</b>1.5T 参数规模、V9 基础模型、Cursor 数据补充训练、持续 RL 改进——这些关键词组合起来，说明 Grok 4.5 是一次典型的“规模 + 数据 + 后训练”三轴并进的迭代。研究型 Builder 应关注的是：Cursor 数据具体如何影响代码生成和 Agent 执行能力？RL 阶段是否有公开可复现的评估协议？SpaceX 每月发布新模型的承诺，也暗示训练基础设施的高度工程化，但“从头训练”是否包含架构改动仍待验证。研究到产品的转化路径在于：如果代码/Agent 工作流数据能显著提升模型实用性，那么企业内部的私有工作流数据将成为下一代模型微调的核心资产。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：梳理你产品中最常出现的 3-5 个 AI 失败案例，判断其中多少属于“模型能力不够”，多少属于“没有用好现有模型”。</li>
+<li>本季度：设计一个内部 Agent 工作流数据收集机制，为后续模型微调或 few-shot 优化储备高质量样本。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/elonmusk/status/2071184354756477041">X：Elon Musk (@elonmusk, xAI)</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>新浪开源 VibeThinker-3B：推理可压缩，事实知识不能</h4>
+        <p><b>AI PM 视角：</b>VibeThinker-3B 是对“模型越大越好”这一默认假设的有力挑战。它的核心产品启示是：如果你的 AI 功能主要依赖结构化推理（代码、数学、逻辑推导），那么一个 3B 的小模型可能已经足够，而且成本、延迟、可部署性都远优于大模型。这对端侧 AI、私有化部署、低成本 Agent 都有重大意义。但 GPQA-Diamond 上的明显落后也划清了边界：需要广博知识和事实召回的场景，仍然需要大参数模型。</p>
+<p>这意味着产品团队需要重新做“能力-成本”映射。不是把所有功能都塞给一个超大模型，而是把任务按“推理密集”和“知识密集”分类，分别路由到合适的模型。这正是今天另一个事件 Wayfinder Router 所指向的方向：模型路由会成为 AI 系统架构中的关键层。未来的产品架构很可能是“小模型处理高频推理任务 + 大模型处理低频高知识任务 + 路由层动态调度”。</p>
+        
+        <p><b>研究型 Builder 视角：</b>VibeThinker-3B 基于 Qwen2.5-Coder-3B，经 SFT、RL、自蒸馏等多阶段后训练，这种“小底座 + 强后训练”的路径是当前开源社区的重要趋势。研究型 Builder 应关注其训练细节：自蒸馏如何压缩推理模式？RL 奖励函数如何设计以避免过拟合？更根本的是，“参数压缩-覆盖假说”是否具有普遍性——如果推理真的可压缩，那么未来 1B 以下模型是否也能处理复杂推理？该研究的可复现性较高，模型已开源，适合作为端侧推理能力的基准测试对象。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：对你的产品功能做一次“推理型 vs 知识型”分类，标记哪些可以用小模型替代。</li>
+<li>本季度：在内部 PoC 中对比 VibeThinker-3B 或同级别小模型与你当前所用大模型在核心任务上的表现和成本。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://the-decoder.com/sinas-open-model-vibethinker-3b-aims-to-show-reasoning-compresses-well-but-factual-knowledge-doesnt">The Decoder：AI News（RSS）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>仅有三个 AI 模型在 500 天创业测试中盈利超过起始资本</h4>
+        <p><b>AI PM 视角：</b>CEO-Bench 是一个比传统基准更贴近真实世界价值的测试：它衡量的不是单次回答的正确率，而是长期战略决策能力。结果非常冷酷——大多数顶级模型在 500 天的经营模拟中会破产。这对 AI PM 的启示是：当前 AI Agent 在“持续目标管理”和“长期策略一致性”上仍有明显短板。如果你正在设计一个需要多步骤、跨周期执行的 AI 产品（如运营助手、投资决策、供应链管理），必须对模型的长期记忆、目标保持和策略调整能力保持谨慎。</p>
+<p>更讽刺的是，一个简单规则启发式方法击败了除三款外的所有大模型。这说明在很多商业场景中，“稳定的简单策略”可能比“聪明但不稳定的复杂模型”更可靠。产品团队应该反思：我们是否过度追求模型的智能感，而忽视了系统的稳定性和可解释性？未来的 Agent 产品可能需要在“智能”和“稳定”之间找到新的平衡，甚至采用“规则基线 + 模型增强”的混合架构。</p>
+        
+        <p><b>研究型 Builder 视角：</b>CEO-Bench 的核心研究贡献在于把 Agent 评估从“任务完成率”推进到“长期经济结果”。研究型 Builder 应关注：模型失败的根因是什么？是长期记忆遗忘、目标漂移、还是无法从反馈中学习？简单启发式方法的成功说明，这个基准存在可被规则利用的结构，未来需要更复杂的反作弊设计。从研究到产品的转化在于：如何把一个 500 天的战略决策过程压缩到可部署的 Agent 架构中？这涉及记忆机制、反思机制、世界模型和奖励设计的综合创新。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：列出你产品中需要多步骤执行的 AI 流程，评估其中是否存在“目标漂移”风险。</li>
+<li>本季度：为一个关键 Agent 流程设计“规则基线 + 模型增强”的混合方案，并设定可量化的稳定性指标。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://the-decoder.com/only-three-ai-models-finished-above-starting-capital-in-a-500-day-startup-survival-test">The Decoder：AI News（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 4 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Wayfinder Router：在本地和托管的大语言模型之间进行确定性查询路由</h4>
+        <p><b>分析：</b>Wayfinder Router 通过分析提示词的结构（长度、标题、列表、代码）和措辞，在微秒级完成路由决策，完全离线且无需调用其他模型，支持用户校准阈值，兼容任何 OpenAI 兼容 API，可自托管。</p>
+        <p><b>AI PM 视角：</b>这是一个典型的“AI 基础设施层”产品，核心价值是降本和降低延迟。产品团队可以借鉴其思路：不是所有查询都需要最强模型，通过轻量路由层把简单请求分流到小模型或本地模型，复杂请求才调用大模型，能显著优化成本结构。这对多模型策略的产品尤为重要。</p>
+        
+        <p><b>研究型 Builder 视角：</b>本地确定性路由避免了调用外部模型带来的延迟和随机性，其结构特征设计可解释性强，适合作为模型路由研究的基线实现。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周为你的 AI 产品设计一个简单的路由规则：根据查询长度、是否包含代码、是否需要创意生成，决定调用哪个模型。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://github.com/itsthelore/wayfinder-router">Hacker News 热门（buzzing.cc 中文翻译）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>阿德拉菲尼尔：仅在 AI agent 工作时阻止 Mac 睡眠的菜单栏工具</h4>
+        <p><b>分析：</b>Adrafinil 是一款 macOS 菜单栏应用，仅在 Claude Code、Codex、Cursor 等 9 种 AI coding agent 持有活跃会话时阻止系统睡眠，无 agent 工作时合盖正常睡眠，支持进程嗅探和引用计数。</p>
+        <p><b>AI PM 视角：</b>Agent 工作流的周边工具正在快速细分。Adrafinil 解决的问题很小（防止合盖睡眠中断 agent），但精准击中开发者痛点。这提示 AI PM：除了核心模型能力，Agent 的“运行环境”和“会话管理”也是产品体验的重要组成部分。未来可能出现更多围绕 Agent 生命周期管理的工具。</p>
+        
+        <p><b>研究型 Builder 视角：</b>该工具通过钩子系统和进程嗅探实现低延迟检测，是 Agent 系统监控的一个小 but 完整的工程案例。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你是 AI coding agent 的用户，本周试用并评估：你的 agent 工作流是否因为系统睡眠、网络中断或会话超时而失败？</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://github.com/kageroumado/adrafinil">Hacker News 热门（buzzing.cc 中文翻译）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>四大顶级 AI 对决《文明 VI》：Claude 核平法国仍输，暴露感知与执行短板</h4>
+        <p><b>分析：</b>英国前首相府数据科学家 Liam Wilkinson 搭建 76 个 MCP 工具，让 Claude Opus 4.6、GPT-5.4、Gemini 3.1 Pro 等四个模型在《文明 VI》中对战 23 场。发现 AI 主动检查全局状态仅占 1-2%，计划后 10 回合内执行率仅 48-66%，最终结论是智商非瓶颈，感知与执行才是关键。</p>
+        <p><b>AI PM 视角：</b>这个实验生动地揭示了当前 AI Agent 的“知行差距”。即使模型能制定复杂策略（如研发核弹），也无法持续感知全局状态并可靠执行。这对设计 Agent 产品的 PM 是重要提醒：不要高估模型的规划能力，要为其配备完善的状态感知、执行反馈和错误恢复机制。</p>
+        
+        <p><b>研究型 Builder 视角：</b>该实验通过游戏环境提供了一个可重复的 Agent 评估场景，其 MCP 工具设计为研究 Agent 的感知-执行闭环提供了参考架构。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周检查你的 Agent 产品：模型是否经常“忘记”当前状态？是否有过多的计划未能落地？如果是，优先优化状态管理而非模型能力。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.ithome.com/0/969/570.htm">IT之家（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>Artifacts 22：Zyphra、Cohere 和 Poolside 正在扩展生态系统广度</h4>
+        <p><b>分析：</b>开源模型生态正变得更多元，参与者从少数中国公司扩展到全球各类组织。纯模型制造商、科技巨头、产品公司各自训练专业化模型，NVIDIA 发布 Nemotron-3-Ultra-550B-A55B-BF16 采用 LatentMoE 架构并改用 OpenMDW 许可证，Cohere 以 Apache 2.0 开源其旗舰模型。</p>
+        <p><b>AI PM 视角：</b>开源模型生态的多元化意味着产品团队有了更多选择，但也增加了决策复杂度。未来选择模型不仅要考虑能力，还要考虑许可证、部署成本、社区支持和垂直适配度。产品公司训练自己的小模型（如 JetBrains、Zed）也预示：垂直领域的小模型可能成为新的竞争壁垒。</p>
+        
+        <p><b>研究型 Builder 视角：</b>NVIDIA 的 LatentMoE 架构和新的 OpenMDW 许可证是技术+治理的双重变化，研究型 Builder 应关注 MoE 架构在超大模型中的实际效率，以及开源许可证对商业化的影响。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本月建立一份你所在领域的“模型选型矩阵”，纳入能力、成本、许可证、社区活跃度四个维度。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.interconnects.ai/p/artifacts-22-zyphra-cohere-and-poolside">Nathan Lambert：Interconnects（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架 1：推理可压缩，知识需覆盖——模型选型的“任务密度”框架</h4>
+        <p>今天的 VibeThinker-3B 和 Wayfinder Router 共同指向一个事实：未来 AI 系统不是单模型架构，而是多模型协同。任务可以按照“推理密度”和“知识密度”两个维度分类：</p>
+<ul>
+<li>高推理密度、低知识密度：适合小模型（如 VibeThinker-3B），成本低、延迟低、可私有化。</li>
+<li>低推理密度、高知识密度：适合大参数模型或 RAG 增强的小模型。</li>
+<li>双高任务：需要模型组合或 Agent 编排。</li>
+</ul>
+<p><strong>产品启示</strong>：AI PM 应该停止问“用哪个模型”，而是问“这个任务需要多少推理、多少知识、多少上下文”。基于此设计路由策略，把简单任务压给小模型，把复杂任务交给大模型，把需要长期一致性的任务交给规则基线。这样既能优化成本，也能提升系统稳定性。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架 2：Agent 的“感知-执行”闭环优先于“规划-生成”能力</h4>
+        <p>《文明 VI》AI 对决和 CEO-Bench 都指向同一个结论：当前 AI 的瓶颈不在生成能力，而在持续感知状态和执行计划的能力。一个能写核弹计划的模型，可能连 10 回合内的目标都保持不住；一个能在对话中表现优异的模型，可能在 500 天经营中破产。</p>
+<ul>
+<li>感知：模型是否主动、定期地检查全局状态？</li>
+<li>执行：计划是否能被可靠地转化为动作并验证结果？</li>
+<li>恢复：执行失败后能否回到正确轨道？</li>
+</ul>
+<p><strong>产品启示</strong>：设计 Agent 产品时，应把 70% 的工程精力放在感知、执行和恢复机制上，而不是追求更强大的模型。MCP 工具、状态机、检查点、重试机制、规则基线，这些都是比模型版本号更稳定的差异化来源。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架 3：垂直数据 + 后训练 = 下一代模型差异化的核心</h4>
+        <p>Grok 4.5 使用 Cursor 数据、VibeThinker-3B 经过多阶段后训练、Cohere 和 Poolside 等专业玩家进入开源生态，共同说明：基础模型能力正在趋于同质化，真正的差异来自垂直数据和针对性的后训练。</p>
+<ul>
+<li>通用预训练决定下限。</li>
+<li>垂直数据和 RL/SFT 决定上限。</li>
+<li>产品公司的小模型可能成为护城河。</li>
+</ul>
+<p><strong>产品启示</strong>：如果你拥有独特的用户行为数据、领域知识或工作流数据，应该尽早思考如何将其转化为模型后训练资产。未来的竞争不是“谁用得起最大模型”，而是“谁能用独特数据训练出最适配场景的模型”。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>VibeThinker-3B 论文/技术报告</strong>：理解 3B 模型如何在代码和数学任务上追平大 200 倍模型，重点看后训练方法和自蒸馏机制。</p>
+<p><b>2.</b> <strong>CEO-Bench 基准测试说明</strong>：了解 AI 在 500 天创业模拟中失败的具体原因，思考你的 Agent 产品是否存在类似的目标漂移问题。</p>
+<p><b>3.</b> <strong>Wayfinder Router GitHub 仓库</strong>：学习离线确定性路由的实现思路，评估能否借鉴到你的模型选型策略中。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>做一次模型能力-任务匹配审计</strong>：把产品中的 AI 任务按“推理密度”和“知识密度”分类，识别可以用小模型替代的场景。</p>
+<p><b>2.</b> <strong>检查 Agent 的感知-执行闭环</strong>：列出产品中所有多步骤 AI 流程，评估状态检查频率、计划执行率和错误恢复机制。</p>
+<p><b>3.</b> <strong>评估内部数据的后训练价值</strong>：梳理你产品积累的私有数据，判断哪些可用于未来的模型微调或 Agent 优化。</p>
+<p><b>4.</b> <strong>关注 Grok 4.5 的公开评测</strong>：一旦有更多第三方评测流出，及时更新你的模型选型矩阵。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>多模型路由将成为 AI 系统标配</strong>：未来 6-12 个月，模型路由层会从黑客工具变成产品基础设施，Wayfinder Router 这类方案会催生更多商业化产品。</p>
+<p><b>2.</b> <strong>小模型在特定任务上的替代加速</strong>：随着 VibeThinker-3B 这类模型出现，端侧和私有化部署的 AI 能力将快速提升，影响移动端和 B 端私有化产品。</p>
+<p><b>3.</b> <strong>Agent 产品的竞争焦点从“聪明”转向“可靠”</strong>：CEO-Bench 和《文明 VI》实验共同说明，市场会更看重 Agent 的稳定执行能力，而非单次生成的惊艳程度。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题 1：你的产品是否过度依赖大模型的“通才能力”？</h4>
+        <p>VibeThinker-3B 证明，很多任务不需要最大模型。产品团队往往出于安全感选择最强模型，但这可能带来不必要的成本和延迟。</p>
+<ul>
+<li>你的产品功能中，有多少真正需要广博知识，多少只是结构化推理？</li>
+<li>如果用小模型替代部分任务，用户体验和成本结构会如何变化？</li>
+<li>小模型失败时，你的系统是否有优雅降级到大模型的机制？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题 2：Agent 的长期一致性是否比单次智能更重要？</h4>
+        <p>CEO-Bench 和《文明 VI》实验都暴露了 AI 在长期任务中的不稳定。产品中的 Agent 往往需要跨会话、跨天甚至跨周保持一致目标。</p>
+<ul>
+<li>你的 Agent 产品如何保持跨会话的目标一致性？</li>
+<li>是否有机制防止 Agent 在长时间运行中“遗忘”关键约束？</li>
+<li>当 Agent 偏离目标时，用户或系统如何发现并纠正？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题 3：模型路由应该由规则还是模型来决定？</h4>
+        <p>Wayfinder Router 用确定性规则做路由，而 RouteLLM、NotDiamond 等依赖模型做路由。两者各有优劣。</p>
+<ul>
+<li>你的产品更适合确定性路由还是学习型路由？</li>
+<li>路由决策的延迟和成本约束是什么？</li>
+<li>如果路由本身出错，对用户体验的影响有多大？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题 4：垂直数据能否成为你的模型壁垒？</h4>
+        <p>Grok 4.5 用 Cursor 数据、VibeThinker-3B 用代码数据、产品公司训练垂直小模型，说明数据正在成为差异化来源。</p>
+<ul>
+<li>你的产品积累了哪些独特的数据资产？</li>
+<li>这些数据是否可用于模型后训练或 Agent 优化？</li>
+<li>在数据隐私和合规框架下，如何安全地利用这些数据？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题 5：开源生态多元化会如何改变你的模型选型策略？</h4>
+        <p>Cohere、Zyphra、Poolside、NVIDIA 等更多玩家进入开源模型市场，许可证和能力组合更加复杂。</p>
+<ul>
+<li>你的模型选型标准是否需要更新？</li>
+<li>不同许可证（Apache 2.0、OpenMDW 等）对你的商业化有何影响？</li>
+<li>是否需要建立常态化的模型评估和替换流程？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A：AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 用 30 分钟梳理产品中的 AI 调用点，标注每个调用点的任务类型和模型成本。</p>
+<p><b>2.</b> 阅读 VibeThinker-3B 的相关报道，理解“推理可压缩，知识不能”的核心观点。</p>
+<p><b>3.</b> 列出 3 个可以用小模型或规则替代的 AI 功能点。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 设计一个“任务-模型”匹配矩阵，纳入推理密度、知识密度、延迟要求和成本约束。</p>
+<p><b>2.</b> 为你的 Agent 产品设计一个状态检查和执行反馈机制。</p>
+<p><b>3.</b> 与工程团队协作，进行一次真实的小模型替代实验。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 建立模型选型、评估和替换的标准化流程。</p>
+<p><b>2.</b> 探索垂直数据在模型后训练中的商业化路径。</p>
+<p><b>3.</b> 关注 Agent 可靠性指标，并将其纳入产品核心 KPI。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B：AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 本地部署 VibeThinker-3B，测试其在代码和数学任务上的表现。</p>
+<p><b>2.</b> 尝试 Wayfinder Router，理解其基于提示词结构的路由逻辑。</p>
+<p><b>3.</b> 用 MCP 工具为一个简单游戏或模拟环境搭建 Agent。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 实现一个基于规则的模型路由层，集成到你的 AI 项目中。</p>
+<p><b>2.</b> 为一个内部 Agent 流程添加状态检查、重试和恢复机制。</p>
+<p><b>3.</b> 尝试对一个小模型进行 SFT 或自蒸馏，观察其在特定任务上的提升。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 研究 MoE 架构（如 NVIDIA Nemotron-3-Ultra）的效率和部署策略。</p>
+<p><b>2.</b> 设计一个长期运行的 Agent 评估框架，模拟 CEO-Bench 的思路。</p>
+<p><b>3.</b> 参与开源模型社区，贡献垂直领域的微调模型或工具。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C：研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 阅读 VibeThinker-3B 相关技术报告，复现其在 AIME26 或 LiveCodeBench 上的关键结果。</p>
+<p><b>2.</b> 了解 CEO-Bench 的实验设计，思考其评估指标的优势和局限。</p>
+<p><b>3.</b> 对比 Wayfinder Router 与 RouteLLM/NotDiamond 的路由策略差异。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 对 VibeThinker-3B 进行消融实验，验证自蒸馏和 RL 在推理任务中的贡献。</p>
+<p><b>2.</b> 在《文明 VI》或类似环境中复现 Agent 的感知-执行分析。</p>
+<p><b>3.</b> 分析 Nemotron-3-Ultra 的 LatentMoE 架构，评估其在实际推理中的效率。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 提出并验证一个新的“推理可压缩性”假说或评估指标。</p>
+<p><b>2.</b> 设计一个从研究到产品的 Agent 可靠性框架。</p>
+<p><b>3.</b> 撰写技术博客或论文，分享你在小模型推理或 Agent 评估上的发现。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D：快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>小模型推理压缩</td><td>VibeThinker-3B 技术报道与开源仓库</td><td>1-2 小时</td></tr><tr><td>AI 长期战略决策</td><td>CEO-Bench 论文/普林斯顿相关报道</td><td>1 小时</td></tr><tr><td>模型路由</td><td>Wayfinder Router GitHub 仓库</td><td>30 分钟</td></tr><tr><td>Agent 感知执行</td><td>《文明 VI》AI 对决实验报道</td><td>30 分钟</td></tr><tr><td>开源生态动态</td><td>Nathan Lambert：Artifacts 22</td><td>45 分钟</td></tr><tr><td>Agent 运行环境</td><td>Adrafinil GitHub 仓库</td><td>15 分钟</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-26.html">
+      <span class="date">2026-06-26</span>
+      <span class="title">Agentic 工作拐点与开源-监管-硬件三力重塑</span>
+      <span class="angle">Codex 内部数据验证 Agent 成为知识工作默认界面，开源编码模型、政府安全审查与亚纳米芯片同时改写 AI 产品的成本、合规与竞争格局</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-25.html">
+      <span class="date">2026-06-25</span>
+      <span class="title">Agent 全场景落地与语音世界模型双突破</span>
+      <span class="angle">AI 从对话助手向可打断语音、可操作世界、可企业部署的 Agent 形态全面跃迁，工程化落地速度超过市场预期。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-06-24.html">
+      <span class="date">2026-06-24</span>
+      <span class="title">Agent协作身份与端云生成并行</span>
+      <span class="angle">AI 产品从能力展示转向 Agent 协作身份、端侧生成与全栈交互的工程化落地，同时评测偏见与安全审计成为信任基础设施新焦点。</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>180 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+      <div class="meta" style="margin-top:8px;color:var(--ink-soft)"><strong>生成时间</strong>: 2026-06-29 <strong>数据来源</strong>: <a href="https://aihot.virxact.com">AI HOT</a> 日报 API <strong>解读视角</strong>: AI 产品经理 & AI Builder & 研究型 Builder</div>
+    </div>
+  </footer>
+</body>
+</html>
