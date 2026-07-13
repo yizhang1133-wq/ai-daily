@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-07-10</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>191</span></div>
+    <div><b>ISS.</b><span>2026-07-10</span></div>
+    <div><b>EVT.</b><span>24 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 191</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">10</div>
+    <div class="meta-col">
+      <h2>Agent自主工作与世界模型开源双爆发</h2>
+      <p>OpenAI以GPT-5.6+ChatGPT Work将AI从对话推向跨应用自主工作，蚂蚁LingBot-World开源与微软Flint等工具同步补全Agent生态，效率与治理成为产品化新焦点</p>
+      <div class="meta-row"><b>日期</b> 2026-07-10</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 191 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">Open</span>AI以GPT-5.6+ChatGPT Work将AI从对话推向跨应用自主工作，蚂蚁LingBot-World开源与微软Flint等工具同步补全Agent生态，效率与治理成为产品化新焦点
+    </div>
+    <div class="credits">
+      
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 4<br>
+      IMPORTANT 10<br>
+      REFERENCE 10<br>
+      <hr>
+      <b>THEMES</b><br>
+      自主工作智能体、实时交互世界模型、AI 可视化语言、压缩混合 MoE<br>
+      端侧 Web 推理、VLA 机器人、提示词治理、Claude 反思、技能资产<br>
+      蒸馏诊断、时序感知、人形机器人、AI 内容泛滥、Rust 重写<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架 1：从"对话"到"工作"——Agent 产品化的三层跃迁<br>
+      框架 2：世界模型 + 具身智能——AI 与物理世界交互的双引擎<br>
+      框架 3：效率-能力帕累托前沿——大模型竞争进入"够用且便宜"阶段
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>4 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>OpenAI 推出 ChatGPT Work，同步发布 GPT-5.6 前沿模型</h3>
+          <p>OpenAI 发布 ChatGPT Work，一个能跨应用、跨文件收集信息并将复杂项目分解为多步骤、持续工作数小时的 AI 智能体。该功能由同日发布的最新前沿模型 GPT-5.6 驱动，具备多步骤推理和按模板生成材料的能力。ChatGPT Work 今天起面向 Pro、Enterprise 和 Edu 计划推出，未来几天扩展至 Plus 和 Business。桌面版 ChatGPT 同时整合 Chat、Work 和 Codex 三种模式，Codex 应用已合并进新的桌面应用。</p>
+          <p><b>AI PM 视角：</b>ChatGPT Work 的发布标志着消费级 AI 产品从"问答式助手"正式转向"任务式协作者"。过去两年，ChatGPT 的核心交互是单次或少数轮次的对话，用户需要主动拆解任务、反复提示；而 Work 模式将任务拆解、信息收集、材料生成、持续执行封装在智能体内部，这意味着产品形态正在从"工具"向"员工"迁移。对 B 端产品尤其重要：企业采购 AI 的核心诉求不是生成一段文案，而是完成"写一份季度报告""整理一次会议纪要并跟进待办""基于 20 份文件完成竞品分析"等端到端工作。ChatGPT Work 直接切中这个痛点，并且通过模板化输出降低企业对结果一致性的焦虑。
+
+从竞争格局看，OpenAI 正在用"模型 + 产品 + 工作流"三位一体的打法压缩 Anthropic、Google 和垂直 Agent 厂商的空间。每周超 500 万用户使用 Codex、其中超 100 万用于非软件开发场景的数据，说明 OpenAI 已经把代码智能体的工程经验迁移到通用工作场景。Codex 与 Work 在桌面端合并，也意味着 OpenAI 不再把编程和其他工作流区隔开，而是统一成一个"可执行智能体"入口。对竞品而言，单纯发布更强的聊天模型已经不够，必须补齐长时任务执行、跨应用集成和结果可验证性。</p>
+
+          <p><b>研究型 Builder 视角：</b>GPT-5.6 作为"最新前沿模型"，目前公开的技术细节有限，但从 ChatGPT Work 的能力描述可以推断其关键改进在于长程规划、工具调用可靠性和跨模态上下文一致性。与 GPT-4o 相比，真正的跃迁不是单一任务的准确率，而是多步骤任务中的错误恢复能力——即当某一步失败或返回不可用时，模型能否回退、重试或请求用户澄清。这种"执行韧性"通常依赖强化学习、树状推理或显式规划模块。研究者应关注其系统卡（system card）中关于 agentic capabilities 的评估，尤其是 SWE-Bench、AgentBench 等多步骤基准是否同步提升，以及幻觉率在长程任务中的累积情况。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：梳理你所在产品中最常被用户用 AI 处理但结果不稳定的"端到端任务"，尝试用 Work 模式或类似智能体框架跑通一个 MVP，重点记录失败回退点。
+- **本季度可做**：设计"任务模板 + 检查点"机制，把高频工作流拆分为可验证的子步骤，为接入类似 ChatGPT Work 的 Agent 接口做准备。
+- **长期可做**：重新评估产品的 AI 定位：你的产品未来是 AI 的"入口"、"被调用的工具"，还是"任务编排层"？
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://openai.com/index/chatgpt-for-your-most-ambitious-work">OpenAI：官网动态</a> · <a href="https://openai.com/index/gpt-5-6/">OpenAI：GPT-5.6 博文</a> · <a href="https://x.com/sama/status/2075266471316615436">X：Sam Altman (@sama)</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>蚂蚁灵波开源实时交互世界模型 LingBot-World 2.0</h3>
+          <p>蚂蚁灵波开源新一代实时交互世界模型 LingBot-World 2.0（14B 参数），支持施法、攻击、跳跃等丰富角色动作及文本驱动事件，内置 Pilot Agent 与 Director Agent 实现世界持续演化，并支持多人同时交互。模型采用因果预训练范式和混合双向自回归注意力掩码（MoBA），可稳定输出 720p/60fps 实时画面，长达一小时测试画质不衰减。权重及推理代码以非商用协议开源，SGLang 已适配。</p>
+          <p><b>AI PM 视角：</b>LingBot-World 2.0 的"实时交互世界模型"定位非常精准：它不是传统意义上的视频生成模型，而是一个可被用户、智能体或多玩家持续交互的"可玩游戏世界"。这对游戏、虚拟培训、社交娱乐和教育仿真都有直接产品价值。过去的世界模型（如 DeepMind 的 Genie、OpenAI 的 Sora）主要强调视频生成质量，而 LingBot-World 强调**低延迟可控交互**和**长时间一致性**，这是从"内容生成"到"可运行环境"的质变。
+
+从生态角度看，蚂蚁选择开源而非闭源API优先，是在对标开源视频/世界模型社区（如 CogVideo、Wan）的同时，用"实时交互"建立差异化。对 AI PM 而言，这意味着：如果你的产品需要"AI 生成的可交互空间"，现在可以基于 LingBot-World 2.0 快速验证原型，而不必等待大厂 API。但其非商用协议也提示：商业化落地需要与蚂蚁洽谈授权，或将其作为能力验证后自研替代。</p>
+
+          <p><b>研究型 Builder 视角：</b>技术上，LingBot-World 2.0 的核心创新是**因果预训练 + MoBA（混合双向自回归注意力掩码）**的组合。传统自回归模型在生成长视频时容易出现漂移和画质衰减，而 MoBA 通过灵活的注意力掩码让模型在保持因果性的同时利用双向上下文；一致性蒸馏与 DMD（可能指分布匹配蒸馏）则显著降低采样步数，使 720p/60fps 实时输出成为可能。研究者应验证：在相同算力下，MoBA 相比标准因果 Transformer 的 FID/FVD 指标提升，以及长序列（一小时）场景中的对象一致性和物理规则保持度。SGLang 适配也意味着社区可以较快复现推理链路。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：在灵光 APP 或 Reactor PC 端体验 LingBot-World 2.0，记录输入延迟、动作可控性和长时一致性表现，形成一份内部评估文档。
+- **本季度可做**：挑选一个"可交互内容"场景（如游戏 NPC 训练、虚拟展厅、安全教育仿真），用 LingBot-World 2.0 做一个可玩的 Demo。
+- **长期可做**：构建"世界模型 + 智能体"闭环：让 LLM/VLA 作为 Agent 在 LingBot-World 中执行任务，验证 AI 在虚拟环境中的长期规划能力。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.ithome.com/0/974/508.htm">IT之家</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>微软发布 Flint：面向 AI 智能体的可视化语言</h3>
+          <p>微软研究院推出 Flint，一种可视化中间语言，让 AI 智能体通过简洁的人类可编辑 spec 自动生成美观图表。用户只需提供数据、语义类型和图表类型，Flint 编译器即可推导坐标轴、配色、布局等底层参数，支持 46 种图表类型，可渲染到 Vega-Lite、ECharts 和 Chart.js 三个后端。项目通过 npm 安装并提供 MCP 服务器用于智能体工作流集成，已开源。</p>
+          <p><b>AI PM 视角：</b>Flint 解决的是 AI 智能体落地中一个被低估的问题：**智能体生成的内容不仅要"对"，还要"好看、可用、可编辑"**。当前很多 Agent 可以生成图表，但结果往往是千篇一律、难以微调，或者需要人类重新在 Excel/Figma 中制作。Flint 通过引入一层"可视化中间语言"，把用户的意图（数据、语义类型、图表类型）与具体渲染参数解耦，既让 AI 有明确的输出结构，又让人类可以低成本修改。这对数据分析、BI、报告生成、运营看板等产品是立竿见影的增效器。
+
+更重要的是，Flint 提供了 MCP 服务器，这意味着它不只是图表库，而是可以被任意支持 MCP 的智能体调用的一环。随着 ChatGPT Work、Claude Code 等 Agent 工作流的普及，Flint 这类"Agent 原生工具"会越来越重要——它们不是被人类直接使用，而是被 AI 调用并产生人类可消费的输出。</p>
+
+          <p><b>研究型 Builder 视角：</b>Flint 的技术价值在于将"图表生成"形式化为一个**从高层语义 spec 到底层视觉参数的编译问题**。这与传统模板化图表库（如 ECharts 的 option）相比，多了一个"推断层"，由编译器根据语义类型自动补全人类未显式指定的视觉属性。研究者可以关注的方向包括：spec 到 option 的编译是否可逆、人类编辑后的 spec 能否被模型学习以改进后续生成、以及多后端渲染时的一致性如何保证。开源代码和 npm 包使得复现和扩展成本较低。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：在你产品的报告/数据展示模块中，尝试用 Flint 替代静态图表生成逻辑，评估 AI 生成图表的可编辑性提升。
+- **本季度可做**：将 Flint 的 MCP 服务器接入内部 Agent 工作流，让智能体在生成分析报告时自动调用 Flint 输出可视化内容。
+- **长期可做**：建立"人类可编辑的 AI 输出中间表示"设计规范，不只限于图表，也扩展到幻灯片、表格、文档排版等领域。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://microsoft.github.io/flint-chart">Hacker News 热门（buzzing.cc 中文翻译）</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">04<small>TH</small></div>
+        <div>
+          <h3>NVIDIA 发布 Nemotron-Labs-3-Puzzle-75B-A9B 压缩混合 MoE 模型</h3>
+          <p>NVIDIA 发布 Nemotron-3-Super 的压缩变体 Nemotron-Labs-3-Puzzle-75B-A9B，总参数从 120.7B 降至 75.3B，活跃参数从 12.8B 降至 9.3B，保持 88 块混合布局（40 Mamba、40 MoE、8 注意力）。在 8×B200 节点上，8K/64K 场景匹配用户吞吐量≥100 tok/s 时，服务器吞吐量提升 2.03 倍；单 H100 上 1M-token 并发从 1 增至 8，权重占用从 70 GB 降至 44.5 GB。代价是 Arena-Hard-V2 降 4.2 分、SWE-Bench 降 2.6 分。</p>
+          <p><b>AI PM 视角：</b>Puzzle-75B-A9B 的发布是**大模型工程化落地**的关键信号：在绝对性能已经足够好的前提下，行业开始用可接受的能力损失换取大幅度的成本和延迟下降。对 AI PM 来说，这意味着产品决策范式正在变化——过去选型看"谁更强"，未来更多看"在相同 SLA 下谁更便宜、更快、更能并发"。特别是对需要处理长上下文、高并发的企业级应用（如客服、法律文档分析、代码助手），这种 2 倍吞吐提升可能直接决定商业模式是否成立。
+
+NVIDIA 作为算力基础设施提供方推出这种压缩模型，也在传递一个更深层信号：硬件厂商不再只是卖卡，而是越来越多地参与模型层面的优化，以证明其硬件在真实负载下的性价比。这对云厂商和模型厂商都构成压力——你必须在软硬件协同优化上竞争。</p>
+
+          <p><b>研究型 Builder 视角：</b>Puzzle 方法的核心是**迭代式模型压缩**，即在保持混合架构（Mamba + MoE + Attention）的前提下，通过多轮压缩-评估循环找到帕累托最优。研究者应关注：压缩过程中不同模块（Mamba vs MoE vs Attention）的敏感度差异、迭代式压缩相比一次性剪枝/蒸馏的优势，以及如何在压缩后恢复部分损失的推理能力（如继续微调或 LoRA 适配）。该模型也是一个很好的案例，说明"大模型能力"和"服务效率"之间存在明确的 trade-off，未来需要更系统的 efficiency-aware evaluation benchmark。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：盘点你当前使用的模型在成本和延迟上的瓶颈，评估是否有 10%-20% 的能力损失可以接受以换取 2 倍成本下降。
+- **本季度可做**：针对高并发场景（如客服、文档问答）设计 A/B 测试，比较原版模型与压缩/蒸馏版本在真实用户任务中的效果与成本。
+- **长期可做**：建立"效率-能力帕累托前沿"评估框架，让模型选型从"选最强"转向"选最合适"。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.marktechpost.com/2026/07/09/nvidia-releases-nemotron-labs-3-puzzle-75b-a9b-a-compressed-hybrid-moe-llm-delivering-2-03x-server-throughput-at-matched-user-throughput">MarkTechPost</a></span>
+        </div>
+        <div class="tag">PLATFORM</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">10 IMPORTANT + 10 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://www.anthropic.com/news/reflect-with-claude">Anthropic 为 Claude 推出反思功能（Beta）</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://mistral.ai/news/manage-prompts-and-skills-in-studio">Mistral 推出 Studio，为 AI 提示词和技能提供系统记录</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://developers.googleblog.com/litertjs-googles-high-performance-web-ai-inference">Google 推出 LiteRT.js：高性能 Web AI 推理运行时</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div><a class="event-link" href="https://www.marktechpost.com/2026/07/08/lingbot-vla-2-0">Robbyant 发布 LingBot-VLA 2.0：开源 6B 跨实体机器人视觉-语言-动作模型</a></div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
+      <div>05</div><div><a class="event-link" href="https://www.ithome.com/0/974/517.htm">蚂蚁灵波开源 LingBot-Video：全球首个面向具身智能的 MoE 视频基模</a></div><div class="red">POLICY</div><div>主权</div><div class="right red">BLOOM</div>
+      <div>06</div><div><a class="event-link" href="https://x.com/OpenAIDevs/status/2075331020090687666">OpenAI ChatGPT Sites 将创意变可发布网站</a></div><div class="red">CREATIVE</div><div>音乐</div><div class="right red">X</div>
+      <div>07</div><div><a class="event-link" href="https://www.anthropic.com/news/hard-questions">Anthropic 发起"硬问题"倡议，邀请公众提出 AI 相关尖锐问题</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>08</div><div><a class="event-link" href="https://www.anthropic.com/news/ben-bernanke">Anthropic 长期利益信托任命本·伯南克为受托人</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>09</div><div><a class="event-link" href="https://openai.com/index/bio-bug-bounty">OpenAI 升级 Bio Bug Bounty 为持续项目</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>10</div><div><a class="event-link" href="https://www.tomtunguz.com/ollama-series-b">Ollama 开发者数达 890 万，完成 B 轮融资</a></div><div class="red">REF</div><div>—</div><div class="right red">REF</div>
+      <div>11</div><div>Meta 发布 Muse Spark 1.1</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>12</div><div>特斯拉 Optimus Gen 3 初步定型</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>13</div><div>Elon Musk 称赞 Anthropic 并承诺不切断其算力</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>14</div><div>Apple 提出在线策略蒸馏诊断框架</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>15</div><div>Apple 提出 TGPO：激励第一人称视频时序感知</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>16</div><div>Apple 提出 SRLM：自反思程序搜索提升长上下文能力</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>17</div><div>AI 能否回答 3 万亿美元的问题</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>18</div><div>社交媒体 AI 生成内容泛滥：LinkedIn 超 40% 长文为 AI 写作</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>19</div><div>Bun 被 Anthropic 收购后用 Rust 重写</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>20</div><div>TeXada：基于 MiniCPM 的本地数学 Agent 发布</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">10 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>Meta 发布 Muse Spark 1.1</div><div>Meta 继续追赶开源/半开源模型赛道，但信息量有限，需等待技术细节释放。</div>
+      <div>02</div><div>特斯拉 Optimus Gen 3 初步定型</div><div>人形机器人量产节点临近，对制造业、物流和陪护机器人市场是长期信号。</div>
+      <div>03</div><div>Elon Musk 称赞 Anthropic 并承诺不切断其算力</div><div>反映了 AI 基础设施层面的相互依赖，算力合同正成为战略合作/竞争的杠杆。</div>
+      <div>04</div><div>Apple 提出在线策略蒸馏诊断框架</div><div>为蒸馏效果评估提供了细粒度诊断工具，对模型压缩和教师-学生训练有方法论价值。</div>
+      <div>05</div><div>Apple 提出 TGPO：激励第一人称视频时序感知</div><div>通过可验证奖励强化学习抑制 MLLM 的空间捷径行为，对视频理解和具身智能训练有启发。</div>
+      <div>06</div><div>Apple 提出 SRLM：自反思程序搜索提升长上下文能力</div><div>证明递归并非长上下文关键，自反思程序搜索在短/长上下文中均稳定增益。</div>
+      <div>07</div><div>AI 能否回答 3 万亿美元的问题</div><div>全球 AI 基础设施投入与收入回报之间的巨大缺口，提示行业可能面临资本回报重估。</div>
+      <div>08</div><div>社交媒体 AI 生成内容泛滥：LinkedIn 超 40% 长文为 AI 写作</div><div>AI 内容泛滥正在改变社交媒体信任机制，内容平台需要新的真实性标识和分发策略。</div>
+      <div>09</div><div>Bun 被 Anthropic 收购后用 Rust 重写</div><div>Anthropic 通过收购核心基础设施强化 Claude Code 等产品的性能与稳定性。</div>
+      <div>10</div><div>TeXada：基于 MiniCPM 的本地数学 Agent 发布</div><div>本地优先的数学 AI 工具验证了小模型在垂直场景的可行性，适合教育和科研辅助。</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      OpenAI以GPT-5.6+ChatGPT Work将AI从对话推向跨应用自主工作，蚂蚁LingBot-World开源与微软Flint等工具同步补全Agent生态，效率与治理成为产品化新焦点
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 4 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>OpenAI 推出 ChatGPT Work，同步发布 GPT-5.6 前沿模型</h4>
+        <p><b>AI PM 视角：</b>ChatGPT Work 的发布标志着消费级 AI 产品从"问答式助手"正式转向"任务式协作者"。过去两年，ChatGPT 的核心交互是单次或少数轮次的对话，用户需要主动拆解任务、反复提示；而 Work 模式将任务拆解、信息收集、材料生成、持续执行封装在智能体内部，这意味着产品形态正在从"工具"向"员工"迁移。对 B 端产品尤其重要：企业采购 AI 的核心诉求不是生成一段文案，而是完成"写一份季度报告""整理一次会议纪要并跟进待办""基于 20 份文件完成竞品分析"等端到端工作。ChatGPT Work 直接切中这个痛点，并且通过模板化输出降低企业对结果一致性的焦虑。</p>
+<p>从竞争格局看，OpenAI 正在用"模型 + 产品 + 工作流"三位一体的打法压缩 Anthropic、Google 和垂直 Agent 厂商的空间。每周超 500 万用户使用 Codex、其中超 100 万用于非软件开发场景的数据，说明 OpenAI 已经把代码智能体的工程经验迁移到通用工作场景。Codex 与 Work 在桌面端合并，也意味着 OpenAI 不再把编程和其他工作流区隔开，而是统一成一个"可执行智能体"入口。对竞品而言，单纯发布更强的聊天模型已经不够，必须补齐长时任务执行、跨应用集成和结果可验证性。</p>
+        
+        <p><b>研究型 Builder 视角：</b>GPT-5.6 作为"最新前沿模型"，目前公开的技术细节有限，但从 ChatGPT Work 的能力描述可以推断其关键改进在于长程规划、工具调用可靠性和跨模态上下文一致性。与 GPT-4o 相比，真正的跃迁不是单一任务的准确率，而是多步骤任务中的错误恢复能力——即当某一步失败或返回不可用时，模型能否回退、重试或请求用户澄清。这种"执行韧性"通常依赖强化学习、树状推理或显式规划模块。研究者应关注其系统卡（system card）中关于 agentic capabilities 的评估，尤其是 SWE-Bench、AgentBench 等多步骤基准是否同步提升，以及幻觉率在长程任务中的累积情况。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：梳理你所在产品中最常被用户用 AI 处理但结果不稳定的"端到端任务"，尝试用 Work 模式或类似智能体框架跑通一个 MVP，重点记录失败回退点。</li>
+<li><strong>本季度可做</strong>：设计"任务模板 + 检查点"机制，把高频工作流拆分为可验证的子步骤，为接入类似 ChatGPT Work 的 Agent 接口做准备。</li>
+<li><strong>长期可做</strong>：重新评估产品的 AI 定位：你的产品未来是 AI 的"入口"、"被调用的工具"，还是"任务编排层"？</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://openai.com/index/chatgpt-for-your-most-ambitious-work">OpenAI：官网动态</a> · <a href="https://openai.com/index/gpt-5-6/">OpenAI：GPT-5.6 博文</a> · <a href="https://x.com/sama/status/2075266471316615436">X：Sam Altman (@sama)</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>蚂蚁灵波开源实时交互世界模型 LingBot-World 2.0</h4>
+        <p><b>AI PM 视角：</b>LingBot-World 2.0 的"实时交互世界模型"定位非常精准：它不是传统意义上的视频生成模型，而是一个可被用户、智能体或多玩家持续交互的"可玩游戏世界"。这对游戏、虚拟培训、社交娱乐和教育仿真都有直接产品价值。过去的世界模型（如 DeepMind 的 Genie、OpenAI 的 Sora）主要强调视频生成质量，而 LingBot-World 强调<strong>低延迟可控交互</strong>和<strong>长时间一致性</strong>，这是从"内容生成"到"可运行环境"的质变。</p>
+<p>从生态角度看，蚂蚁选择开源而非闭源API优先，是在对标开源视频/世界模型社区（如 CogVideo、Wan）的同时，用"实时交互"建立差异化。对 AI PM 而言，这意味着：如果你的产品需要"AI 生成的可交互空间"，现在可以基于 LingBot-World 2.0 快速验证原型，而不必等待大厂 API。但其非商用协议也提示：商业化落地需要与蚂蚁洽谈授权，或将其作为能力验证后自研替代。</p>
+        
+        <p><b>研究型 Builder 视角：</b>技术上，LingBot-World 2.0 的核心创新是<strong>因果预训练 + MoBA（混合双向自回归注意力掩码）</strong>的组合。传统自回归模型在生成长视频时容易出现漂移和画质衰减，而 MoBA 通过灵活的注意力掩码让模型在保持因果性的同时利用双向上下文；一致性蒸馏与 DMD（可能指分布匹配蒸馏）则显著降低采样步数，使 720p/60fps 实时输出成为可能。研究者应验证：在相同算力下，MoBA 相比标准因果 Transformer 的 FID/FVD 指标提升，以及长序列（一小时）场景中的对象一致性和物理规则保持度。SGLang 适配也意味着社区可以较快复现推理链路。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：在灵光 APP 或 Reactor PC 端体验 LingBot-World 2.0，记录输入延迟、动作可控性和长时一致性表现，形成一份内部评估文档。</li>
+<li><strong>本季度可做</strong>：挑选一个"可交互内容"场景（如游戏 NPC 训练、虚拟展厅、安全教育仿真），用 LingBot-World 2.0 做一个可玩的 Demo。</li>
+<li><strong>长期可做</strong>：构建"世界模型 + 智能体"闭环：让 LLM/VLA 作为 Agent 在 LingBot-World 中执行任务，验证 AI 在虚拟环境中的长期规划能力。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.ithome.com/0/974/508.htm">IT之家</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>微软发布 Flint：面向 AI 智能体的可视化语言</h4>
+        <p><b>AI PM 视角：</b>Flint 解决的是 AI 智能体落地中一个被低估的问题：<strong>智能体生成的内容不仅要"对"，还要"好看、可用、可编辑"</strong>。当前很多 Agent 可以生成图表，但结果往往是千篇一律、难以微调，或者需要人类重新在 Excel/Figma 中制作。Flint 通过引入一层"可视化中间语言"，把用户的意图（数据、语义类型、图表类型）与具体渲染参数解耦，既让 AI 有明确的输出结构，又让人类可以低成本修改。这对数据分析、BI、报告生成、运营看板等产品是立竿见影的增效器。</p>
+<p>更重要的是，Flint 提供了 MCP 服务器，这意味着它不只是图表库，而是可以被任意支持 MCP 的智能体调用的一环。随着 ChatGPT Work、Claude Code 等 Agent 工作流的普及，Flint 这类"Agent 原生工具"会越来越重要——它们不是被人类直接使用，而是被 AI 调用并产生人类可消费的输出。</p>
+        
+        <p><b>研究型 Builder 视角：</b>Flint 的技术价值在于将"图表生成"形式化为一个<strong>从高层语义 spec 到底层视觉参数的编译问题</strong>。这与传统模板化图表库（如 ECharts 的 option）相比，多了一个"推断层"，由编译器根据语义类型自动补全人类未显式指定的视觉属性。研究者可以关注的方向包括：spec 到 option 的编译是否可逆、人类编辑后的 spec 能否被模型学习以改进后续生成、以及多后端渲染时的一致性如何保证。开源代码和 npm 包使得复现和扩展成本较低。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：在你产品的报告/数据展示模块中，尝试用 Flint 替代静态图表生成逻辑，评估 AI 生成图表的可编辑性提升。</li>
+<li><strong>本季度可做</strong>：将 Flint 的 MCP 服务器接入内部 Agent 工作流，让智能体在生成分析报告时自动调用 Flint 输出可视化内容。</li>
+<li><strong>长期可做</strong>：建立"人类可编辑的 AI 输出中间表示"设计规范，不只限于图表，也扩展到幻灯片、表格、文档排版等领域。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://microsoft.github.io/flint-chart">Hacker News 热门（buzzing.cc 中文翻译）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>NVIDIA 发布 Nemotron-Labs-3-Puzzle-75B-A9B 压缩混合 MoE 模型</h4>
+        <p><b>AI PM 视角：</b>Puzzle-75B-A9B 的发布是<strong>大模型工程化落地</strong>的关键信号：在绝对性能已经足够好的前提下，行业开始用可接受的能力损失换取大幅度的成本和延迟下降。对 AI PM 来说，这意味着产品决策范式正在变化——过去选型看"谁更强"，未来更多看"在相同 SLA 下谁更便宜、更快、更能并发"。特别是对需要处理长上下文、高并发的企业级应用（如客服、法律文档分析、代码助手），这种 2 倍吞吐提升可能直接决定商业模式是否成立。</p>
+<p>NVIDIA 作为算力基础设施提供方推出这种压缩模型，也在传递一个更深层信号：硬件厂商不再只是卖卡，而是越来越多地参与模型层面的优化，以证明其硬件在真实负载下的性价比。这对云厂商和模型厂商都构成压力——你必须在软硬件协同优化上竞争。</p>
+        
+        <p><b>研究型 Builder 视角：</b>Puzzle 方法的核心是<strong>迭代式模型压缩</strong>，即在保持混合架构（Mamba + MoE + Attention）的前提下，通过多轮压缩-评估循环找到帕累托最优。研究者应关注：压缩过程中不同模块（Mamba vs MoE vs Attention）的敏感度差异、迭代式压缩相比一次性剪枝/蒸馏的优势，以及如何在压缩后恢复部分损失的推理能力（如继续微调或 LoRA 适配）。该模型也是一个很好的案例，说明"大模型能力"和"服务效率"之间存在明确的 trade-off，未来需要更系统的 efficiency-aware evaluation benchmark。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：盘点你当前使用的模型在成本和延迟上的瓶颈，评估是否有 10%-20% 的能力损失可以接受以换取 2 倍成本下降。</li>
+<li><strong>本季度可做</strong>：针对高并发场景（如客服、文档问答）设计 A/B 测试，比较原版模型与压缩/蒸馏版本在真实用户任务中的效果与成本。</li>
+<li><strong>长期可做</strong>：建立"效率-能力帕累托前沿"评估框架，让模型选型从"选最强"转向"选最合适"。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.marktechpost.com/2026/07/09/nvidia-releases-nemotron-labs-3-puzzle-75b-a9b-a-compressed-hybrid-moe-llm-delivering-2-03x-server-throughput-at-matched-user-throughput">MarkTechPost</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 10 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Anthropic 为 Claude 推出反思功能（Beta）</h4>
+        <p><b>分析：</b>Anthropic 为 Claude 推出反思功能（Beta），帮助用户回顾过去 1、3、6 或 12 个月的活动总结，涵盖关键主题、使用频率和任务类型，并结合 4D AI Fluency Framework 提供协作分析，支持设定静音时段或定时休息提醒。该功能面向 Free、Pro 和 Max 用户，需开启记忆功能。</p>
+        <p><b>AI PM 视角：</b>反思功能把 Claude 从"单次对话工具"升级为"长期协作记忆库"。这对用户留存和付费转化有直接价值——用户越依赖 Claude 记录和反思自己的工作模式，迁移成本越高。4D AI Fluency Framework 的引入也说明 Anthropic 试图把产品功能与"AI 素养教育"绑定，提升用户对高级功能的采用率。隐私设计（不涉及无痕对话和健康工具底层文件）是负责任的产品决策，也为行业树立了用户信任的标杆。</p>
+        
+        <p><b>研究型 Builder 视角：</b>长期记忆与个人使用模式分析需要解决时间序列聚合、敏感信息过滤和可解释性三个技术问题，Anthropic 的实现细节值得跟进。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>在你的产品中设计"个人 AI 使用画像"模块，帮助用户发现使用模式并推荐更高效的工作流。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.anthropic.com/news/reflect-with-claude">Anthropic：Newsroom</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>Mistral 推出 Studio，为 AI 提示词和技能提供系统记录</h4>
+        <p><b>分析：</b>Mistral 推出 Studio 平台，将 prompts 和 skills 视为生产资产，支持不可变版本、回滚、明确所有权、分类标签和审计日志，保证变更可追溯。非开发者可直接编辑测试，通过标签将变更推送至生产，保留原有 CI/CD 流程。</p>
+        <p><b>AI PM 视角：</b>提示词和技能正在成为企业的核心 AI 资产，但大多数团队仍用文档或代码仓库管理，缺乏版本控制和治理。Mistral Studio 把这个问题产品化，瞄准的是"AI 应用进入生产后"的运维阶段。对 B2B AI 产品而言，PromptOps / SkillOps 将是下一个竞争维度，尤其是在金融、医疗等强监管行业，审计和回滚能力是刚需。</p>
+        
+        <p><b>研究型 Builder 视角：</b>提示词版本控制不仅是工程问题，还涉及 prompt 变更对模型输出的影响评估，需要结合 A/B 测试和输出回归测试。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>建立内部 Prompt 版本管理规范，把 prompt 变更纳入 CI/CD，并记录每次变更的输出基准。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://mistral.ai/news/manage-prompts-and-skills-in-studio">Mistral AI：News</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>Google 推出 LiteRT.js：高性能 Web AI 推理运行时</h4>
+        <p><b>分析：</b>Google 发布 LiteRT.js，这是 LiteRT 跨平台边缘 AI 运行时的最新成员，专为 JavaScript 开发者设计，可直接在浏览器中运行机器学习模型。LiteRT.js 基于 WebGPU 和即将推出的 WebNN 实现 SOTA 推理性能，同时支持回退到 WebAssembly CPU 方案。</p>
+        <p><b>AI PM 视角：</b>LiteRT.js 让端侧 AI 在 Web 场景有了统一、高性能的运行时，对需要隐私优先、低延迟、离线可用的 AI 功能（如图像处理、实时翻译、表单识别）是重大利好。对产品经理来说，这意味着可以设计"端云混合"的 AI 体验，敏感数据本地处理，复杂任务上云，兼顾隐私与能力。</p>
+        
+        <p><b>研究型 Builder 视角：</b>WebGPU/WebNN 推理性能相比 WASM 的提升幅度、模型量化支持度和跨浏览器一致性是评估该技术成熟度的关键指标。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>梳理产品中可以在浏览器端运行的 AI 任务，评估迁移到 LiteRT.js 的隐私、延迟和成本收益。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://developers.googleblog.com/litertjs-googles-high-performance-web-ai-inference">Google Developers Blog</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>Robbyant 发布 LingBot-VLA 2.0：开源 6B 跨实体机器人视觉-语言-动作模型</h4>
+        <p><b>分析：</b>Robbyant 推出 LingBot-VLA 2.0，一个 6B 参数的开源视觉-语言-动作（VLA）基础模型。它以 Qwen3-VL-4B-Instruct 为骨干，采用 MoE 动作专家架构，通过 55 维规范向量统一表示不同机器人的状态和动作。训练数据涵盖约 60,000 小时高质量数据，覆盖 20 种机器人配置。</p>
+        <p><b>AI PM 视角：</b>LingBot-VLA 2.0 代表了"一个模型控制多种机器人"的通用机器人智能方向。对机器人、智能制造、物流自动化等行业，这意味着降低单场景定制化成本的可能性。但跨实体泛化的可靠性仍是产品化瓶颈，需要结合仿真到真实（sim-to-real）的迁移策略。</p>
+        
+        <p><b>研究型 Builder 视角：</b>55 维规范向量和 MoE 动作专家架构是跨机器人统一表示的关键设计，研究者应关注其在不同机器人构型上的 zero-shot 迁移能力。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你有机器人或硬件产品线，先用 LingBot-VLA 2.0 在仿真环境中验证其对你设备构型的适配度，再决定是否投入真实数据采集。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.marktechpost.com/2026/07/08/lingbot-vla-2-0">MarkTechPost</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>蚂蚁灵波开源 LingBot-Video：全球首个面向具身智能的 MoE 视频基模</h4>
+        <p><b>分析：</b>蚂蚁灵波科技正式开源 LingBot-Video，全球首个基于 MoE 架构、面向具身智能的视频生成基础模型。总参数 30B，推理时仅激活约 3B，效率较同规模 Dense 架构提升约 3 倍。模型引入 7 万小时 VLA、VLN、Ego 等机器人数据，并通过多维强化学习奖励系统对齐物理合理性与任务完成度。</p>
+        <p><b>AI PM 视角：</b>LingBot-Video 与 LingBot-World 2.0 形成互补：前者专注于为机器人/具身智能生成训练和仿真所需的视频数据，后者专注于实时交互世界模拟。对具身智能行业而言，高质量仿真数据是稀缺资源，LingBot-Video 的开源可能降低机器人数据获取门槛。</p>
+        
+        <p><b>研究型 Builder 视角：</b>MoE 架构在视频生成中的效率优势、物理合理性奖励设计以及 RBench/Physics-IQ 上的评测结果，是判断该技术成熟度的重要依据。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>在机器人训练流程中引入 LingBot-Video 生成仿真数据，与真实数据混合训练，评估 sim-to-real 迁移效果。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.ithome.com/0/974/517.htm">IT之家</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">06</div>
+      <div class="body">
+        <h4>OpenAI ChatGPT Sites 将创意变可发布网站</h4>
+        <p><b>分析：</b>OpenAI 团队展示 ChatGPT Sites 能力，可将一个想法快速变成可发布和分享的实时网站，OpenAI 开发者账号发布了多个示例。</p>
+        <p><b>AI PM 视角：</b>Sites 是 OpenAI 在"AI 生成可运行产品"方向的又一布局，与 ChatGPT Work 形成互补：Work 处理复杂项目，Sites 快速生成轻量 Web 产品。这对低代码/无代码市场构成直接冲击，也降低了个人和小团队验证想法的成本。</p>
+        
+        <p><b>研究型 Builder 视角：</b>需要关注生成代码的可维护性、安全性和部署链路，避免"演示很漂亮、生产一团糟"。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>挑选一个内部工具或 landing page 需求，用 ChatGPT Sites 快速生成并测试，记录生成质量和后续维护成本。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/OpenAIDevs/status/2075331020090687666">X：OpenAI Developers (@OpenAIDevs)</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">07</div>
+      <div class="body">
+        <h4>Anthropic 发起"硬问题"倡议，邀请公众提出 AI 相关尖锐问题</h4>
+        <p><b>分析：</b>Anthropic 发起"硬问题"倡议，邀请公众就 AI 对就业、社会、家庭、科学医学等领域的影响提出最尖锐的问题。公司此前已通过多种方式收集看法，并承诺将公开追踪并报告针对这些问题的具体行动及成效。</p>
+        <p><b>AI PM 视角：</b>在 AI 能力快速跃迁的背景下，Anthropic 通过公众参与建立治理合法性。对 AI 公司而言，这既是品牌建设，也是应对监管压力的前瞻性动作。产品经理在设计 AI 功能时，应主动考虑社会影响评估，而不仅是技术指标。</p>
+        
+        <p><b>研究型 Builder 视角：</b>公众反馈如何有效转化为模型安全约束和产品设计约束，是一个跨学科难题。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>在你的产品团队中引入一次"硬问题"研讨会，邀请非技术同事提出 AI 功能可能带来的社会和伦理风险。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.anthropic.com/news/hard-questions">Anthropic：Newsroom</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">08</div>
+      <div class="body">
+        <h4>Anthropic 长期利益信托任命本·伯南克为受托人</h4>
+        <p><b>分析：</b>Anthropic 的长期利益信托（LTBT）任命前美联储主席、2022 年诺贝尔经济学奖得主本·伯南克为最新受托人。他将参与公司经济研究，帮助理解 AI 对全球劳动力与经济的影响。LTBT 独立于管理团队和投资者，有权向董事会任命成员并就关键决策提供建议。</p>
+        <p><b>AI PM 视角：</b>伯南克的加入强化了 Anthropic 在 AI 宏观经济影响研究上的权威性。对企业而言，这意味着 AI 的劳动力替代效应、生产率提升路径将越来越受到顶级经济学家的系统研究，相关政策和市场预期会更快形成。</p>
+        
+        <p><b>研究型 Builder 视角：</b>AI 对劳动力市场的影响评估需要大规模、长期的数据跟踪，研究方法的可重复性和因果识别是关键挑战。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>关注 Anthropic 后续发布的经济研究报告，将其发现作为你产品人力替代/增强策略的参考输入。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.anthropic.com/news/ben-bernanke">Anthropic：Newsroom</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">09</div>
+      <div class="body">
+        <h4>OpenAI 升级 Bio Bug Bounty 为持续项目</h4>
+        <p><b>分析：</b>OpenAI 将 GPT-5.5 Bio Bug Bounty 升级为持续私密项目 OpenAI Bio Bounty Program，以 GPT-5.6 为起点并覆盖后续前沿模型，旨在发现能突破预设生物安全挑战的通用越狱攻击，奖励从 25,000 美元提高至 50,000 美元。</p>
+        <p><b>AI PM 视角：</b>生物安全是 AI 治理中最敏感的领域之一。OpenAI 把 Bug Bounty 常态化，说明其希望通过众包方式持续发现前沿模型在生物风险上的脆弱点。这对企业级 AI 产品的合规设计有参考价值：关键安全场景也需要建立持续的红队测试和漏洞奖励机制。</p>
+        
+        <p><b>研究型 Builder 视角：</b>通用越狱攻击与生物安全特定能力的耦合评估，需要设计既能覆盖广泛攻击面又能在伦理边界内执行的评测框架。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>为产品中涉及敏感信息生成或决策辅助的模块，设计内部红队测试流程和外部众测机制。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://openai.com/index/bio-bug-bounty">OpenAI：官网动态</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">010</div>
+      <div class="body">
+        <h4>Ollama 开发者数达 890 万，完成 B 轮融资</h4>
+        <p><b>分析：</b>Ollama 让开源模型在本地或云端轻松运行，保持体验一致。目前拥有 890 万开发者、6.7 万集成，并与各大模型实验室及硬件供应商建立合作。B 轮融资由 Theory 领投。</p>
+        <p><b>AI PM 视角：</b>Ollama 的快速增长证明开发者对"本地运行开源模型"有强烈需求，背后是隐私、成本、可控性三重驱动。对 AI 产品而言，这意味着端侧/本地模型生态已经成熟到可以支撑商业融资，未来会有更多产品选择"本地小模型 + 云端大模型"的混合架构。</p>
+        
+        <p><b>研究型 Builder 视角：</b>Ollama 的成功也反映了模型分发和运行时抽象的重要性，未来竞争焦点可能从模型本身转向开发者体验和工具链集成。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>评估你产品中哪些任务可以用本地开源模型替代云端 API，设计一个本地优先的原型并测试效果。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.tomtunguz.com/ollama-series-b">Tomer Tunguz 博客</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架 1：从"对话"到"工作"——Agent 产品化的三层跃迁</h4>
+        <p>今日 OpenAI ChatGPT Work 的发布，与微软 Flint、Mistral Studio、Google LiteRT.js 等事件共同勾勒了 Agent 产品化的三层结构：</p>
+<ul>
+<li><strong>执行层</strong>：Agent 能够跨应用、跨文件、跨长时间窗口自主完成任务（ChatGPT Work）。</li>
+<li><strong>输出层</strong>：Agent 生成的内容需要美观、可编辑、可验证（Flint、ChatGPT Sites）。</li>
+<li><strong>治理层</strong>：Agent 使用的提示词、技能、记忆需要版本化、审计和可控（Mistral Studio、Claude 反思）。</li>
+</ul>
+<p><strong>产品启示</strong>：做 Agent 产品不能只关注"模型能不能做"，而要从执行可靠性、输出质量、治理合规三个维度同时设计。一个只能生成但无法被人类修正的 Agent，难以进入生产环境；一个能执行但无法被审计的 Agent，难以进入企业市场。未来六个月的竞争焦点将是"Agent 的 DevOps"，即如何让 Agent 从 demo 走向稳定服务。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架 2：世界模型 + 具身智能——AI 与物理世界交互的双引擎</h4>
+        <p>蚂蚁 LingBot-World 2.0、LingBot-Video 和 Robbyant LingBot-VLA 2.0 共同指向一个趋势：AI 正在同时构建"虚拟物理世界"和"真实物理身体"两套交互系统。</p>
+<ul>
+<li><strong>虚拟侧</strong>：实时交互世界模型提供低成本、可扩展的仿真环境，用于训练 Agent 和机器人策略。</li>
+<li><strong>真实侧</strong>：VLA 模型让机器人通过视觉-语言-动作统一接口理解并执行物理任务。</li>
+<li><strong>数据侧</strong>：视频基模（LingBot-Video）生成仿真训练数据，缓解真实机器人数据采集瓶颈。</li>
+</ul>
+<p><strong>产品启示</strong>：如果你的产品未来需要与物理世界交互（机器人、自动驾驶、工业检测、智能家居），现在就应该开始布局"仿真-真实"闭环：先用世界模型低成本验证策略，再用 VLA 模型迁移到真实设备。世界模型不只是游戏或娱乐工具，它可能成为下一代机器人训练的"数据工厂"。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架 3：效率-能力帕累托前沿——大模型竞争进入"够用且便宜"阶段</h4>
+        <p>NVIDIA Nemotron Puzzle、Google LiteRT.js、Ollama 融资以及"3 万亿美元问题"共同说明：行业正从追求单一能力最强，转向追求在特定约束下的最优性价比。</p>
+<ul>
+<li><strong>云端</strong>：压缩模型在可接受的能力损失下实现 2 倍吞吐提升（NVIDIA Puzzle）。</li>
+<li><strong>端侧</strong>：Web 运行时让浏览器也能跑高性能 AI（LiteRT.js），本地开源模型生态成熟（Ollama）。</li>
+<li><strong>商业</strong>：资本开始追问 AI 投入产出比，效率优化从工程师偏好变成生存刚需。</li>
+</ul>
+<p><strong>产品启示</strong>：AI 产品选型需要引入"效率-能力帕累托"思维。不是所有任务都需要最强模型，关键是找到用户可接受效果与商业可持续成本之间的最优解。产品经理应该与工程团队合作，建立不同任务场景的模型选型决策矩阵，明确哪些任务用旗舰模型、哪些用压缩模型、哪些用本地模型。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong><a href="https://openai.com/index/chatgpt-for-your-most-ambitious-work">OpenAI ChatGPT Work 与 GPT-5.6 官方博文</a></strong>：重点看 Work 模式支持的任务类型、失败回退机制和企业合规设计，思考你产品中哪些端到端任务可以被 Agent 接管。</p>
+<p><b>2.</b> <strong><a href="https://microsoft.github.io/flint-chart">微软 Flint 项目文档</a></strong>：关注其 spec 到图表的编译逻辑和 MCP 服务器用法，评估是否可接入你的报告/数据产品。</p>
+<p><b>3.</b> <strong><a href="https://www.marktechpost.com/2026/07/09/nvidia-releases-nemotron-labs-3-puzzle-75b-a9b-a-compressed-hybrid-moe-llm-delivering-2-03x-server-throughput-at-matched-user-throughput">NVIDIA Nemotron Puzzle 技术报告</a></strong>：理解压缩模型在吞吐、延迟、能力上的 trade-off，为模型选型决策提供量化参考。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>体验 ChatGPT Work</strong>：用一个真实工作流（如竞品分析、会议纪要整理、报告生成）测试其端到端能力，记录成功点和失败点。</p>
+<p><b>2.</b> <strong>评估 Flint 接入可行性</strong>：如果产品涉及数据可视化，用 Flint 生成 3-5 种常见图表，评估可编辑性和与现有前端的集成成本。</p>
+<p><b>3.</b> <strong>盘点本地/端侧 AI 机会</strong>：结合 LiteRT.js 和 Ollama，列出你产品中可以本地运行的任务清单，评估隐私、延迟、成本收益。</p>
+<p><b>4.</b> <strong>建立 Prompt/Skill 治理规范</strong>：参考 Mistral Studio，为团队使用的提示词和 Agent 技能建立版本控制和审计日志。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>Agent 工作流将在 12 个月内成为企业 AI 产品的默认形态</strong>：以 ChatGPT Work 为标志，AI 产品将从"辅助对话"升级为"任务执行"，企业采购决策将从"模型能力"转向"任务完成度"和"可审计性"。</p>
+<p><b>2.</b> <strong>世界模型将成为机器人/具身智能训练的基础设施</strong>：未来 1-2 年，LingBot-World 这类实时交互世界模型会与 VLA 模型形成训练闭环，显著降低真实机器人数据采集成本。</p>
+<p><b>3.</b> <strong>效率优化将成为 AI 产品竞争的核心变量</strong>：随着资本对 AI 投入产出比的关注加剧，压缩模型、端侧推理、混合架构将在 2026-2027 年快速普及，"够用且便宜"将比"最强"更有商业价值。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题 1：当 AI 能"自主工作数小时"，产品的责任边界在哪里？</h4>
+        <p>ChatGPT Work 可以跨应用持续执行复杂任务，但这也意味着错误可能在多个步骤中累积、放大，甚至对用户的数据或业务造成不可逆影响。产品团队需要重新思考：AI 的自主性与人类监督如何平衡？</p>
+<ul>
+<li><strong>产品策略</strong>：哪些任务可以全自主，哪些必须设置人类检查点？</li>
+<li><strong>执行与团队</strong>：你的团队是否具备设计"可撤销、可回滚、可审计" Agent 工作流的能力？</li>
+<li><strong>风险与机会</strong>：如果竞争对手推出更高自主性的 Agent，你是跟进还是差异化强调"更安全"？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题 2：世界模型会不会成为下一代 AI 应用的"操作系统"？</h4>
+        <p>LingBot-World 2.0 展示了实时、可交互、长时一致的虚拟世界。如果这类模型继续成熟，未来的游戏、培训、仿真、社交甚至机器人训练都可能运行在世界模型之上。</p>
+<ul>
+<li><strong>产品策略</strong>：你的产品是否需要从"生成内容"升级为"生成可运行环境"？</li>
+<li><strong>执行与团队</strong>：构建世界模型应用需要哪些新角色（世界设计师、物理规则工程师、Agent 训练师）？</li>
+<li><strong>风险与机会</strong>：世界模型带来的沉浸感和可控性是否会重塑用户对产品形态的期待？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题 3：压缩模型是否正在改变"模型选型"的产品逻辑？</h4>
+        <p>NVIDIA Puzzle 用 4-5 分的 benchmark 损失换取 2 倍吞吐和显著成本下降。在很多真实场景中，这种 trade-off 可能是值得的。</p>
+<ul>
+<li><strong>产品策略</strong>：你如何定义"可接受的能力损失"？是用 benchmark 分数、用户满意度还是业务指标？</li>
+<li><strong>执行与团队</strong>：是否建立了在不同任务上动态切换模型版本的 A/B 测试能力？</li>
+<li><strong>风险与机会</strong>：如果压缩模型成为主流，依赖单一旗舰模型的产品是否会失去成本优势？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题 4：AI 生成内容泛滥，内容平台如何重建信任？</h4>
+        <p>LinkedIn 超 40% 长文为 AI 写作，社交媒体上的 AI 内容正在快速增加。这对内容平台、媒体、教育等领域都是根本性的信任挑战。</p>
+<ul>
+<li><strong>产品策略</strong>：你的平台是否需要引入 AI 内容标识、来源验证或人类创作认证？</li>
+<li><strong>执行与团队</strong>：如何在不侵犯隐私的前提下检测和标注 AI 生成内容？</li>
+<li><strong>风险与机会</strong>：AI 内容泛滥是否会催生新的"真实性"产品或服务？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题 5：AI 基础设施的 3 万亿美元问题，会如何影响你的产品路线图？</h4>
+        <p>Sequoia 估算 2026 年全球 AI 基础设施投入达 1.5 万亿美元，行业需产生 3 万亿美元收入才能回本。如果投资回报不及预期，资本开支可能收缩。</p>
+<ul>
+<li><strong>产品策略</strong>：你的 AI 产品是否过度依赖免费或补贴的 API？是否有本地/开源模型的备选方案？</li>
+<li><strong>执行与团队</strong>：如果云端 API 价格上涨 50%，你的商业模式是否仍然成立？</li>
+<li><strong>风险与机会</strong>：资本寒冬是否会加速效率优化和垂直场景落地，反而利好有明确商业模式的产品？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A：AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 用 ChatGPT Work 完成一次真实工作流（如竞品报告），记录任务拆解、失败点和人类介入时机。</p>
+<p><b>2.</b> 阅读 Flint 文档，理解"可视化中间语言"如何提升 AI 生成内容的可编辑性。</p>
+<p><b>3.</b> 分析 Mistral Studio 的 Prompt/Skill 治理功能，输出一份你产品的 AI 资产管理现状评估。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 设计一个 Agent 工作流原型，明确任务边界、检查点和回滚机制。</p>
+<p><b>2.</b> 建立模型选型决策矩阵，区分旗舰模型、压缩模型和本地模型在不同任务中的适用场景。</p>
+<p><b>3.</b> 组织一次"AI 硬问题"研讨会，识别产品可能带来的社会和伦理风险。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 跟踪世界模型和 VLA 模型进展，评估其对你所在行业的潜在影响。</p>
+<p><b>2.</b> 建立 AI 投入产出分析框架，定期评估模型成本、用户价值和商业回报。</p>
+<p><b>3.</b> 参与 AI 治理和安全社区，理解监管趋势对产品设计的约束。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B：AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 在桌面端体验 ChatGPT Work/Codex 模式，理解其工具调用和任务编排机制。</p>
+<p><b>2.</b> 用 Flint 的 npm 包或 MCP 服务器生成一个可交互图表，并集成到你现有的前端项目中。</p>
+<p><b>3.</b> 用 LiteRT.js 或 Ollama 部署一个本地模型，测试其在具体任务上的延迟和效果。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 实现一个多步骤 Agent 原型，包含规划、执行、观察、反思四个模块。</p>
+<p><b>2.</b> 基于 LingBot-World 2.0 或 LingBot-Video 构建一个仿真环境或数据生成 pipeline。</p>
+<p><b>3.</b> 对 NVIDIA Nemotron Puzzle 的压缩方法进行复现或分析，理解其 trade-off。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 设计一个支持多模型动态路由的推理服务，根据任务复杂度自动选择模型版本。</p>
+<p><b>2.</b> 研究 MoE、Mamba、Attention 混合架构在长上下文和实时生成中的工程优化。</p>
+<p><b>3.</b> 为开源 Agent 框架贡献一个工具插件或评测基准。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C：研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 阅读 GPT-5.6 系统卡（发布后），重点关注 agentic capabilities 和安全评估方法。</p>
+<p><b>2.</b> 复现 Apple 的在线策略蒸馏诊断框架，分析你当前蒸馏过程中的梯度对齐情况。</p>
+<p><b>3.</b> 体验 LingBot-World 2.0，从 FVD/FID、长时一致性和交互延迟三个维度做初步评估。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 对 LingBot-World 2.0 的 MoBA 注意力机制进行消融实验，验证其在长视频生成中的效果。</p>
+<p><b>2.</b> 复现 Apple TGPO 或 SRLM 中的一个方法，并在自己的视频/长上下文任务上测试。</p>
+<p><b>3.</b> 设计一个针对 Agent 长程任务的评测基准，覆盖任务完成率、错误恢复和人类满意度。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 提出一种新的世界模型训练目标，结合物理一致性和用户可控性。</p>
+<p><b>2.</b> 研究如何将压缩模型的效率优势与 Agent 长程推理的可靠性结合。</p>
+<p><b>3.</b> 撰写一篇关于"世界模型 + VLA"训练闭环的技术博客或论文，推动社区讨论。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D：快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>ChatGPT Work 官方介绍</td><td><a href="https://openai.com/index/chatgpt-for-your-most-ambitious-work">OpenAI 博客</a></td><td>15 分钟</td></tr><tr><td>GPT-5.6 技术博文</td><td><a href="https://openai.com/index/gpt-5-6/">OpenAI 博客</a></td><td>20 分钟</td></tr><tr><td>LingBot-World 2.0 报道</td><td><a href="https://www.ithome.com/0/974/508.htm">IT之家</a></td><td>10 分钟</td></tr><tr><td>Flint 可视化语言</td><td><a href="https://microsoft.github.io/flint-chart">GitHub/文档</a></td><td>30 分钟</td></tr><tr><td>NVIDIA Puzzle 压缩模型</td><td><a href="https://www.marktechpost.com/2026/07/09/nvidia-releases-nemotron-labs-3-puzzle-75b-a9b-a-compressed-hybrid-moe-llm-delivering-2-03x-server-throughput-at-matched-user-throughput">MarkTechPost</a></td><td>15 分钟</td></tr><tr><td>Claude 反思功能</td><td><a href="https://www.anthropic.com/news/reflect-with-claude">Anthropic 博客</a></td><td>15 分钟</td></tr><tr><td>Mistral Studio</td><td><a href="https://mistral.ai/news/manage-prompts-and-skills-in-studio">Mistral 博客</a></td><td>15 分钟</td></tr><tr><td>Google LiteRT.js</td><td><a href="https://developers.googleblog.com/litertjs-googles-high-performance-web-ai-inference">Google Developers Blog</a></td><td>15 分钟</td></tr><tr><td>Apple 蒸馏/TGPO/SRLM 论文</td><td><a href="https://machinelearning.apple.com/research/">Apple ML Research</a></td><td>60 分钟</td></tr><tr><td>AI 3 万亿美元问题</td><td><a href="https://techcrunch.com/2026/07/09/can-ai-answer-the-3-trillion-question">TechCrunch</a></td><td>15 分钟</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-13.html">
+      <span class="date">2026-07-13</span>
+      <span class="title">超级应用Agent化与数学证明突破</span>
+      <span class="angle">腾讯Hy3接入微信10亿用户、GPT-5.6 Sol证明50年图论猜想、开源模型面临监管寒冬，AI产品竞争从能力展示转向Agent落地效率与信任基础设施</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-12.html">
+      <span class="date">2026-07-12</span>
+      <span class="title">GPT-5.6安全危机与AI滥用双重警示</span>
+      <span class="angle">GPT-5.6在医疗评估与Agent执行上同步突破，但Matt Shumer硬盘被删与博科圣地滥用主流聊天机器人揭示：能力扩张正与安全治理和合规基础设施产生严重错配</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-11.html">
+      <span class="date">2026-07-11</span>
+      <span class="title">巨头诉讼、AI武器化与通宵Agent并行</span>
+      <span class="angle">2026-07-11 AI行业在法律攻防、物理智能体与长程Agent信任三条战线同时升温，推理成本优化与治理readiness成为产品化新门槛</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>191 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+      <div class="meta" style="margin-top:8px;color:var(--ink-soft)"><strong>生成时间</strong>: 2026-07-10 <strong>数据来源</strong>: <a href="https://aihot.virxact.com">AI HOT</a> 日报 API <strong>解读视角</strong>: AI 产品经理 & AI Builder & 研究型 Builder</div>
+    </div>
+  </footer>
+</body>
+</html>

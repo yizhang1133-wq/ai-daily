@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-06-28</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>179</span></div>
+    <div><b>ISS.</b><span>2026-06-28</span></div>
+    <div><b>EVT.</b><span>10 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 179</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">28</div>
+    <div class="meta-col">
+      <h2>DeepSeek加速与企业模型成本转向</h2>
+      <p>DeepSeek 开源 DSpark 投机解码框架、SpaceX 合并 xAI 为 SpaceXAI、美国企业因账单失控转向低成本模型，AI 产业进入成本优化与垂直整合并行的新阶段</p>
+      <div class="meta-row"><b>日期</b> 2026-06-28</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 179 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">Deep</span>Seek 开源 DSpark 投机解码框架、SpaceX 合并 xAI 为 SpaceXAI、美国企业因账单失控转向低成本模型，AI 产业进入成本优化与垂直整合并行的新阶段
+    </div>
+    <div class="credits">
+      <b>PERSPECTIVE</b><br>AI 产品经理 &amp; AI Builder &amp; 研究型 Builder 视角<br><hr>
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 3<br>
+      IMPORTANT 4<br>
+      REFERENCE 3<br>
+      <hr>
+      <b>THEMES</b><br>
+      DeepSeek 投机解码开源、SpaceXAI 合并 xAI、企业转向低成<br>
+      千问输入法 macOS 版、Runway 广告本地化、Raise Us 再培<br>
+      苹果 Vision 高管跳槽 OpenAI、民族国家级攻击剖析、6 月开放权<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架 1：成本驱动的模型选型——从“最强模型”到“最合适模型”<br>
+      框架 2：垂直整合 vs 开放平台——AI 能力的组织形态选择<br>
+      框架 3：AI 的社会契约——从效率提升到就业转型
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>3 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>DeepSeek 开源 DSpark 投机解码框架，加速 DeepSeek-V4 生成速度 60–85%</h3>
+          <p>DeepSeek 发布 DSpark 投机解码框架并开源检查点与训练代码。该框架在 DeepSeek-V4 权重上附加草稿模块，通过半自回归生成（并行骨干 + 轻量级顺序头）实现无损加速。生产环境下，DeepSeek-V4-Flash 和 V4-Pro 每用户生成速度较 MTP-1 基线分别提升 60–85% 和 57–78%。离线测试中，接受长度比 Eagle3 高 26–31%，比 DFlash 高 16–18%。配套 DeepSpec 训练代码库采用 MIT 许可证。</p>
+          <p><b>AI PM 视角：</b>DSpark 的发布标志着开源社区在推理效率上的又一次重要领先。对于 AI PM 来说，这比单纯的模型能力发布更具产品意义：它直接影响用户体验（响应延迟）、运营成本（每 token 推理成本）和部署可行性（端侧/私有化）。60-85% 的生成速度提升，意味着同样的硬件可以服务更多用户，或者以更低的成本达到同样的体验。
+
+更重要的是，DSpark 不是新模型，而是附加在现有 DeepSeek-V4 权重上的草稿模块。这种“增强现有模型”的思路，对企业客户非常友好：不需要重新训练或切换模型，只需部署一个推理加速模块即可获得收益。这可能会加速 DeepSeek 在企业市场的渗透，尤其是在那些对延迟敏感的场景（实时客服、代码补全、互动创作）中。
+
+从竞争格局看，DeepSeek 持续在“开源 + 高效”路线上发力，与 OpenAI、Anthropic 的闭源高价路线形成鲜明对比。产品团队需要重新评估模型选型：在某些场景下，DeepSeek + DSpark 的组合可能已经能提供足够的质量和更好的性价比。</p>
+
+          <p><b>研究型 Builder 视角：</b>DSpark 的技术核心在于半自回归投机解码：并行骨干生成候选 token，轻量级顺序头验证接受。研究型 Builder 应关注其接受率、草稿模型与主模型的协同机制、以及在不同序列长度和任务类型上的稳定性。开源检查点和训练代码的可复现性很高，适合作为投机解码研究的基准。关键研究问题包括：DSpark 的加速比在代码、数学、长文本等任务上是否一致？草稿模块是否可以迁移到其他模型架构？</p>
+          <p><b>可落地的方法论：</b>- 本周：了解 DSpark 的部署要求和硬件兼容性，评估是否能集成到你现有的 DeepSeek-V4 推理栈中。
+- 本季度：为高延迟敏感场景设计一个“DeepSeek + DSpark”的 PoC，对比其在延迟和成本上的表现。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.marktechpost.com/2026/06/27/deepseek-releases-dspark-a-speculative-decoding-framework-that-accelerates-deepseek-v4-per-user-generation-60-85-over-mtp-1">MarkTechPost（RSS）</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>SpaceX 注册 SpaceXAI 商标，将合并 xAI</h3>
+          <p>SpaceX 刚刚注册了“SpaceXAI”商标。埃隆·马斯克表示 xAI 将解散，不再作为独立公司，而是并入 SpaceX，成为 SpaceX 的 AI 产品部门。</p>
+          <p><b>AI PM 视角：</b>xAI 并入 SpaceX 是 AI 产业整合的重要信号。这一举动意味着马斯克正在把 AI 能力更深地嵌入到 SpaceX 的火箭、卫星、制造和运营体系中，而不是让 xAI 作为一个独立的 AI 平台公司存在。对于 AI PM 来说，这提示我们：AI 正在从“独立产品”变成“核心基础设施能力”，被整合进更大的工业或产品体系中。
+
+从竞争格局看，SpaceXAI 可能会获得独特的优势：SpaceX 和 Tesla 的真实世界数据、工程场景和垂直需求，将成为模型后训练的宝贵资产。这与昨天 Grok 4.5 在 SpaceX 和 Tesla 私测的消息相呼应。未来 SpaceXAI 可能不会直接参与消费级 AI 聊天机器人的竞争，而是在航空航天、制造、自动驾驶等硬核工业领域建立壁垒。</p>
+
+          <p><b>研究型 Builder 视角：</b>从研究角度，SpaceXAI 的整合值得关注其数据飞轮效应：火箭发射、卫星运维、制造流程等数据如何转化为模型能力？这种垂直整合是否会催生新的模型架构或训练方法？但由于 xAI 此前多为闭源，研究型 Builder 能直接获取的信息有限，更多是观察其公开动作和产业影响。</p>
+          <p><b>可落地的方法论：</b>- 本周：思考你所在行业中，是否存在类似 SpaceX 的“垂直数据 + AI 能力”整合机会。
+- 本季度：如果你拥有垂直业务数据，评估建立内部 AI 能力而非依赖通用 API 的可行性。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/cb_doge/status/2070973276562530507">X：cb_doge (@cb_doge)</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>AI 账单失控后 DeepSeek 成“香饽饽”，部分美国企业已 100% 切换</h3>
+          <p>美国企业面临 AI 账单失控，开始转向 Token 最小化策略。旧金山公司 Lindy 此前主要调用 Anthropic 的 Claude 模型，每月 AI 账单超支甚至超过员工工资。本月初已将 100% 流量切换到 DeepSeek，预计未来几个月可节省数百万美元。企业开始采用按任务匹配模型的“模型路由”，不再将最贵的前沿模型用于所有场景。部分客户已决定暂停 AI 投入，待证明投资回报率后再继续。</p>
+          <p><b>AI PM 视角：</b>这是 AI 商业化进程中的一个关键转折点。过去两年，企业愿意为最前沿模型支付高价，但现在越来越多的公司开始质疑 ROI。Lindy 100% 切换到 DeepSeek 的案例说明：当 AI 账单超过员工工资时，成本优化会从“可选项”变成“必选项”。
+
+这一趋势对产品团队有三层启示：
+
+1. **模型路由成为刚需**：不是所有任务都需要最强模型，按任务分配模型将成为标准做法。
+2. **开源/低成本模型机会窗口打开**：DeepSeek 等模型在成本上的优势，可能使其在企业市场快速渗透。
+3. **ROI 证明压力增大**：企业客户不再只为“AI 噱头”买单，他们需要看到明确的投资回报。
+
+对于 AI PM 来说，这意味着设计产品时需要同时考虑能力、成本和可解释的业务价值。未来的竞争可能不是“谁的模型最强”，而是“谁能用最合适的模型、以最低的成本、解决最明确的业务问题”。</p>
+
+          <p><b>研究型 Builder 视角：</b>从研究角度看，这一现象验证了模型能力“足够好”区间的存在。研究型 Builder 应关注：在哪些任务上，DeepSeek 与 Claude/GPT 的质量差距可以被成本优势弥补？模型路由和任务分类的标准是什么？这涉及评估方法论、成本建模和实际业务指标的交叉研究。</p>
+          <p><b>可落地的方法论：</b>- 本周：计算你产品中 AI 功能的单位成本（每用户、每会话、每任务），识别成本最高的环节。
+- 本季度：设计一个模型路由策略，为不同类型任务匹配不同成本和能力的模型。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.ithome.com/0/969/400.htm">IT之家（RSS）</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">4 IMPORTANT + 3 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://www.ithome.com/0/969/334.htm">阿里千问输入法上线 macOS 版：最快 300 字/分，AI 自动润色</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://x.com/runwayml/status/2070855164584726791">Runway API 推出广告本地化 Recipe</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://the-decoder.com/the-companies-most-likely-to-automate-your-job-are-now-funding-a-1-billion-program-to-retrain-you">“Raise Us”启动：前美商务部长与四州合作筹集10亿美元应对AI就业冲击</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div><a class="event-link" href="https://www.ithome.com/0/969/311.htm">国家统计局：1-5月规上工业企业利润增18.8%，电子行业利润增103.9%贡献43.1%</a></div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
+      <div>05</div><div>苹果 Vision 负责人跳槽 OpenAI</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>06</div><div>一次失败的（民族国家？）攻击的剖析</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>07</div><div>2026 年 6 月值得关注的开放权重模型</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">3 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>苹果 Vision 负责人跳槽 OpenAI</div><div>AI 硬件竞争加剧，苹果流失核心高管至 OpenAI，反映行业对 AI 硬件入口的争夺。</div>
+      <div>02</div><div>一次失败的（民族国家？）攻击的剖析</div><div>针对开发者的供应链攻击日益精密，使用 AI 代码扫描工具审查第三方依赖变得至关重要。</div>
+      <div>03</div><div>2026 年 6 月值得关注的开放权重模型</div><div>开放权重模型生态持续繁荣，产品团队应建立常态化的模型选型评估流程。</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      DeepSeek 开源 DSpark 投机解码框架、SpaceX 合并 xAI 为 SpaceXAI、美国企业因账单失控转向低成本模型，AI 产业进入成本优化与垂直整合并行的新阶段
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 3 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>DeepSeek 开源 DSpark 投机解码框架，加速 DeepSeek-V4 生成速度 60–85%</h4>
+        <p><b>AI PM 视角：</b>DSpark 的发布标志着开源社区在推理效率上的又一次重要领先。对于 AI PM 来说，这比单纯的模型能力发布更具产品意义：它直接影响用户体验（响应延迟）、运营成本（每 token 推理成本）和部署可行性（端侧/私有化）。60-85% 的生成速度提升，意味着同样的硬件可以服务更多用户，或者以更低的成本达到同样的体验。</p>
+<p>更重要的是，DSpark 不是新模型，而是附加在现有 DeepSeek-V4 权重上的草稿模块。这种“增强现有模型”的思路，对企业客户非常友好：不需要重新训练或切换模型，只需部署一个推理加速模块即可获得收益。这可能会加速 DeepSeek 在企业市场的渗透，尤其是在那些对延迟敏感的场景（实时客服、代码补全、互动创作）中。</p>
+<p>从竞争格局看，DeepSeek 持续在“开源 + 高效”路线上发力，与 OpenAI、Anthropic 的闭源高价路线形成鲜明对比。产品团队需要重新评估模型选型：在某些场景下，DeepSeek + DSpark 的组合可能已经能提供足够的质量和更好的性价比。</p>
+        
+        <p><b>研究型 Builder 视角：</b>DSpark 的技术核心在于半自回归投机解码：并行骨干生成候选 token，轻量级顺序头验证接受。研究型 Builder 应关注其接受率、草稿模型与主模型的协同机制、以及在不同序列长度和任务类型上的稳定性。开源检查点和训练代码的可复现性很高，适合作为投机解码研究的基准。关键研究问题包括：DSpark 的加速比在代码、数学、长文本等任务上是否一致？草稿模块是否可以迁移到其他模型架构？</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：了解 DSpark 的部署要求和硬件兼容性，评估是否能集成到你现有的 DeepSeek-V4 推理栈中。</li>
+<li>本季度：为高延迟敏感场景设计一个“DeepSeek + DSpark”的 PoC，对比其在延迟和成本上的表现。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.marktechpost.com/2026/06/27/deepseek-releases-dspark-a-speculative-decoding-framework-that-accelerates-deepseek-v4-per-user-generation-60-85-over-mtp-1">MarkTechPost（RSS）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>SpaceX 注册 SpaceXAI 商标，将合并 xAI</h4>
+        <p><b>AI PM 视角：</b>xAI 并入 SpaceX 是 AI 产业整合的重要信号。这一举动意味着马斯克正在把 AI 能力更深地嵌入到 SpaceX 的火箭、卫星、制造和运营体系中，而不是让 xAI 作为一个独立的 AI 平台公司存在。对于 AI PM 来说，这提示我们：AI 正在从“独立产品”变成“核心基础设施能力”，被整合进更大的工业或产品体系中。</p>
+<p>从竞争格局看，SpaceXAI 可能会获得独特的优势：SpaceX 和 Tesla 的真实世界数据、工程场景和垂直需求，将成为模型后训练的宝贵资产。这与昨天 Grok 4.5 在 SpaceX 和 Tesla 私测的消息相呼应。未来 SpaceXAI 可能不会直接参与消费级 AI 聊天机器人的竞争，而是在航空航天、制造、自动驾驶等硬核工业领域建立壁垒。</p>
+        
+        <p><b>研究型 Builder 视角：</b>从研究角度，SpaceXAI 的整合值得关注其数据飞轮效应：火箭发射、卫星运维、制造流程等数据如何转化为模型能力？这种垂直整合是否会催生新的模型架构或训练方法？但由于 xAI 此前多为闭源，研究型 Builder 能直接获取的信息有限，更多是观察其公开动作和产业影响。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：思考你所在行业中，是否存在类似 SpaceX 的“垂直数据 + AI 能力”整合机会。</li>
+<li>本季度：如果你拥有垂直业务数据，评估建立内部 AI 能力而非依赖通用 API 的可行性。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/cb_doge/status/2070973276562530507">X：cb_doge (@cb_doge)</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>AI 账单失控后 DeepSeek 成“香饽饽”，部分美国企业已 100% 切换</h4>
+        <p><b>AI PM 视角：</b>这是 AI 商业化进程中的一个关键转折点。过去两年，企业愿意为最前沿模型支付高价，但现在越来越多的公司开始质疑 ROI。Lindy 100% 切换到 DeepSeek 的案例说明：当 AI 账单超过员工工资时，成本优化会从“可选项”变成“必选项”。</p>
+<p>这一趋势对产品团队有三层启示：</p>
+<p><b>1.</b> <strong>模型路由成为刚需</strong>：不是所有任务都需要最强模型，按任务分配模型将成为标准做法。</p>
+<p><b>2.</b> <strong>开源/低成本模型机会窗口打开</strong>：DeepSeek 等模型在成本上的优势，可能使其在企业市场快速渗透。</p>
+<p><b>3.</b> <strong>ROI 证明压力增大</strong>：企业客户不再只为“AI 噱头”买单，他们需要看到明确的投资回报。</p>
+<p>对于 AI PM 来说，这意味着设计产品时需要同时考虑能力、成本和可解释的业务价值。未来的竞争可能不是“谁的模型最强”，而是“谁能用最合适的模型、以最低的成本、解决最明确的业务问题”。</p>
+        
+        <p><b>研究型 Builder 视角：</b>从研究角度看，这一现象验证了模型能力“足够好”区间的存在。研究型 Builder 应关注：在哪些任务上，DeepSeek 与 Claude/GPT 的质量差距可以被成本优势弥补？模型路由和任务分类的标准是什么？这涉及评估方法论、成本建模和实际业务指标的交叉研究。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周：计算你产品中 AI 功能的单位成本（每用户、每会话、每任务），识别成本最高的环节。</li>
+<li>本季度：设计一个模型路由策略，为不同类型任务匹配不同成本和能力的模型。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.ithome.com/0/969/400.htm">IT之家（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 4 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>阿里千问输入法上线 macOS 版：最快 300 字/分，AI 自动润色</h4>
+        <p><b>分析：</b>阿里千问输入法 macOS 版上线，支持最快 300 字/分的 AI 语音输入，可自动润色、将口语转为工整文字，并支持 9 种方言，纯净无广告。官方预告 iOS、Android、Windows 版将于近日发布。</p>
+        <p><b>AI PM 视角：</b>输入法是一个高频入口，千问输入法将 AI 能力（语音输入、自动润色、方言识别）打包进一个用户每天都要用的工具，是典型的“AI 能力产品化”案例。对 AI PM 的启示是：不要把 AI 当成独立功能，而要找到用户已有习惯的高频场景，用 AI 提升体验。</p>
+        
+        <p><b>研究型 Builder 视角：</b>端侧输入法对延迟和隐私要求都很高，研究型 Builder 可关注其模型压缩、本地推理和方言 ASR 技术。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周思考你产品中是否存在类似输入法的高频入口，可以用轻量 AI 能力显著提升体验。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.ithome.com/0/969/334.htm">IT之家（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>Runway API 推出广告本地化 Recipe</h4>
+        <p><b>分析：</b>Runway API 推出广告本地化 Recipe，可通过单次 API 调用翻译静态广告和图形资产。</p>
+        <p><b>AI PM 视角：</b>广告本地化是一个明确的 B2B 场景，Runway 将其封装成 Recipe，降低了企业使用门槛。这代表了 AI 产品化的一种路径：把复杂的多步骤工作流（翻译 + 图形生成 + 本地化适配）打包成可复用的模板。</p>
+        
+        <p><b>研究型 Builder 视角：</b>Recipe 模式本质上是 prompt 和工作流模板的产品化，研究型 Builder 可关注其参数抽象和错误处理机制。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你的 AI 产品面向企业客户，本周梳理 3 个可封装为 Recipe/模板的标准化场景。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/runwayml/status/2070855164584726791">X：Runway (@runwayml)</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>“Raise Us”启动：前美商务部长与四州合作筹集10亿美元应对AI就业冲击</h4>
+        <p><b>分析：</b>前美国商务部长 Raimondo 与前印第安纳州长 Holcomb 共同发起非营利“Raise Us”，目标为 AI 经济下工人再培训筹集 10 亿美元，已锁定 5 亿。Amazon、Anthropic、Microsoft、OpenAI 等支持，将在四州试点。</p>
+        <p><b>AI PM 视角：</b>AI 就业冲击正在从讨论进入政策和市场行动阶段。Raise Us 的成立说明，即使是最可能推动自动化的科技公司，也意识到需要为劳动力转型买单。这对 AI PM 的启示是：设计替代人力的 AI 产品时，需要考虑过渡方案、人机协作和员工再培训，否则可能面临社会抵制和监管风险。</p>
+        
+        <p><b>研究型 Builder 视角：</b>这是一个政策与社会学研究交叉领域，研究型 Builder 可关注其试点效果评估方法。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你在做自动化/替代人力的 AI 产品，本周评估其对现有岗位的影响，并设计过渡性的人机协作方案。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://the-decoder.com/the-companies-most-likely-to-automate-your-job-are-now-funding-a-1-billion-program-to-retrain-you">The Decoder：AI News（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>国家统计局：1-5月规上工业企业利润增18.8%，电子行业利润增103.9%贡献43.1%</h4>
+        <p><b>分析：</b>1-5 月全国规上工业企业利润同比增 18.8%。电子行业利润增 103.9%，贡献率 43.1%，主因全球 AI 技术变革推动高端算力芯片和存储芯片需求爆发。高技术制造业利润增 44.7%，电子专用材料制造增 665.4%。</p>
+        <p><b>AI PM 视角：</b>宏观数据验证了 AI 基础设施需求的爆发正在传导至实体经济。电子行业利润翻倍，说明算力芯片和存储芯片的需求仍在高速增长。这对 AI PM 的意义在于：底层算力供应仍然是产业发展的关键变量，成本下降可能没有那么快，产品团队需要为持续的算力成本压力做准备。</p>
+        
+        <p><b>研究型 Builder 视角：</b>宏观数据提供了 AI 产业链景气度的外部验证，研究型 Builder 可结合具体公司财报做更细粒度的分析。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周更新你的产品成本模型，考虑算力硬件价格下降的慢于预期的风险。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.ithome.com/0/969/311.htm">IT之家（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架 1：成本驱动的模型选型——从“最强模型”到“最合适模型”</h4>
+        <p>Lindy 100% 切换到 DeepSeek、DeepSeek DSpark 提升推理效率、千问输入法用端侧 AI 降低服务成本，这三个事件共同指向一个趋势：AI 产品正在进入成本敏感阶段。</p>
+<ul>
+<li>前沿模型用于高价值、复杂、低频任务。</li>
+<li>开源/小模型用于高频、结构化、成本敏感任务。</li>
+<li>推理加速技术（如投机解码）用于提升现有模型效率。</li>
+</ul>
+<p><strong>产品启示</strong>：AI PM 需要为每个 AI 功能建立“成本-价值”矩阵。不要默认使用最强模型，而是根据任务的复杂性、容错率和使用频率，选择性价比最优的模型。同时，投资于模型路由和推理优化，将成为未来 AI 产品的核心竞争力。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架 2：垂直整合 vs 开放平台——AI 能力的组织形态选择</h4>
+        <p>SpaceXAI 合并 xAI 代表垂直整合路线：把 AI 能力深度嵌入核心业务流程，用私有数据构建壁垒。而 Runway API 推出 Recipe、DeepSeek 开源 DSpark 则代表开放平台路线：通过 API、模板和开源工具服务更广泛的开发者。</p>
+<ul>
+<li>垂直整合适合拥有独特数据和场景的硬科技公司。</li>
+<li>开放平台适合希望快速覆盖多场景、建立生态的公司。</li>
+<li>两种路线并非互斥，很多公司会同时采用。</li>
+</ul>
+<p><strong>产品启示</strong>：产品团队需要明确自己的 AI 战略定位：是构建垂直领域的专有 AI 能力，还是接入开放平台快速迭代？如果你的公司拥有独特数据，垂直整合可能带来长期壁垒；如果数据优势不明显，则应优先利用开源和 API 生态。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架 3：AI 的社会契约——从效率提升到就业转型</h4>
+        <p>Raise Us 的启动和 AI 驱动工业利润增长的数据，共同揭示 AI 发展的两面性：一方面，AI 显著提升生产力和企业利润；另一方面，它也加速了劳动力替代，需要社会层面的再培训和支持机制。</p>
+<ul>
+<li>企业层面：AI 产品需要考虑人机协作和过渡方案。</li>
+<li>社会层面：再培训、工资保险、职业导航等机制将逐步建立。</li>
+<li>监管层面：AI 就业影响可能成为未来政策的重要议题。</li>
+</ul>
+<p><strong>产品启示</strong>：设计 AI 产品时，不仅要考虑技术可行性和商业价值，还要考虑其对社会和就业的影响。那些主动设计“增强人类”而非“替代人类”的产品，可能更容易获得用户信任和监管支持。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>DeepSeek DSpark 技术报告/代码仓库</strong>：理解半自回归投机解码的原理和部署方式。</p>
+<p><b>2.</b> <strong>Lindy 切换 DeepSeek 的报道</strong>：了解企业 AI 成本失控和模型切换的真实案例。</p>
+<p><b>3.</b> <strong>国家统计局工业利润数据</strong>：把握 AI 基础设施需求对实体经济的传导效应。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>计算 AI 功能的单位成本</strong>：识别成本最高的任务和环节。</p>
+<p><b>2.</b> <strong>设计模型路由策略</strong>：为不同类型任务匹配合适的模型。</p>
+<p><b>3.</b> <strong>评估 DSpark 的适用性</strong>：如果你使用 DeepSeek-V4，测试 DSpark 的加速效果。</p>
+<p><b>4.</b> <strong>更新产品社会风险清单</strong>：评估 AI 功能对就业和岗位的潜在影响。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>成本优化将成为 AI 产品设计的核心约束</strong>：未来 6-12 个月，企业将更严格地审视 AI ROI，模型路由和推理优化成为标配。</p>
+<p><b>2.</b> <strong>垂直整合型 AI 与开放平台型 AI 将并存</strong>：SpaceXAI 和 DeepSeek 代表了两种成功路径，产品团队需要根据自身资源选择。</p>
+<p><b>3.</b> <strong>AI 的社会影响将从边缘议题进入主流政策议程</strong>：再培训、工资保险、人机协作将成为 AI 产品设计的考虑因素。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题 1：你的产品是否存在“过度使用强模型”的成本浪费？</h4>
+        <p>Lindy 的案例说明，很多公司可能在为不需要的能力付费。</p>
+<ul>
+<li>你产品中每个 AI 调用是否都值得使用当前模型？</li>
+<li>如果用更便宜的模型替代部分任务，质量损失是否在可接受范围内？</li>
+<li>你是否有清晰的成本-价值评估框架？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题 2：垂直整合还是开放平台，哪个更适合你的业务？</h4>
+        <p>SpaceXAI 代表垂直整合，DeepSeek 代表开放生态。</p>
+<ul>
+<li>你的公司拥有独特的垂直数据吗？</li>
+<li>你的核心竞争优势来自模型能力还是产品体验？</li>
+<li>在资源有限的情况下，应优先自建模型能力还是接入开源/API？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题 3：AI 加速你的业务时，是否也在加速社会问题？</h4>
+        <p>Raise Us 的启动说明 AI 就业冲击已进入政策应对阶段。</p>
+<ul>
+<li>你的 AI 产品替代了哪些岗位？</li>
+<li>是否设计了人机协作方案，帮助现有员工转型？</li>
+<li>长期来看，社会信任是否会影响你的产品接受度？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题 4：推理优化技术如何改变你的产品形态？</h4>
+        <p>DSpark 等投机解码技术可以显著降低延迟和成本。</p>
+<ul>
+<li>你的产品中有哪些场景受延迟限制？</li>
+<li>如果延迟降低 60-80%，是否会产生新的交互模式或产品机会？</li>
+<li>端侧推理优化是否会改变你的部署策略？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题 5：开源模型的成本优势是否会改变行业竞争格局？</h4>
+        <p>DeepSeek 在成本上的优势已经促使部分美国企业 100% 切换。</p>
+<ul>
+<li>你的客户是否会对成本越来越敏感？</li>
+<li>开源模型是否在质量和成本之间达到了可接受的平衡点？</li>
+<li>闭源模型厂商应如何应对这种压力？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A：AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 计算你产品中 AI 功能的单位成本，识别高成本环节。</p>
+<p><b>2.</b> 阅读 Lindy 切换 DeepSeek 的报道，理解成本驱动决策。</p>
+<p><b>3.</b> 列出 3 个可以用更便宜模型替代的任务场景。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 设计一个模型路由策略，按任务复杂度分配不同模型。</p>
+<p><b>2.</b> 为高延迟敏感场景评估投机解码或推理优化方案。</p>
+<p><b>3.</b> 建立 AI 功能的 ROI 评估框架。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 探索垂直整合与开放平台的战略选择。</p>
+<p><b>2.</b> 将社会影响和就业转型纳入产品设计考量。</p>
+<p><b>3.</b> 跟踪开源模型和闭源模型的成本-能力边界变化。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B：AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 本地部署或测试 DeepSeek DSpark，测量加速效果。</p>
+<p><b>2.</b> 实现一个简单的模型路由层，按任务类型分发请求。</p>
+<p><b>3.</b> 了解投机解码的基本原理和实现方式。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 为现有 DeepSeek-V4 推理服务集成 DSpark。</p>
+<p><b>2.</b> 设计一个成本监控 dashboard，追踪各模型的调用成本。</p>
+<p><b>3.</b> 为高并发场景优化推理吞吐量和延迟。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 研究 MoE、投机解码、量化等推理优化技术的组合效果。</p>
+<p><b>2.</b> 参与开源推理框架的优化和贡献。</p>
+<p><b>3.</b> 探索端侧 AI 输入法或实时语音交互的工程实现。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C：研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 阅读 DeepSeek DSpark 相关技术报道，理解半自回归投机解码。</p>
+<p><b>2.</b> 对比 DSpark 与 Eagle3、DFlash 的接受长度和加速比。</p>
+<p><b>3.</b> 了解 AI 就业冲击和再培训政策的研究现状。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 在多个任务类型上复现 DSpark 的加速效果。</p>
+<p><b>2.</b> 设计一个模型成本-质量权衡的评估框架。</p>
+<p><b>3.</b> 研究供应链攻击的检测方法，提升代码安全审查能力。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 提出新的推理优化方法或评估指标。</p>
+<p><b>2.</b> 研究 AI 社会影响的政策框架和技术缓解方案。</p>
+<p><b>3.</b> 撰写关于 AI 成本优化或社会影响的深度分析文章。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D：快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>投机解码</td><td>DeepSeek DSpark 代码仓库 / MarkTechPost 报道</td><td>1-2 小时</td></tr><tr><td>企业 AI 成本</td><td>Lindy 切换 DeepSeek 报道 / IT之家</td><td>30 分钟</td></tr><tr><td>AI 就业影响</td><td>Raise Us 官网 / The Decoder 报道</td><td>45 分钟</td></tr><tr><td>开放权重模型</td><td>OpenRouter 6 月盘点</td><td>30 分钟</td></tr><tr><td>供应链安全</td><td>失败民族国家攻击剖析博客</td><td>45 分钟</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-13.html">
+      <span class="date">2026-07-13</span>
+      <span class="title">超级应用Agent化与数学证明突破</span>
+      <span class="angle">腾讯Hy3接入微信10亿用户、GPT-5.6 Sol证明50年图论猜想、开源模型面临监管寒冬，AI产品竞争从能力展示转向Agent落地效率与信任基础设施</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-12.html">
+      <span class="date">2026-07-12</span>
+      <span class="title">GPT-5.6安全危机与AI滥用双重警示</span>
+      <span class="angle">GPT-5.6在医疗评估与Agent执行上同步突破，但Matt Shumer硬盘被删与博科圣地滥用主流聊天机器人揭示：能力扩张正与安全治理和合规基础设施产生严重错配</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-11.html">
+      <span class="date">2026-07-11</span>
+      <span class="title">巨头诉讼、AI武器化与通宵Agent并行</span>
+      <span class="angle">2026-07-11 AI行业在法律攻防、物理智能体与长程Agent信任三条战线同时升温，推理成本优化与治理readiness成为产品化新门槛</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>179 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+      <div class="meta" style="margin-top:8px;color:var(--ink-soft)"><strong>生成时间</strong>: 2026-06-28 <strong>数据来源</strong>: <a href="https://aihot.virxact.com">AI HOT</a> 日报 API <strong>解读视角</strong>: AI 产品经理 & AI Builder & 研究型 Builder</div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-07-06</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>187</span></div>
+    <div><b>ISS.</b><span>2026-07-06</span></div>
+    <div><b>EVT.</b><span>7 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 187</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">6</div>
+    <div class="meta-col">
+      <h2>开源MoE与算力博弈重塑AI落地风险</h2>
+      <p>美团LongCat-2.0开源、Meta千兆瓦集群与NVIDIA Kyber延迟同日共振，AI产品必须在模型选型、算力韧性与合规设计之间做更精细的权衡</p>
+      <div class="meta-row"><b>日期</b> 2026-07-06</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 187 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">美团Lo</span>ngCat-2.0开源、Meta千兆瓦集群与NVIDIA Kyber延迟同日共振，AI产品必须在模型选型、算力韧性与合规设计之间做更精细的权衡
+    </div>
+    <div class="credits">
+      <b>PERSPECTIVE</b><br>AI 产品经理 &amp; AI Builder &amp; 研究型 Builder 视角<br><hr>
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 3<br>
+      IMPORTANT 3<br>
+      REFERENCE 1<br>
+      <hr>
+      <b>THEMES</b><br>
+      开源 MoE 模型、千兆瓦级集群、NVIDIA 供应链延迟<br>
+      欧盟聊天管控监管、Claude Design 提示词工程、Agentic 法<br>
+      自闭症儿童沟通应用的垂直 PMF<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架一：开源模型 + 垂直 Agent = 新护城河<br>
+      框架二：算力寡头化与供应链风险<br>
+      框架三：合规即产品力
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>3 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>1 美团 LongCat-2.0 完全开源（MIT 许可），1.6T MoE 模型开放权重与推理代码</h3>
+          <p>美团宣布 LongCat-2.0 完全开源，采用 MIT 许可公开模型权重与推理代码。该模型为 MoE 架构，总参数量 1.6T，每 token 激活约 48B，支持 1M token 长上下文。技术亮点包括 LongCat Sparse Attention 高效处理长文本、Zero-Compute Experts 动态激活 33B–56B 零浪费计算、MOPD 按任务路由 Agent/Reasoning/Interaction 三组专家。Benchmark 成绩：Terminal-Bench 2.1 70.8；SWE-bench Pro 59.5（超越 GPT-5.5 的 58.6）；SWE-bench Multilingual 表现亦领先。</p>
+          <p><b>AI PM 视角：</b>LongCat-2.0 的开源是中国大模型生态的一次重要信号。与美团的业务基因高度相关——本地生活、外卖、到店、酒旅等场景天然需要长上下文理解（用户历史订单、多轮客服、复杂优惠券规则）和强代码能力（内部工具、商家系统、自动化运营）。开源 1.6T MoE 模型不仅是技术实力的展示，更是一种生态卡位：通过释放高质量基座模型，吸引开发者在其上构建垂直应用，间接扩大美团在 AI 时代的平台影响力。
+
+对 AI PM 的战略启示在于：开源模型的竞争已经从「有没有」进入「好不好用 + 有没有差异化场景」。LongCat 的优势组合——长上下文 + 代码能力 + Agent 路由——精准切中了企业级 Agent、DevTool、客服中台等高频落地场景。产品团队在选择基座模型时，不能再只看通用榜单，而要结合自己的上下文长度、代码生成密度、多 Agent 协作需求做成本-能力矩阵评估。</p>
+
+          <p><b>研究型 Builder 视角：</b>LongCat-2.0 的技术看点集中在 MoE 路由与长上下文效率的协同设计上。1.6T 总参数 / 48B 激活参数的比例意味着极高的稀疏性，而 Zero-Compute Experts 与 MOPD 任务级路由的结合试图解决 MoE 模型常见的「专家坍塌」和「路由不稳定」问题。研究型 Builder 应关注其稀疏注意力机制的具体实现——这是否是对传统 Ring Attention / FlashAttention 的改进，还是针对特定序列长度分布的定制优化。可复现性方面，开源权重和推理代码为独立验证 Benchmark 提供了基础，但训练数据配比、后训练（post-training）细节和 RL 阶段的设计仍是黑箱，需要社区通过反推和消融来补全。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：在内部做一次 LongCat-2.0 与当前在用基座模型的对比评测，重点测 100K+ token 长文档理解、代码补全、多 Agent 任务分解三个场景，记录延迟与成本。
+- **本季度可做**：如果业务涉及长上下文客服、代码生成或企业内部知识库问答，评估是否可用 LongCat-2.0 替代闭源 API，建立自托管或私有化部署的 TCO 模型。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/Meituan_LongCat/status/2073768940078317713">X：美团 LongCat (@Meituan_LongCat)</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>2 扎克伯格：Meta 建设 Prometheus 千兆瓦级 AI 集群，集中精英与资本</h3>
+          <p>Mark Zuckerberg 公开披露 Meta 正在建设名为 Prometheus 的千兆瓦级以上单一 AI 集群，并强调其职责是集中精英人才、资本和基础设施。这一投入被描述为「数千亿美元」级别，显示 Meta 正在以国家级工程规模押注 AI 基础设施。</p>
+          <p><b>AI PM 视角：</b>当扎克伯格把 AI 基础设施提到「集中精英与资本」的公司战略高度时，这已经不是单纯的技术投资，而是对未来十年平台话语权的押注。Meta 的核心商业模式是广告和内容分发，而生成式 AI 正在重构内容生产、广告投放和用户交互的每一个环节。千兆瓦级集群意味着 Meta 有能力训练更大规模的模型、更低成本地运行推理、更快地进行实验迭代——这将直接转化为产品体验优势（更智能的 Reels 推荐、更自然的 AI 助手、更高效的广告创意生成）。
+
+对 AI PM 的警示是：基础模型和算力正在快速寡头化。创业公司如果还在做「调用 API 包装一下」的产品，需要重新思考护城河。未来的产品竞争会分化成两条路：一是像 Meta 这样的巨头做通用基础设施，二是在垂直场景里用专有数据、工作流深度整合和合规能力建立壁垒。中间层的通用工具生存空间会被持续压缩。</p>
+
+          <p><b>研究型 Builder 视角：</b>从工程角度看，单一千兆瓦级集群的设计挑战远超多数据中心并联。它涉及电力供应、液冷散热、网络拓扑、故障域隔离、训练任务调度等一系列系统性问题。研究型 Builder 可以从中提炼出一个关键问题：当集群规模达到物理基础设施极限时，分布式训练框架、模型并行策略和容错机制将如何演进？这也为学术界和产业界提供了新的研究议程——如何在超大规模集群上维持稳定的训练吞吐和收敛效率。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：梳理你所在产品的算力依赖路径图，识别是否过度依赖单一云厂商或单一模型供应商，并列出可替代方案。
+- **本季度可做**：如果你在做 toB 产品，设计一套「私有化 / 本地化部署 + 主流云 API 混合」的弹性架构，以应对未来算力供应波动和成本变化。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/rohanpaul_ai/status/2073834219659534816">X：Rohan Paul (@rohanpaul_ai)</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>3 NVIDIA Kyber NVL144 延迟超 12 个月至 2028</h3>
+          <p>SemiAnalysis 报道称，NVIDIA 的 Kyber NVL144 项目遭遇重大挫折，推迟超过 12 个月至 2028 年。同时，NVL72x2 背靠背机架架构也被取消，导致 Rubin Ultra 的扩展域受限。</p>
+          <p><b>AI PM 视角：</b>NVIDIA 的硬件延迟是整个 AI 产业链的地震。过去两年，AI 产品路线图几乎完全绑定在 NVIDIA 的 GPU 迭代节奏上——Hopper、Blackwell、Rubin 的发布周期决定了模型能做多大、训练能多快、推理能多便宜。Kyber NVL144 的延迟意味着：2026-2027 年间，行业将主要依赖现有架构的优化，而非新一代硬件带来的跃升。
+
+这对产品规划有直接影响。如果你原本计划在 2027 年依靠新硬件实现成本大幅下降或模型能力跃迁，需要调整预期。同时，这也为 AMD、Intel、Cerebras、Groq 等替代芯片厂商以及自研芯片的 cloud provider（Google TPU、Amazon Trainium、微软 Maia）创造了窗口期。AI PM 应该把这视为供应链风险管理问题，而不是单纯的技术新闻。</p>
+
+          <p><b>研究型 Builder 视角：</b>Kyber 延迟的技术原因可能涉及 CoWoS 先进封装产能、HBM 内存供应、功耗密度和机架级互连的可靠性。研究型 Builder 应关注：在硬件升级放缓的背景下，软件层面的优化（更高效的注意力机制、量化、稀疏化、投机解码、分布式推理调度）将变得更加重要。这也可能推动模型架构从「追求更大规模」转向「追求更高效率」，与 LongCat-2.0 等稀疏 MoE 模型的思路形成呼应。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：检查产品推理成本模型中对未来硬件降本的假设，重新评估 2026-2027 年的单位 token 成本曲线。
+- **本季度可做**：启动对非 NVIDIA 推理芯片和云服务商的基准测试，至少建立一个备用推理后端，降低供应链集中度风险。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/SemiAnalysis_/status/2073874671498387899">X：SemiAnalysis (@SemiAnalysis_)</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">3 IMPORTANT + 1 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://www.heise.de/en/news/Chat-Control-1-0-EU-Council-forces-messenger-scans-via-fast-track-11353659.html">1 欧盟理事会通过快速通道强制推行「聊天管控」（Chat Control 2.0）</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://github.com/Trystan-SA/claude-design-system-prompt">2 Anthropic Claude Design 反向工程提示词开源更新</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://www.marktechpost.com/2026/07/05/llamaindex-legal-kb-agentic-retrieval-over-index-v2-with-retrieve-find-read-and-grep-tools">3 LlamaIndex 发布 legal-kb：基于 Index v2 的智能体检索参考应用</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div>4.1</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">1 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>4.1</div><div>三周前，我不小心创办了一家小公司 | 一位父亲为自闭症非语言儿子开发沟通应用，在言语治疗室引发强烈共鸣；它提醒我们：AI 产品最大的 PMF 往往来自对特定人群深层痛点的真实理解，而非通用能力的堆叠。</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      美团LongCat-2.0开源、Meta千兆瓦集群与NVIDIA Kyber延迟同日共振，AI产品必须在模型选型、算力韧性与合规设计之间做更精细的权衡
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 3 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>1 美团 LongCat-2.0 完全开源（MIT 许可），1.6T MoE 模型开放权重与推理代码</h4>
+        <p><b>AI PM 视角：</b>LongCat-2.0 的开源是中国大模型生态的一次重要信号。与美团的业务基因高度相关——本地生活、外卖、到店、酒旅等场景天然需要长上下文理解（用户历史订单、多轮客服、复杂优惠券规则）和强代码能力（内部工具、商家系统、自动化运营）。开源 1.6T MoE 模型不仅是技术实力的展示，更是一种生态卡位：通过释放高质量基座模型，吸引开发者在其上构建垂直应用，间接扩大美团在 AI 时代的平台影响力。</p>
+<p>对 AI PM 的战略启示在于：开源模型的竞争已经从「有没有」进入「好不好用 + 有没有差异化场景」。LongCat 的优势组合——长上下文 + 代码能力 + Agent 路由——精准切中了企业级 Agent、DevTool、客服中台等高频落地场景。产品团队在选择基座模型时，不能再只看通用榜单，而要结合自己的上下文长度、代码生成密度、多 Agent 协作需求做成本-能力矩阵评估。</p>
+        
+        <p><b>研究型 Builder 视角：</b>LongCat-2.0 的技术看点集中在 MoE 路由与长上下文效率的协同设计上。1.6T 总参数 / 48B 激活参数的比例意味着极高的稀疏性，而 Zero-Compute Experts 与 MOPD 任务级路由的结合试图解决 MoE 模型常见的「专家坍塌」和「路由不稳定」问题。研究型 Builder 应关注其稀疏注意力机制的具体实现——这是否是对传统 Ring Attention / FlashAttention 的改进，还是针对特定序列长度分布的定制优化。可复现性方面，开源权重和推理代码为独立验证 Benchmark 提供了基础，但训练数据配比、后训练（post-training）细节和 RL 阶段的设计仍是黑箱，需要社区通过反推和消融来补全。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：在内部做一次 LongCat-2.0 与当前在用基座模型的对比评测，重点测 100K+ token 长文档理解、代码补全、多 Agent 任务分解三个场景，记录延迟与成本。</li>
+<li><strong>本季度可做</strong>：如果业务涉及长上下文客服、代码生成或企业内部知识库问答，评估是否可用 LongCat-2.0 替代闭源 API，建立自托管或私有化部署的 TCO 模型。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/Meituan_LongCat/status/2073768940078317713">X：美团 LongCat (@Meituan_LongCat)</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>2 扎克伯格：Meta 建设 Prometheus 千兆瓦级 AI 集群，集中精英与资本</h4>
+        <p><b>AI PM 视角：</b>当扎克伯格把 AI 基础设施提到「集中精英与资本」的公司战略高度时，这已经不是单纯的技术投资，而是对未来十年平台话语权的押注。Meta 的核心商业模式是广告和内容分发，而生成式 AI 正在重构内容生产、广告投放和用户交互的每一个环节。千兆瓦级集群意味着 Meta 有能力训练更大规模的模型、更低成本地运行推理、更快地进行实验迭代——这将直接转化为产品体验优势（更智能的 Reels 推荐、更自然的 AI 助手、更高效的广告创意生成）。</p>
+<p>对 AI PM 的警示是：基础模型和算力正在快速寡头化。创业公司如果还在做「调用 API 包装一下」的产品，需要重新思考护城河。未来的产品竞争会分化成两条路：一是像 Meta 这样的巨头做通用基础设施，二是在垂直场景里用专有数据、工作流深度整合和合规能力建立壁垒。中间层的通用工具生存空间会被持续压缩。</p>
+        
+        <p><b>研究型 Builder 视角：</b>从工程角度看，单一千兆瓦级集群的设计挑战远超多数据中心并联。它涉及电力供应、液冷散热、网络拓扑、故障域隔离、训练任务调度等一系列系统性问题。研究型 Builder 可以从中提炼出一个关键问题：当集群规模达到物理基础设施极限时，分布式训练框架、模型并行策略和容错机制将如何演进？这也为学术界和产业界提供了新的研究议程——如何在超大规模集群上维持稳定的训练吞吐和收敛效率。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：梳理你所在产品的算力依赖路径图，识别是否过度依赖单一云厂商或单一模型供应商，并列出可替代方案。</li>
+<li><strong>本季度可做</strong>：如果你在做 toB 产品，设计一套「私有化 / 本地化部署 + 主流云 API 混合」的弹性架构，以应对未来算力供应波动和成本变化。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/rohanpaul_ai/status/2073834219659534816">X：Rohan Paul (@rohanpaul_ai)</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>3 NVIDIA Kyber NVL144 延迟超 12 个月至 2028</h4>
+        <p><b>AI PM 视角：</b>NVIDIA 的硬件延迟是整个 AI 产业链的地震。过去两年，AI 产品路线图几乎完全绑定在 NVIDIA 的 GPU 迭代节奏上——Hopper、Blackwell、Rubin 的发布周期决定了模型能做多大、训练能多快、推理能多便宜。Kyber NVL144 的延迟意味着：2026-2027 年间，行业将主要依赖现有架构的优化，而非新一代硬件带来的跃升。</p>
+<p>这对产品规划有直接影响。如果你原本计划在 2027 年依靠新硬件实现成本大幅下降或模型能力跃迁，需要调整预期。同时，这也为 AMD、Intel、Cerebras、Groq 等替代芯片厂商以及自研芯片的 cloud provider（Google TPU、Amazon Trainium、微软 Maia）创造了窗口期。AI PM 应该把这视为供应链风险管理问题，而不是单纯的技术新闻。</p>
+        
+        <p><b>研究型 Builder 视角：</b>Kyber 延迟的技术原因可能涉及 CoWoS 先进封装产能、HBM 内存供应、功耗密度和机架级互连的可靠性。研究型 Builder 应关注：在硬件升级放缓的背景下，软件层面的优化（更高效的注意力机制、量化、稀疏化、投机解码、分布式推理调度）将变得更加重要。这也可能推动模型架构从「追求更大规模」转向「追求更高效率」，与 LongCat-2.0 等稀疏 MoE 模型的思路形成呼应。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：检查产品推理成本模型中对未来硬件降本的假设，重新评估 2026-2027 年的单位 token 成本曲线。</li>
+<li><strong>本季度可做</strong>：启动对非 NVIDIA 推理芯片和云服务商的基准测试，至少建立一个备用推理后端，降低供应链集中度风险。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/SemiAnalysis_/status/2073874671498387899">X：SemiAnalysis (@SemiAnalysis_)</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 3 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>1 欧盟理事会通过快速通道强制推行「聊天管控」（Chat Control 2.0）</h4>
+        <p><b>分析：</b>欧盟理事会通过书面程序快速通过一项新法规，强制要求科技集团对加密通信进行无差别扫描（Chat Control 2.0），以填补过渡性规定到期后的法律漏洞。草案将在夏季休会前以紧急程序提交议会表决，反对需绝对多数，几乎无法阻止。</p>
+        <p><b>AI PM 视角：</b>这是 AI 时代隐私与安全的经典张力。对 toC 通讯产品和 toB SaaS 来说，进入欧盟市场需要重新设计数据处理和合规流程。产品团队应把「隐私计算、端侧加密、本地化部署、可审计性」纳入核心功能规划，而不是事后补丁。合规能力正在从产品成本变成产品竞争力。</p>
+        
+        <p><b>研究型 Builder 视角：</b>大规模无差别扫描与端侧加密的冲突，将推动同态加密、联邦学习、可信执行环境（TEE）等隐私增强技术的实际落地需求。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你在欧洲有用户或客户，本周开始梳理产品中涉及用户通信、文件传输、AI 助手的日志留存策略，识别是否需要提供端到端加密或本地处理选项。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.heise.de/en/news/Chat-Control-1-0-EU-Council-forces-messenger-scans-via-fast-track-11353659.html">Hacker News 热门（buzzing.cc 中文翻译）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>2 Anthropic Claude Design 反向工程提示词开源更新</h4>
+        <p><b>分析：</b>Anthropic 旗下 Claude Design 的反向工程系统提示词在 GitHub 以 MIT 许可证开源，包含 20 章提示词和 14 项技能，覆盖内容纪律、美学、无障碍（WCAG、语义 HTML、键盘导航）、交互状态、系统思维等。新版本针对 Fable 5/Opus 4.7+ 系列校准，并新增「小决定直接执行记录而不询问」的自主决策条款。</p>
+        <p><b>AI PM 视角：</b>Claude Design 的提示词是「AI 产品设计说明书」的范本。它展示了如何把美学标准、无障碍规范、交互状态、用户意图理解等抽象要求，转化为模型可执行的系统指令。对 PM 而言，这是学习如何把「产品体验标准」编码进提示词的绝佳案例。新增的自主决策条款也值得关注——它代表 AI 助手从「事事请示」向「可授权代理」演进。</p>
+        
+        <p><b>研究型 Builder 视角：</b>反向工程提示词为研究模型如何响应结构化系统指令提供了真实样本，可用于研究提示注入鲁棒性、长提示的注意力分布和系统指令的优先级机制。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>选择一个你负责的 AI 功能，参考 Claude Design 的章节结构，重写系统提示词，明确列出内容纪律、输出格式、错误处理和用户确认边界。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://github.com/Trystan-SA/claude-design-system-prompt">Hacker News 热门（buzzing.cc 中文翻译）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>3 LlamaIndex 发布 legal-kb：基于 Index v2 的智能体检索参考应用</h4>
+        <p><b>分析：</b>LlamaIndex 发布 legal-kb，一个基于 Index v2（LlamaParse Platform）的法律文档知识库参考应用。采用 Retrieval Harness 模式，赋予 Agent 四个文件系统风格工具：retrieve、findFiles、readFile 和 grepFile。Agent 需先调用 findFiles 确定文件清单，再依次使用其他工具定位内容，底层基于 Vercel AI SDK 6 的 ToolLoopAgent。</p>
+        <p><b>AI PM 视角：</b>legal-kb 展示了 Agentic RAG 的下一阶形态——不是一次性检索所有内容，而是让 Agent 像律师查卷宗一样分步骤定位证据。这种模式特别适合法律、医疗、金融等需要精确溯源的领域。对 PM 来说，它提供了一套可复制的交互范式：先定位文件，再精读段落，最后交叉验证。</p>
+        
+        <p><b>研究型 Builder 视角：</b>Retrieval Harness 模式的核心是「工具编排 + 引用追溯」。研究者可关注这种设计如何降低幻觉率、提高可解释性，以及在不同文档结构（合同、判例、法规）中的泛化能力。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你在做知识库或企业搜索产品，尝试把检索拆分成「文件级定位 → 段落级精读 → 证据级引用」三步，并为每一步设计独立的工具调用和验证规则。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.marktechpost.com/2026/07/05/llamaindex-legal-kb-agentic-retrieval-over-index-v2-with-retrieve-find-read-and-grep-tools">MarkTechPost（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架一：开源模型 + 垂直 Agent = 新护城河</h4>
+        <p>今天的 LongCat-2.0 开源、LlamaIndex legal-kb 的 Agentic RAG、以及 Claude Design 的系统提示词工程，共同指向一个趋势：通用模型能力正在快速商品化，真正的产品壁垒来自「垂直场景理解 + 专有工作流编排 + 高质量领域数据」。</p>
+<ul>
+<li><strong> causal chain</strong>：开源模型降低基座成本 → 垂直场景的数据和工作流成为稀缺资源 → Agent 架构决定产品能否完成复杂任务闭环。</li>
+<li><strong>产品启示</strong>：AI PM 应该把 60% 精力放在定义「任务边界、错误处理、人机协作节点」上，而不是追逐最新模型。选择一个能闭环的垂直场景，比做一个泛泛的 AI 助手更有价值。</li>
+</ul>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架二：算力寡头化与供应链风险</h4>
+        <p>Meta 的千兆瓦级集群和 NVIDIA Kyber 的延迟是一枚硬币的两面：一方面巨头在加码算力基础设施，另一方面硬件供应链的集中度风险在上升。</p>
+<ul>
+<li><strong>因果链</strong>：训练成本门槛抬高 → 基础模型层集中度提升 → 中小玩家必须依赖云 API 或开源模型 → 推理成本受芯片供应和云厂商定价双重影响。</li>
+<li><strong>产品启示</strong>：产品团队需要建立「模型-芯片-云」三维的成本韧性评估。至少准备两套推理后端，定期做成本基准测试，并在产品定价模型中预留算力波动缓冲。</li>
+</ul>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架三：合规即产品力</h4>
+        <p>欧盟 Chat Control 2.0 的推进意味着 AI 产品的合规成本正在前置化。隐私、安全、可审计性不再是法务部门的专属议题，而是产品设计的核心约束。</p>
+<ul>
+<li><strong>因果链</strong>：监管收紧 → 用户隐私意识提升 → 企业采购对合规要求提高 → 具备隐私保护和本地化能力的产品获得溢价。</li>
+<li><strong>产品启示</strong>：把「数据最小化、端侧处理、可审计日志、用户可控」设计成产品特性，而不是合规补丁。在欧洲市场，这可能是比功能丰富度更重要的购买决策因素。</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>LongCat-2.0 技术报告与权重</strong>：重点看稀疏注意力、Zero-Compute Experts 和 MOPD 路由的实现细节，判断它是否适合你的长上下文或代码场景。</p>
+<p><b>2.</b> <strong>Claude Design 系统提示词 20 章结构</strong>：学习如何把产品体验标准（美学、无障碍、交互状态）编码成模型指令。</p>
+<p><b>3.</b> <strong>SemiAnalysis 关于 Kyber 延迟的 thread</strong>：理解 NVIDIA 供应链延迟对 2026-2027 年推理成本和模型路线图的潜在影响。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>基座模型基准测试</strong>：选一个业务场景，对比 LongCat-2.0、GPT-5.5 和你当前使用的模型在长上下文、代码、Agent 任务上的表现。</p>
+<p><b>2.</b> <strong>算力依赖路径图</strong>：画出产品中模型 API、云服务、硬件架构的依赖关系，标注单一供应商风险点。</p>
+<p><b>3.</b> <strong>系统提示词审计</strong>：参考 Claude Design 的结构，重写至少一个 AI 功能的系统提示词，明确内容纪律、输出格式和决策边界。</p>
+<p><b>4.</b> <strong>合规快速扫描</strong>：如果你在欧洲有用户，梳理通信、文件传输、AI 日志相关的数据处理流程，识别是否需要新增隐私计算或本地化选项。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>开源 MoE 模型将在企业级 Agent 和 DevTool 中加速替代闭源 API</strong>（6-12 个月）：LongCat-2.0 等模型在长上下文和代码能力上的优势，会让私有化部署成为中大型企业的可行选项。</p>
+<p><b>2.</b> <strong>推理成本优化将从「等硬件降价」转向「软件+架构优化」</strong>（12-18 个月）：Kyber 延迟意味着硬件升级放缓，稀疏化、量化、投机解码、高效注意力将成为主流优化方向。</p>
+<p><b>3.</b> <strong>AI 产品的合规能力将成为 go-to-market 的核心差异化因素</strong>（18-36 个月）：欧盟监管只是开始，隐私保护和可审计性将从成本中心变成产品溢价来源。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题一：当开源模型在核心能力上逼近闭源模型时，产品的护城河应该建在哪里？</h4>
+        <p>LongCat-2.0 等开源模型正在缩小与 GPT 系列的差距，这意味着单纯调用最先进 API 的竞争优势在削弱。产品团队需要重新思考：什么才是真正难以复制的壁垒？</p>
+<ul>
+<li><strong>战略跟进</strong>：你的产品中是否有专有数据、行业 know-how 或深度工作流可以转化为模型微调或 Agent 编排优势？</li>
+<li><strong>执行跟进</strong>：团队是否具备把领域知识转化为系统提示词、RAG pipeline 和评估体系的能力？</li>
+<li><strong>风险/机会</strong>：如果开源模型免费可用，你的商业模式是否还能支撑？是否需要转向服务、咨询或平台化收入？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题二：千兆瓦级集群和芯片延迟同时出现，会如何重塑 AI 创业公司的融资和生存逻辑？</h4>
+        <p>Meta 级别的资本投入和 NVIDIA 的供应链延迟，正在让基础模型层的门槛变得极高，而应用层的竞争又异常激烈。</p>
+<ul>
+<li><strong>战略跟进</strong>：你的公司定位是在基础设施层、平台层还是应用层？每一层的资本需求和成功路径有何不同？</li>
+<li><strong>执行跟进</strong>：如果融资环境收紧，你是否能在 12-18 个月内实现自负盈亏？哪些成本是刚性的，哪些可以弹性调整？</li>
+<li><strong>风险/机会</strong>：巨头延迟是否为你创造了窗口期？哪些被巨头忽视的垂直场景或边缘需求可以成为突破口？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题三：AI 助手从「事事请示」到「自主决策」的边界应该如何设计？</h4>
+        <p>Claude Design 新增的「小决定直接执行记录而不询问」条款，代表 AI 助手自主性的提升。但这也带来新的产品安全和信任问题。</p>
+<ul>
+<li><strong>战略跟进</strong>：你的产品应该在哪些决策上授权给 AI，哪些必须保留人类在环（human-in-the-loop）？</li>
+<li><strong>执行跟进</strong>：如何设计可解释性和回滚机制，让用户能理解并纠正 AI 的自主决策？</li>
+<li><strong>风险/机会</strong>：过度授权可能导致错误和信任崩塌，过度保守又会让产品显得笨拙。你如何找到这个平衡点？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题四：隐私监管与 AI 能力的冲突会如何影响产品架构选择？</h4>
+        <p>欧盟 Chat Control 2.0 要求对加密通信进行扫描，这与端侧加密和隐私保护形成直接冲突。</p>
+<ul>
+<li><strong>战略跟进</strong>：你的产品是否需要在不同司法管辖区提供不同的数据处理方案？</li>
+<li><strong>执行跟进</strong>：端侧模型、本地化部署、联邦学习、TEE 等技术，哪些是你可以实际落地的？</li>
+<li><strong>风险/机会</strong>：监管压力是否会加速隐私增强技术的成熟，从而让率先合规的产品获得竞争优势？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题五：在硬件升级放缓的背景下，模型效率优化会带来哪些新的研究机会？</h4>
+        <p>Kyber 延迟意味着不能指望硬件快速解决训练和推理成本问题，软件优化变得更加关键。</p>
+<ul>
+<li><strong>战略跟进</strong>：你的团队是否有专门的效率优化角色，还是只关注功能开发？</li>
+<li><strong>执行跟进</strong>：能否从稀疏 MoE、量化、蒸馏、投机解码等技术中找到适合你业务场景的优化组合？</li>
+<li><strong>风险/机会</strong>：效率优化能力是否会成为未来 AI 团队的核心竞争力之一？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A：AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 通读 Claude Design 系统提示词，理解如何把产品标准编码为模型指令 —— 预期产出：一份你负责功能的系统提示词改写草稿。</p>
+<p><b>2.</b> 试用 LongCat-2.0 或类似开源模型完成一个内部任务 —— 预期产出：一份能力对比评估表。</p>
+<p><b>3.</b> 学习欧盟 Chat Control 2.0 的核心要求 —— 预期产出：一份产品合规风险清单。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 设计一个 Agentic RAG 产品原型，参考 LlamaIndex legal-kb 的工具编排模式。</p>
+<p><b>2.</b> 建立基座模型选型评估框架，包含能力、成本、延迟、合规四个维度。</p>
+<p><b>3.</b> 为你的产品设计人机协作边界图，明确 AI 自主决策与人类审批的节点。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 跟踪开源模型生态演进，建立季度基座模型复审机制。</p>
+<p><b>2.</b> 研究垂直行业的合规要求，把合规能力转化为产品卖点。</p>
+<p><b>3.</b> 培养用数据说话的产品决策习惯，建立 AI 功能的 A/B 测试和评估体系。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B：AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 部署 LongCat-2.0 推理服务，测试长上下文和代码生成能力。</p>
+<p><b>2.</b> 复现 LlamaIndex legal-kb 的 Retrieval Harness 模式，理解工具调用流程。</p>
+<p><b>3.</b> 用 Claude Design 的提示词结构重写一个内部 Agent 的系统提示词。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 对当前使用的模型做稀疏化、量化或蒸馏实验，评估推理成本下降空间。</p>
+<p><b>2.</b> 实现一个多后端推理路由系统，支持 OpenAI、Anthropic、开源模型和本地模型切换。</p>
+<p><b>3.</b> 设计端到端加密通信的原型，并评估 TEE / 联邦学习在其中的适用性。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 深入研究 MoE 路由机制，尝试在业务场景中设计领域特定的专家路由策略。</p>
+<p><b>2.</b> 构建自动化模型评估 pipeline，覆盖能力、安全、效率和合规四个维度。</p>
+<p><b>3.</b> 参与开源社区贡献，把内部优化反哺到开源工具链。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C：研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 阅读 LongCat-2.0 相关技术材料，梳理其稀疏注意力与 MoE 路由的创新点 —— 预期产出：一份技术要点笔记。</p>
+<p><b>2.</b> 复现 Claude Design 提示词中的某几项技能，观察模型行为差异 —— 预期产出：一份行为对比报告。</p>
+<p><b>3.</b> 调研 Kyber NVL144 延迟的技术原因 —— 预期产出：一份硬件供应链风险分析。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 对 LongCat-2.0 的某个子模块（如 Zero-Compute Experts）做消融实验或机制分析。</p>
+<p><b>2.</b> 设计一个针对 Agentic RAG 的评估基准，测试不同工具编排策略的效果。</p>
+<p><b>3.</b> 研究隐私增强技术（同态加密、TEE、联邦学习）在 AI 产品中的实际应用案例。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 提出一个新的稀疏化或路由机制假设，并用小规模实验验证。</p>
+<p><b>2.</b> 把研究成果转化为可落地的产品能力，撰写技术博客或论文。</p>
+<p><b>3.</b> 参与学术或工业界的评审工作，建立对研究质量和产品转化潜力的判断标准。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D：快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>开源 MoE 模型</td><td>LongCat-2.0 GitHub / 技术公告</td><td>1-2 小时</td></tr><tr><td>系统提示词工程</td><td>Claude Design 反向工程提示词 GitHub</td><td>1-2 小时</td></tr><tr><td>Agentic RAG</td><td>LlamaIndex legal-kb 项目与文档</td><td>1-2 小时</td></tr><tr><td>硬件供应链分析</td><td>SemiAnalysis NVIDIA Kyber thread</td><td>30 分钟</td></tr><tr><td>欧盟隐私监管</td><td>Chat Control 2.0 相关报道</td><td>30 分钟</td></tr><tr><td>垂直场景 PMF</td><td>自闭症沟通应用创始故事</td><td>20 分钟</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-13.html">
+      <span class="date">2026-07-13</span>
+      <span class="title">超级应用Agent化与数学证明突破</span>
+      <span class="angle">腾讯Hy3接入微信10亿用户、GPT-5.6 Sol证明50年图论猜想、开源模型面临监管寒冬，AI产品竞争从能力展示转向Agent落地效率与信任基础设施</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-12.html">
+      <span class="date">2026-07-12</span>
+      <span class="title">GPT-5.6安全危机与AI滥用双重警示</span>
+      <span class="angle">GPT-5.6在医疗评估与Agent执行上同步突破，但Matt Shumer硬盘被删与博科圣地滥用主流聊天机器人揭示：能力扩张正与安全治理和合规基础设施产生严重错配</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-11.html">
+      <span class="date">2026-07-11</span>
+      <span class="title">巨头诉讼、AI武器化与通宵Agent并行</span>
+      <span class="angle">2026-07-11 AI行业在法律攻防、物理智能体与长程Agent信任三条战线同时升温，推理成本优化与治理readiness成为产品化新门槛</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>187 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+      <div class="meta" style="margin-top:8px;color:var(--ink-soft)"><strong>生成时间</strong>: 2026-07-08 <strong>数据日期</strong>: 2026-07-06 <strong>数据来源</strong>: <a href="https://aihot.virxact.com">AI HOT</a> 日报 API <strong>解读视角</strong>: AI 产品经理 & AI Builder & 研究型 Builder</div>
+    </div>
+  </footer>
+</body>
+</html>

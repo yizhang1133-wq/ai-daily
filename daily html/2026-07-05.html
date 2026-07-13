@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-07-05</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>186</span></div>
+    <div><b>ISS.</b><span>2026-07-05</span></div>
+    <div><b>EVT.</b><span>3 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 186</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">5</div>
+    <div class="meta-col">
+      <h2>物理智能体化与AI教育隐忧</h2>
+      <p>忆阻器神经动力学芯片和ASPIRE机器人框架推动AI向物理世界渗透，同时大规模学生研究揭示AI辅助学习的长期认知代价</p>
+      <div class="meta-row"><b>日期</b> 2026-07-05</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 186 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">忆阻器神</span>经动力学芯片和ASPIRE机器人框架推动AI向物理世界渗透，同时大规模学生研究揭示AI辅助学习的长期认知代价
+    </div>
+    <div class="credits">
+      <b>PERSPECTIVE</b><br>AI 产品经理 &amp; AI Builder &amp; 研究型 Builder 视角<br><hr>
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 2<br>
+      IMPORTANT 1<br>
+      REFERENCE 0<br>
+      <hr>
+      <b>THEMES</b><br>
+      忆阻器存算一体、机器人自我进化框架<br>
+      AI 教育长期隐性成本<br>
+      —<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架 1：从"数字智能"到"物理智能"的产品迁移<br>
+      框架 2：短期效率与长期能力的永恒张力<br>
+      开源第二曲线
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>2 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>我国研制全球首款基于可控存内计算的忆阻器神经动力学芯片</h3>
+          <p>北京大学集成电路学院联合中科院上海微系统所发布全球首款基于可控存内计算的忆阻器神经动力学芯片，采用 40 纳米工艺，将单步运算时延压缩至 2.12 毫秒，在脑皮层重建等任务中较当前 GPU 提速 50 至 478 倍，成果发表于《科学》。</p>
+          <p><b>AI PM 视角：</b>这款芯片的最大意义在于，它把神经动力学计算从"实验室可行"推进到"实时可用"的临界点。神经动力学模型（如 SNN、神经质量模型）一直被认为更接近生物脑的节能计算范式，但在传统冯·诺依曼架构下，频繁的内存读写让其实时推理成本极高，难以在端侧设备上部署。该芯片通过可控存内计算（controlled in-memory computing）和忆阻器阵列，将计算与存储在物理层面融合，单步积分仅需 9 级流水、2.12 毫秒，这意味着未来可穿戴脑机接口、植入式神经调控、实时癫痫预警等产品，有可能摆脱对云端 GPU 的依赖。
+
+从产品竞争格局看，这是一次**端侧 AI 芯片范式的差异化机会**。当前端侧大模型推理赛道被 NPU、DSP、存算一体等多种路线争夺，而神经动力学芯片开辟了一个更垂直但更高壁垒的品类：面向时序神经信号、事件驱动、低功耗的专用计算。对于 AI PM 来说，需要关注的是哪些应用场景对这种"毫秒级神经模拟"有刚性需求——脑机接口、神经假肢、认知增强、情绪计算等长期被算力卡住的场景，可能因此迎来产品化窗口。</p>
+
+          <p><b>研究型 Builder 视角：</b>该工作的技术新颖性在于"可控"二字。忆阻器阵列虽然早已被用于神经网络加速，但神经动力学方程涉及微分方程迭代、状态变量连续演化，对器件的一致性和模拟精度要求极高。论文能够在 40 纳米工艺下实现稳定的存内神经动力学积分，并发表于《科学》，说明团队在器件-电路-算法协同设计上取得了可复现的突破。值得进一步验证的是：在不同噪声水平、温度漂移和长期疲劳下，芯片的推理精度衰减曲线如何；以及这套架构是否支持在线学习或参数微调，从而真正适配个体化的神经信号。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：梳理你所在产品线中所有"需要实时处理时序信号"的功能点，评估当前云端推理的延迟与功耗瓶颈，判断是否存在端侧神经动力学芯片的替代空间。
+- **本季度可做**：与硬件团队或外部芯片伙伴建立沟通，了解神经动力学芯片的 SDK、编译工具链和精度-能效 trade-off，设计一个最小可行原型（如 1 秒延迟 vs 10 毫秒延迟的用户体验对比实验）。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.ithome.com/0/972/526.htm">IT之家（RSS）</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>NVIDIA 联合多所大学提出 ASPIRE：自我改进机器人框架，零样本成功率最高提升 77 分</h3>
+          <p>NVIDIA 联合密歇根大学、UIUC、UC Berkeley 等提出 ASPIRE，一个持续学习机器人框架，通过协调器-执行器架构、闭环执行引擎、技能库和进化搜索，让机器人自主编写并优化控制程序；在 LIBERO-Pro 上最高比最强基线提升 77 分，零样本条件下对 LIBERO-Pro Long 任务达到约 31% 成功率。</p>
+          <p><b>AI PM 视角：</b>ASPIRE 代表的不仅是一次机器人算法升级，而是**"代码即策略"的具身智能新范式**。过去机器人学习依赖大量遥操作数据或仿真到真实的迁移，成本高、泛化差。ASPIRE 的核心设计是让一个编程智能体（使用 Claude Code）根据任务描述、环境反馈和已有技能库，不断生成、执行、验证、优化机器人控制程序。这相当于给机器人装了一个会写代码、会调试、会沉淀经验的"软件工程师智能体"。
+
+对 AI PM 的产品启示是：未来的机器人产品可能不再需要为每个任务单独采集数据训练模型，而是**通过自然语言指令和少量示例，让机器人在运行时任写并迭代控制策略**。这会大幅降低长尾任务的交付成本。例如，仓库分拣、家庭服务、实验室自动化等场景，厂商可以快速响应客户的新需求，而不必重新训练整个模型。同时，技能库的积累和进化搜索机制，也让机器人具备"越用越聪明"的持续学习能力，这是构建产品护城河的关键。</p>
+
+          <p><b>研究型 Builder 视角：</b>ASPIRE 的研究价值在于它把大语言模型的代码生成能力、闭环执行反馈和进化搜索整合成了一个可扩展的机器人学习系统。其零样本性能从 4% 跃升到 31%，说明"用语言模型生成可执行策略 + 用环境反馈进行程序级进化"这条路径具有强泛化潜力。 reproducibility 方面，研究团队使用了公开基准 LIBERO、Robosuite 和 BEHAVIOR-1K，且依赖 Claude Code 这一可获取的工具，独立复现的门槛相对可控。未来值得探索的方向包括：如何将物理世界的安全约束嵌入代码生成过程，以及如何将仿真中进化的技能有效迁移到真实硬件。</p>
+          <p><b>可落地的方法论：</b>- **本周可做**：在你的产品或 demo 中挑选一个需要机器人/自动化执行的长尾任务，尝试用 LLM 生成控制脚本 + 环境反馈迭代的方式，验证是否能在 10 次试错内达到可用成功率。
+- **本季度可做**：设计一个"技能库"数据 schema，记录每次成功任务的控制程序、环境状态、成功条件和失败案例，为未来的自我改进系统积累结构化经验资产。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.marktechpost.com/2026/07/03/nvidia-ai-introduces-aspire-a-self-improving-robotics-framework-reaching-31-zero-shot-on-libero-pro-long-tasks">MarkTechPost（RSS）</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">1 IMPORTANT + 0 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://the-decoder.com/a-26000-student-study-shows-ais-hidden-learning-cost-takes-two-full-years-to-surface">26000 名学生研究显示 AI 隐藏学习成本需两年才显现</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">0 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      忆阻器神经动力学芯片和ASPIRE机器人框架推动AI向物理世界渗透，同时大规模学生研究揭示AI辅助学习的长期认知代价
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 2 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>我国研制全球首款基于可控存内计算的忆阻器神经动力学芯片</h4>
+        <p><b>AI PM 视角：</b>这款芯片的最大意义在于，它把神经动力学计算从"实验室可行"推进到"实时可用"的临界点。神经动力学模型（如 SNN、神经质量模型）一直被认为更接近生物脑的节能计算范式，但在传统冯·诺依曼架构下，频繁的内存读写让其实时推理成本极高，难以在端侧设备上部署。该芯片通过可控存内计算（controlled in-memory computing）和忆阻器阵列，将计算与存储在物理层面融合，单步积分仅需 9 级流水、2.12 毫秒，这意味着未来可穿戴脑机接口、植入式神经调控、实时癫痫预警等产品，有可能摆脱对云端 GPU 的依赖。</p>
+<p>从产品竞争格局看，这是一次<strong>端侧 AI 芯片范式的差异化机会</strong>。当前端侧大模型推理赛道被 NPU、DSP、存算一体等多种路线争夺，而神经动力学芯片开辟了一个更垂直但更高壁垒的品类：面向时序神经信号、事件驱动、低功耗的专用计算。对于 AI PM 来说，需要关注的是哪些应用场景对这种"毫秒级神经模拟"有刚性需求——脑机接口、神经假肢、认知增强、情绪计算等长期被算力卡住的场景，可能因此迎来产品化窗口。</p>
+        
+        <p><b>研究型 Builder 视角：</b>该工作的技术新颖性在于"可控"二字。忆阻器阵列虽然早已被用于神经网络加速，但神经动力学方程涉及微分方程迭代、状态变量连续演化，对器件的一致性和模拟精度要求极高。论文能够在 40 纳米工艺下实现稳定的存内神经动力学积分，并发表于《科学》，说明团队在器件-电路-算法协同设计上取得了可复现的突破。值得进一步验证的是：在不同噪声水平、温度漂移和长期疲劳下，芯片的推理精度衰减曲线如何；以及这套架构是否支持在线学习或参数微调，从而真正适配个体化的神经信号。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：梳理你所在产品线中所有"需要实时处理时序信号"的功能点，评估当前云端推理的延迟与功耗瓶颈，判断是否存在端侧神经动力学芯片的替代空间。</li>
+<li><strong>本季度可做</strong>：与硬件团队或外部芯片伙伴建立沟通，了解神经动力学芯片的 SDK、编译工具链和精度-能效 trade-off，设计一个最小可行原型（如 1 秒延迟 vs 10 毫秒延迟的用户体验对比实验）。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.ithome.com/0/972/526.htm">IT之家（RSS）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>NVIDIA 联合多所大学提出 ASPIRE：自我改进机器人框架，零样本成功率最高提升 77 分</h4>
+        <p><b>AI PM 视角：</b>ASPIRE 代表的不仅是一次机器人算法升级，而是<strong>"代码即策略"的具身智能新范式</strong>。过去机器人学习依赖大量遥操作数据或仿真到真实的迁移，成本高、泛化差。ASPIRE 的核心设计是让一个编程智能体（使用 Claude Code）根据任务描述、环境反馈和已有技能库，不断生成、执行、验证、优化机器人控制程序。这相当于给机器人装了一个会写代码、会调试、会沉淀经验的"软件工程师智能体"。</p>
+<p>对 AI PM 的产品启示是：未来的机器人产品可能不再需要为每个任务单独采集数据训练模型，而是<strong>通过自然语言指令和少量示例，让机器人在运行时任写并迭代控制策略</strong>。这会大幅降低长尾任务的交付成本。例如，仓库分拣、家庭服务、实验室自动化等场景，厂商可以快速响应客户的新需求，而不必重新训练整个模型。同时，技能库的积累和进化搜索机制，也让机器人具备"越用越聪明"的持续学习能力，这是构建产品护城河的关键。</p>
+        
+        <p><b>研究型 Builder 视角：</b>ASPIRE 的研究价值在于它把大语言模型的代码生成能力、闭环执行反馈和进化搜索整合成了一个可扩展的机器人学习系统。其零样本性能从 4% 跃升到 31%，说明"用语言模型生成可执行策略 + 用环境反馈进行程序级进化"这条路径具有强泛化潜力。 reproducibility 方面，研究团队使用了公开基准 LIBERO、Robosuite 和 BEHAVIOR-1K，且依赖 Claude Code 这一可获取的工具，独立复现的门槛相对可控。未来值得探索的方向包括：如何将物理世界的安全约束嵌入代码生成过程，以及如何将仿真中进化的技能有效迁移到真实硬件。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周可做</strong>：在你的产品或 demo 中挑选一个需要机器人/自动化执行的长尾任务，尝试用 LLM 生成控制脚本 + 环境反馈迭代的方式，验证是否能在 10 次试错内达到可用成功率。</li>
+<li><strong>本季度可做</strong>：设计一个"技能库"数据 schema，记录每次成功任务的控制程序、环境状态、成功条件和失败案例，为未来的自我改进系统积累结构化经验资产。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.marktechpost.com/2026/07/03/nvidia-ai-introduces-aspire-a-self-improving-robotics-framework-reaching-31-zero-shot-on-libero-pro-long-tasks">MarkTechPost（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 1 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>26000 名学生研究显示 AI 隐藏学习成本需两年才显现</h4>
+        <p><b>分析：</b>一项追踪 26000 名 7-12 年级中学生 30 个月的研究发现，使用 AI 后作业分数提升 18%、完成时间下降，但闭卷考试分数下降 20%，升学考试成绩下降 18% 至 24%，且负面效应约两年才完全显现。</p>
+        <p><b>AI PM 视角：</b>这项研究给所有教育 AI 产品敲响了警钟：<strong>短期效率提升可能以长期能力退化作为代价</strong>。学生用 AI 完成作业时看似更高效，但闭卷考试和升学成绩的显著下滑说明，AI 可能替代了原本用于巩固知识的"必要认知劳动"。对于教育 AI 产品而言，这意味着不能再简单地把"作业完成更快、答案更正确"作为核心指标，而需要引入"知识保留率"、"迁移能力"、"长期学业表现"等滞后指标。产品设计应该从"代写助手"转向"脚手架"——在学生卡壳时提供提示而非完整答案，强制学生先给出自己的思路，再用 AI 进行反馈和修正。</p>
+        
+        <p><b>研究型 Builder 视角：</b>该研究使用了面板数据（panel data）设计，样本量足够大，时间跨度长达 30 个月，因果推断的可信度高于横断面研究；但需要注意其是否控制了学生初始能力、学校资源、AI 使用频率的内生性等问题，独立复现前应仔细审查其方法论文档。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>如果你正在做教育或知识工作者工具，立即审视核心指标是否只测量了短期产出效率，而忽略了长期能力构建；引入"延迟测试"或"无辅助任务"作为反事实评估。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://the-decoder.com/a-26000-student-study-shows-ais-hidden-learning-cost-takes-two-full-years-to-surface">The Decoder：AI News（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">2 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架 1：从"数字智能"到"物理智能"的产品迁移</h4>
+        <p>今天的忆阻器芯片和 ASPIRE 机器人框架共同指向一个趋势：AI 的能力边界正在从文本、图像、视频等数字内容，扩展到神经信号、机器人动作、材料结构等物理世界对象。</p>
+<ul>
+<li><strong>因果链</strong>：大模型提供了通用的语义理解和代码生成能力 → 专用硬件（忆阻器、机器人执行器）降低了物理交互的延迟和成本 → 闭环反馈系统让 AI 可以在真实环境中持续学习和进化。</li>
+<li><strong>产品启示</strong>：AI PM 应该开始关注"物理 AI"的产品机会，而不仅限于内容生成。关键问题变成：在你的行业里，哪些物理过程（制造、医疗、物流、实验）可以被"感知-决策-执行-学习"的闭环自动化？</li>
+</ul>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架 2：短期效率与长期能力的永恒张力</h4>
+        <p>忆阻器芯片和 ASPIRE 追求更高效的计算与执行，而学生研究则揭示了过度追求效率可能带来的长期代价。</p>
+<ul>
+<li><strong>结构性洞察</strong>：任何把"人的认知劳动"外包给 AI 的系统，都需要在效率曲线和能力曲线之间找到平衡。</li>
+<li><strong>产品启示</strong>：设计 AI 产品时，应区分"高价值认知任务"（值得保留以维持人类能力）和"低价值重复任务"（适合外包）。对于前者，AI 应作为增强工具；对于后者，可以追求全自动化。</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>《科学》忆阻器神经动力学芯片论文</strong>：重点阅读其"可控存内计算"的实现细节，以及在不同神经任务上的能效对比数据，判断其商业化时间窗口。</p>
+<p><b>2.</b> <strong>ASPIRE 技术博客或论文</strong>：关注协调器-执行器架构、技能库设计和进化搜索策略，思考如何迁移到你的自动化场景中。</p>
+<p><b>3.</b> <strong>26000 名学生研究原文</strong>：仔细审视其研究方法、指标定义和效应滞后曲线，作为教育/知识产品设计的风险警示。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>做一次"物理 AI"机会扫描</strong>：列出你所在行业或产品中所有涉及传感器、执行器、实时反馈的场景，评估 AI 闭环自动化的可行性。</p>
+<p><b>2.</b> <strong>重新审视产品核心指标</strong>：检查是否存在只测量短期效率、忽略长期能力或质量的指标，至少新增一个滞后指标。</p>
+<p><b>3.</b> <strong>验证一个 LLM+代码生成+反馈闭环的原型</strong>：选择一个简单的机器人、自动化或仿真任务，用 ASPIRE 的思路做一个最小可行实验。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>端侧神经形态芯片将在 2-3 年内进入医疗和可穿戴市场</strong>：忆阻器存算一体的成熟度提升，会让脑机接口、神经调控等产品从实验室走向消费级或临床级应用。</p>
+<p><b>2.</b> <strong>机器人将进入"自我编程"时代</strong>：随着 ASPIRE 这类框架成熟，机器人产品的差异化将从"预训练模型能力"转向"持续学习与技能积累能力"，长尾任务的交付成本会大幅下降。</p>
+<p><b>3.</b> <strong>教育 AI 将迎来"反外包"设计浪潮</strong>：监管机构和家长会越来越关注 AI 对学生长期认知能力的影响，"脚手架式"而非"代写式"的 AI 辅导产品将获得竞争优势。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">4 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题 1：当 AI 能够自主编写物理世界的控制程序时，人类操作员的角色应该是什么？</h4>
+        <p>ASPIRE 让机器人可以自动生成和优化控制代码，这模糊了"程序员"与"操作员"的边界。如果机器人能自己写代码，人类还需要具备哪些不可替代的能力？</p>
+<ul>
+<li><strong>战略视角</strong>：未来机器人产品的核心竞争力是模型参数还是任务编排与知识沉淀能力？</li>
+<li><strong>执行视角</strong>：团队里应该招聘更多机器人工程师，还是更多懂得定义任务边界和安全约束的"机器人产品经理"？</li>
+<li><strong>风险视角</strong>：当机器人自主修改控制程序时，如何建立有效的护栏和审计机制，避免不可预测的行为？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题 2：忆阻器芯片的突破是否会让中国 AI 硬件在特定赛道实现弯道超车？</h4>
+        <p>这款芯片由中国团队主导研发并发表于顶级期刊，说明在存算一体和神经形态计算领域，中国已经具备领先的研究能力。</p>
+<ul>
+<li><strong>产品视角</strong>：哪些应用场景会最先受益于国产神经形态芯片？是医疗、国防、消费电子还是工业检测？</li>
+<li><strong>商业视角</strong>：如何从学术成果转化为可量产的芯片产品？需要补齐哪些工程化、工具链和生态能力？</li>
+<li><strong>竞争视角</strong>：面对 NVIDIA、Intel、IBM 等巨头在神经形态芯片上的布局，中国团队的差异化优势是什么？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题 3：教育 AI 产品在"帮助完成作业"和"损害长期学习能力"之间，边界在哪里？</h4>
+        <p>26000 名学生的研究表明，AI 的辅助可能在短期内提升表现，却在长期内削弱能力。</p>
+<ul>
+<li><strong>产品视角</strong>：如何设计反馈机制，让 AI 在学生遇到困难时提供恰到好处的提示，而不是直接给出答案？</li>
+<li><strong>指标视角</strong>：除了作业正确率和完成时间，还应该追踪哪些长期指标来评估产品的真实教育价值？</li>
+<li><strong>伦理视角</strong>：当家长和学生都希望"更快完成作业"时，产品是否有责任限制 AI 的代写程度？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题 4：AI 的"隐藏成本"是否也存在于企业和知识工作者场景中？</h4>
+        <p>学生研究揭示的现象——短期效率提升伴随长期能力退化——很可能不仅限于教育领域。</p>
+<ul>
+<li><strong>组织视角</strong>：企业大量引入 AI 辅助编程、写作、分析后，员工的哪些核心能力可能在 2-3 年后出现退化？</li>
+<li><strong>管理视角</strong>：如何设计工作流程，让 AI 承担重复劳动，同时保留人类员工的判断力和创造力？</li>
+<li><strong>个人视角</strong>：作为知识工作者，你应该如何规划自己的技能发展，避免被 AI 过度替代？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A：AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 阅读《科学》论文摘要与 IT之家报道，理解存算一体芯片如何解决端侧延迟问题 —— 预期能向团队解释神经形态计算的产品价值。</p>
+<p><b>2.</b> 观看或阅读 ASPIRE 相关的技术解读，梳理其核心架构图 —— 预期能画出"协调器-执行器-技能库"的产品逻辑。</p>
+<p><b>3.</b> 复盘你所在产品中 3 个核心指标，判断哪些是短期效率指标、哪些是长期能力指标 —— 预期能提出至少一个指标优化建议。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 针对一个物理 AI 场景（机器人、可穿戴、IoT），写出一份包含用户价值、技术可行性和商业化路径的 PRD 初稿。</p>
+<p><b>2.</b> 设计一个"AI 辅助但不替代"的教育或知识工作功能原型，明确其脚手架式交互流程。</p>
+<p><b>3.</b> 访谈 3 位目标用户，了解他们对"AI 代写" vs "AI 辅导"的偏好和边界。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 跟踪存算一体和神经形态芯片的商业化进展，建立季度技术雷达。</p>
+<p><b>2.</b> 研究 2-3 个机器人自我学习产品的商业模式，总结其护城河来源。</p>
+<p><b>3.</b> 推动团队建立"长期影响评估"机制，在产品指标中加入滞后指标。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B：AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 了解忆阻器（memristor）和存内计算（PIM/CIM）的基本原理，阅读一篇综述或科普文章 —— 预期能理解其与传统冯·诺依曼架构的区别。</p>
+<p><b>2.</b> 在 LIBERO 或 Robosuite 仿真环境中运行一个机器人任务，体验当前模仿学习/强化学习的流程 —— 预期能跑通一个 baseline。</p>
+<p><b>3.</b> 使用 Claude Code 为一个简单任务生成可执行脚本，并观察其迭代调试过程 —— 预期能理解 LLM 作为程序员的潜力与局限。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 尝试复现 ASPIRE 的一个子模块（如技能库检索或进化搜索），在公开基准上验证效果。</p>
+<p><b>2.</b> 搭建一个最小闭环系统：传感器输入 → LLM 生成控制代码 → 执行 → 环境反馈 → 代码优化。</p>
+<p><b>3.</b> 研究神经形态芯片的模拟器或 SDK，尝试将一个简单神经网络部署到模拟硬件上。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 设计一个支持持续学习的机器人系统架构，包含技能表示、经验回放和安全护栏。</p>
+<p><b>2.</b> 探索 LLM 生成代码在真实机器人上的安全验证方法，如形式化验证或仿真-现实一致性检测。</p>
+<p><b>3.</b> 为存算一体芯片开发一个编译器或运行时优化工具，连接前沿硬件与主流 AI 框架。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C：研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 精读忆阻器神经动力学芯片论文的方法部分，理解其电路设计和控制机制 —— 预期能复述其创新点。</p>
+<p><b>2.</b> 阅读 ASPIRE 相关论文或技术报告，梳理其算法流程和基准测试结果 —— 预期能独立跑通部分实验。</p>
+<p><b>3.</b> 查阅 26000 名学生研究的方法论文档，评估其因果推断策略 —— 预期能指出潜在的内生性问题。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 复现忆阻器芯片在公开神经动力学任务上的性能对比，或在一个仿真器上验证其核心 idea。</p>
+<p><b>2.</b> 对 ASPIRE 的零样本泛化能力进行消融实验，分析技能库规模和进化搜索步数的影响。</p>
+<p><b>3.</b> 设计一个追踪长期学习效果的实验方案，应用于你自己的 AI 辅助教育产品或工具。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 提出一个改进的神经形态计算架构，解决现有芯片在精度-能效 trade-off 上的瓶颈。</p>
+<p><b>2.</b> 将 ASPIRE 的框架扩展到一个新的机器人任务域，并发表技术博客或论文。</p>
+<p><b>3.</b> 组织或参与一个关于"AI 对人类能力长期影响"的跨学科研究小组，连接技术、教育和认知科学。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D：快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>存内计算与忆阻器</td><td>《科学》论文原文及 IT之家解读</td><td>1-2 小时</td></tr><tr><td>自我改进机器人</td><td>ASPIRE 技术博客 / arXiv 论文</td><td>2-3 小时</td></tr><tr><td>AI 教育影响</td><td>The Decoder 报道及原研究论文</td><td>1 小时</td></tr><tr><td>神经形态芯片基础</td><td>Nature/Science Reviews 相关综述</td><td>3-4 小时</td></tr><tr><td>LLM 代码生成用于机器人</td><td>Claude Code 官方文档 + LIBERO 基准</td><td>4-6 小时</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-04.html">
+      <span class="date">2026-07-04</span>
+      <span class="title">实时交互视频与AI自动预训练双爆发</span>
+      <span class="angle">Vidu S1开启实时交互视频时代，ForgeTrain和Elements Claw标志AI开始自我制造模型并加速科学发现，Agent安全威胁同步升级</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-03.html">
+      <span class="date">2026-07-03</span>
+      <span class="title">Agent嵌入入口与企业成本觉醒</span>
+      <span class="angle">超级App、IM群聊与网页内副驾加速Agent嵌入现有工作流，同时企业旗舰模型成本失控催生分层治理与开源替代新范式</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-02.html">
+      <span class="date">2026-07-02</span>
+      <span class="title">国产万亿MoE与语音Agent商业化共振</span>
+      <span class="angle">国产算力支撑万亿参数模型登顶，语音Agent和无代码平台加速产品化，同时AI信任危机与算力变现并行重塑产业规则</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>186 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+      <div class="meta" style="margin-top:8px;color:var(--ink-soft)"><strong>生成时间</strong>: 2026-07-05 <strong>数据来源</strong>: <a href="https://aihot.virxact.com">AI HOT</a> 日报 API <strong>解读视角</strong>: AI 产品经理 & AI Builder & 研究型 Builder</div>
+    </div>
+  </footer>
+</body>
+</html>
