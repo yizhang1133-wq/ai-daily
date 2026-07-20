@@ -190,5 +190,9 @@
   "2026-07-17": {
     "title": "异步Agent爆发与企业信任危机",
     "angle": "Claude Fable 5与Grok Automations推动AI进入异步自主工作阶段，但企业Agent安全与评估缺口警示生产落地仍需信任基础设施补齐"
+  },
+  "2026-07-20": {
+    "title": "国产2.4T巨模型与物理AI开源共振",
+    "angle": "Qwen3.8 2.4T与MiniCPM-Robot同日开源，叠加昆仑万维世界模型和Nvidia日本物理AI工厂，标志AI竞争从参数竞赛进入超大模型、物理世界与端侧具身的三线并行阶段"
   }
 }

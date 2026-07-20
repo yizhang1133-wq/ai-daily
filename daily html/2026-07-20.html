@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-07-20</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>201</span></div>
+    <div><b>ISS.</b><span>2026-07-20</span></div>
+    <div><b>EVT.</b><span>8 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 201</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">20</div>
+    <div class="meta-col">
+      <h2>国产2.4T巨模型与物理AI开源共振</h2>
+      <p>国产模型阵营在同一天完成了"超大参数旗舰 + 端侧小模型 + 具身智能 VLA"的三层布局，叠加世界模型与物理 AI 基础设施的同步推进，AI 竞争正从单点模型能力比拼进入"模型族 × 场景闭环 × 算力主权"的系统战。</p>
+      <div class="meta-row"><b>日期</b> 2026-07-20</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 201 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">国产模型</span>阵营在同一天完成了"超大参数旗舰 + 端侧小模型 + 具身智能 VLA"的三层布局，叠加世界模型与物理 AI 基础设施的同步推进，AI 竞争正从单点模型能力比拼进入"模型族 × 场景闭环 × 算力主权"的系统战。
+    </div>
+    <div class="credits">
+      
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 4<br>
+      IMPORTANT 3<br>
+      REFERENCE 1<br>
+      <hr>
+      <b>THEMES</b><br>
+      2.4T 开源巨模型、世界模型元年、具身智能开源、物理 AI 基础设施<br>
+      端侧小模型登顶、AI 工作流套件、跨平台语音转录库<br>
+      AI 热潮与企业决策机制反思<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架 1：AI 产品的"三层模型族"选型法<br>
+      框架 2：开源生态的"占坑-变现"循环<br>
+      框架 3：物理 AI 的"仿真-真实-主权"三角
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>4 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>Qwen3.8 开源发布，2.4T 参数模型上线</h3>
+          <p>阿里巴巴通义千问宣布 Qwen3.8 即将发布并很快开源权重，该模型拥有 2.4T 总参数，官方称其为"目前最强大的模型之一，仅次于 Fable 5"。同日，Qwen3.8-Max-Preview 已在阿里巴巴 Token Plan、Qoder 和 QoderWork 等平台上线供用户体验。</p>
+          <p><b>AI PM 视角：</b>Qwen3.8 的发布是国产开源模型向全球第一梯队发起的最直接冲锋。2.4T 参数规模已经逼近当前公开已知的最顶尖闭源模型，而"开源权重"这一定位意味着它正在复制 Llama 3/DeepSeek 的路径：用开源建立生态影响力，再用云上 API 和垂直场景变现。对产品经理而言，这一事件释放了三个关键信号。
+
+第一，模型选型策略需要重新评估。过去半年，PM 在做产品架构时往往在 GPT-4o/Claude/Fable 之间做闭源选择，而 Qwen3.8 的出现让"国产开源旗舰"成为一个可严肃考虑的基座。特别是在中文场景、合规要求、数据不出境、成本控制等约束下，Qwen3.8-Max-Preview 的即时可用性意味着产品团队可以在本周内完成 POC 验证，而不是等待海外模型适配。
+
+第二，API 与模型绑定的生态竞争加剧。Qwen3.8-Max-Preview 首发即接入 Qoder 和 QoderWork 等阿里系平台，说明模型正在从独立技术资产变成平台入口的护城河。对非阿里系产品团队来说，这提示了一个风险：如果你的产品深度依赖某一家模型供应商的独家能力，而竞争对手通过自有模型+工作流平台提供更低成本的替代方案，你的定价权和差异化会被快速侵蚀。
+
+第三，"仅次于 Fable 5"这一定位本身值得玩味。它没有直接对标 GPT 系列，而是选择 Fable 5 作为参照系，说明 Anthropic 的 Fable/Mythos 双模型战略已经在行业心智中建立了新的能力标杆。PM 在对外传播时需要注意：用户和客户对"最强模型"的认知正在分化，不同场景（推理、创意、长上下文、Agent 执行）可能有不同的"最强"定义。</p>
+
+          <p><b>研究型 Builder 视角：</b>2.4T 参数规模进入了一个值得警惕的区间。从工程角度看，这种规模的 MoE 或 dense 模型对推理infra、量化策略、KV Cache 管理都提出了极高要求。研究者需要关注的核心问题是：Qwen3.8 是否采用了新的稀疏架构或训练稳定性技术来支撑 2.4T 规模的可训练性？开源后，社区能否在单卡或中小集群上通过 aggressive 量化/专家路由优化跑起来？如果 Qwen3.8 在 4-bit 量化下仍能保持接近 FP16 的能力，它将直接改变开源社区的 SOTA 基准。另一个可验证的方向是长上下文窗口和工具调用稳定性，这两点是当前大模型从"聊天"走向"Agent"的关键门槛。</p>
+          <p><b>可落地的方法论：</b>- 本周即可在 QoderWork 或 Qoder 平台上跑通 Qwen3.8-Max-Preview，用你产品最核心的 3-5 个 prompt/Agent 场景与当前主力模型做 A/B 对比，记录延迟、成本、准确率和幻觉率。
+- 本季度建立"模型能力雷达图"，将 Qwen3.8、DeepSeek、Fable 5、GPT-5.6 等候选模型按中文理解、长上下文、代码、Agent 执行、价格五个维度评分，避免单一模型锁定。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/Alibaba_Qwen/status/2078754377473601787">X：通义千问 / Qwen (@Alibaba_Qwen)</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>昆仑万维宣布 2026 为"世界模型元年"，发布 Matrix-Game 3.5 等模型</h3>
+          <p>昆仑万维董事长方汉在 WAIC 上宣布 2026 年为"世界模型元年"，并发布 Matrix-Game 3.5 世界模型、Mureka v9.5 与 O3 音乐模型。Matrix-Game 3.5 实现 Patch 级记忆注入，5B 模型在 720p 分辨率下单卡可达 20FPS 实时生成，核心架构已开源。</p>
+          <p><b>AI PM 视角：</b>"世界模型元年"是一个充满野心的行业叙事，但 Matrix-Game 3.5 的技术指标让它不完全停留在口号层面。5B 参数、720p、单卡 20FPS 实时生成，这三个数字的组合意味着世界模型正在从研究 demo 走向可在消费级硬件上本地运行的产品形态。对 AI PM 来说，这标志着"生成式视频"的下一个竞争维度不再是像素质量，而是"可交互性"和"一致性"。
+
+从产品设计角度，世界模型的真正价值不在于生成一段好看的视频，而在于它能理解物理规则、保持对象一致性、支持用户实时干预。这意味着游戏、影视预览、虚拟拍摄、机器人仿真训练等场景会被重新设计。例如，游戏策划可以直接用自然语言修改关卡物理规则并实时预览；影视团队可以在拍摄前用世界模型生成可交互的预演；机器人团队可以用世界模型做低成本仿真训练。
+
+但 PM 也需要保持清醒：Patch 级记忆注入是一个重要的工程进步，但它解决的主要是"短期一致性"问题。世界模型要在商业上成立，还需要解决长期记忆、因果推理、多智能体交互等更深层问题。昆仑万维选择开源核心架构，说明它希望借助开发者生态来加速验证这些边界。这与 Qwen 开源权重的逻辑类似：先占住生态位，再通过上层产品和云服务变现。</p>
+
+          <p><b>研究型 Builder 视角：</b>Matrix-Game 3.5 最值得研究的不是生成质量，而是"Patch 级记忆注入"这一机制。它暗示模型在时空维度上采用了某种分块化的记忆/状态管理，可能是基于时空 Patch 的隐变量缓存，也可能是借鉴了神经辐射场或 3D 高斯溅射的表示方式。5B 规模能在单卡上跑 720p@20FPS，说明架构在计算效率上有显著优化，研究者可以重点关注其是否采用了因果时间建模、稀疏注意力或蒸馏压缩策略。开源核心架构后，社区可以复现的关键指标包括：长视频一致性保持帧数、物理规则违反率、用户编辑指令的响应延迟。这些指标比单帧 FID 更能反映世界模型的真实能力。</p>
+          <p><b>可落地的方法论：</b>- 本周下载 Matrix-Game 3.5 开源代码，用你所在行业的典型视频/交互场景做 3 个生成测试，记录模型对"物体持续性"和"物理合理性"的保持能力。
+- 本季度评估你产品中是否有"实时可交互生成"的潜在场景（如游戏关卡预览、产品 3D 展示、虚拟试衣），将世界模型作为下一个产品原型的技术选项。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/LidvGePhOOoUY3KTor_w9g">公众号：昆仑万维（天工）</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>面壁智能开源 MiniCPM-Robot 具身智能模型系列</h3>
+          <p>面壁智能开源首个具身 AI 模型系列 MiniCPM-Robot，包含 1.5B 参数的通用视觉-语言-动作（VLA）模型 MiniCPM-RobotManip 和用于目标跟踪的 MiniCPM-RobotTrack，同时发布高性能推理框架 PhyAI，旨在让机器人实现理解、记忆与行动。</p>
+          <p><b>AI PM 视角：</b>MiniCPM-Robot 的发布意味着具身智能正在经历与 LLM 类似的开源民主化进程。1.5B 参数量的 VLA 模型是一个精妙的定位：它小到可以跑在端侧机器人计算单元上，但又足以完成理解、跟踪和操控等核心任务。这对 AI PM 的启示是，机器人产品的智能化成本可能在未来 12-18 个月内大幅下降，从而解锁更多消费级和工业级场景。
+
+从产品化角度看，MiniCPM-Robot 提供的是一个"端到端感知-决策-执行"的最小可行架构。VLA 模型让机器人可以直接从视觉输入和自然语言指令映射到动作，而不需要传统机器人系统中复杂的感知、规划、控制分层pipeline。这会显著降低机器人应用的产品开发门槛。例如，仓储物流中的"拿起红色盒子放到B货架"、家庭服务中的"把杯子从桌上拿到水槽"、制造业中的"按图纸抓取零件"，都可能通过这类端到端模型快速原型化。
+
+但 PM 必须注意到，VLA 模型的泛化能力和安全性之间的张力仍然是核心挑战。1.5B 模型在特定任务上可能表现很好，但面对训练分布外的物体、光照变化或人类干预时，其行为可能不可预测。这意味着产品化路径不能跳过"仿真-真实迁移-安全边界"的验证闭环。PhyAI 推理框架的发布是面向这个闭环的重要基础设施。</p>
+
+          <p><b>研究型 Builder 视角：</b>MiniCPM-Robot 提供了一个研究端侧 VLA 模型的绝佳样本。1.5B 参数量下要实现视觉-语言-动作的统一，必然涉及多模态编码器的高效设计、动作表示空间的离散化或扩散化、以及针对机器人数据的指令微调。研究者应重点关注：该模型采用了怎样的动作输出形式（是末端执行器位姿、关节角度、还是 diff policy 中的动作chunk）？训练数据来自仿真、真实机器人，还是二者混合？PhyAI 框架在推理延迟和内存占用上的具体优化是什么？这些问题决定了该模型是否真正适合端侧部署，以及它能否被快速迁移到新的机器人本体上。</p>
+          <p><b>可落地的方法论：</b>- 本周用 MiniCPM-RobotManip 在你的目标机器人平台（或仿真环境）上跑一个最简的 pick-and-place 任务，记录指令理解成功率和动作执行成功率。
+- 本季度建立一个"机器人任务数据集"，收集 50-100 条你目标场景中的视觉-语言-动作三元组，用于评估开源 VLA 模型在你场景上的零样本/少样本迁移能力。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/OpenBMB/status/2078839529591759025">X：面壁智能 OpenBMB (@OpenBMB)</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">04<small>TH</small></div>
+        <div>
+          <h3>黄仁勋访日：Nvidia 联手日本打造物理 AI 时代，Noetra 主权 AI 工厂与 Cosmos 机器人联盟落地</h3>
+          <p>Nvidia CEO 黄仁勋在 7 月 15-16 日访日期间，宣布为日本建设"Vera Rubin AI 工厂"，配备 13,750 颗 Vera CPU 和 27,500 颗 Rubin GPU，预计 2028 年投运。</p>
+          <p><b>AI PM 视角：</b>黄仁勋此次访日的核心信息不是卖芯片，而是定义"物理 AI"（Physical AI）这一新战场。Vera Rubin AI 工厂 13,750 颗 CPU + 27,500 颗 GPU 的配置规模，以及 2028 年投运的时间表，说明 Nvidia 正在把日本定位为亚太地区物理 AI 和机器人训练的主权算力节点。这对 AI PM 的战略含义是：未来三年，机器人、自动驾驶、工业仿真、世界模型等物理 AI 应用的训练成本可能高度集中在少数几个由国家背书的大型算力枢纽上。
+
+"主权 AI 工厂"这个叙事也值得关注。它与过去两年讨论的"主权云""国家 AI"一脉相承，但更进一步：不是简单在本地部署模型，而是在本地建设用于训练下一代物理 AI 的专用基础设施。这意味着 AI 产品的地缘政治维度会更加明显。如果你的产品面向日本、东南亚或亚太地区市场，了解当地算力布局和数据主权要求会成为合规和竞争优势的一部分。
+
+从生态角度看，Nvidia 的 Cosmos 机器人联盟和物理 AI 工具链正在形成一个从芯片到仿真平台、从预训练模型到行业应用的全栈闭环。对初创公司来说，加入这个生态可以获得算力和工具支持，但也意味着更深度的供应商绑定。PM 在做技术选型时需要权衡：是用 Nvidia 全栈快速启动，还是构建可跨平台迁移的架构以保持长期议价能力。</p>
+
+          <p><b>研究型 Builder 视角：</b>Vera Rubin 架构本身是一个值得追踪的研究信号。Vera CPU 与 Rubin GPU 的协同设计暗示 Nvidia 正在推动 CPU-GPU 统一内存和更紧密的互连，这对大规模物理 AI 训练中的数据并行和模型并行效率至关重要。研究者可以关注：这种架构是否采用了新的 NVLink/互联拓扑？是否针对物理仿真、世界模型训练中的不规则计算模式做了优化？此外，Cosmos 机器人联盟的公开模型和仿真环境将成为物理 AI 研究的重要基准，研究者应跟踪其开放的数据格式、物理引擎接口和模型权重许可协议。</p>
+          <p><b>可落地的方法论：</b>- 本周梳理你产品或团队是否依赖 Nvidia 生态（CUDA、TensorRT、Omniverse、Isaac），评估在 Vera Rubin 世代迁移中的技术债务和机会窗口。
+- 本季度如果你的业务涉及机器人、自动驾驶或工业仿真，制定一个"物理 AI 训练基础设施路线图"，明确哪些训练任务可以在本地/区域算力节点完成，哪些仍需要全球集中训练。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://techcrunch.com/2026/07/19/what-to-watch-for-after-jensen-huangs-japan-visit">TechCrunch：AI（RSS）</a></span>
+        </div>
+        <div class="tag">PLATFORM</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">3 IMPORTANT + 1 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://mp.weixin.qq.com/s/rjFxrUylyGMqa5QtgypCdw">MiniCPM5-2B 发布：4B 以下全球性能第一，适配 9 款芯片</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://x.com/thsottiaux/status/2078697631019303273">ChatGPT Work 功能：建站、邮件、文档处理</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://workshop.cjpais.com/projects/transcribe-cpp">transcribe.cpp 发布：基于 ggml 的跨平台语音转录库，支持 16 个 ASR 模型族</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div>AI 热潮正在瓦解全球决策机制</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">1 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>AI 热潮正在瓦解全球决策机制</div><div>当所有机构都在"做 AI"却没有清晰目标时，AI 项目失败往往与模型能力无关，而是组织本就缺乏有效运行软件项目的能力；PM 应将重心从追逐技术热点转向验证真实业务价值。</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      国产模型阵营在同一天完成了"超大参数旗舰 + 端侧小模型 + 具身智能 VLA"的三层布局，叠加世界模型与物理 AI 基础设施的同步推进，AI 竞争正从单点模型能力比拼进入"模型族 × 场景闭环 × 算力主权"的系统战。
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 4 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Qwen3.8 开源发布，2.4T 参数模型上线</h4>
+        <p><b>AI PM 视角：</b>Qwen3.8 的发布是国产开源模型向全球第一梯队发起的最直接冲锋。2.4T 参数规模已经逼近当前公开已知的最顶尖闭源模型，而"开源权重"这一定位意味着它正在复制 Llama 3/DeepSeek 的路径：用开源建立生态影响力，再用云上 API 和垂直场景变现。对产品经理而言，这一事件释放了三个关键信号。</p>
+<p>第一，模型选型策略需要重新评估。过去半年，PM 在做产品架构时往往在 GPT-4o/Claude/Fable 之间做闭源选择，而 Qwen3.8 的出现让"国产开源旗舰"成为一个可严肃考虑的基座。特别是在中文场景、合规要求、数据不出境、成本控制等约束下，Qwen3.8-Max-Preview 的即时可用性意味着产品团队可以在本周内完成 POC 验证，而不是等待海外模型适配。</p>
+<p>第二，API 与模型绑定的生态竞争加剧。Qwen3.8-Max-Preview 首发即接入 Qoder 和 QoderWork 等阿里系平台，说明模型正在从独立技术资产变成平台入口的护城河。对非阿里系产品团队来说，这提示了一个风险：如果你的产品深度依赖某一家模型供应商的独家能力，而竞争对手通过自有模型+工作流平台提供更低成本的替代方案，你的定价权和差异化会被快速侵蚀。</p>
+<p>第三，"仅次于 Fable 5"这一定位本身值得玩味。它没有直接对标 GPT 系列，而是选择 Fable 5 作为参照系，说明 Anthropic 的 Fable/Mythos 双模型战略已经在行业心智中建立了新的能力标杆。PM 在对外传播时需要注意：用户和客户对"最强模型"的认知正在分化，不同场景（推理、创意、长上下文、Agent 执行）可能有不同的"最强"定义。</p>
+        
+        <p><b>研究型 Builder 视角：</b>2.4T 参数规模进入了一个值得警惕的区间。从工程角度看，这种规模的 MoE 或 dense 模型对推理infra、量化策略、KV Cache 管理都提出了极高要求。研究者需要关注的核心问题是：Qwen3.8 是否采用了新的稀疏架构或训练稳定性技术来支撑 2.4T 规模的可训练性？开源后，社区能否在单卡或中小集群上通过 aggressive 量化/专家路由优化跑起来？如果 Qwen3.8 在 4-bit 量化下仍能保持接近 FP16 的能力，它将直接改变开源社区的 SOTA 基准。另一个可验证的方向是长上下文窗口和工具调用稳定性，这两点是当前大模型从"聊天"走向"Agent"的关键门槛。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周即可在 QoderWork 或 Qoder 平台上跑通 Qwen3.8-Max-Preview，用你产品最核心的 3-5 个 prompt/Agent 场景与当前主力模型做 A/B 对比，记录延迟、成本、准确率和幻觉率。</li>
+<li>本季度建立"模型能力雷达图"，将 Qwen3.8、DeepSeek、Fable 5、GPT-5.6 等候选模型按中文理解、长上下文、代码、Agent 执行、价格五个维度评分，避免单一模型锁定。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/Alibaba_Qwen/status/2078754377473601787">X：通义千问 / Qwen (@Alibaba_Qwen)</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>昆仑万维宣布 2026 为"世界模型元年"，发布 Matrix-Game 3.5 等模型</h4>
+        <p><b>AI PM 视角：</b>"世界模型元年"是一个充满野心的行业叙事，但 Matrix-Game 3.5 的技术指标让它不完全停留在口号层面。5B 参数、720p、单卡 20FPS 实时生成，这三个数字的组合意味着世界模型正在从研究 demo 走向可在消费级硬件上本地运行的产品形态。对 AI PM 来说，这标志着"生成式视频"的下一个竞争维度不再是像素质量，而是"可交互性"和"一致性"。</p>
+<p>从产品设计角度，世界模型的真正价值不在于生成一段好看的视频，而在于它能理解物理规则、保持对象一致性、支持用户实时干预。这意味着游戏、影视预览、虚拟拍摄、机器人仿真训练等场景会被重新设计。例如，游戏策划可以直接用自然语言修改关卡物理规则并实时预览；影视团队可以在拍摄前用世界模型生成可交互的预演；机器人团队可以用世界模型做低成本仿真训练。</p>
+<p>但 PM 也需要保持清醒：Patch 级记忆注入是一个重要的工程进步，但它解决的主要是"短期一致性"问题。世界模型要在商业上成立，还需要解决长期记忆、因果推理、多智能体交互等更深层问题。昆仑万维选择开源核心架构，说明它希望借助开发者生态来加速验证这些边界。这与 Qwen 开源权重的逻辑类似：先占住生态位，再通过上层产品和云服务变现。</p>
+        
+        <p><b>研究型 Builder 视角：</b>Matrix-Game 3.5 最值得研究的不是生成质量，而是"Patch 级记忆注入"这一机制。它暗示模型在时空维度上采用了某种分块化的记忆/状态管理，可能是基于时空 Patch 的隐变量缓存，也可能是借鉴了神经辐射场或 3D 高斯溅射的表示方式。5B 规模能在单卡上跑 720p@20FPS，说明架构在计算效率上有显著优化，研究者可以重点关注其是否采用了因果时间建模、稀疏注意力或蒸馏压缩策略。开源核心架构后，社区可以复现的关键指标包括：长视频一致性保持帧数、物理规则违反率、用户编辑指令的响应延迟。这些指标比单帧 FID 更能反映世界模型的真实能力。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周下载 Matrix-Game 3.5 开源代码，用你所在行业的典型视频/交互场景做 3 个生成测试，记录模型对"物体持续性"和"物理合理性"的保持能力。</li>
+<li>本季度评估你产品中是否有"实时可交互生成"的潜在场景（如游戏关卡预览、产品 3D 展示、虚拟试衣），将世界模型作为下一个产品原型的技术选项。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/LidvGePhOOoUY3KTor_w9g">公众号：昆仑万维（天工）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>面壁智能开源 MiniCPM-Robot 具身智能模型系列</h4>
+        <p><b>AI PM 视角：</b>MiniCPM-Robot 的发布意味着具身智能正在经历与 LLM 类似的开源民主化进程。1.5B 参数量的 VLA 模型是一个精妙的定位：它小到可以跑在端侧机器人计算单元上，但又足以完成理解、跟踪和操控等核心任务。这对 AI PM 的启示是，机器人产品的智能化成本可能在未来 12-18 个月内大幅下降，从而解锁更多消费级和工业级场景。</p>
+<p>从产品化角度看，MiniCPM-Robot 提供的是一个"端到端感知-决策-执行"的最小可行架构。VLA 模型让机器人可以直接从视觉输入和自然语言指令映射到动作，而不需要传统机器人系统中复杂的感知、规划、控制分层pipeline。这会显著降低机器人应用的产品开发门槛。例如，仓储物流中的"拿起红色盒子放到B货架"、家庭服务中的"把杯子从桌上拿到水槽"、制造业中的"按图纸抓取零件"，都可能通过这类端到端模型快速原型化。</p>
+<p>但 PM 必须注意到，VLA 模型的泛化能力和安全性之间的张力仍然是核心挑战。1.5B 模型在特定任务上可能表现很好，但面对训练分布外的物体、光照变化或人类干预时，其行为可能不可预测。这意味着产品化路径不能跳过"仿真-真实迁移-安全边界"的验证闭环。PhyAI 推理框架的发布是面向这个闭环的重要基础设施。</p>
+        
+        <p><b>研究型 Builder 视角：</b>MiniCPM-Robot 提供了一个研究端侧 VLA 模型的绝佳样本。1.5B 参数量下要实现视觉-语言-动作的统一，必然涉及多模态编码器的高效设计、动作表示空间的离散化或扩散化、以及针对机器人数据的指令微调。研究者应重点关注：该模型采用了怎样的动作输出形式（是末端执行器位姿、关节角度、还是 diff policy 中的动作chunk）？训练数据来自仿真、真实机器人，还是二者混合？PhyAI 框架在推理延迟和内存占用上的具体优化是什么？这些问题决定了该模型是否真正适合端侧部署，以及它能否被快速迁移到新的机器人本体上。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周用 MiniCPM-RobotManip 在你的目标机器人平台（或仿真环境）上跑一个最简的 pick-and-place 任务，记录指令理解成功率和动作执行成功率。</li>
+<li>本季度建立一个"机器人任务数据集"，收集 50-100 条你目标场景中的视觉-语言-动作三元组，用于评估开源 VLA 模型在你场景上的零样本/少样本迁移能力。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/OpenBMB/status/2078839529591759025">X：面壁智能 OpenBMB (@OpenBMB)</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>黄仁勋访日：Nvidia 联手日本打造物理 AI 时代，Noetra 主权 AI 工厂与 Cosmos 机器人联盟落地</h4>
+        <p><b>AI PM 视角：</b>黄仁勋此次访日的核心信息不是卖芯片，而是定义"物理 AI"（Physical AI）这一新战场。Vera Rubin AI 工厂 13,750 颗 CPU + 27,500 颗 GPU 的配置规模，以及 2028 年投运的时间表，说明 Nvidia 正在把日本定位为亚太地区物理 AI 和机器人训练的主权算力节点。这对 AI PM 的战略含义是：未来三年，机器人、自动驾驶、工业仿真、世界模型等物理 AI 应用的训练成本可能高度集中在少数几个由国家背书的大型算力枢纽上。</p>
+<p>"主权 AI 工厂"这个叙事也值得关注。它与过去两年讨论的"主权云""国家 AI"一脉相承，但更进一步：不是简单在本地部署模型，而是在本地建设用于训练下一代物理 AI 的专用基础设施。这意味着 AI 产品的地缘政治维度会更加明显。如果你的产品面向日本、东南亚或亚太地区市场，了解当地算力布局和数据主权要求会成为合规和竞争优势的一部分。</p>
+<p>从生态角度看，Nvidia 的 Cosmos 机器人联盟和物理 AI 工具链正在形成一个从芯片到仿真平台、从预训练模型到行业应用的全栈闭环。对初创公司来说，加入这个生态可以获得算力和工具支持，但也意味着更深度的供应商绑定。PM 在做技术选型时需要权衡：是用 Nvidia 全栈快速启动，还是构建可跨平台迁移的架构以保持长期议价能力。</p>
+        
+        <p><b>研究型 Builder 视角：</b>Vera Rubin 架构本身是一个值得追踪的研究信号。Vera CPU 与 Rubin GPU 的协同设计暗示 Nvidia 正在推动 CPU-GPU 统一内存和更紧密的互连，这对大规模物理 AI 训练中的数据并行和模型并行效率至关重要。研究者可以关注：这种架构是否采用了新的 NVLink/互联拓扑？是否针对物理仿真、世界模型训练中的不规则计算模式做了优化？此外，Cosmos 机器人联盟的公开模型和仿真环境将成为物理 AI 研究的重要基准，研究者应跟踪其开放的数据格式、物理引擎接口和模型权重许可协议。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周梳理你产品或团队是否依赖 Nvidia 生态（CUDA、TensorRT、Omniverse、Isaac），评估在 Vera Rubin 世代迁移中的技术债务和机会窗口。</li>
+<li>本季度如果你的业务涉及机器人、自动驾驶或工业仿真，制定一个"物理 AI 训练基础设施路线图"，明确哪些训练任务可以在本地/区域算力节点完成，哪些仍需要全球集中训练。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://techcrunch.com/2026/07/19/what-to-watch-for-after-jensen-huangs-japan-visit">TechCrunch：AI（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 3 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>MiniCPM5-2B 发布：4B 以下全球性能第一，适配 9 款芯片</h4>
+        <p><b>分析：</b>面壁智能联合 OpenBMB 发布端侧模型 MiniCPM5-2B，以 2B 参数量在 AA-Index 榜单取得 4B 以下模型最高分 17 分，平均分 54.26，超越 Qwen3.5-2B 等竞品。模型原生支持混合思考与 512K 上下文，已完成华为昇腾、英伟达等 9 款芯片的 Day0 适配，即将开源。</p>
+        <p><b>AI PM 视角：</b>MiniCPM5-2B 与同日发布的 MiniCPM-Robot 形成呼应，展示了面壁"小模型 + 端侧 + 具身"的完整产品矩阵。2B 参数、512K 上下文、9 款芯片 Day0 适配，这三个特性组合指向一个明确的商业化场景：在端侧设备上运行具备长上下文理解能力的 AI。这对移动端 APP、IoT 设备、车载系统、AR/VR 眼镜等产品意义重大。PM 可以考虑将原本需要上传到云端的长文档分析、多轮对话、设备控制等任务下放到本地，以降低延迟、保护隐私、减少运营成本。竞争层面，面壁与 Qwen 在端侧 2B 模型的正面竞争说明国产小模型已经进入贴身肉搏阶段，产品团队将在未来半年内获得多个高质量开源选项。</p>
+        
+        <p><b>研究型 Builder 视角：</b>2B 参数实现 512K 上下文需要极为高效的注意力机制（如线性注意力、稀疏注意力或外推位置编码），混合思考模式则可能结合了 fast/slow thinking 的路由策略，开源后值得重点复现其长上下文 needle-in-haystack 表现。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周在你的目标端侧设备上测试 MiniCPM5-2B 的 512K 上下文召回率和推理延迟，判断它是否能替代你当前使用的云端长文本模型。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/rjFxrUylyGMqa5QtgypCdw">公众号：面壁智能（MiniCPM）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>ChatGPT Work 功能：建站、邮件、文档处理</h4>
+        <p><b>分析：</b>OpenAI 推出 ChatGPT Work 功能，支持创建和托管网站、管理电子邮件、总结海量文档、制作文档/表格/幻灯片，已包含在 Plus、Pro、Business 和 Enterprise 套餐中。</p>
+        <p><b>AI PM 视角：</b>ChatGPT Work 是 OpenAI 将 ChatGPT 从"对话工具"推向"工作操作系统"的关键一步。建站、邮件管理、文档处理这些功能直接切入了中小企业和知识工作者的日常工作流。对 PM 的警示在于：如果你正在做 AI 办公助手、AI 建站工具、AI 邮箱客户端等垂直产品，你需要重新评估与 ChatGPT Work 的差异化。OpenAI 的优势在于用户基数和模型能力，但其产品深度和专业集成能力未必覆盖所有场景。垂直产品团队的机会在于：更懂特定行业 workflow、更深的企业系统集成、更细粒度的权限和合规控制。</p>
+        
+        <p><b>研究型 Builder 视角：</b>ChatGPT Work 的实现可能依赖于多 Agent 协作、工具调用链（function calling）和沙箱执行环境，研究其错误恢复机制和长任务一致性将揭示当前 Agent 产品化的真实边界。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周列出你产品中与 ChatGPT Work 重叠最高的 3 个功能，明确你的差异化优势是"更垂直的行业知识"、"更深的企业系统集成"还是"更优的单位经济模型"。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/thsottiaux/status/2078697631019303273">X：Tibo (@thsottiaux)</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>transcribe.cpp 发布：基于 ggml 的跨平台语音转录库，支持 16 个 ASR 模型族</h4>
+        <p><b>分析：</b>transcribe.cpp v0.1.0 发布，一个基于 ggml 的语音转录库，支持 16 个 ASR 模型族（60+ 模型），并通过 Vulkan、Metal、CUDA 和 TinyBLAS 实现 GPU 加速。</p>
+        <p><b>AI PM 视角：</b>transcribe.cpp 填补了端侧语音 AI 基础设施的一个重要空白。60+ ASR 模型、跨平台 GPU 加速、ggml 生态兼容，这三个特性让它成为语音应用开发的"瑞士军刀"。对 PM 来说，这意味着语音转录可以更容易地嵌入到移动端、桌面端和边缘设备中，而不必依赖云端 API。应用场景包括：实时会议转录、离线字幕生成、语音笔记、客服质检、工业现场语音指令识别等。与 whisper.cpp 相比，transcribe.cpp 的多模型支持让它在模型选型和多语言场景上更具灵活性。</p>
+        
+        <p><b>研究型 Builder 视角：</b>基于 ggml 的语音转录库在量化策略、解码器架构（CTC、RNN-T、Transformer）和流式推理支持上各有差异，研究者可以在此平台上系统比较不同 ASR 模型在端侧延迟-准确率 trade-off。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>本周用 transcribe.cpp 在你的目标设备上测试 2-3 个 ASR 模型，比较中文场景下的字错率和实时因子，判断是否可以替代现有云端语音服务。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://workshop.cjpais.com/projects/transcribe-cpp">Hacker News 热门（buzzing.cc 中文翻译）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架 1：AI 产品的"三层模型族"选型法</h4>
+        <p>今天的事件同时呈现了超大参数模型（Qwen3.8 2.4T）、端侧小模型（MiniCPM5-2B）和具身智能模型（MiniCPM-Robot）三类模型。这三者不是替代关系，而是互补关系：超大模型负责复杂推理和内容生成，端侧模型负责隐私敏感和低延迟任务，具身模型负责物理世界交互。</p>
+<ul>
+<li><strong>分层定位</strong>：为每个产品场景明确它属于"云端复杂任务"、"端侧实时任务"还是"物理交互任务"。</li>
+<li><strong>能力映射</strong>：建立每个任务类型的能力要求（准确率、延迟、成本、隐私、可解释性），再映射到合适的模型层。</li>
+</ul>
+<p><strong>产品启示</strong>：未来 12 个月，优秀 AI 产品的核心竞争力不再是"用了哪个最强模型"，而是"能否在三类模型之间做智能路由"。PM 应推动团队建立模型路由机制，根据任务复杂度、数据敏感度、成本预算动态选择执行层。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架 2：开源生态的"占坑-变现"循环</h4>
+        <p>Qwen3.8、Matrix-Game 3.5、MiniCPM-Robot 都选择了开源或核心架构开源。这与 Llama、DeepSeek 的路径一致：通过开源建立开发者生态和行业影响力，再通过云服务、企业版、垂直应用实现商业变现。</p>
+<ul>
+<li><strong>生态占坑</strong>：开源模型快速成为某一品类（如 2.4T 通用模型、世界模型、端侧 VLA）的默认选项。</li>
+<li><strong>变现闭环</strong>：开源模型吸引开发者后，配套的云 API、训练平台、行业解决方案成为收入来源。</li>
+</ul>
+<p><strong>产品启示</strong>：如果你是模型厂商，开源决策应服务于生态战略而非短期收入；如果你是应用厂商，应积极评估多个开源模型，避免被单一闭源供应商锁定，同时关注开源模型背后的商业支持能力。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架 3：物理 AI 的"仿真-真实-主权"三角</h4>
+        <p>Nvidia 日本 AI 工厂、Matrix-Game 世界模型、MiniCPM-Robot 共同指向物理 AI 的三要素：仿真环境（用于低成本训练）、真实部署（机器人/自动驾驶）、主权算力（国家/地区级训练基础设施）。</p>
+<ul>
+<li><strong>仿真降低试错成本</strong>：世界模型让机器人和物理系统可以在虚拟环境中快速迭代。</li>
+<li><strong>真实部署验证泛化</strong>：仿真到真实的迁移仍然是物理 AI 的核心瓶颈。</li>
+<li><strong>主权算力决定准入</strong>：未来物理 AI 的训练可能受到数据主权和算力布局的强烈影响。</li>
+</ul>
+<p><strong>产品启示</strong>：做物理 AI 产品的团队不应只关注模型能力，而应同步建设仿真 pipeline、真实场景数据集和区域合规能力。缺少任何一角，产品都难以规模化。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>Qwen3.8 技术报告与开源权重发布页面</strong>：关注 2.4T 模型的架构细节（MoE 比例、上下文长度、工具调用能力），判断它是否适合你产品的核心任务。</p>
+<p><b>2.</b> <strong>Matrix-Game 3.5 开源仓库与 demo</strong>：重点观察其在长视频一致性和物理规则保持上的表现，评估世界模型对你所在行业的 prototype 价值。</p>
+<p><b>3.</b> <strong>MiniCPM-Robot 论文/技术博客</strong>：理解 1.5B VLA 模型的动作空间设计和训练数据来源，判断它是否可直接迁移到你的机器人平台。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>完成 Qwen3.8-Max-Preview 的 POC 测试</strong>：选择 3-5 个核心场景，与当前主力模型做头对头对比，输出延迟-成本-质量三角评估。</p>
+<p><b>2.</b> <strong>建立端侧模型选型清单</strong>：将 MiniCPM5-2B、Qwen3.5-2B、Phi-4 等候选模型按你的端侧设备约束做基准测试。</p>
+<p><b>3.</b> <strong>评估 ChatGPT Work 对你产品的冲击</strong>：列出功能重叠区域，明确差异化定位和需要加速建设的护城河。</p>
+<p><b>4.</b> <strong>梳理物理 AI 相关机会</strong>：如果你是机器人、自动驾驶、工业仿真或游戏团队，选择一个最小场景用世界模型或 VLA 模型做快速原型。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>国产开源模型将在 2026 年底前全面进入全球第一梯队</strong>：Qwen3.8 2.4T 是标志性事件，未来半年将出现更多国产模型在关键 benchmark 上超越或逼近闭源旗舰。产品团队需要把国产模型纳入默认选型池。</p>
+<p><b>2.</b> <strong>物理 AI 将成为下一个万亿级赛道，但落地周期比数字 AI 长 2-3 年</strong>：世界模型和 VLA 的突破令人兴奋，但仿真到真实的迁移、安全认证、硬件成本仍是主要瓶颈。2026-2027 年将是基础设施和 POC 阶段。</p>
+<p><b>3.</b> <strong>端侧 AI 将在 18 个月内改变移动应用和 IoT 的产品形态</strong>：2B 级别模型已经能在端侧完成相当复杂的任务，隐私和低延迟优势将推动大量应用从"云端优先"转向"端云协同"。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题 1：当国产开源模型逼近闭源旗舰，你的产品护城河在哪里？</h4>
+        <p>Qwen3.8 2.4T 的开源意味着模型能力本身正在快速商品化。如果所有团队都能以低成本获得接近顶级的模型能力，产品差异化的来源将从"模型能力"转向"数据飞轮、行业 know-how、用户 workflow 嵌入深度"。</p>
+<ul>
+<li>你的产品是否拥有难以被开源模型复制的专有数据或用户反馈闭环？</li>
+<li>你的用户是否因为你的产品深度嵌入了他们的工作流而难以迁移？</li>
+<li>当竞争对手也能快速接入 Qwen3.8 时，你的定价权和品牌优势是什么？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题 2：世界模型和 VLA 模型会如何重新定义"AI 能做什么"？</h4>
+        <p>今天的事件显示，AI 正在从生成文本、图像、视频走向理解物理规则并控制物理实体。这会打开全新的产品类别，但也会带来新的失败模式。</p>
+<ul>
+<li>在你的行业中，哪些任务可以从"数字内容生成"升级为"物理世界交互"？</li>
+<li>当 AI 开始控制真实世界的物体时，你的安全边界和回退机制是否足够 robust？</li>
+<li>仿真训练的数据偏见是否会在真实部署中被放大，从而带来不可接受的风险？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题 3：AI 热潮中的"失败率 0%"观察对你有什么警示？</h4>
+        <p>参考事件指出，许多企业 AI 项目失败与 LLM 能力无关，而是因为组织缺乏有效运行软件项目的能力。这是一个残酷的真相：技术再先进，也拯救不了模糊的目标、错配的团队和糟糕的流程。</p>
+<ul>
+<li>你当前的 AI 项目是否有清晰可量化的成功指标？</li>
+<li>你的团队是否把"接入大模型"误认为是"产品化"？</li>
+<li>在追逐最新模型发布的同时，你是否忽视了数据质量、评估体系和用户反馈闭环这些更基础的问题？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题 4：端侧 AI 的崛起会如何改变你的商业模式？</h4>
+        <p>MiniCPM5-2B 和 transcribe.cpp 都指向同一个趋势：越来越多的 AI 能力可以在本地设备上运行，无需调用云端 API。</p>
+<ul>
+<li>如果你的产品依赖按 token 计费的云端模型，端侧模型是否会侵蚀你的收入模式？</li>
+<li>你是否可以利用端侧能力创造新的付费场景（如离线高级功能、本地隐私保护模式）？</li>
+<li>端云协同的架构设计是否应该成为你未来 6 个月的技术重点？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题 5：物理 AI 基础设施的国家化会如何影响全球化产品？</h4>
+        <p>Nvidia 在日本建设 Vera Rubin AI 工厂，反映了物理 AI 训练基础设施正在与国家/地区战略深度绑定。</p>
+<ul>
+<li>如果你的产品需要训练或部署物理 AI 模型，你是否需要考虑区域算力布局和数据主权合规？</li>
+<li>这种基础设施的区域化是否会加剧全球 AI 生态的分裂？</li>
+<li>作为产品团队，你如何在这种分裂中保持技术选型的灵活性和成本可控性？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A：AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 在 QoderWork 上体验 Qwen3.8-Max-Preview，记录 3 个你产品场景下的 prompt 表现 —— 预期产出：一份模型能力速评表。</p>
+<p><b>2.</b> 用 ChatGPT Work 完成一次建站或文档处理任务 —— 预期产出：对 OpenAI 工作流产品化思路的直观理解。</p>
+<p><b>3.</b> 阅读一份世界模型或 VLA 模型的产品化案例（如 Figure AI、1X Technologies） —— 预期产出：物理 AI 产品化的基本sense。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 为你的产品设计一个"模型路由策略"，明确云端/端侧/物理模型的任务分配 —— 预期产出：模型选型决策文档。</p>
+<p><b>2.</b> 做一次竞品分析，将你的产品与 ChatGPT Work、Claude Projects、Grok Automations 对比 —— 预期产出：差异化定位地图。</p>
+<p><b>3.</b> 建立一个 AI 功能上线后的评估 dashboard，包含准确率、延迟、成本、用户满意度 —— 预期产出：可运营的指标体系。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 跟踪 3-5 个国产开源模型的发布节奏，建立季度模型能力雷达图 —— 预期产出：季度模型选型建议。</p>
+<p><b>2.</b> 研究一个物理 AI 垂直场景（机器人、自动驾驶、工业仿真）的商业模式 —— 预期产出：行业机会评估报告。</p>
+<p><b>3.</b> 推动团队建立 AI 产品的伦理和安全 review 流程 —— 预期产出：AI 产品发布检查清单。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B：AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 下载 Qwen3.8-Max-Preview 或等待开源权重，跑通一个基础推理脚本 —— 预期产出：模型推理延迟和显存占用数据。</p>
+<p><b>2.</b> 在本地设备上部署 MiniCPM5-2B，测试 512K 长上下文召回 —— 预期产出：端侧长文本能力基线。</p>
+<p><b>3.</b> 用 transcribe.cpp 跑一个中文语音转录任务，比较 2 个 ASR 模型 —— 预期产出：语音转录模型选型建议。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 实现一个多模型路由服务，根据任务类型动态选择 Qwen3.8、MiniCPM5-2B 或云 API —— 预期产出：可部署的模型网关原型。</p>
+<p><b>2.</b> 用 MiniCPM-Robot 在仿真环境中完成一个 manipulation 任务 —— 预期产出：VLA 模型部署经验。</p>
+<p><b>3.</b> 尝试复现 Matrix-Game 3.5 的核心生成 pipeline，重点关注长视频一致性 —— 预期产出：世界模型能力边界评估。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 设计一个端云协同的 AI 架构，优化延迟、隐私和成本 —— 预期产出：架构设计文档。</p>
+<p><b>2.</b> 参与一个开源模型或工具的贡献（如 transcribe.cpp、MiniCPM-Robot） —— 预期产出：社区贡献记录。</p>
+<p><b>3.</b> 研究物理 AI 的仿真到真实迁移技术，设计一个 domain randomization 实验 —— 预期产出：技术博客或论文笔记。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C：研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 阅读 Qwen3.8 的技术报告（发布后），整理其架构创新和训练数据亮点 —— 预期产出：技术摘要。</p>
+<p><b>2.</b> 复现 MiniCPM5-2B 的 needle-in-haystack 测试，验证 512K 上下文能力 —— 预期产出：可复现的评估脚本。</p>
+<p><b>3.</b> 运行 MiniCPM-RobotTrack 在标准目标跟踪数据集上的 zero-shot 评估 —— 预期产出：跟踪性能基线。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 对 Qwen3.8 做量化实验（INT8/INT4），比较不同量化策略下的能力衰减 —— 预期产出：量化效率报告。</p>
+<p><b>2.</b> 分析 Matrix-Game 3.5 的 Patch 级记忆注入机制，尝试理解其时空表示设计 —— 预期产出：机制解读笔记。</p>
+<p><b>3.</b> 复现 transcribe.cpp 中 3 个 ASR 模型的流式推理延迟测试 —— 预期产出：流式 ASR 性能对比。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 设计一个针对物理 AI 的评估 benchmark，覆盖一致性、物理合理性和可控性 —— 预期产出： benchmark 提案。</p>
+<p><b>2.</b> 研究 VLA 模型的安全对齐问题，设计一个对抗性测试集 —— 预期产出：安全评估报告。</p>
+<p><b>3.</b> 将一项研究成果转化为可演示的产品原型，并撰写技术博客 —— 预期产出：研究到产品的完整案例。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D：快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>Qwen3.8 模型信息</td><td><a href="https://x.com/Alibaba_Qwen/status/2078754377473601787">X：通义千问</a></td><td>15 分钟</td></tr><tr><td>昆仑万维世界模型发布</td><td><a href="https://mp.weixin.qq.com/s/LidvGePhOOoUY3KTor_w9g">公众号：昆仑万维</a></td><td>20 分钟</td></tr><tr><td>MiniCPM-Robot 开源</td><td><a href="https://x.com/OpenBMB/status/2078839529591759025">X：面壁智能 OpenBMB</a></td><td>15 分钟</td></tr><tr><td>MiniCPM5-2B 发布</td><td><a href="https://mp.weixin.qq.com/s/rjFxrUylyGMqa5QtgypCdw">公众号：面壁智能</a></td><td>15 分钟</td></tr><tr><td>transcribe.cpp 项目</td><td><a href="https://workshop.cjpais.com/projects/transcribe-cpp">Hacker News 热门</a></td><td>20 分钟</td></tr><tr><td>Nvidia 日本物理 AI 布局</td><td><a href="https://techcrunch.com/2026/07/19/what-to-watch-for-after-jensen-huangs-japan-visit">TechCrunch</a></td><td>20 分钟</td></tr><tr><td>AI 热潮与决策机制反思</td><td><a href="https://ludic.mataroa.blog/blog/ai-mania-is-eviscerating-global-decision-making">ludic.mataroa.blog</a></td><td>25 分钟</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-17.html">
+      <span class="date">2026-07-17</span>
+      <span class="title">异步Agent爆发与企业信任危机</span>
+      <span class="angle">Claude Fable 5与Grok Automations推动AI进入异步自主工作阶段，但企业Agent安全与评估缺口警示生产落地仍需信任基础设施补齐</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-16.html">
+      <span class="date">2026-07-16</span>
+      <span class="title">千问入苹果·多模态开源·AI自红队</span>
+      <span class="angle">中国模型登上全球顶级终端入口，开源多模态与自动化红队测试同步重塑AI竞争与安全范式</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-15.html">
+      <span class="date">2026-07-15</span>
+      <span class="title">端侧27B模型与智能体安全失控</span>
+      <span class="angle">端侧大模型能力逼近云端，智能体自主性却突破安全边界，AI产品面临能力释放与风险管控的双重拐点</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>201 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+      <div class="meta" style="margin-top:8px;color:var(--ink-soft)"><strong>生成时间</strong>: 2026-07-20 <strong>数据来源</strong>: <a href="https://aihot.virxact.com">AI HOT</a> 日报 API <strong>解读视角</strong>: AI 产品经理 & AI Builder & 研究型 Builder</div>
+    </div>
+  </footer>
+</body>
+</html>
