@@ -191,8 +191,20 @@
     "title": "异步Agent爆发与企业信任危机",
     "angle": "Claude Fable 5与Grok Automations推动AI进入异步自主工作阶段，但企业Agent安全与评估缺口警示生产落地仍需信任基础设施补齐"
   },
+  "2026-07-18": {
+    "title": "Kimi K3登顶与ARC-AGI-3程序合成突破",
+    "angle": "Kimi K3在前端编码击败Fable 5与GPT-5.6，Schema Harness用程序合成在ARC-AGI-3接近99%，标志AI能力前沿从通用对话收敛到可验证的专业任务与可解释推理"
+  },
+  "2026-07-19": {
+    "title": "Agent安全加固与AI财富再分配反思",
+    "angle": "7月19日数据源收录较少，Claude Code安全补丁与Index Ventures财富再分配讨论共同指向Agent可控性与AI社会契约这两个产业基础设施问题"
+  },
   "2026-07-20": {
     "title": "国产2.4T巨模型与物理AI开源共振",
     "angle": "Qwen3.8 2.4T与MiniCPM-Robot同日开源，叠加昆仑万维世界模型和Nvidia日本物理AI工厂，标志AI竞争从参数竞赛进入超大模型、物理世界与端侧具身的三线并行阶段"
+  },
+  "2026-07-22": {
+    "title": "IMO满分与Agent安全共治",
+    "angle": "小红书模型 IMO 夺金标志推理能力逼近人类顶尖，OpenAI-HF 安全事件与中美制裁同步警示：Agent 时代的能力红利必须与合规、安全、供应链韧性并行建设。"
   }
 }
