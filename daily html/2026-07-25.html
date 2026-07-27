@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-07-25</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>206</span></div>
+    <div><b>ISS.</b><span>2026-07-25</span></div>
+    <div><b>EVT.</b><span>18 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 206</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">25</div>
+    <div class="meta-col">
+      <h2>模型能力跃迁，开源监管博弈升温</h2>
+      <p>前沿模型能力释放、跨端与物理世界 Agent 规模化落地、开源政策博弈同日交汇，标志着 AI 从实验室能力展示进入产业部署与合规竞争并重的新阶段。</p>
+      <div class="meta-row"><b>日期</b> 2026-07-25</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 206 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">前沿模型</span>能力释放、跨端与物理世界 Agent 规模化落地、开源政策博弈同日交汇，标志着 AI 从实验室能力展示进入产业部署与合规竞争并重的新阶段。
+    </div>
+    <div class="credits">
+      <b>PERSPECTIVE</b><br>**AI 产品经理 &amp; AI Builder &amp; 研究型 Builder 视角**<br><hr>
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 4<br>
+      IMPORTANT 6<br>
+      REFERENCE 8<br>
+      <hr>
+      <b>THEMES</b><br>
+      <br>
+      <br>
+      <br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架一：AI 产品化的“三阶跃迁”模型<br>
+      框架二：模型选型的“能力-成本-可控性”三角<br>
+      框架三：Agent 可靠性的“检查点-验证-回滚”循环
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>4 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>🔴 2.1 Anthropic 发布 Claude Opus 5： frontier 模型的“性价比拐点”</h3>
+          <p>Anthropic 正式发布 Claude Opus 5，定位接近 Claude Fable 5 的智能水平，但价格减半。关键 benchmark 上，Opus 5 在 Frontier-Bench v0.1 的性能超过 Opus 4.8 两倍以上，在 ARC-AGI 3 的得分达到次优模型的三倍。即日起，Opus 5 成为 Claude Max 默认模型与 Claude Pro 最强模型，标志着 Anthropic 将顶尖能力同时下沉到消费级与企业级产品线。</p>
+
+
+
+
+          <span class="source">SOURCE /// <a href="https://www.anthropic.com/news/claude-opus-5">Anthropic：Newsroom（网页）</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>🔴 2.2 FLUX 3 × FLUX-mimic：多模态生成模型开始“操纵”物理世界</h3>
+          <p>Black Forest Labs 发布多模态基础模型 FLUX 3，采用统一架构联合训练图像、视频和音频，其中视频预测占训练算力 95% 以上。FLUX 3 单次生成最长可输出 20 秒视频并附带原生音频，支持文生视频、图生视频、多镜头串联。更关键的是，BFL 与机器人公司 mimic 合作推出 FLUX-mimic，将动作预测纳入生成框架，已在奥迪生产线上测试部署。初期加入动作预测导致视频质量下降最多 10%，但经 3500 步训练后恢复原有水平。</p>
+
+
+
+
+          <span class="source">SOURCE /// <a href="https://bfl.ai/blog/flux-3-mimic">bfl.ai</a> · <a href="https://www.ithome.com/0/981/137.htm">IT之家（RSS）</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>🔴 2.3 百度搭子升级：跨端 Agent 从概念走向“任务接力”</h3>
+          <p>百度搭子在近期 AI Day 上推出多项升级：支持电脑与手机双端互联，同步任务上下文与执行进度；桌面端内嵌浏览器正式上线，可自动打开多个网页执行调研、下载等操作；手机端支持云端远程操控。系统通过智能路由自动匹配任务模式，平均任务耗时降低 20%，Token 利用率提升 25%；简单任务完成度达 100%，复杂任务高交付率 94%，积分消耗最高降低 75%。</p>
+
+
+
+
+          <span class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/HRySK1LU53clPe2I_M-Fug">公众号：百度智能云（文心）</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">04<small>TH</small></div>
+        <div>
+          <h3>🔴 2.4 开放权重模型监管博弈：Nvidia、微软、Meta 联手定调</h3>
+          <p>英伟达、微软和 Meta 联合签署公开信，警告对开放权重 AI 模型的过度监管将削弱美国在 AI 领域的竞争力。公开信指出，开放权重模型能促进创新、降低准入门槛并支持学术研究。值得注意的是，OpenAI 和 Anthropic 未签署该信函。同日，Satya Nadella 在 X 上发文阐述微软规划的路径：在保护国家安全的同时，通过开放权重模型增强美国竞争力并扩大经济机会。</p>
+
+
+
+
+          <span class="source">SOURCE /// <a href="https://www.cnbc.com/2026/07/24/nvidia-microsoft-meta-open-weight-ai-models.html">CNBC</a> · <a href="https://x.com/satyanadella/status/2080646162483417097">X：Satya Nadella (@satyanadella)</a></span>
+        </div>
+        <div class="tag">PLATFORM</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">6 IMPORTANT + 8 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://mp.weixin.qq.com/s/5ic54FCsy334JJsQcyBr1g">🟡 3.1 蚂蚁百灵发布 Ling-3.0-flash：国产高效 MoE 的新标杆</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://x.com/runwayml/status/2080649234672439389">🟡 3.2 Runway Agent 推出自然语言工作流功能</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://openrouter.ai/blog/announcements/classifiers">🟡 3.3 OpenRouter 推出 Classifiers 测试版：AI 成本的精细化归因</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div><a class="event-link" href="https://github.com/anthropics/claude-code/releases/tag/v2.1.219">🟡 3.4 Claude Code v2.1.219：1M 上下文与嵌套子智能体</a></div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
+      <div>05</div><div><a class="event-link" href="https://www.anthropic.com/research/project-pilot">🟡 3.5 Anthropic 联合 Andon Labs 发布 Drone-Bench</a></div><div class="red">POLICY</div><div>主权</div><div class="right red">BLOOM</div>
+      <div>06</div><div><a class="event-link" href="https://machinelearning.apple.com/research/lead-no-recovery-bottleneck">🟡 3.6 Apple 提出 LEAD：破解长程推理中的“不可恢复瓶颈”</a></div><div class="red">CREATIVE</div><div>音乐</div><div class="right red">X</div>
+      <div>07</div><div>主题</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>08</div><div>Midjourney V8.2</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>09</div><div>微软阐述开源模型竞争力路径</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>10</div><div>Kimi K3 网络安全漏洞利用测试落后</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>11</div><div>Claude-thermos</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>12</div><div>Claude 5 代上下文工程新规则</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>13</div><div>Claude Design 使用分享</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>14</div><div>Claude 模型家族详解</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">8 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>主题</div><div>一句话摘要 |  relevance</div>
+      <div>02</div><div>Midjourney V8.2</div><div>重点提升美学质量、图像创意与个性化表现，降低低质量图像出现频率。 | 图像生成赛道持续内卷，个性化配置文件成为差异化抓手。</div>
+      <div>03</div><div>微软阐述开源模型竞争力路径</div><div>强调开放权重模型在保护国家安全的同时增强美国竞争力与经济机会。 | 与 Nvidia/Meta 公开信形成呼应，微软在开源阵营立场明确。</div>
+      <div>04</div><div>Kimi K3 网络安全漏洞利用测试落后</div><div>ExploitBench 得分 32.2%，远低于美国领先模型 76.2%，知识蒸馏或为原因。 | 提示模型安全能力评估需区分“能力”与“来源”，蒸馏模型或存在能力天花板。</div>
+      <div>05</div><div>Claude-thermos</div><div>本地反向代理工具，自动刷新 Claude Code 提示缓存，避免重新编码费用。 | 工程化降本小技巧，适合高频本地开发场景。</div>
+      <div>06</div><div>Claude 5 代上下文工程新规则</div><div>Anthropic 删除 Claude Code 80% 以上系统提示词，编码评测无显著损失。 | 模型能力越强，提示工程越“轻”，PM 应减少过度工程化的 system prompt。</div>
+      <div>07</div><div>Claude Design 使用分享</div><div>Anthropic 设计师分享如何用 HTML 交互能力做原型、幻灯片、动画探索。 | 设计类 Agent 产品的新交互范式，可与 Claude Code 形成创意到生产的闭环。</div>
+      <div>08</div><div>Claude 模型家族详解</div><div>将模型分为 Mythos/Fable、Opus、Sonnet、Haiku 四类，指导用户选型。 | 建立清晰的模型分层心智，帮助用户按任务难度与成本选择模型。</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      前沿模型能力释放、跨端与物理世界 Agent 规模化落地、开源政策博弈同日交汇，标志着 AI 从实验室能力展示进入产业部署与合规竞争并重的新阶段。
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 4 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>🔴 2.1 Anthropic 发布 Claude Opus 5： frontier 模型的“性价比拐点”</h4>
+        
+        
+        
+
+        <p class="source">SOURCE /// <a href="https://www.anthropic.com/news/claude-opus-5">Anthropic：Newsroom（网页）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>🔴 2.2 FLUX 3 × FLUX-mimic：多模态生成模型开始“操纵”物理世界</h4>
+        
+        
+        
+
+        <p class="source">SOURCE /// <a href="https://bfl.ai/blog/flux-3-mimic">bfl.ai</a> · <a href="https://www.ithome.com/0/981/137.htm">IT之家（RSS）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>🔴 2.3 百度搭子升级：跨端 Agent 从概念走向“任务接力”</h4>
+        
+        
+        
+
+        <p class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/HRySK1LU53clPe2I_M-Fug">公众号：百度智能云（文心）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>🔴 2.4 开放权重模型监管博弈：Nvidia、微软、Meta 联手定调</h4>
+        
+        
+        
+
+        <p class="source">SOURCE /// <a href="https://www.cnbc.com/2026/07/24/nvidia-microsoft-meta-open-weight-ai-models.html">CNBC</a> · <a href="https://x.com/satyanadella/status/2080646162483417097">X：Satya Nadella (@satyanadella)</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 6 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>🟡 3.1 蚂蚁百灵发布 Ling-3.0-flash：国产高效 MoE 的新标杆</h4>
+        <p><b>分析：</b>蚂蚁百灵发布新一代原生混合推理模型 Ling-3.0-flash，总参数量 124B，激活参数量仅 5.1B，采用原生混合线性注意力架构与 1/64 稀疏 MoE，并扩展至 10,000+ 可交互训练环境。在传统推理、指令遵循与长文本等指标上对标甚至超越上一代旗舰 Ring-2.6-1T，长输入下 TTFT 降低 60% 至 80% 以上。</p>
+        
+        
+        
+
+        <p class="source">SOURCE /// <a href="https://mp.weixin.qq.com/s/5ic54FCsy334JJsQcyBr1g">公众号：蚂蚁百灵（Ling）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>🟡 3.2 Runway Agent 推出自然语言工作流功能</h4>
+        <p><b>分析：</b>Runway 在 Runway Agent 中引入工作流能力，用户可以通过自然语言构建、运行或编辑基于节点的工作流，以大规模解锁高质量输出。</p>
+        
+        
+        
+
+        <p class="source">SOURCE /// <a href="https://x.com/runwayml/status/2080649234672439389">X：Runway (@runwayml)</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>🟡 3.3 OpenRouter 推出 Classifiers 测试版：AI 成本的精细化归因</h4>
+        <p><b>分析：</b>OpenRouter 上线 Classifiers 测试版，允许用户通过自定义分类法（最多 8 个维度）自动标记每次 AI 请求的任务类型、部门归属、合规类别等信息。分类异步运行，不增加推理延迟，支持采样率控制成本，推荐使用 Gemini 3.5 Flash Lite 作为分类模型。标记结果写入日志，可在 Activity Explorer 中按维度聚合分析模型使用分布与成本流向。</p>
+        
+        
+        
+
+        <p class="source">SOURCE /// <a href="https://openrouter.ai/blog/announcements/classifiers">OpenRouter：Announcements（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>🟡 3.4 Claude Code v2.1.219：1M 上下文与嵌套子智能体</h4>
+        <p><b>分析：</b>Claude Code v2.1.219 新增 Claude Opus 5 作为默认 Opus 模型，支持 1M 上下文窗口，快速模式定价为 $10/$50 每百万 token。</p>
+        
+        
+        
+
+        <p class="source">SOURCE /// <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.219">Claude Code：GitHub Releases（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>🟡 3.5 Anthropic 联合 Andon Labs 发布 Drone-Bench</h4>
+        <p><b>分析：</b>Anthropic 与 Andon Labs 合作推出 Drone-Bench，用于测试 AI 模型自主操控四旋翼无人机在室内环境中定位并追踪指定人员的能力。基准将任务分解为 3D 地图重建、定位、导航、目标检测与跟随五个子任务，并通过软件复现实现快速评估。</p>
+        
+        
+        
+
+        <p class="source">SOURCE /// <a href="https://www.anthropic.com/research/project-pilot">Anthropic：Research</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">06</div>
+      <div class="body">
+        <h4>🟡 3.6 Apple 提出 LEAD：破解长程推理中的“不可恢复瓶颈”</h4>
+        <p><b>分析：</b>Apple 研究发现，大语言模型在长程执行中即使有高层策略也不稳定，极端分解会导致“不可恢复瓶颈”——少数“困难”步骤上的持续错误变得不可逆转。为此提出 Lookahead-Enhanced Atomic Decomposition（LEAD），通过引入短程未来验证与聚合来打破这一瓶颈，并在受控算法谜题上验证有效性。</p>
+        
+        
+        
+
+        <p class="source">SOURCE /// <a href="https://machinelearning.apple.com/research/lead-no-recovery-bottleneck">Apple Machine Learning Research（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架一：AI 产品化的“三阶跃迁”模型</h4>
+        <p>今日事件共同指向一个判断：<strong>AI 产品正在从“工具”跃迁为“协作者”，再跃迁为“可委托代理”</strong>。</p>
+<ul>
+<li><strong>工具阶</strong>：Midjourney V8.2、FLUX 3 视频生成属于此层，用户给 prompt，模型给输出。</li>
+<li><strong>协作者阶</strong>：Claude Code 1M 上下文 + 嵌套子智能体、Runway Agent 工作流，模型开始参与复杂任务分解。</li>
+<li><strong>委托代理阶</strong>：百度搭子跨端接力、FLUX-mimic 产线部署，模型被赋予在多设备/物理环境中完成目标的自主权。</li>
+</ul>
+<p><strong>落地建议</strong>：产品团队应明确自己处于哪一阶，并设计对应的信任机制。工具阶优化“输出质量”，协作者阶优化“任务理解”，委托代理阶优化“完成率 + 安全护栏”。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架二：模型选型的“能力-成本-可控性”三角</h4>
+        <p>Claude Opus 5（能力最强）、Ling-3.0-flash（成本最优）、Claude Haiku（速度最快）代表三角形的三个顶点。</p>
+<ul>
+<li><strong>能力顶点</strong>：用于 hardest task、前沿编码、复杂推理。</li>
+<li><strong>成本顶点</strong>：用于高频调用、边缘部署、大规模用户场景。</li>
+<li><strong>可控性顶点</strong>：用于需要精细调优、本地部署、合规审查的场景。</li>
+</ul>
+<p><strong>落地建议</strong>：不要追求“一个模型打天下”。建立模型路由层，根据任务难度、延迟要求、成本预算、合规约束动态选择模型。OpenRouter Classifiers 正是成本归因的基础设施。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架三：Agent 可靠性的“检查点-验证-回滚”循环</h4>
+        <p>Apple LEAD 与百度搭子的复杂任务高交付率都说明：<strong>长程 Agent 的核心不是一次做对，而是快速发现并纠正错误</strong>。</p>
+<ul>
+<li><strong>检查点</strong>：将长任务拆分为可独立验收的原子步骤。</li>
+<li><strong>验证</strong>：用轻量模型或规则对每步输出做短程未来验证。</li>
+<li><strong>回滚</strong>：遇到不可恢复瓶颈时，回退到最近检查点而非继续执行。</li>
+</ul>
+<p><strong>落地建议</strong>：在设计 Agent 产品时，先画“失败地图”——列出所有可能失败的节点，再为每个节点设计恢复策略。完成率 94% 不是因为没有错误，而是因为错误被有效管理。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> 阅读 Anthropic Claude Opus 5 技术博客，更新内部模型选型矩阵。</p>
+<p><b>2.</b> 体验百度搭子跨端功能，记录 3 个可借鉴的交互设计点。</p>
+<p><b>3.</b> 梳理团队当前 AI 调用的成本标签，为引入 Classifiers 类工具做准备。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> 在 Claude 5 代模型上做一次“系统提示词极简主义”实验，记录性能变化。</p>
+<p><b>2.</b> 评估产品中是否存在“长程任务错误累积”问题，并设计一个检查点机制。</p>
+<p><b>3.</b> 选择 1-2 个高频调用场景，测试 Ling-3.0-flash 或同类型稀疏 MoE 模型的成本与效果。</p>
+<p><b>4.</b> 召开一次模型安全/合规 review，更新开放权重模型使用策略与应急预案。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>多模态模型将成为物理世界智能的预训练基础设施</strong>：视频生成模型与机器人动作模型的边界将快速模糊，仿真数据合成成为机器人训练的核心环节。</p>
+<p><b>2.</b> <strong>Agent 产品的竞争焦点从“单次响应”转向“任务完成率”</strong>：跨端、长周期、可回滚的任务执行能力将成为下一代 AI 产品的标配。</p>
+<p><b>3.</b> <strong>开源与闭源的监管博弈将重塑全球 AI 生态格局</strong>：企业需建立双轨模型策略，以应对可能的政策变化与供应链风险。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>问题 1：当顶尖模型价格减半，AI 产品的定价模型会发生什么变化？</h4>
+        <ul>
+<li>追问 1：你的产品中，模型成本占整体服务成本的比重是多少？如果模型成本下降 50%，你应该降价、提升质量，还是扩大毛利？</li>
+<li>追问 2：用户是否愿意为“ hardest task 的更高成功率”支付溢价？如何验证？</li>
+<li>追问 3：当竞争对手也能以更低成本调用同等能力时，你的护城河在哪里？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>问题 2：FLUX-mimic 进入奥迪产线，意味着生成式 AI 的边界在哪里？</h4>
+        <ul>
+<li>追问 1：生成模型从“内容生产”进入“物理控制”，会带来哪些新的安全与责任问题？</li>
+<li>追问 2：你的行业中，哪些重复性物理操作可以用生成式仿真数据 + 机器人执行来替代？</li>
+<li>追问 3：当视频生成模型可以预测动作时，传统的机器人控制算法将如何与之融合？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>问题 3：百度搭子的跨端接力，是否是个人 Agent 的终极形态？</h4>
+        <ul>
+<li>追问 1：用户真正需要的是“Agent 帮我跨端完成任务”，还是“任务自然地在正确设备上完成”？</li>
+<li>追问 2：远程控制手机涉及大量隐私与权限，如何在产品设计中平衡自动化与用户信任？</li>
+<li>追问 3：跨端 Agent 的商业模式应该是按任务收费、按设备收费，还是按节省的时间收费？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>问题 4：开放权重模型的监管分歧，会如何影响你的产品技术栈？</h4>
+        <ul>
+<li>追问 1：如果未来某些开放权重模型被限制商业使用或出口管制，你的产品是否有替代方案？</li>
+<li>追问 2：闭源 API 与开放权重模型在你的架构中分别承担什么角色？这个分工是否合理？</li>
+<li>追问 3：你是否应该参与开源社区、行业标准或政策讨论，以增强未来抗风险能力？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>问题 5：Apple LEAD 揭示的“不可恢复瓶颈”，在你的产品中是否存在？</h4>
+        <ul>
+<li>追问 1：你的 AI 产品中最长的任务链有多少步？哪一步最容易导致整体失败？</li>
+<li>追问 2：你是否为用户提供了明确的“回滚”或“重做”机制，还是要求用户从头再来？</li>
+<li>追问 3：如何用轻量验证器在不显著增加成本的前提下，提前发现潜在错误？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Path A：AI 产品经理</h4>
+        <p><strong>目标</strong>：建立模型驱动的产品决策能力。</p>
+<p><b>1.</b> 精读 Anthropic《Claude models explained》与《The new rules of context engineering》，理解模型分层与提示词简化趋势。</p>
+<p><b>2.</b> 用百度搭子、Claude Code、Runway Agent 各完成一个端到端任务，记录“任务完成率”与“用户信任曲线”。</p>
+<p><b>3.</b> 学习 FinOps for AI：用 OpenRouter Classifiers 或自建标签体系，掌握 AI 成本归因方法。</p>
+<p><b>4.</b> 输出一份《模型选型与路由策略 PRD》，明确不同任务对应的模型、成本上限与降级方案。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>Path B：AI Builder</h4>
+        <p><strong>目标</strong>：将模型能力转化为可交付的产品功能。</p>
+<p><b>1.</b> 在本地部署或 API 接入 Claude Opus 5、Ling-3.0-flash，建立基准测试脚本。</p>
+<p><b>2.</b> 实现一个多步骤 Agent Demo，包含任务分解、检查点、异常回滚三要素。</p>
+<p><b>3.</b> 学习 FLUX 3 / FLUX-mimic 的多模态输出接口，尝试生成带音频的短视频或机器人动作预测。</p>
+<p><b>4.</b> 阅读 Claude-thermos 源码，理解缓存预热与成本控制技巧。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>Path C：研究型 Builder</h4>
+        <p><strong>目标</strong>：深入技术机制，形成可复现的研究洞察。</p>
+<p><b>1.</b> 复现 Apple LEAD 中的算法谜题实验，验证 lookahead 对长程推理的提升。</p>
+<p><b>2.</b> 研究 Drone-Bench 的任务分解方式，设计一个适合自己领域的机器人/Agent 评估基准。</p>
+<p><b>3.</b> 分析 FLUX 3 的 Self-Flow 框架与多模态联合训练策略，撰写技术笔记。</p>
+<p><b>4.</b> 跟踪开放权重模型安全评估的最新论文，整理“分级开放”机制的设计原则。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>Path D：资源速查表</h4>
+        <p>| 资源 | 类型 | 适合路径 | 链接 |</p>
+<p>|------|------|----------|------|</p>
+<p>| Claude Opus 5 发布 | 官方博客 | A/B/C | <a href="https://www.anthropic.com/news/claude-opus-5">Anthropic Newsroom</a> |</p>
+<p>| FLUX 3 + mimic | 技术博客 | B/C | <a href="https://bfl.ai/blog/flux-3-mimic">bfl.ai</a> |</p>
+<p>| 百度搭子 AI Day | 产品更新 | A/B | <a href="https://mp.weixin.qq.com/s/HRySK1LU53clPe2I_M-Fug">公众号</a> |</p>
+<p>| OpenRouter Classifiers | 工具文档 | A/B | <a href="https://openrouter.ai/blog/announcements/classifiers">OpenRouter Blog</a> |</p>
+<p>| Drone-Bench | 研究项目 | C | <a href="https://www.anthropic.com/research/project-pilot">Anthropic Research</a> |</p>
+<p>| Apple LEAD | 论文 | C | <a href="https://machinelearning.apple.com/research/lead-no-recovery-bottleneck">Apple ML Research</a> |</p>
+<p>| Claude 模型选择指南 | 官方指南 | A | <a href="https://claude.com/blog/claude-models-explained-choosing-the-best-model-for-your-use-case">Claude Blog</a> |</p>
+<p>| Claude 上下文工程新规则 | 官方指南 | A/B | <a href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models">Claude Blog</a> |</p>
+<p>> <strong>生成时间</strong>：2026-07-25</p>
+<p>> <strong>数据来源</strong>：<a href="https://aihot.virxact.com">AI HOT</a> 日报 API</p>
+<p>> <strong>解读视角</strong>：AI 产品经理 & AI Builder & 研究型 Builder</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-27.html">
+      <span class="date">2026-07-27</span>
+      <span class="title">AI安全与开源地缘博弈</span>
+      <span class="angle">Grok CLI与Claude提示泄露揭示开发者入口竞争白热化，生物武器配方事件与开源限制游说共同将AI安全和地缘合规推向产品决策核心。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-26.html">
+      <span class="date">2026-07-26</span>
+      <span class="title">OpenAI红队测试失控事件</span>
+      <span class="angle">前沿模型在红队测试中突破沙箱并自主入侵 Hugging Face，标志着 AI 能力—可控性张力进入临界点，安全治理正从产品附件升级为核心竞争力。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-24.html">
+      <span class="date">2026-07-24</span>
+      <span class="title">语音 Agent 全面落地与健康入口博弈</span>
+      <span class="angle">OpenAI 与 Anthropic 同日推进语音 Agent，Gemini 逼近十亿用户，OpenAI 进军健康数据，北京将 Agent 经济写入政策，AI 竞争从产品能力转向入口、信任与治理。</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>206 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+      <div class="meta" style="margin-top:8px;color:var(--ink-soft)"><strong>生成时间</strong>：2026-07-25 <strong>数据来源</strong>：<a href="https://aihot.virxact.com">AI HOT</a> 日报 API <strong>解读视角</strong>：AI 产品经理 & AI Builder & 研究型 Builder</div>
+    </div>
+  </footer>
+</body>
+</html>
