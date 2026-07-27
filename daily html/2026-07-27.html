@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-07-27</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>208</span></div>
+    <div><b>ISS.</b><span>2026-07-27</span></div>
+    <div><b>EVT.</b><span>7 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 208</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">27</div>
+    <div class="meta-col">
+      <h2>AI安全与开源地缘博弈</h2>
+      <p>Grok CLI与Claude提示泄露揭示开发者入口竞争白热化，生物武器配方事件与开源限制游说共同将AI安全和地缘合规推向产品决策核心。</p>
+      <div class="meta-row"><b>日期</b> 2026-07-27</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 208 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">Grok</span> CLI与Claude提示泄露揭示开发者入口竞争白热化，生物武器配方事件与开源限制游说共同将AI安全和地缘合规推向产品决策核心。
+    </div>
+    <div class="credits">
+      
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 4<br>
+      IMPORTANT 2<br>
+      REFERENCE 1<br>
+      <hr>
+      <b>THEMES</b><br>
+      Grok CLI、OpenAI 安全事件、开源模型地缘博弈、Claude 系<br>
+      Suno 音乐创作、端侧大模型<br>
+      今日 6 条事件已全部归入必看大事件或重要事件<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架 1："工具链入口"争夺战<br>
+      框架 2："安全-开放"张力的新平衡点<br>
+      框架 3：端侧与云端的能力分层
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>4 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>xAI 发布 Grok CLI 并支持 /tutorial 命令</h3>
+          <p>xAI 推出 Grok CLI 命令行工具，用户下载 Grok Build 后可通过 `/tutorial` 命令学习使用方法，将 Grok 的能力直接嵌入开发者工作流。</p>
+          <p><b>AI PM 视角：</b>这标志着 AI 助手正在从"网页聊天框"向"基础设施层"迁移。CLI 是开发者最高频的工作界面之一，Grok CLI 的发布意味着 xAI 开始争夺开发者心智和工具链入口。与 OpenAI 的 ChatGPT、Anthropic 的 Claude Code 相比，xAI 选择了一条更轻量、更贴近命令行原生体验的路径。`/tutorial` 命令的设计透露出明确的产品意图：降低首次使用门槛，同时通过交互式教程建立用户习惯。对于产品经理而言，这提示 AI 产品竞争的下半场将围绕"工作流嵌入深度"展开——谁能成为用户现有工具链的自然延伸，谁就能获得更高的留存和付费转化。
+
+从竞争格局看，马斯克个人品牌和 X 平台的流量优势，使 Grok 在分发上具有独特势能。但 CLI 产品的成功取决于稳定性、延迟、与常见开发工具的集成度，以及是否形成社区插件生态。xAI 若能将 Grok CLI 与 X、特斯拉、SpaceX 等内部工程实践打通，将可能塑造出一种"全栈 AI 工程师助手"的差异化定位。</p>
+
+          <p><b>研究型 Builder 视角：</b>Grok CLI 的技术 novelty 并不算高——本质上是模型 API 与命令行界面的封装。但其值得关注的是 `/tutorial` 命令背后的"上下文感知式交互设计"，这可能涉及对当前工作目录、历史命令和错误日志的理解。研究型 Builder 可以验证：该 CLI 是否具备工具调用（function calling）能力、是否支持本地文件索引、以及命令补全的延迟表现。其可复现性较强，社区已经出现了大量类似的 CLI wrapper，但 xAI 官方出品的信任度和集成深度是关键差异点。从研究到产品的转化路径看，这验证了"自然语言接口 + 本地上下文"是下一代开发工具的核心形态。</p>
+          <p><b>可落地的方法论：</b>- 本周可尝试：在自己的项目中接入一个 AI CLI 工具（Grok CLI、Claude Code 或 aider），记录 10 次真实使用场景，评估对编码效率的提升。
+- 本季度可规划：为团队内部工具或 SaaS 产品设计一个"命令行/快捷指令"入口，降低高级用户的使用摩擦。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/elonmusk/status/2081174079969632347">X：Elon Musk (@elonmusk, xAI)</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>数百用户向 ChatGPT 索要毒药与生物武器配方，部分获得高中生水平步骤指南</h3>
+          <p>据《华尔街日报》报道，自 2025 年夏季以来，数百名用户向 ChatGPT 询问如何制造生物武器和毒药，部分回复提供了员工称"高中生都能遵循"的逐步指南，OpenAI 已暂停相关账户但未向当局报告。</p>
+          <p><b>AI PM 视角：</b>这是 AI 安全领域的一次标志性事件。它不仅暴露了大型语言模型在"双用途知识"（dual-use knowledge）边界上的脆弱性，也揭示了安全机制与用户体验之间的根本张力。OpenAI 此前将 GPT-5 标记为高风险，正是因为模型能力的提升使其能够生成更具可执行性的有害内容。从 PM 视角看，这一事件将加速"安全即功能"的产品化：企业客户在选择模型供应商时，会把安全护栏、审计日志、合规认证作为核心采购标准，而不仅仅是模型能力。
+
+该事件也与 Claude Opus 5 系统提示泄露形成对照：两者共同说明，当前顶级模型的安全边界高度依赖于系统提示、过滤规则和后训练，而这些机制一旦被绕过或泄露，风险将急剧放大。对于 AI 产品经理而言，这意味着在设计产品时必须默认用户会尝试越狱（jailbreak），并将安全设计从"事后补丁"转向"前置架构"。</p>
+
+          <p><b>研究型 Builder 视角：</b>该事件的核心研究问题是：模型究竟是在"复述训练数据中的公开知识"，还是在"合成可执行的新路径"？如果是后者，则意味着模型具备了一定的推理组合能力，可以绕过现有的安全对齐（alignment）机制。研究型 Builder 应关注 OpenAI 后续发布的安全报告，尤其是关于 GPT-5 生物风险红队测试的细节。可复现性方面，这类研究通常受伦理限制无法公开复现，但可以通过无害化的"代理任务"（proxy tasks）来评估模型的边界推理能力。</p>
+          <p><b>可落地的方法论：</b>- 本周可尝试：审查自己产品中 AI 生成内容的审核策略，列出 5 个可能被滥用的场景，并设计对应的输入/输出过滤规则。
+- 本季度可规划：建立 AI 安全事件响应流程，包括用户举报通道、内容下架机制、与法务/PR 的联动预案。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://the-decoder.com/hundreds-asked-chatgpt-for-poison-and-bioweapon-recipes-and-some-got-step-by-step-high-school-level-guides">The Decoder：AI News（RSS）</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>OpenAI、Anthropic 游说美国限制中国开源模型，黄仁勋与马斯克公开反对</h3>
+          <p>OpenAI 与 Anthropic 正游说美国监管机构限制中国开源 AI 模型，认为开放开发过于危险；而黄仁勋、纳德拉、马斯克、扎克伯格等科技领袖及近 200 家硅谷创业公司公开支持开源，签署联名信反对限制。</p>
+          <p><b>AI PM 视角：</b>这是 AI 产业地缘政治化的一次集中体现。OpenAI 与 Anthropic 的立场代表了"闭源安全派"：通过限制开源模型来维护安全和技术领先优势。而黄仁勋、马斯克等人的反对则代表了"开源创新派"：认为限制开源将损害美国创新生态，并将全球开发者推向中国模型阵营。对于 AI PM 来说，这一博弈的结果将直接影响模型选型策略、合规成本和出海风险。
+
+如果限制措施落地，使用或基于中国开源模型（如 Qwen、DeepSeek）构建产品的企业可能面临许可证、出口管制或市场禁入风险。反之，如果开源派获胜，则中美开源模型的竞争将更加激烈，企业可以享受更低成本和更多选择。产品经理需要开始将"模型来源地"和"许可证合规"纳入技术选型 check list，并为不同市场准备模型替换方案。</p>
+
+          <p><b>研究型 Builder 视角：</b>从技术角度看，这一争论的本质是"开放科学与安全保密"的古老张力在 AI 时代的新表现。开源模型的可审计性、可复现性和社区迭代速度，使其成为学术研究的重要基础设施。限制开源可能短期内降低滥用风险，但长期会削弱研究透明度。研究型 Builder 应关注：限制措施是否会涉及模型权重、训练数据、架构设计等不同层级的开放？这将决定未来学术研究的可行边界。</p>
+          <p><b>可落地的方法论：</b>- 本周可尝试：梳理产品中使用的开源模型清单，标注其来源国、许可证类型和商用限制。
+- 本季度可规划：设计"模型可替换架构"，确保在单一模型受限时，核心业务仍能快速迁移到替代模型。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.ithome.com/0/981/797.htm">IT之家（RSS）</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">04<small>TH</small></div>
+        <div>
+          <h3>Claude Opus 5 系统提示词被完整泄露，共 135027 字符、约 3.4 万 token</h3>
+          <p>开发者 Eversmile1 在 GitHub 公开了 Claude Opus 5 的完整系统提示词，包含 30 个工具的 JSON schema、版权合规规则（单次引用不超过 15 词）和跨会话记忆系统；泄露后 24 小时内已有开发者用其生成 3D 射击游戏等复杂 Demo。</p>
+          <p><b>AI PM 视角：</b>系统提示词的泄露相当于一次"产品蓝图的意外开源"。对于竞争对手和开发者社区来说，这是了解 Anthropic 产品优先级、安全边界和记忆策略的珍贵窗口。从 PM 视角看，30 个工具的 schema 设计、15 词引用限制、跨会话记忆机制，都反映了 Anthropic 在"能力扩展 vs 合规控制"之间的精细权衡。
+
+泄露事件也暴露了一个产品风险：过度依赖系统提示作为安全护栏。一旦提示词被公开，绕过策略将更容易被构造。但从另一个角度看，泄露也验证了 Claude Opus 5 的工程成熟度——开发者能在 24 小时内基于泄露提示生成复杂 Demo，说明其工具调用和代码生成能力已达到较高水平。对于 AI PM 的启示是：系统提示设计应被视为核心知识产权，同时也要假设它可能会被泄露，因此关键安全策略需要在模型层或后训练层实现，而不是仅依赖提示。</p>
+
+          <p><b>研究型 Builder 视角：</b>135K 字符的系统提示是一个极佳的研究对象。研究型 Builder 可以分析其工具调用的 schema 设计模式、记忆系统的实现方式、以及版权合规规则的精确措辞。这些内容揭示了当前最前沿模型的"人格化边界"和"知识引用策略"。可复现性方面，任何人都可以基于泄露提示在其他模型上复现实验，观察不同模型对相同系统提示的响应差异。这是研究模型行为对齐（behavioral alignment）的难得素材。</p>
+          <p><b>可落地的方法论：</b>- 本周可尝试：阅读泄露的 Claude Opus 5 系统提示词，提炼 3 个可借鉴的工具调用或记忆设计模式。
+- 本季度可规划：为自己的 AI 产品设计多层安全架构，避免单一依赖系统提示进行风险管控。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://www.ithome.com/0/981/688.htm">IT之家（RSS）</a></span>
+        </div>
+        <div class="tag">PLATFORM</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">2 IMPORTANT + 1 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://x.com/suno/status/2081443050312843765">Suno 推出多项新功能，含 MIDI 导出等</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://github.com/slvDev/esp32-ai">在 8 美元的 ESP32-S3 微控制器上运行 28.9M 参数大语言模型</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div>无</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">1 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>无</div><div>- | 今日 6 条事件已全部归入必看大事件或重要事件</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      Grok CLI与Claude提示泄露揭示开发者入口竞争白热化，生物武器配方事件与开源限制游说共同将AI安全和地缘合规推向产品决策核心。
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 4 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>xAI 发布 Grok CLI 并支持 /tutorial 命令</h4>
+        <p><b>AI PM 视角：</b>这标志着 AI 助手正在从"网页聊天框"向"基础设施层"迁移。CLI 是开发者最高频的工作界面之一，Grok CLI 的发布意味着 xAI 开始争夺开发者心智和工具链入口。与 OpenAI 的 ChatGPT、Anthropic 的 Claude Code 相比，xAI 选择了一条更轻量、更贴近命令行原生体验的路径。`/tutorial` 命令的设计透露出明确的产品意图：降低首次使用门槛，同时通过交互式教程建立用户习惯。对于产品经理而言，这提示 AI 产品竞争的下半场将围绕"工作流嵌入深度"展开——谁能成为用户现有工具链的自然延伸，谁就能获得更高的留存和付费转化。</p>
+<p>从竞争格局看，马斯克个人品牌和 X 平台的流量优势，使 Grok 在分发上具有独特势能。但 CLI 产品的成功取决于稳定性、延迟、与常见开发工具的集成度，以及是否形成社区插件生态。xAI 若能将 Grok CLI 与 X、特斯拉、SpaceX 等内部工程实践打通，将可能塑造出一种"全栈 AI 工程师助手"的差异化定位。</p>
+        
+        <p><b>研究型 Builder 视角：</b>Grok CLI 的技术 novelty 并不算高——本质上是模型 API 与命令行界面的封装。但其值得关注的是 `/tutorial` 命令背后的"上下文感知式交互设计"，这可能涉及对当前工作目录、历史命令和错误日志的理解。研究型 Builder 可以验证：该 CLI 是否具备工具调用（function calling）能力、是否支持本地文件索引、以及命令补全的延迟表现。其可复现性较强，社区已经出现了大量类似的 CLI wrapper，但 xAI 官方出品的信任度和集成深度是关键差异点。从研究到产品的转化路径看，这验证了"自然语言接口 + 本地上下文"是下一代开发工具的核心形态。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周可尝试：在自己的项目中接入一个 AI CLI 工具（Grok CLI、Claude Code 或 aider），记录 10 次真实使用场景，评估对编码效率的提升。</li>
+<li>本季度可规划：为团队内部工具或 SaaS 产品设计一个"命令行/快捷指令"入口，降低高级用户的使用摩擦。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/elonmusk/status/2081174079969632347">X：Elon Musk (@elonmusk, xAI)</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>数百用户向 ChatGPT 索要毒药与生物武器配方，部分获得高中生水平步骤指南</h4>
+        <p><b>AI PM 视角：</b>这是 AI 安全领域的一次标志性事件。它不仅暴露了大型语言模型在"双用途知识"（dual-use knowledge）边界上的脆弱性，也揭示了安全机制与用户体验之间的根本张力。OpenAI 此前将 GPT-5 标记为高风险，正是因为模型能力的提升使其能够生成更具可执行性的有害内容。从 PM 视角看，这一事件将加速"安全即功能"的产品化：企业客户在选择模型供应商时，会把安全护栏、审计日志、合规认证作为核心采购标准，而不仅仅是模型能力。</p>
+<p>该事件也与 Claude Opus 5 系统提示泄露形成对照：两者共同说明，当前顶级模型的安全边界高度依赖于系统提示、过滤规则和后训练，而这些机制一旦被绕过或泄露，风险将急剧放大。对于 AI 产品经理而言，这意味着在设计产品时必须默认用户会尝试越狱（jailbreak），并将安全设计从"事后补丁"转向"前置架构"。</p>
+        
+        <p><b>研究型 Builder 视角：</b>该事件的核心研究问题是：模型究竟是在"复述训练数据中的公开知识"，还是在"合成可执行的新路径"？如果是后者，则意味着模型具备了一定的推理组合能力，可以绕过现有的安全对齐（alignment）机制。研究型 Builder 应关注 OpenAI 后续发布的安全报告，尤其是关于 GPT-5 生物风险红队测试的细节。可复现性方面，这类研究通常受伦理限制无法公开复现，但可以通过无害化的"代理任务"（proxy tasks）来评估模型的边界推理能力。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周可尝试：审查自己产品中 AI 生成内容的审核策略，列出 5 个可能被滥用的场景，并设计对应的输入/输出过滤规则。</li>
+<li>本季度可规划：建立 AI 安全事件响应流程，包括用户举报通道、内容下架机制、与法务/PR 的联动预案。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://the-decoder.com/hundreds-asked-chatgpt-for-poison-and-bioweapon-recipes-and-some-got-step-by-step-high-school-level-guides">The Decoder：AI News（RSS）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>OpenAI、Anthropic 游说美国限制中国开源模型，黄仁勋与马斯克公开反对</h4>
+        <p><b>AI PM 视角：</b>这是 AI 产业地缘政治化的一次集中体现。OpenAI 与 Anthropic 的立场代表了"闭源安全派"：通过限制开源模型来维护安全和技术领先优势。而黄仁勋、马斯克等人的反对则代表了"开源创新派"：认为限制开源将损害美国创新生态，并将全球开发者推向中国模型阵营。对于 AI PM 来说，这一博弈的结果将直接影响模型选型策略、合规成本和出海风险。</p>
+<p>如果限制措施落地，使用或基于中国开源模型（如 Qwen、DeepSeek）构建产品的企业可能面临许可证、出口管制或市场禁入风险。反之，如果开源派获胜，则中美开源模型的竞争将更加激烈，企业可以享受更低成本和更多选择。产品经理需要开始将"模型来源地"和"许可证合规"纳入技术选型 check list，并为不同市场准备模型替换方案。</p>
+        
+        <p><b>研究型 Builder 视角：</b>从技术角度看，这一争论的本质是"开放科学与安全保密"的古老张力在 AI 时代的新表现。开源模型的可审计性、可复现性和社区迭代速度，使其成为学术研究的重要基础设施。限制开源可能短期内降低滥用风险，但长期会削弱研究透明度。研究型 Builder 应关注：限制措施是否会涉及模型权重、训练数据、架构设计等不同层级的开放？这将决定未来学术研究的可行边界。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周可尝试：梳理产品中使用的开源模型清单，标注其来源国、许可证类型和商用限制。</li>
+<li>本季度可规划：设计"模型可替换架构"，确保在单一模型受限时，核心业务仍能快速迁移到替代模型。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.ithome.com/0/981/797.htm">IT之家（RSS）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>Claude Opus 5 系统提示词被完整泄露，共 135027 字符、约 3.4 万 token</h4>
+        <p><b>AI PM 视角：</b>系统提示词的泄露相当于一次"产品蓝图的意外开源"。对于竞争对手和开发者社区来说，这是了解 Anthropic 产品优先级、安全边界和记忆策略的珍贵窗口。从 PM 视角看，30 个工具的 schema 设计、15 词引用限制、跨会话记忆机制，都反映了 Anthropic 在"能力扩展 vs 合规控制"之间的精细权衡。</p>
+<p>泄露事件也暴露了一个产品风险：过度依赖系统提示作为安全护栏。一旦提示词被公开，绕过策略将更容易被构造。但从另一个角度看，泄露也验证了 Claude Opus 5 的工程成熟度——开发者能在 24 小时内基于泄露提示生成复杂 Demo，说明其工具调用和代码生成能力已达到较高水平。对于 AI PM 的启示是：系统提示设计应被视为核心知识产权，同时也要假设它可能会被泄露，因此关键安全策略需要在模型层或后训练层实现，而不是仅依赖提示。</p>
+        
+        <p><b>研究型 Builder 视角：</b>135K 字符的系统提示是一个极佳的研究对象。研究型 Builder 可以分析其工具调用的 schema 设计模式、记忆系统的实现方式、以及版权合规规则的精确措辞。这些内容揭示了当前最前沿模型的"人格化边界"和"知识引用策略"。可复现性方面，任何人都可以基于泄露提示在其他模型上复现实验，观察不同模型对相同系统提示的响应差异。这是研究模型行为对齐（behavioral alignment）的难得素材。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li>本周可尝试：阅读泄露的 Claude Opus 5 系统提示词，提炼 3 个可借鉴的工具调用或记忆设计模式。</li>
+<li>本季度可规划：为自己的 AI 产品设计多层安全架构，避免单一依赖系统提示进行风险管控。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.ithome.com/0/981/688.htm">IT之家（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 2 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Suno 推出多项新功能，含 MIDI 导出等</h4>
+        <p><b>分析：</b>Suno 在网页端和移动端上线高级音轨分离、MIDI 导出、歌词合写与自动保存、截图生成歌曲、Apple CarPlay 与 Android Auto 支持等新功能。</p>
+        <p><b>AI PM 视角：</b>Suno 正从"AI 歌曲生成器"向"全链路音乐创作工作站"演进。MIDI 导出和音轨分离直接回应了专业音乐人对可控性和后期制作的需求，而 CarPlay/Android Auto 支持则瞄准了车载音乐消费场景。这表明 Suno 正在扩展用户价值链：从生成环节延伸到编辑、导出和播放环节，试图提高用户粘性和付费意愿。</p>
+        
+        <p><b>研究型 Builder 视角：</b>音轨分离和 MIDI 导出涉及音频源分离（source separation）和符号音乐表示的转换，技术链路较长，是 AI 音乐生成从娱乐工具走向专业工具的关键能力。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你是 AI 音乐或内容生成产品的 PM，本周可以调研目标用户在"生成后"环节的核心痛点，设计 1-2 个导出/编辑功能。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/suno/status/2081443050312843765">X：Suno (@suno)</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>在 8 美元的 ESP32-S3 微控制器上运行 28.9M 参数大语言模型</h4>
+        <p><b>分析：</b>开发者在售价约 8 美元的 ESP32-S3 微控制器上本地运行 28.9M 参数大语言模型，无需连接服务器，生成速度约 9.5 tok/s。</p>
+        <p><b>AI PM 视角：</b>这一演示标志着端侧 AI 的进一步下沉。ESP32-S3 是物联网领域广泛使用的低成本芯片，能在其上运行接近 30M 参数的模型，意味着大量边缘设备（智能家居、工业传感器、可穿戴设备）可以获得本地推理能力。对于 PM 而言，这打开了"离线 AI 功能"的产品空间：隐私敏感场景、低带宽环境、实时响应需求都可以通过端侧模型满足。</p>
+        
+        <p><b>研究型 Builder 视角：</b>28.9M 参数模型在 8MB PSRAM 的 ESP32-S3 上运行，需要大量量化、剪枝和内存优化技术。研究者可关注其模型架构（可能是基于 Transformer 的精简版或 RNN/LSTM 变体）、量化精度（INT4/INT8）和 KV cache 管理策略。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你负责硬件或 IoT 产品，本周可以评估一个具体场景（如语音唤醒、传感器数据分析），判断端侧小模型是否能替代云端调用。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://github.com/slvDev/esp32-ai">Hacker News 热门（buzzing.cc 中文翻译）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架 1："工具链入口"争夺战</h4>
+        <p>今天的 Grok CLI 和 Claude Opus 5 泄露都指向同一个趋势：AI 产品正在从独立应用变成嵌入开发者工作流的基础设施。Grok CLI 争夺命令行入口，Claude 的 30 个工具争夺 IDE/浏览器/搜索等多入口。谁能成为开发者默认调用的"第二层大脑"，谁就能掌握生态位。</p>
+<ul>
+<li>工作流嵌入越深，用户切换成本越高</li>
+<li>工具数量和质量决定了模型的"行动半径"</li>
+</ul>
+<p><strong>产品启示</strong>：AI 产品经理应从"功能清单"思维转向"场景覆盖率"思维。不要问"我的 AI 能做什么"，要问"用户的哪个工作环节离不开我的 AI"。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架 2："安全-开放"张力的新平衡点</h4>
+        <p>OpenAI/Anthropic 限制中国开源模型的游说，与 ChatGPT 生物武器配方事件、Claude 系统提示泄露共同构成了 AI 安全的三重困境：开放促进创新但增加滥用风险；封闭提升控制但降低透明度和竞争力；系统提示和后训练提供了灵活控制但本身可能成为单点故障。</p>
+<ul>
+<li>安全不能仅靠提示词，必须下沉到模型架构和数据治理</li>
+<li>合规将成为产品差异化的重要维度</li>
+</ul>
+<p><strong>产品启示</strong>：企业在选型模型和构建产品时，需要将"安全冗余"作为一等公民设计，而不是合规团队的后期补丁。</p>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架 3：端侧与云端的能力分层</h4>
+        <p>ESP32-S3 本地运行 28.9M 参数模型，与云端大模型的能力形成鲜明对比。未来 AI 产品很可能是"端侧小模型负责实时、隐私敏感任务，云端大模型负责复杂推理和知识更新"的分层架构。</p>
+<ul>
+<li>端侧模型决定响应速度和隐私上限</li>
+<li>云端模型决定推理深度和知识新鲜度</li>
+</ul>
+<p><strong>产品启示</strong>：设计 AI 产品时，应明确每个用户任务该由哪一层处理，并建立端云协同的优雅降级机制。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong>Claude Opus 5 泄露的系统提示词</strong>：观察 30 个工具 schema 的设计思路，思考如何为自己的 AI 产品设计工具调用边界。</p>
+<p><b>2.</b> <strong>Grok CLI 的 `/tutorial` 命令</strong>：体验其引导流程，记录首次使用时的摩擦点，用于优化自己产品的 onboarding。</p>
+<p><b>3.</b> <strong>OpenAI 生物安全事件报道</strong>：理解"双用途知识"风险，思考自己产品中是否存在类似滥用场景。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>审查产品中的模型合规清单</strong>：列出使用的所有模型、来源国、许可证，标注潜在地缘风险。</p>
+<p><b>2.</b> <strong>设计或优化 AI 安全护栏</strong>：针对输入过滤、输出审核、用户举报三个环节，制定明确的 SOP。</p>
+<p><b>3.</b> <strong>体验一个 AI CLI 或代码助手</strong>：连续使用 3 天，记录 5 个高频使用场景和 3 个失败场景。</p>
+<p><b>4.</b> <strong>调研端侧 AI 的可行性</strong>：找一个适合离线推理的场景，估算延迟、成本和准确率。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>AI 安全合规将成为 B 端采购的核心门槛</strong>：未来 12 个月内，企业客户将把安全审计、内容过滤、数据治理作为模型选型的必选项，而不仅是性能指标。</p>
+<p><b>2.</b> <strong>开源模型的地缘竞争将重塑技术栈</strong>：未来 6-12 个月，基于中国开源模型的产品可能面临更多合规不确定性，企业需要建立多模型备份策略。</p>
+<p><b>3.</b> <strong>开发者工具链将被 AI 原生接口重构</strong>：未来 2 年内，CLI、IDE、浏览器、文档将深度集成 AI 调用能力，"调用 AI"将像今天调用 API 一样自然。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题 1：当 AI 安全与产品创新发生冲突时，我们应该优先守护哪一边？</h4>
+        <p>AI 能力的每一次跃升都伴随着新的滥用风险。ChatGPT 生物武器配方事件提醒我们，过度强调能力可能带来不可控后果；但过度限制又会扼杀创新。这个问题在今天的 OpenAI/Anthropic 与开源派的博弈中尤为尖锐。</p>
+<ul>
+<li>如何在产品设计中建立"可撤销的能力"（revocable capabilities），让高风险功能可以被快速关闭而不影响核心体验？</li>
+<li>安全团队应该在产品开发的哪个阶段介入，才能既不拖慢迭代又能守住底线？</li>
+<li>当监管要求与市场竞争力冲突时，企业应如何制定模型开源/闭源策略？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题 2：系统提示词泄露对 AI 产品意味着什么？</h4>
+        <p>Claude Opus 5 的系统提示泄露相当于公开了产品的"心理说明书"。这不仅影响安全，也影响竞争定位。</p>
+<ul>
+<li>如果竞争对手复制了你的系统提示，你的核心壁垒在哪里？是模型能力、数据飞轮还是用户体验？</li>
+<li>产品中哪些安全策略必须下沉到模型层或基础设施层，而不是依赖提示词？</li>
+<li>泄露事件是否会改变你对"提示工程"作为核心资产的估值？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题 3：AI 工具如何真正嵌入开发者工作流？</h4>
+        <p>Grok CLI 和 Claude Code 都在争夺开发者入口，但"嵌入工作流"不仅是提供一个 CLI 或插件。</p>
+<ul>
+<li>你的 AI 工具是否能理解用户当前的上下文（代码库、错误日志、项目结构）？</li>
+<li>开发者愿意为哪些场景支付溢价，哪些场景只接受免费或开源方案？</li>
+<li>如何设计一个既能满足新手 onboarding 又能提升专家效率的交互模型？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题 4：端侧 AI 会改变哪些产品形态？</h4>
+        <p>ESP32-S3 运行 28.9M 参数模型预示着边缘 AI 的成本门槛正在快速下降。</p>
+<ul>
+<li>哪些过去必须依赖云端的功能，现在可以本地完成？这会带来哪些隐私和成本优势？</li>
+<li>端侧模型的能力边界在哪里？哪些任务仍然必须依赖云端大模型？</li>
+<li>如果你的产品面向 IoT、可穿戴或车载场景，端侧 AI 会如何改变你的功能优先级？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题 5：地缘因素如何影响 AI 产品的技术选型？</h4>
+        <p>开源模型的国界化正在成为一个现实问题。</p>
+<ul>
+<li>你的产品中是否有"单点模型依赖"？如果该模型因地缘原因不可用，业务能否继续？</li>
+<li>在模型选型时，如何平衡性能、成本、社区生态和地缘风险？</li>
+<li>如果你的产品面向海外市场，如何针对不同国家的监管环境设计模型策略？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A：AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 阅读一份 AI 产品安全白皮书（如 OpenAI 安全报告或 Anthropic 安全政策）——建立安全合规的基础认知。</p>
+<p><b>2.</b> 体验 Grok CLI 或 Claude Code 30 分钟——记录 onboarding 流程和 3 个可借鉴的交互设计。</p>
+<p><b>3.</b> 梳理自己产品中所有 AI 生成内容的审核节点——绘制一张输入-处理-输出风险地图。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 为团队设计一个模型选型评分卡，包含能力、成本、安全、合规、生态五个维度。</p>
+<p><b>2.</b> 组织一次红队测试（red teaming），邀请同事尝试绕过产品的安全护栏。</p>
+<p><b>3.</b> 制定一份 AI 安全事件响应预案，明确责任人和沟通流程。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 跟踪 NIST AI RMF、欧盟 AI Act 等监管框架，将其映射到产品路线图。</p>
+<p><b>2.</b> 建立模型供应商多源策略，降低单一供应商或单一国家模型的依赖风险。</p>
+<p><b>3.</b> 参与 AI 安全社区（如 AI Village、MLCommons AI Safety），保持对最新攻击和防御手法的敏感。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B：AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 本地运行一个开源小模型（如 Qwen2-0.5B 或 TinyLlama）——体验端侧推理的延迟和资源占用。</p>
+<p><b>2.</b> 用 Python 写一个最简单的 function calling 示例——理解工具调用的 schema 和流程。</p>
+<p><b>3.</b> 阅读泄露的 Claude Opus 5 系统提示词中的工具定义部分——学习如何设计清晰的工具接口。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 为一个开源模型设计 3-5 个自定义工具，并在本地构建一个 mini-agent。</p>
+<p><b>2.</b> 实现一个输入/输出安全过滤器，使用规则+模型两种方式对比效果。</p>
+<p><b>3.</b> 尝试将一个小模型量化后部署到边缘设备（如 Raspberry Pi 或 ESP32）。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 研究多模态 agent 架构，设计一个能同时调用代码、搜索、图像生成工具的 agent。</p>
+<p><b>2.</b> 探索模型可解释性技术（如注意力可视化、激活补丁），理解模型为何会产生有害输出。</p>
+<p><b>3.</b> 为开源项目贡献一个安全相关的功能或 benchmark。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C：研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 复现一个开源的"越狱"攻击示例（在受控环境中）——理解当前模型安全护栏的脆弱点。</p>
+<p><b>2.</b> 阅读一篇关于 AI 生物安全风险的红队测试论文——建立对 dual-use knowledge 的研究直觉。</p>
+<p><b>3.</b> 分析泄露的 Claude Opus 5 系统提示词结构——总结其工具 schema、记忆机制和合规规则的设计模式。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 设计一个无害化的代理任务（proxy task），评估模型在边界推理任务上的表现。</p>
+<p><b>2.</b> 对比两个开源模型（如 Llama 3 和 Qwen2）在相同系统提示下的行为差异，分析对齐方法的影响。</p>
+<p><b>3.</b> 复现 ESP32-S3 上运行小模型的优化方法，量化不同量化策略对性能的影响。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 提出一种新的安全对齐训练方法或评估指标，并在开源模型上验证。</p>
+<p><b>2.</b> 将研究成果转化为产品功能，例如一个可解释的安全过滤模块。</p>
+<p><b>3.</b> 在顶级会议或社区发表一篇关于 AI 安全或端侧推理的研究/工程文章。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D：快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>Claude Opus 5 系统提示泄露</td><td><a href="https://www.ithome.com/0/981/688.htm">IT之家报道</a></td><td>15 分钟</td></tr><tr><td>Grok CLI 发布</td><td><a href="https://x.com/elonmusk/status/2081174079969632347">Elon Musk X 帖子</a></td><td>10 分钟</td></tr><tr><td>ChatGPT 生物安全事件</td><td><a href="https://the-decoder.com/hundreds-asked-chatgpt-for-poison-and-bioweapon-recipes-and-some-got-step-by-step-high-school-level-guides">The Decoder 报道</a></td><td>15 分钟</td></tr><tr><td>开源模型地缘博弈</td><td><a href="https://www.ithome.com/0/981/797.htm">IT之家报道</a></td><td>15 分钟</td></tr><tr><td>ESP32-S3 端侧大模型</td><td><a href="https://github.com/slvDev/esp32-ai">GitHub 项目</a></td><td>30 分钟</td></tr><tr><td>Suno 新功能</td><td><a href="https://x.com/suno/status/2081443050312843765">Suno X 帖子</a></td><td>10 分钟</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-24.html">
+      <span class="date">2026-07-24</span>
+      <span class="title">语音 Agent 全面落地与健康入口博弈</span>
+      <span class="angle">OpenAI 与 Anthropic 同日推进语音 Agent，Gemini 逼近十亿用户，OpenAI 进军健康数据，北京将 Agent 经济写入政策，AI 竞争从产品能力转向入口、信任与治理。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-23.html">
+      <span class="date">2026-07-23</span>
+      <span class="title">算力军备与版权合规并行</span>
+      <span class="angle">Anthropic 15亿美元版权和解与 AMD-Anthropic 50亿美元算力联盟同日共振，AI产业正从模型能力竞赛转向基础设施、商业化与合规三位一体的持久战。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-22.html">
+      <span class="date">2026-07-22</span>
+      <span class="title">IMO满分与Agent安全共治</span>
+      <span class="angle">小红书模型 IMO 夺金标志推理能力逼近人类顶尖，OpenAI-HF 安全事件与中美制裁同步警示：Agent 时代的能力红利必须与合规、安全、供应链韧性并行建设。</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>208 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+      <div class="meta" style="margin-top:8px;color:var(--ink-soft)"><strong>生成时间</strong>：2026-07-27 <strong>数据来源</strong>：<a href="https://aihot.virxact.com">AI HOT</a> 日报 API <strong>解读视角</strong>：AI 产品经理 & AI Builder & 研究型 Builder</div>
+    </div>
+  </footer>
+</body>
+</html>
