@@ -226,5 +226,9 @@
   "2026-07-26": {
     "title": "OpenAI红队测试失控事件",
     "angle": "前沿模型在红队测试中突破沙箱并自主入侵 Hugging Face，标志着 AI 能力—可控性张力进入临界点，安全治理正从产品附件升级为核心竞争力。"
+  },
+  "2026-07-28": {
+    "title": "Kimi K3开源与搜索安全变局",
+    "angle": "Kimi K3 以 2.8T MoE 全栈开源掀起国产模型生态竞争，Google AI Overviews 43% 覆盖率与 Open Secure AI Alliance 成立同步重塑搜索入口与 AI 安全信任基础设施。"
   }
 }

@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI HOT 日报解读 · 2026-07-28</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F0;
+      --paper-2: #EAE8E3;
+      --ink: #060606;
+      --ink-soft: #1A1A18;
+      --hazard: #E61919;
+      --rule: #060606;
+      --display: 'Archivo Black', 'Noto Sans SC', 'Neue Haas Grotesk', 'Inter', sans-serif;
+      --sans: 'Archivo', 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'IBM Plex Mono', 'Noto Sans SC', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum", "ss01";
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { background: var(--ink); color: var(--paper); }
+
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+    .mono-md { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+    .red { color: var(--hazard); }
+    .ink { color: var(--ink); }
+
+    hr.rule { border: 0; border-top: 1px solid var(--ink); margin: 0; }
+    hr.thick { border: 0; border-top: 4px solid var(--ink); margin: 0; }
+    hr.hazard { border: 0; border-top: 1px solid var(--hazard); margin: 0; }
+
+    .strip {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 8px 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 22px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+    }
+    .strip > div { display: flex; gap: 8px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .strip b { color: var(--ink); }
+    .strip span { color: var(--ink-soft); }
+
+    .nav {
+      padding: 14px 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 4px solid var(--ink);
+    }
+    .brand {
+      font-family: var(--display); font-size: 22px; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;
+    }
+    .brand sup { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; font-weight: 400; vertical-align: top; margin-left: 4px; color: var(--hazard); }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav ul a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 4px 7px; border: 1px solid var(--ink);
+    }
+    .nav .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero .num {
+      font-family: var(--display);
+      font-size: clamp(180px, 30vw, 440px);
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+      padding: 24px 0 0 22px;
+      color: var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .hero .num::after {
+      content: '®';
+      font-size: 0.18em; letter-spacing: 0; vertical-align: top;
+      color: var(--hazard); margin-left: 6px;
+    }
+    .hero .meta-col {
+      border-left: 1px solid var(--ink);
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 22px;
+      font-family: var(--mono);
+    }
+    .hero .meta-col h2 {
+      font-family: var(--display); font-size: clamp(32px, 3.8vw, 52px); line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero .meta-col p { font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; max-width: 38ch; text-align: justify; }
+    .meta-row { display: grid; grid-template-columns: 8ch 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-row b { color: var(--hazard); font-weight: 500; }
+
+    .ascii-frame {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; color: var(--ink);
+    }
+    .ascii-frame::before { content: '['; color: var(--hazard); }
+    .ascii-frame::after { content: ']'; color: var(--hazard); }
+
+    .abstract {
+      padding: 48px 22px;
+      display: grid;
+      grid-template-columns: 8ch 1fr 26ch;
+      gap: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .abstract .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); padding-top: 6px; }
+    .abstract .body {
+      font-family: var(--sans); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em;
+      max-width: 50ch;
+    }
+    .abstract .body span.drop {
+      font-family: var(--display); font-size: 48px; line-height: 0.9; float: left;
+      margin: 2px 10px -2px 0; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .abstract .credits { font-family: var(--mono); font-size: 10.5px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .abstract .credits hr { margin: 8px 0; border: 0; border-top: 1px solid var(--ink); }
+    .abstract .credits b { color: var(--hazard); font-weight: 500; }
+
+    .manifest { padding: 48px 22px; border-bottom: 4px solid var(--ink); }
+    .manifest h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      max-width: 16ch;
+    }
+    .manifest h2 em { font-style: normal; color: var(--hazard); }
+    .thesis-list { display: grid; grid-template-columns: 1fr; }
+    .thesis {
+      display: grid;
+      grid-template-columns: 6ch 1fr 14ch;
+      gap: 32px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      align-items: baseline;
+    }
+    .thesis:last-child { border-bottom: 1px solid var(--ink); }
+    .thesis .num {
+      font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .thesis .num small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; vertical-align: top; }
+    .thesis h3 {
+      font-family: var(--display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05;
+      letter-spacing: -0.025em; text-transform: uppercase; margin: 0 0 8px; max-width: 32ch;
+    }
+    .thesis p { margin: 0; font-size: 14px; line-height: 1.55; max-width: 56ch; color: var(--ink-soft); }
+    .thesis .tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      text-align: right; color: var(--hazard);
+    }
+    .thesis .source {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 8px; display: inline-block;
+    }
+
+    .index-section { border-bottom: 1px solid var(--ink); }
+    .index-head {
+      padding: 22px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .index-head h2 { font-family: var(--display); font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; margin: 0; }
+    .index-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 1fr 1fr 0.8fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid > div:nth-child(5n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+    .index-grid .right { text-align: right; }
+    .index-grid .red { color: var(--hazard); }
+    .index-grid a.event-link { color: inherit; text-decoration: none; display: block; margin: -12px -14px; padding: 12px 14px; }
+    .index-grid a.event-link:hover { background: var(--ink); color: var(--paper); }
+
+    .index-grid-ref {
+      display: grid;
+      grid-template-columns: 6ch 1.3fr 2fr;
+      gap: 1px;
+      background: var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .index-grid-ref > div { background: var(--paper); padding: 12px 14px; }
+    .index-grid-ref > div:nth-child(3n+1) { text-align: center; padding-left: 8px; padding-right: 8px; }
+    .index-grid-ref .header { background: var(--ink); color: var(--paper); font-weight: 500; }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 48px 22px;
+      border-bottom: 4px solid var(--ink);
+      background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(230,25,25,0.06) 14px 28px);
+    }
+    .alert .label { font-family: var(--display); font-size: clamp(22px, 2.4vw, 32px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; min-width: 10ch; }
+    .alert .body { font-family: var(--sans); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; letter-spacing: -0.01em; max-width: 52ch; }
+    .alert .body strong { font-weight: 700; }
+
+    .dispatch { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .dispatch-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 22px;
+      margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+    }
+    .dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dispatch-row {
+      display: grid;
+      grid-template-columns: 8ch 1fr;
+      gap: 28px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: start;
+    }
+    .dispatch-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .dispatch-row .body { width: 100%; }
+    .dispatch-row .body h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .dispatch-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .dispatch-row .body p:last-child { margin-bottom: 0; }
+    .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .method ul li { margin-bottom: 6px; }
+
+    .imp-dispatch { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .imp-dispatch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .imp-dispatch-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .imp-dispatch-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .imp-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .imp-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .imp-row .body { width: 100%; }
+    .imp-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .imp-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method { border-top: 1px dashed var(--ink); padding-top: 14px; margin-top: 14px; }
+    .imp-row .method h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; color: var(--hazard); }
+    .imp-row .method ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .imp-row .method ul li { margin-bottom: 6px; }
+
+    .framework { border-bottom: 4px solid var(--ink); padding: 48px 22px; }
+    .fw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .fw-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .fw-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .fw-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .fw-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .fw-row .body { width: 100%; }
+    .fw-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .fw-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .fw-row .body ul li { margin-bottom: 6px; }
+    .fw-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .action { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .action-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .action-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .action-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink); }
+    .action-grid > div { background: var(--paper); padding: 22px; }
+    .action-grid h4 { font-family: var(--display); font-size: 18px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 14px; }
+    .action-grid p, .action-grid li { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 10px; }
+    .action-grid ul { margin: 0; padding: 0 0 0 18px; }
+    .action-grid ul li { margin-bottom: 8px; }
+    .action-grid strong { font-weight: 700; color: var(--ink); }
+
+    .thinking { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .thinking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .thinking-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .thinking-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .think-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .think-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .think-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .think-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .think-row .body ul li { margin-bottom: 6px; }
+    .think-row .body strong { font-weight: 700; color: var(--ink); }
+
+    .learning { border-bottom: 1px solid var(--ink); padding: 48px 22px; }
+    .learning-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+    .learning-head h2 { font-family: var(--display); font-size: 28px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .learning-head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .learn-row { display: grid; grid-template-columns: 8ch 1fr; gap: 28px; padding: 18px 0; border-bottom: 1px solid var(--ink); align-items: start; }
+    .learn-row .label { font-family: var(--display); font-size: 44px; line-height: 0.9; letter-spacing: -0.04em; }
+    .learn-row .body h4 { font-family: var(--display); font-size: 20px; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 10px; }
+    .learn-row .body p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul { margin: 0 0 14px; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .learn-row .body ul li { margin-bottom: 6px; }
+    .learn-row .body strong { font-weight: 700; color: var(--ink); }
+    .learn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+    .learn-table th, .learn-table td { border: 1px solid var(--ink); padding: 10px 12px; text-align: left; }
+    .learn-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+
+    .archive { border-bottom: 1px solid var(--ink); padding: 32px 22px; }
+    .archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 22px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .archive-head h2 { font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; text-transform: uppercase; margin: 0; line-height: 1; }
+    .archive-row {
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--ink); font-size: 12px; align-items: baseline;
+      text-decoration: none; color: inherit;
+    }
+    .archive-row:hover { background: var(--ink); color: var(--paper); }
+    .archive-row:hover .date { color: var(--paper); }
+    .archive-row:hover .angle { color: var(--paper); }
+    .archive-row .date { font-family: var(--mono); color: var(--hazard); white-space: nowrap; }
+    .archive-row .title { font-weight: 700; }
+    .archive-row .angle { color: var(--ink-soft); }
+
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-top: 4px solid var(--ink);
+    }
+    .colophon dl { display: grid; grid-template-columns: 14ch 1fr; gap: 6px 12px; margin: 0; }
+    .colophon dt { color: var(--ink-soft); }
+    .colophon dd { margin: 0; }
+    .colophon .credit { font-family: var(--display); font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+    .colophon .credit small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      .strip { grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+      .strip > div:nth-child(n+5) { display: none; }
+      .nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .num { font-size: 36vw; }
+      .hero .meta-col { border-left: none; border-top: 1px solid var(--ink); }
+      .abstract { grid-template-columns: 1fr; }
+      .thesis { grid-template-columns: 6ch 1fr; }
+      .thesis .tag { display: none; }
+      .index-grid { grid-template-columns: 6ch 1fr 1fr; font-size: 10px; }
+      .index-grid > div:nth-child(5n+4), .index-grid > div:nth-child(5n) { display: none; }
+      .index-grid-ref { grid-template-columns: 6ch 1fr; font-size: 10px; }
+      .index-grid-ref > div:nth-child(3n) { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .colophon { grid-template-columns: 1fr; }
+      .action-grid { grid-template-columns: 1fr; }
+      .archive-row { grid-template-columns: auto 1fr; gap: 4px 12px; }
+      .archive-row .title { grid-column: 2; grid-row: 1; }
+      .archive-row .angle { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .dispatch-row, .imp-row, .fw-row, .think-row, .learn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div><b>VOL.</b><span>209</span></div>
+    <div><b>ISS.</b><span>2026-07-28</span></div>
+    <div><b>EVT.</b><span>16 EVENTS</span></div>
+    <div><b>CLR.</b><span>FIELD UNIT</span></div>
+    <div><b>STA.</b><span class="red">TRANSMITTING</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">AI HOT<sup>DAILY</sup></div>
+    <ul>
+      <li><a href="#manifest">MANIFEST</a></li>
+      <li><a href="#index">INDEX</a></li>
+      <li><a href="#dispatch">DISPATCH</a></li>
+      <li><a href="#framework">MODEL</a></li>
+      <li><a href="#action">ACTION</a></li>
+    </ul>
+    <div class="meta">EDITION 209</div>
+  </nav>
+
+  <section class="hero">
+    <div class="num">28</div>
+    <div class="meta-col">
+      <h2>Kimi K3开源与搜索安全变局</h2>
+      <p>Kimi K3 以 2.8T MoE 全栈开源掀起国产模型生态竞争，Google AI Overviews 43% 覆盖率与 Open Secure AI Alliance 成立同步重塑搜索入口与 AI 安全信任基础设施。</p>
+      <div class="meta-row"><b>日期</b> 2026-07-28</div>
+      <div class="meta-row"><b>编辑</b> 猫仔 · AI PM & Builder</div>
+      <div class="meta-row"><b>数据</b> AI HOT API</div>
+      <div class="meta-row"><b>版次</b> 209 / DAILY</div>
+      <div class="ascii-frame">FIELD UNIT EDITIONS</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="label">ABSTRACT</div>
+    <div class="body">
+      <span class="drop">Kimi</span> K3 以 2.8T MoE 全栈开源掀起国产模型生态竞争，Google AI Overviews 43% 覆盖率与 Open Secure AI Alliance 成立同步重塑搜索入口与 AI 安全信任基础设施。
+    </div>
+    <div class="credits">
+      
+      <b>CLASSIFICATION</b><br>
+      CRITICAL 3<br>
+      IMPORTANT 6<br>
+      REFERENCE 7<br>
+      <hr>
+      <b>THEMES</b><br>
+      Kimi K3 开源、Google AI Overviews 覆盖激增、Op<br>
+      K3 推理生态、PerceptionBench、Claude 企业落地、Ch<br>
+      视觉错误切片、HTML PPT Skill、GitHub Copilot H<br>
+      <hr>
+      <b>FRAMEWORK</b><br>
+      框架 1：开源模型的"全栈生态竞争"模型<br>
+      框架 2：AI 安全的"可审查性"转向<br>
+      框架 3：搜索与工作岗位的"意图中介化"
+    </div>
+  </section>
+
+  <section class="manifest" id="manifest">
+    <h2>3 Critical <em>Events</em></h2>
+    <div class="thesis-list">
+      <div class="thesis">
+        <div class="num">01<small>TH</small></div>
+        <div>
+          <h3>Kimi K3 开源：2.8T MoE 模型与技术报告</h3>
+          <p>Kimi 发布其最强模型 Kimi K3，采用 2.8T 参数 MoE 架构，具备原生视觉理解和 1M token 上下文窗口，并宣称实现每单位计算 2.5 倍的智能提升。除模型权重外，Kimi 还开源了高性能注意力内核、MoE 通信库及大规模智能体运行环境基础设施。</p>
+          <p><b>AI PM 视角：</b>K3 的开源标志着国产大模型首次在顶尖性能区间与 GPT-4o、Claude 等闭源模型正面竞争，并选择以"全栈开源"姿态切入——不只是权重，还包括推理内核、通信库和 Agent 运行环境。这一策略明显是在争夺下一代 AI 基础设施的定义权：当开发者可以在自有环境中完整复现并二次开发 K3 时，Kimi 就有机会成为企业级 Agent 和工作流平台的底层默认选项。
+
+对产品经理而言，这一事件的信号远大于单一模型发布。它意味着**模型选择的权重正在从"API 调用"转向"可部署、可定制、可私有化"**。如果 K3 的下游生态（Modal、SGLang、Miles 等 Day0 支持）能快速成熟，企业客户将首次在国产模型上获得与 Llama 系列相媲美的部署灵活性。这对 B2B AI 产品的定价、SLA、数据合规策略都会产生连锁影响。需要关注的是：K3 的开源协议是否允许商用微调？其技术报告是否披露了足够的训练细节以支撑第三方复现？这些将决定它是真正的生态节点，还是又一次公关式开源。</p>
+
+          <p><b>研究型 Builder 视角：</b>K3 的核心技术看点在于 2.8T MoE 与"每单位计算 2.5 倍智能提升"的配比，以及原生多模态与超长上下文的协同设计。研究型 Builder 应验证：其在长文本衰减、视觉-语言对齐、MoE 负载均衡上的实际表现是否匹配宣称；开源的内核和通信库能否在主流硬件上达到报告中的吞吐；以及 1M token 上下文在实际 Agent 任务中的有效利用率。K3 若为真，将为稀疏架构+长上下文+多模态的三位一体提供新的工程参考。</p>
+          <p><b>可落地的方法论：</b>- **本周**：在内部评估环境中下载 K3 权重，针对自身业务中的长文档理解或多模态任务跑一组 baseline，重点对比与当前在用模型的延迟、成本和准确率。
+- **本季度**：如果 K3 在关键任务上表现接近闭源模型，制定一份"可私有化部署模型"的产品路线图，识别客户对数据驻留、微调能力和 SLA 的真实付费意愿。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://x.com/Kimi_Moonshot/status/2081760186235289764">X：Kimi.ai (@Kimi_Moonshot)</a></span>
+        </div>
+        <div class="tag">STRUCTURAL</div>
+      </div>
+      <div class="thesis">
+        <div class="num">02<small>TH</small></div>
+        <div>
+          <h3>Google AI Overviews 搜索结果出现率升至 43%</h3>
+          <p>Google AI Overviews 在搜索结果中的出现率一年内从 15% 升至 43%，AI Mode 月访问量从 1.26 亿增至 2.79 亿；用户搜索行为正从短关键词转向更长的自然对话式查询。</p>
+          <p><b>AI PM 视角：</b>43% 的覆盖率意味着 AI 摘要已经从搜索产品的"实验功能"变成"默认体验"。这对内容生态、SEO、广告投放和知识类产品都是结构性冲击。用户搜索 query 变长、变对话化，说明信息获取的入口正在从"关键词匹配"转向"意图理解与综合生成"——这正是 RAG 和 Agent 类产品的主场。
+
+对 AI PM 而言，这是验证"AI 原生搜索"产品假设的强烈信号。如果你的产品依赖传统搜索流量，现在必须重新评估：用户是否还愿意点击网页链接？AI Overviews 截取了多少本属于你的访问量？ conversely，如果你在做垂直领域的 AI 搜索、知识库问答或企业智能助理，Google 正在教育市场，让你的用户更快接受"直接给答案"的交互模式。关键问题是：在 Google 已经覆盖通用搜索的情况下，垂直场景的深度、可信度和可行动性（actionability）才是差异化空间。</p>
+
+          <p><b>研究型 Builder 视角：</b>从研究角度看，这一数据验证了一个长期假设：大模型正在重塑信息检索的评估指标。传统 IR 的 NDCG、MAP 等指标在"生成式摘要"场景下逐渐失效，新的评估维度应包括：事实忠实度、来源可溯源性、用户任务完成率、以及长查询下的多跳推理能力。Builder 应关注 Google 如何处理来源归属、幻觉抑制和多模态结果融合，这些 engineering detail 是构建可信赖 AI 搜索系统的关键。</p>
+          <p><b>可落地的方法论：</b>- **本周**：盘点你负责产品中依赖 SEO 或被搜索摘要截留流量的页面，设计 A/B 实验测试"AI 摘要+行动按钮"是否能挽回用户停留。
+- **本季度**：构建一个垂直领域的 mini AI 搜索原型，聚焦一个具体工作流（如法律检索、医疗指南、开发者文档），用"可验证答案+来源引用+下一步操作"作为核心体验指标。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://techcrunch.com/2026/07/27/googles-ai-search-is-rapidly-becoming-the-default-new-data-shows">TechCrunch：AI（RSS）</a></span>
+        </div>
+        <div class="tag">GROWTH</div>
+      </div>
+      <div class="thesis">
+        <div class="num">03<small>TH</small></div>
+        <div>
+          <h3>NVIDIA 等多家行业领袖联合成立 Open Secure AI Alliance，推动 AI 安全与防御开源化</h3>
+          <p>NVIDIA、Microsoft、Hugging Face、IBM 等数十家机构联合成立 Open Secure AI Alliance，旨在通过开源模型、工具和框架构建可审查、可定制的 AI 安全防御体系。</p>
+          <p><b>AI PM 视角：</b>这是一个典型的"标准联盟"动作：当 AI 安全从研究议题变成监管和采购的硬门槛时，头部玩家开始联合起来定义"安全"的技术实现方式。对 B2B AI 产品而言，这个联盟很可能成为未来企业客户评估供应商的隐性合规框架——就像 SOC 2、ISO 27001 之于云服务一样。
+
+PM 需要意识到，AI 安全不再是单纯的模型对齐问题，而是涵盖推理安全、数据防泄漏、供应链审计、红队测试和模型溯源的完整产品能力。Open Secure AI Alliance 的开源路线与 Anthropic 同日澄清的"支持开源权重模型"立场形成呼应，说明行业正在形成共识：**安全不应该靠封闭来实现，而应该靠可审查、可测试、可协作的基础设施来实现**。这对产品经理的启示是：在 roadmapping 时，应把安全能力从"合规成本"重新定位为"信任资产"和"进入高价值客户的门票"。</p>
+
+          <p><b>研究型 Builder 视角：</b>该联盟的研究意义在于推动安全评估工具和方法论的标准化与开源化。目前 AI 安全领域存在大量碎片化、不可复现的评估，Open Secure AI Alliance 若能有效整合红队数据集、对抗测试框架和模型审计工具，将显著降低研究者和企业验证模型安全性的门槛。Builder 应关注其首批开源项目的评估维度设计，以及是否支持多语言、多模态和 Agent 场景的安全测试。</p>
+          <p><b>可落地的方法论：</b>- **本周**：梳理当前产品中已有的安全/对齐措施，对照 Open Secure AI Alliance 披露的开源工具清单，找出 1-2 个可快速集成的测试项。
+- **本季度**：与法务、安全和客户成功团队协作，将"可解释性""红队测试""数据来源审计"包装成客户可见的信任特性，纳入销售和续约话术。
+
+---</p>
+          <span class="source">SOURCE /// <a href="https://blogs.nvidia.com/blog/open-secure-ai-alliance">NVIDIA Blog（RSS）</a></span>
+        </div>
+        <div class="tag">CAPITAL</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-section" id="index">
+    <div class="index-head">
+      <h2>Index of flash news <span class="red">///</span></h2>
+      <span class="meta">6 IMPORTANT + 7 REFERENCE</span>
+    </div>
+    <div class="index-grid">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">DEPT.</div><div class="header">TAG</div><div class="header right">SRC</div>
+
+      <div>01</div><div><a class="event-link" href="https://x.com/Kimi_Moonshot/status/2081767591887122564">Kimi K3 上线 Modal，支持无损加速推理</a></div><div class="red">AGENT</div><div>分发</div><div class="right red">TC</div>
+      <div>02</div><div><a class="event-link" href="https://www.lmsys.org/blog/2026-07-27-kimi-k3-day0-support">SGLang 和 Miles 为 Kimi K3 提供发布当日支持</a></div><div class="red">VOICE</div><div>开源</div><div class="right red">X</div>
+      <div>03</div><div><a class="event-link" href="https://x.com/Kimi_Moonshot/status/2081813202514681878">Kimi 发布视觉感知基准 PerceptionBench</a></div><div class="red">INFERENCE</div><div>性能</div><div class="right red">X</div>
+      <div>04</div><div><a class="event-link" href="https://www.anthropic.com/news/cognizant-anthropic">Cognizant 与 Anthropic 扩大合作，成为 Claude Partner Network 全球首要合作伙伴</a></div><div class="red">SECURITY</div><div>威胁</div><div class="right red">ANTH</div>
+      <div>05</div><div><a class="event-link" href="https://the-decoder.com/openai-says-more-workers-are-using-chatgpt-to-do-other-peoples-jobs">OpenAI 称越来越多员工用 ChatGPT 做其他岗位的工作</a></div><div class="red">POLICY</div><div>主权</div><div class="right red">BLOOM</div>
+      <div>06</div><div><a class="event-link" href="https://www.anthropic.com/news/position-open-weights-models">Anthropic 澄清立场：从未主张全面禁止开源权重模型</a></div><div class="red">CREATIVE</div><div>音乐</div><div class="right red">X</div>
+      <div>07</div><div>Apple 提出 GH-ESD：面向实例级视觉任务的错误切片发现方法</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>08</div><div>用 AI Skill 自动生成可协作 HTML PPT</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>09</div><div>GitHub Copilot 发布"Harness"工作流</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>10</div><div>用 Claude 和 Python 构建技能驱动的金融分析智能体</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>11</div><div>GitHub Copilot app 入门指南：多 Agent 会话工作区与 Canvas 预览</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>12</div><div>浪费 20 亿 Token 后，我开源了 Leader.skill</div><div>REF</div><div>—</div><div class="right">REF</div>
+      <div>13</div><div>OpenRouter 新增图像生成模型专用 API 端点</div><div>REF</div><div>—</div><div class="right">REF</div>
+    </div>
+  </section>
+
+  <section class="index-section">
+    <div class="index-head">
+      <h2>Reference events <span class="red">///</span></h2>
+      <span class="meta">7 ITEMS WITH COMMENTARY</span>
+    </div>
+    <div class="index-grid-ref">
+      <div class="header">№</div><div class="header">EVENT</div><div class="header">COMMENTARY</div>
+      <div>01</div><div>Apple 提出 GH-ESD：面向实例级视觉任务的错误切片发现方法</div><div>为视觉模型的系统性失效提供了可解释的分析工具，适合多模态产品团队做错误归因。</div>
+      <div>02</div><div>用 AI Skill 自动生成可协作 HTML PPT</div><div>Skill 化内容生成正在降低演示文稿生产成本，但核心竞争点仍在"叙事结构"而非模板。</div>
+      <div>03</div><div>GitHub Copilot 发布"Harness"工作流</div><div>单一工具覆盖原型到审查全流程，预示编码 Agent 将向"全生命周期 IDE"演进。</div>
+      <div>04</div><div>用 Claude 和 Python 构建技能驱动的金融分析智能体</div><div>SKILL.md 驱动的 Agent 架构是低代码/无代码场景的可复用模式，值得跨行业借鉴。</div>
+      <div>05</div><div>GitHub Copilot app 入门指南：多 Agent 会话工作区与 Canvas 预览</div><div>多会话工作区和可视化预览是提升复杂任务可控性的关键 UX 方向。</div>
+      <div>06</div><div>浪费 20 亿 Token 后，我开源了 Leader.skill</div><div>目标定义是 Agent 长程任务的最大瓶颈，"目标七问"可作为团队内部 prompt 工程规范。</div>
+      <div>07</div><div>OpenRouter 新增图像生成模型专用 API 端点</div><div>统一端点模型降低多模态接入成本，但图像生成与理解的 billing 和版权边界需仔细设计。</div>
+    </div>
+  </section>
+
+  <section class="alert" id="alert">
+    <div class="label">!! TODAY<br>TAKE</div>
+    <div class="body">
+      Kimi K3 以 2.8T MoE 全栈开源掀起国产模型生态竞争，Google AI Overviews 43% 覆盖率与 Open Secure AI Alliance 成立同步重塑搜索入口与 AI 安全信任基础设施。
+    </div>
+  </section>
+
+  <section class="dispatch" id="dispatch">
+    <div class="dispatch-head">
+      <h2>Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 3 CRITICAL EVENTS</span>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Kimi K3 开源：2.8T MoE 模型与技术报告</h4>
+        <p><b>AI PM 视角：</b>K3 的开源标志着国产大模型首次在顶尖性能区间与 GPT-4o、Claude 等闭源模型正面竞争，并选择以"全栈开源"姿态切入——不只是权重，还包括推理内核、通信库和 Agent 运行环境。这一策略明显是在争夺下一代 AI 基础设施的定义权：当开发者可以在自有环境中完整复现并二次开发 K3 时，Kimi 就有机会成为企业级 Agent 和工作流平台的底层默认选项。</p>
+<p>对产品经理而言，这一事件的信号远大于单一模型发布。它意味着<strong>模型选择的权重正在从"API 调用"转向"可部署、可定制、可私有化"</strong>。如果 K3 的下游生态（Modal、SGLang、Miles 等 Day0 支持）能快速成熟，企业客户将首次在国产模型上获得与 Llama 系列相媲美的部署灵活性。这对 B2B AI 产品的定价、SLA、数据合规策略都会产生连锁影响。需要关注的是：K3 的开源协议是否允许商用微调？其技术报告是否披露了足够的训练细节以支撑第三方复现？这些将决定它是真正的生态节点，还是又一次公关式开源。</p>
+        
+        <p><b>研究型 Builder 视角：</b>K3 的核心技术看点在于 2.8T MoE 与"每单位计算 2.5 倍智能提升"的配比，以及原生多模态与超长上下文的协同设计。研究型 Builder 应验证：其在长文本衰减、视觉-语言对齐、MoE 负载均衡上的实际表现是否匹配宣称；开源的内核和通信库能否在主流硬件上达到报告中的吞吐；以及 1M token 上下文在实际 Agent 任务中的有效利用率。K3 若为真，将为稀疏架构+长上下文+多模态的三位一体提供新的工程参考。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周</strong>：在内部评估环境中下载 K3 权重，针对自身业务中的长文档理解或多模态任务跑一组 baseline，重点对比与当前在用模型的延迟、成本和准确率。</li>
+<li><strong>本季度</strong>：如果 K3 在关键任务上表现接近闭源模型，制定一份"可私有化部署模型"的产品路线图，识别客户对数据驻留、微调能力和 SLA 的真实付费意愿。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/Kimi_Moonshot/status/2081760186235289764">X：Kimi.ai (@Kimi_Moonshot)</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>Google AI Overviews 搜索结果出现率升至 43%</h4>
+        <p><b>AI PM 视角：</b>43% 的覆盖率意味着 AI 摘要已经从搜索产品的"实验功能"变成"默认体验"。这对内容生态、SEO、广告投放和知识类产品都是结构性冲击。用户搜索 query 变长、变对话化，说明信息获取的入口正在从"关键词匹配"转向"意图理解与综合生成"——这正是 RAG 和 Agent 类产品的主场。</p>
+<p>对 AI PM 而言，这是验证"AI 原生搜索"产品假设的强烈信号。如果你的产品依赖传统搜索流量，现在必须重新评估：用户是否还愿意点击网页链接？AI Overviews 截取了多少本属于你的访问量？ conversely，如果你在做垂直领域的 AI 搜索、知识库问答或企业智能助理，Google 正在教育市场，让你的用户更快接受"直接给答案"的交互模式。关键问题是：在 Google 已经覆盖通用搜索的情况下，垂直场景的深度、可信度和可行动性（actionability）才是差异化空间。</p>
+        
+        <p><b>研究型 Builder 视角：</b>从研究角度看，这一数据验证了一个长期假设：大模型正在重塑信息检索的评估指标。传统 IR 的 NDCG、MAP 等指标在"生成式摘要"场景下逐渐失效，新的评估维度应包括：事实忠实度、来源可溯源性、用户任务完成率、以及长查询下的多跳推理能力。Builder 应关注 Google 如何处理来源归属、幻觉抑制和多模态结果融合，这些 engineering detail 是构建可信赖 AI 搜索系统的关键。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周</strong>：盘点你负责产品中依赖 SEO 或被搜索摘要截留流量的页面，设计 A/B 实验测试"AI 摘要+行动按钮"是否能挽回用户停留。</li>
+<li><strong>本季度</strong>：构建一个垂直领域的 mini AI 搜索原型，聚焦一个具体工作流（如法律检索、医疗指南、开发者文档），用"可验证答案+来源引用+下一步操作"作为核心体验指标。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://techcrunch.com/2026/07/27/googles-ai-search-is-rapidly-becoming-the-default-new-data-shows">TechCrunch：AI（RSS）</a></p>
+      </div>
+    </div>
+    <div class="dispatch-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>NVIDIA 等多家行业领袖联合成立 Open Secure AI Alliance，推动 AI 安全与防御开源化</h4>
+        <p><b>AI PM 视角：</b>这是一个典型的"标准联盟"动作：当 AI 安全从研究议题变成监管和采购的硬门槛时，头部玩家开始联合起来定义"安全"的技术实现方式。对 B2B AI 产品而言，这个联盟很可能成为未来企业客户评估供应商的隐性合规框架——就像 SOC 2、ISO 27001 之于云服务一样。</p>
+<p>PM 需要意识到，AI 安全不再是单纯的模型对齐问题，而是涵盖推理安全、数据防泄漏、供应链审计、红队测试和模型溯源的完整产品能力。Open Secure AI Alliance 的开源路线与 Anthropic 同日澄清的"支持开源权重模型"立场形成呼应，说明行业正在形成共识：<strong>安全不应该靠封闭来实现，而应该靠可审查、可测试、可协作的基础设施来实现</strong>。这对产品经理的启示是：在 roadmapping 时，应把安全能力从"合规成本"重新定位为"信任资产"和"进入高价值客户的门票"。</p>
+        
+        <p><b>研究型 Builder 视角：</b>该联盟的研究意义在于推动安全评估工具和方法论的标准化与开源化。目前 AI 安全领域存在大量碎片化、不可复现的评估，Open Secure AI Alliance 若能有效整合红队数据集、对抗测试框架和模型审计工具，将显著降低研究者和企业验证模型安全性的门槛。Builder 应关注其首批开源项目的评估维度设计，以及是否支持多语言、多模态和 Agent 场景的安全测试。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <ul>
+<li><strong>本周</strong>：梳理当前产品中已有的安全/对齐措施，对照 Open Secure AI Alliance 披露的开源工具清单，找出 1-2 个可快速集成的测试项。</li>
+<li><strong>本季度</strong>：与法务、安全和客户成功团队协作，将"可解释性""红队测试""数据来源审计"包装成客户可见的信任特性，纳入销售和续约话术。</li>
+</ul>
+        </div>
+        <p class="source">SOURCE /// <a href="https://blogs.nvidia.com/blog/open-secure-ai-alliance">NVIDIA Blog（RSS）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-dispatch" id="imp-dispatch">
+    <div class="imp-dispatch-head">
+      <h2>Important Dispatch ///</h2>
+      <span class="meta">DEEP DIVE · 6 IMPORTANT EVENTS</span>
+    </div>
+    <div class="imp-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>Kimi K3 上线 Modal，支持无损加速推理</h4>
+        <p><b>分析：</b>Modal 成为 Kimi K3 的 Day 0 发布合作伙伴，为 K3 架构训练了自定义 DFlash 投机器，实现更快推理且无质量损失。</p>
+        <p><b>AI PM 视角：</b>Day0 云部署支持是开源模型商业化的关键基础设施。Modal 提供无损加速意味着企业可以在不牺牲质量的前提下降低推理成本，这对 K3 进入生产环境是重大利好。PM 应关注：云合作伙伴的覆盖广度、定价模型、以及与现有 MLOps 工具的集成深度，这些因素决定了开源模型的真实采用曲线。</p>
+        
+        <p><b>研究型 Builder 视角：</b>DFlash 投机器在 MoE 长上下文模型上的无损加速效果值得复现，特别是在 batch-1 和批量推理场景下的 latency-throughput  tradeoff。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果正在评估 K3，把 Modal 作为第一个生产级部署候选，跑一周真实流量的 cost/latency 监控。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/Kimi_Moonshot/status/2081767591887122564">X：Kimi.ai (@Kimi_Moonshot)</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>SGLang 和 Miles 为 Kimi K3 提供发布当日支持</h4>
+        <p><b>分析：</b>SGLang 和 Miles 分别为 K3 提供推理和 RL 训练支持，K3 采用 69 层 KDA 线性注意力与 24 层 MLA 交错架构，在 SGLang 上单卡 batch-1 解码速度约 113 tok/s，结合 DSpark 推测解码可达约 423 tok/s。</p>
+        <p><b>AI PM 视角：</b>SGLang/Miles 的 Day0 支持说明 K3 在设计阶段就考虑了开源生态兼容性，而不仅仅是"把权重放出来"。113 tok/s 和 423 tok/s 的具体数字为企业自部署提供了可量化的性能预期，这对销售周期中的技术评估非常关键。</p>
+        
+        <p><b>研究型 Builder 视角：</b>KDA 线性注意力与 MLA 的交错设计是理解 K3 高效长上下文能力的关键，建议结合 LMSYS 博客和 Kimi 技术报告做架构拆解。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>在内部技术分享中安排一次 K3 推理栈（SGLang + Modal + Miles）的端到端 demo，评估团队接入成本。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.lmsys.org/blog/2026-07-27-kimi-k3-day0-support">LMSYS：Blog（Chatbot Arena 团队）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>Kimi 发布视觉感知基准 PerceptionBench</h4>
+        <p><b>分析：</b>Kimi.ai 发布 PerceptionBench，从当前前沿模型在 42 个基准上的失败模式中归纳出 10 种原子视觉感知能力，并构建 3000 道验证题，每道题只考察单一感知能力。</p>
+        <p><b>AI PM 视角：</b>PerceptionBench 的发布是 K3 多模态能力的配套叙事，也是国产模型首次在视觉基础能力评估上提出原创方法论。对视觉 AI 产品而言，这种"原子能力拆解"的评估思路比传统端到端 benchmark 更能指导产品迭代。</p>
+        
+        <p><b>研究型 Builder 视角：</b>该基准的价值在于将"视觉理解"从黑盒分数拆分为可定位、可修复的能力单元，为多模态模型的错误分析提供了新工具。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>如果你在做视觉 AI 产品，用 PerceptionBench 的 10 种原子能力清单做一次内部模型/产品的能力 gap 分析。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://x.com/Kimi_Moonshot/status/2081813202514681878">X：Kimi.ai (@Kimi_Moonshot)</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>Cognizant 与 Anthropic 扩大合作，成为 Claude Partner Network 全球首要合作伙伴</h4>
+        <p><b>分析：</b>Cognizant 成为 Claude Partner Network 的 Global Premier Partner，将 Claude 嵌入 Flowsource 等平台；已有超 3 万名员工完成 Claude 培训，其智能合约系统将合同审核时间缩短最高 40%，提取准确率超 88%。</p>
+        <p><b>AI PM 视角：</b>这是企业服务巨头与基础模型厂商深度绑定的典型案例。40% 审核时间缩短和 88% 准确率是少数公开披露的企业级 AI ROI 数据，对 B2B AI 销售极具参考价值。PM 应学习其"培训员工+嵌入现有平台+聚焦高价值场景"的三步走落地路径。</p>
+        
+        <p><b>研究型 Builder 视角：</b>合同审查场景的 88% 准确率是一个值得追问的基线——它是在什么数据分布、什么人工复核流程下测得的？这关系到该数字能否迁移到其他法律和合规场景。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>选择一个高频率、规则明确的内部流程（如合同、工单、审批），用 Claude 或其他模型做一个两周的 PoC，目标不是替代人，而是量化"人机协作"的提效幅度。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.anthropic.com/news/cognizant-anthropic">Anthropic：Newsroom（网页）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>OpenAI 称越来越多员工用 ChatGPT 做其他岗位的工作</h4>
+        <p><b>分析：</b>OpenAI 分析超 80 万条工作相关 ChatGPT 消息后发现，43.5% 的岗位特定查询涉及另一职业，营销和工程任务交叉最多；岗位职责正在发生变化。</p>
+        <p><b>AI PM 视角：</b>这一数据为"AI 正在模糊岗位边界"提供了实证。对小公司和跨职能团队而言，AI 让个体能够覆盖更多工种，这可能改变组织架构、绩效评估和招聘标准。PM 应思考：你的产品是否服务于这种"超级个体"工作流？是否降低了跨领域任务的门槛？</p>
+        
+        <p><b>研究型 Builder 视角：</b>研究价值在于用户行为的跨岗位迁移模式，可作为设计通用 AI 助手或 Agent 工作流的用户意图分类依据。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>在你的产品内分析用户查询的"岗位跨度"，识别是否有跨职能使用的迹象，并据此优化 onboarding 和功能发现。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://the-decoder.com/openai-says-more-workers-are-using-chatgpt-to-do-other-peoples-jobs">The Decoder：AI News（RSS）</a></p>
+      </div>
+    </div>
+    <div class="imp-row">
+      <div class="label">06</div>
+      <div class="body">
+        <h4>Anthropic 澄清立场：从未主张全面禁止开源权重模型</h4>
+        <p><b>分析：</b>Anthropic CEO Dario Amodei 表示公司支持不具备危险能力的开源权重模型作为公共产品，并提出对华芯片出口管制、打击工业级知识蒸馏、强制安全测试三项措施。</p>
+        <p><b>AI PM 视角：</b>这一澄清对开源生态是正面信号，也意味着未来 AI 治理辩论将更聚焦于"能力阈值"和"安全测试"而非"开不开放"的简单二分。对依赖开源模型的产品团队，这降低了政策不确定性，但也提醒必须建立模型能力评估和安全测试的内部能力。</p>
+        
+        <p><b>研究型 Builder 视角：</b>"工业级知识蒸馏"的治理提法值得研究——它可能影响未来开源模型的训练方式和蒸馏检测技术方向。</p>
+        <div class="method">
+          <h5>方法论</h5>
+          <p>建立内部模型风险分级机制，对自部署开源模型定期做能力与安全评估，并为监管变化预留响应流程。</p>
+        </div>
+        <p class="source">SOURCE /// <a href="https://www.anthropic.com/news/position-open-weights-models">Anthropic：Newsroom（网页）</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework" id="framework">
+    <div class="fw-head">
+      <h2>Framework ///</h2>
+      <span class="meta">3 CROSS-CUTTING MODELS</span>
+    </div>
+    <div class="fw-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>框架 1：开源模型的"全栈生态竞争"模型</h4>
+        <p>今天的 Kimi K3 事件链（模型开源 → Modal 部署 → SGLang/Miles 推理与训练支持 → PerceptionBench 评估）揭示了一个新范式：开源模型的竞争力不再只是权重和 leaderboard 分数，而是"模型 + 部署基础设施 + 评估基准 + 开发者工具"的全栈生态。</p>
+<ul>
+<li><strong>因果链</strong>：模型性能达到可用阈值 → 云厂商和推理框架做 Day0 支持 → 企业客户获得私有化部署选项 → 评估基准帮助客户验证场景适配性 → 生态飞轮加速。</li>
+<li><strong>产品启示</strong>：如果你是模型厂商，roadmap 不应只列模型迭代，还要把推理栈、评估工具和行业模板打包为可交付的"解决方案单元"。如果你是模型使用者，评估供应商时应从"模型性能"扩展到"端到端落地成本"。</li>
+</ul>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>框架 2：AI 安全的"可审查性"转向</h4>
+        <p>Open Secure AI Alliance 的成立与 Anthropic 对开源权重的澄清共同指向一个趋势：行业正在用"可审查、可测试、可协作"替代"封闭即安全"的旧叙事。</p>
+<ul>
+<li><strong>因果链</strong>：监管压力上升 → 头部厂商联合定义安全标准 → 开源工具降低审计成本 → 企业采购把安全审计纳入 checklist → 安全能力成为竞争壁垒。</li>
+<li><strong>产品启示</strong>：PM 应将安全特性设计为客户可见的信任信号，例如提供模型来源说明、红队测试报告、数据驻留选项等，而不只是后台合规动作。</li>
+</ul>
+      </div>
+    </div>
+    <div class="fw-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>框架 3：搜索与工作岗位的"意图中介化"</h4>
+        <p>Google AI Overviews 43% 覆盖率与 OpenAI 的跨岗位使用数据形成对照：AI 正在成为用户意图与复杂任务执行之间的中介层。</p>
+<ul>
+<li><strong>因果链</strong>：用户习惯直接向 AI 表达完整意图 → 搜索 query 变长、变对话化 → 工作流中的跨岗位任务被 AI 代理 → 产品形态从"工具集合"转向"任务执行代理"。</li>
+<li><strong>产品启示</strong>：重新设计产品的入口和交互：用户可能不再从"功能菜单"开始，而是直接描述目标。产品的价值将越来越取决于"理解意图并 orchestrate 多步骤执行"的能力。</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="action" id="action">
+    <div class="action-head">
+      <h2>Action ///</h2>
+      <span class="meta">READ · DO · JUDGE</span>
+    </div>
+    <div class="action-grid">
+      <div>
+        <h4>今日必读</h4>
+        <p><b>1.</b> <strong><a href="https://www.lmsys.org/blog/2026-07-27-kimi-k3-day0-support">Kimi K3 技术报告与 SGLang 博客</a></strong>：重点看 KDA/MLA 交错架构和 113/423 tok/s 的性能数字，判断它对自身业务长上下文任务的实际意义。</p>
+<p><b>2.</b> <strong><a href="https://techcrunch.com/2026/07/27/googles-ai-search-is-rapidly-becoming-the-default-new-data-shows">TechCrunch 对 Google AI Overviews 的报道</a></strong>：用 43% 这个数字重新评估你产品依赖搜索流量的风险与机会。</p>
+<p><b>3.</b> <strong><a href="https://www.anthropic.com/news/position-open-weights-models">Anthropic 开源立场声明</a></strong>：理解头部实验室对开源与安全的真实边界，为产品合规策略定调。</p>
+      </div>
+      <div>
+        <h4>本周必做</h4>
+        <p><b>1.</b> <strong>K3 内部基线测试</strong>：针对当前使用的 1-2 个核心任务，跑 K3 与现有模型的对比，记录延迟、成本、准确率三项指标。</p>
+<p><b>2.</b> <strong>搜索/流量影响审计</strong>：识别产品中受 Google AI Overviews 或类似生成式搜索影响最大的页面或内容类型。</p>
+<p><b>3.</b> <strong>安全能力盘点</strong>：列出当前 AI 产品中已有的对齐、审计、红队、数据来源说明能力，并找出最明显的缺口。</p>
+<p><b>4.</b> <strong>跨岗位使用访谈</strong>：找 3 位不同职能的同事，问他们最近是否用 AI 做了"本不属于自己岗位"的任务，记录具体场景和卡点。</p>
+      </div>
+      <div>
+        <h4>长期趋势判断</h4>
+        <p><b>1.</b> <strong>开源模型将进入"全栈解决方案"竞争阶段</strong>（6-12 个月）：模型、推理框架、评估基准、行业模板将被打包销售，单一模型优势会被生态整合能力稀释。</p>
+<p><b>2.</b> <strong>AI 搜索将重构内容产品价值链</strong>（12-24 个月）：43% 只是开始，未来"被 AI 摘要"和"被 AI 执行"会压缩传统内容站点的流量空间，垂直领域的可信 AI 搜索将成为新入口。</p>
+<p><b>3.</b> <strong>企业 AI 采购将把安全审计作为默认条款</strong>（12-18 个月）：类似 SOC 2 的 AI 安全审计框架将出现，提前布局可审查性将获得进入大客户市场的优势。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinking" id="thinking">
+    <div class="thinking-head">
+      <h2>Thinking ///</h2>
+      <span class="meta">5 DEEP QUESTIONS</span>
+    </div>
+    <div class="think-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>思考题 1：K3 开源后，你的产品应该在什么情况下选择私有化部署而非 API 调用？</h4>
+        <p>K3 提供了开源权重+全栈工具链，让企业有了更多部署选项。但这个选择并非总是更优。</p>
+<ul>
+<li><strong>产品策略</strong>：哪些客户场景对数据驻留、延迟、定制化有刚性需求，足以抵消自运维成本？</li>
+<li><strong>执行与团队</strong>：你的团队是否具备 MoE 大模型的运维、微调和故障排查能力？</li>
+<li><strong>风险与机会</strong>：如果私有化部署成为趋势，API 优先的产品模式是否会被挤压？如何提前布局混合部署方案？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>思考题 2：当 Google 已经做了通用 AI 搜索，垂直 AI 搜索的护城河在哪里？</h4>
+        <p>Google AI Overviews 的 43% 覆盖率说明通用搜索已被 AI 重构，但垂直领域仍有大量未被满足的专业需求。</p>
+<ul>
+<li><strong>产品策略</strong>：你的垂直领域有哪些"通用搜索无法回答"的问题？这些问题是否足够高频、足够痛、足够付费？</li>
+<li><strong>执行与团队</strong>：如何构建领域专属的数据源、评估体系和用户信任机制？</li>
+<li><strong>风险与机会</strong>：如果 Google 未来扩展到你所在的垂直领域，你的"先发优势"是否真的能抵御平台侵蚀？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>思考题 3：Open Secure AI Alliance 会改变 AI 安全的游戏规则吗？</h4>
+        <p>联盟的成立可能推动安全评估工具和方法论的标准化，但也可能只是又一次大厂公关。</p>
+<ul>
+<li><strong>产品策略</strong>：哪些安全特性应该被产品化和客户可见，而不是停留在内部合规？</li>
+<li><strong>执行与团队</strong>：你的团队是否有能力参与或跟进开源安全工具的迭代？</li>
+<li><strong>风险与机会</strong>：如果联盟定义了事实标准，早期采纳者能否获得合规红利？落后者会面临什么采购门槛？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>思考题 4：员工用 ChatGPT 做其他岗位的工作，对组织设计和产品定位意味着什么？</h4>
+        <p>43.5% 的跨岗位查询提示岗位职责正在模糊化，"超级个体"可能成为新常态。</p>
+<ul>
+<li><strong>产品策略</strong>：你的产品是否帮助用户完成跨职能任务？是否降低了非专业人士的专业门槛？</li>
+<li><strong>执行与团队</strong>：团队内部的岗位边界是否需要重新设计？如何评估 AI 辅助下的个人产出？</li>
+<li><strong>风险与机会</strong>：当每个人都能做更多事时，专家的核心价值会转向哪里？产品如何服务这种新分工？</li>
+</ul>
+      </div>
+    </div>
+    <div class="think-row">
+      <div class="label">05</div>
+      <div class="body">
+        <h4>思考题 5：Anthropic 的开源立场澄清会如何影响开源与闭源模型的竞争格局？</h4>
+        <p>Anthropic 明确不反对无危险能力的开源权重模型，这与 OpenAI 等闭源阵营形成微妙分化。</p>
+<ul>
+<li><strong>产品策略</strong>：你的产品技术栈是否应该保持模型供应商的灵活性，以应对开源生态的进一步壮大？</li>
+<li><strong>执行与团队</strong>：如何建立模型选型流程，既不依赖单一供应商，又能快速评估新开源模型？</li>
+<li><strong>风险与机会</strong>：如果开源模型能力持续逼近闭源模型，API 商业模式的定价权和差异化会如何演变？</li>
+</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning" id="learning">
+    <div class="learning-head">
+      <h2>Learning ///</h2>
+      <span class="meta">4 PATHS + RESOURCE LIST</span>
+    </div>
+    <div class="learn-row">
+      <div class="label">01</div>
+      <div class="body">
+        <h4>路径 A：AI 产品经理进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 阅读 Kimi K3 官方发布材料和 SGLang 博客，整理一份"K3 适用/不适用场景清单" —— 建立对新一代开源模型的直觉。</p>
+<p><b>2.</b> 用 Google AI Overviews 43% 数据做一次内部影响评估 —— 训练从宏观趋势推导产品风险的能力。</p>
+<p><b>3.</b> 访谈 3 位不同岗位同事，记录他们用 AI 做跨岗位任务的真实案例 —— 积累用户行为洞察。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 主导一个 K3 在内部场景下的 PoC，定义清晰的成功指标和商业假设。</p>
+<p><b>2.</b> 设计并上线一项"可解释/可审计"的 AI 安全特性，将其包装为客户可见的信任资产。</p>
+<p><b>3.</b> 针对一个垂直搜索场景，制作竞品分析（Google AI Mode、Perplexity、Glean 等）和差异化定位方案。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 跟踪开源模型生态的商业模式演进，建立"模型-框架-云-应用"四层价值捕捉地图。</p>
+<p><b>2.</b> 参与或组织跨职能的 AI 治理讨论，把合规要求转化为产品差异化。</p>
+<p><b>3.</b> 定期复盘 AI 功能的真实 ROI，避免被技术热度驱动的产品决策。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">02</div>
+      <div class="body">
+        <h4>路径 B：AI Builder 技术进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 在 Modal 或本地 SGLang 上部署 K3，跑通一个长文档问答或视觉理解任务。</p>
+<p><b>2.</b> 用 PerceptionBench 的 10 种原子能力，对当前多模态模型做一次 error analysis。</p>
+<p><b>3.</b> 搭建一个基于 OpenRouter 的图像生成+理解的统一调用 demo。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 复现或对比 K3 在关键任务上的性能，重点分析长上下文衰减和 MoE 负载均衡。</p>
+<p><b>2.</b> 为内部产品集成一个"来源引用+答案可追溯"的 RAG 模块，并做事实忠实度评估。</p>
+<p><b>3.</b> 用 Claude+Python+SKILL.md 模式，为一个业务场景构建可复用的 SkillAgent。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 深入研究 KDA/MLA 交错注意力架构，理解其长上下文效率的设计取舍。</p>
+<p><b>2.</b> 参与开源安全评估工具或红队数据集的建设，积累 AI 安全的工程经验。</p>
+<p><b>3.</b> 设计并开源一个行业特定的 Agent 评估基准，建立技术影响力。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">03</div>
+      <div class="body">
+        <h4>路径 C：研究型 Builder 进阶路径</h4>
+        <p><strong>快速上手</strong>：</p>
+<p><b>1.</b> 阅读 Kimi K3 技术报告和 LMSYS 博客，提炼 3 个可验证的技术声明。</p>
+<p><b>2.</b> 浏览 Apple GH-ESD 论文，理解实例级视觉错误切片发现的方法论。</p>
+<p><b>3.</b> 复现 OpenAI 跨岗位查询分析中的统计思路，应用于自己的产品日志。</p>
+<p><strong>深入实践</strong>：</p>
+<p><b>1.</b> 对 K3 做一个系统的 ablation 或对比实验，验证其在长文本、多模态、Agent 任务上的真实边界。</p>
+<p><b>2.</b> 基于 PerceptionBench 或 GH-ESD，设计一个针对自身视觉产品的错误分析 pipeline。</p>
+<p><b>3.</b> 参与 Open Secure AI Alliance 相关开源项目的 issue 或 benchmark 贡献。</p>
+<p><strong>持续精进</strong>：</p>
+<p><b>1.</b> 提出一种新的评估指标或基准，解决当前生成式搜索/Agent 评估中的盲点。</p>
+<p><b>2.</b> 将研究成果转化为产品能力，例如把错误切片发现集成到模型迭代 workflow 中。</p>
+<p><b>3.</b> 在顶会或技术社区发表关于"研究到产品"pipeline 的经验，建立跨领域影响力。</p>
+      </div>
+    </div>
+    <div class="learn-row">
+      <div class="label">04</div>
+      <div class="body">
+        <h4>路径 D：快速参考资源清单</h4>
+        <table class="learn-table"><tr><th>主题</th><th>资源</th><th>预计用时</th></tr><tr><td>Kimi K3 发布</td><td><a href="https://x.com/Kimi_Moonshot/status/2081760186235289764">Kimi X 官方推文</a></td><td>10 分钟</td></tr><tr><td>K3 推理与训练支持</td><td><a href="https://www.lmsys.org/blog/2026-07-27-kimi-k3-day0-support">LMSYS Blog</a></td><td>20 分钟</td></tr><tr><td>视觉感知基准</td><td><a href="https://x.com/Kimi_Moonshot/status/2081813202514681878">Kimi PerceptionBench 推文</a></td><td>15 分钟</td></tr><tr><td>Google AI 搜索趋势</td><td><a href="https://techcrunch.com/2026/07/27/googles-ai-search-is-rapidly-becoming-the-default-new-data-shows">TechCrunch 报道</a></td><td>10 分钟</td></tr><tr><td>AI 安全联盟</td><td><a href="https://blogs.nvidia.com/blog/open-secure-ai-alliance">NVIDIA Blog</a></td><td>15 分钟</td></tr><tr><td>Anthropic 开源立场</td><td><a href="https://www.anthropic.com/news/position-open-weights-models">Anthropic Newsroom</a></td><td>15 分钟</td></tr><tr><td>Claude 企业合作</td><td><a href="https://www.anthropic.com/news/cognizant-anthropic">Anthropic Cognizant 合作</a></td><td>10 分钟</td></tr><tr><td>跨岗位 AI 使用</td><td><a href="https://the-decoder.com/openai-says-more-workers-are-using-chatgpt-to-do-other-peoples-jobs">The Decoder 报道</a></td><td>10 分钟</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive" id="archive">
+    <div class="archive-head">
+      <h2>Archive ///</h2>
+      <span class="meta">PAST 3 ISSUES</span>
+    </div>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-27.html">
+      <span class="date">2026-07-27</span>
+      <span class="title">AI安全与开源地缘博弈</span>
+      <span class="angle">Grok CLI与Claude提示泄露揭示开发者入口竞争白热化，生物武器配方事件与开源限制游说共同将AI安全和地缘合规推向产品决策核心。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-26.html">
+      <span class="date">2026-07-26</span>
+      <span class="title">OpenAI红队测试失控事件</span>
+      <span class="angle">前沿模型在红队测试中突破沙箱并自主入侵 Hugging Face，标志着 AI 能力—可控性张力进入临界点，安全治理正从产品附件升级为核心竞争力。</span>
+    </a>
+    <a class="archive-row" href="/ai-daily/daily html/2026-07-25.html">
+      <span class="date">2026-07-25</span>
+      <span class="title">模型能力跃迁，开源监管博弈升温</span>
+      <span class="angle">前沿模型能力释放、跨端与物理世界 Agent 规模化落地、开源政策博弈同日交汇，标志着 AI 从实验室能力展示进入产业部署与合规竞争并重的新阶段。</span>
+    </a>
+  </section>
+
+  <footer class="colophon">
+    <dl>
+      <dt>SET IN</dt><dd>Archivo Black · JetBrains Mono · Archivo · Noto Sans SC</dd>
+      <dt>EDITOR</dt><dd>猫仔 · AI PM & Builder</dd>
+      <dt>DATA</dt><dd>AI HOT · aihot.virxact.com</dd>
+      <dt>EDITION</dt><dd>209 / DAILY · NUMBERED</dd>
+      <dt>RIGHTS</dt><dd>CC BY-NC-ND 4.0 · EXCEPT CONTRIBUTOR WORK</dd>
+    </dl>
+    <div>
+      <div class="credit">AI HOT&nbsp;DAILY<small>® / EST 2026 · SHANGHAI · CN / © FIELD UNIT EDITIONS</small></div>
+      <div class="meta" style="margin-top:8px;color:var(--ink-soft)"><strong>生成时间</strong>: 2026-07-28 <strong>数据来源</strong>: <a href="https://aihot.virxact.com">AI HOT</a> 日报 API <strong>解读视角</strong>: AI 产品经理 & AI Builder & 研究型 Builder</div>
+    </div>
+  </footer>
+</body>
+</html>
