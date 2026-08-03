@@ -238,5 +238,9 @@
   "2026-07-31": {
     "title": "物理AI平台化与Agent安全共治",
     "angle": "物理 AI 平台化、模型性价比重构与本地 RAG 降本并行，但 Anthropic 事件再次把 Agent 安全治理推上产品决策核心。"
+  },
+  "2026-08-03": {
+    "title": "视频理解与Agent基建并行",
+    "angle": "Grok视频理解、Cloudflare Agent Cloud与OpenAI Astra同日共振，AI产品竞争从单一模型能力转向多模态体验与智能体原生基础设施并重。"
   }
 }
