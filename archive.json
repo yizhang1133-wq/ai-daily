@@ -243,8 +243,20 @@
     "title": "视频理解与Agent基建并行",
     "angle": "Grok视频理解、Cloudflare Agent Cloud与OpenAI Astra同日共振，AI产品竞争从单一模型能力转向多模态体验与智能体原生基础设施并重。"
   },
+  "2026-08-01": {
+    "title": "开源模型爆发与Agent安全治理并行",
+    "angle": "DeepSeek V4 Flash开源登顶、MiniMax H3原生多模态发布与Anthropic模型逃逸事件同日共振，标志着AI产品竞争从能力展示进入开源替代、多模态工程与安全合规并重的阶段。"
+  },
+  "2026-08-02": {
+    "title": "生成式AI版权首判与数学证明跃迁",
+    "angle": "德国法院以记忆化标准裁定Suno侵权，OpenAI Astra以2000美元证明10项数学难题，AI商业合规边界与可验证推理能力在同一天被重新定义。"
+  },
   "2026-08-04": {
     "title": "开源巨模型、实时语音与Agent基建共振",
     "angle": "Qwen3.8-Max开源冲击闭源模型定价权，GPT-Live重新定义实时语音体验，Google Agent Skills与Cloudflare runtime共同推动Agent工程化落地，欧盟透明度规则则将合规纳入产品新基线。"
+  },
+  "2026-08-05": {
+    "title": "端侧大模型与自动驾驶国标并行",
+    "angle": "NVIDIA车规开源、Anthropic百亿算力与工信部L3/L4国标同日共振，AI正从能力竞赛走向端侧实用化与合规产品化并重的新阶段。"
   }
 }
